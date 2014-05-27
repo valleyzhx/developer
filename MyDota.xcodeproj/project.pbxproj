@@ -1,0 +1,611 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5749065319336FD0003148E4 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5749063E19336FD0003148E4 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5749065419336FD0003148E4 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5749064119336FD0003148E4 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5749065519336FD0003148E4 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5749064319336FD0003148E4 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5749065619336FD0003148E4 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5749064519336FD0003148E4 /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5749065719336FD0003148E4 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5749064719336FD0003148E4 /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5749065819336FD0003148E4 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5749064919336FD0003148E4 /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5749065919336FD0003148E4 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5749064D19336FD0003148E4 /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5749065A19336FD0003148E4 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5749064F19336FD0003148E4 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5749065B19336FD0003148E4 /* PKReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5749065219336FD0003148E4 /* PKReachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5749065E19337E78003148E4 /* MyXmlPraser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5749065D19337E78003148E4 /* MyXmlPraser.m */; };
+		57490661193389D1003148E4 /* MyXmlData.m in Sources */ = {isa = PBXBuildFile; fileRef = 57490660193389D1003148E4 /* MyXmlData.m */; };
+		5749066419338F39003148E4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5749066319338F39003148E4 /* SystemConfiguration.framework */; };
+		5749066619338F45003148E4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5749066519338F45003148E4 /* MobileCoreServices.framework */; };
+		5749066819338F4E003148E4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5749066719338F4E003148E4 /* CFNetwork.framework */; };
+		5749066B19338F73003148E4 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5749066A19338F73003148E4 /* libz.1.2.5.dylib */; };
+		57A7362A191140EB00DF2B97 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A73628191140EB00DF2B97 /* HomeViewController.m */; };
+		57A7362B191140EB00DF2B97 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57A73629191140EB00DF2B97 /* HomeViewController.xib */; };
+		57A850BC190004980062932C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A850BB190004980062932C /* Foundation.framework */; };
+		57A850BE190004980062932C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A850BD190004980062932C /* CoreGraphics.framework */; };
+		57A850C0190004980062932C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A850BF190004980062932C /* UIKit.framework */; };
+		57A850C6190004980062932C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 57A850C4190004980062932C /* InfoPlist.strings */; };
+		57A850C8190004980062932C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A850C7190004980062932C /* main.m */; };
+		57A850CC190004980062932C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A850CB190004980062932C /* AppDelegate.m */; };
+		57A850CF190004980062932C /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57A850CD190004980062932C /* Main_iPhone.storyboard */; };
+		57A850D2190004980062932C /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57A850D0190004980062932C /* Main_iPad.storyboard */; };
+		57A850D5190004980062932C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A850D4190004980062932C /* ViewController.m */; };
+		57A850D7190004980062932C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57A850D6190004980062932C /* Images.xcassets */; };
+		57A850DE190004980062932C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A850DD190004980062932C /* XCTest.framework */; };
+		57A850DF190004980062932C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A850BB190004980062932C /* Foundation.framework */; };
+		57A850E0190004980062932C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A850BF190004980062932C /* UIKit.framework */; };
+		57A850E8190004980062932C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 57A850E6190004980062932C /* InfoPlist.strings */; };
+		57A850EA190004980062932C /* MyDotaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A850E9190004980062932C /* MyDotaTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		57A850E1190004980062932C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 57A850B0190004980062932C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 57A850B7190004980062932C;
+			remoteInfo = MyDota;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5749063D19336FD0003148E4 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		5749063E19336FD0003148E4 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		5749063F19336FD0003148E4 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		5749064019336FD0003148E4 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		5749064119336FD0003148E4 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		5749064219336FD0003148E4 /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		5749064319336FD0003148E4 /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
+		5749064419336FD0003148E4 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		5749064519336FD0003148E4 /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
+		5749064619336FD0003148E4 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		5749064719336FD0003148E4 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		5749064819336FD0003148E4 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		5749064919336FD0003148E4 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		5749064A19336FD0003148E4 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		5749064B19336FD0003148E4 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		5749064C19336FD0003148E4 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		5749064D19336FD0003148E4 /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		5749064E19336FD0003148E4 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		5749064F19336FD0003148E4 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		5749065019336FD0003148E4 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		5749065119336FD0003148E4 /* PKReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKReachability.h; sourceTree = "<group>"; };
+		5749065219336FD0003148E4 /* PKReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKReachability.m; sourceTree = "<group>"; };
+		5749065C19337E78003148E4 /* MyXmlPraser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyXmlPraser.h; sourceTree = "<group>"; };
+		5749065D19337E78003148E4 /* MyXmlPraser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyXmlPraser.m; sourceTree = "<group>"; };
+		5749065F193389D1003148E4 /* MyXmlData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyXmlData.h; sourceTree = "<group>"; };
+		57490660193389D1003148E4 /* MyXmlData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyXmlData.m; sourceTree = "<group>"; };
+		5749066319338F39003148E4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5749066519338F45003148E4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		5749066719338F4E003148E4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		5749066A19338F73003148E4 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		57A73627191140EB00DF2B97 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		57A73628191140EB00DF2B97 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		57A73629191140EB00DF2B97 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		57A850B8190004980062932C /* MyDota.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDota.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		57A850BB190004980062932C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		57A850BD190004980062932C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		57A850BF190004980062932C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		57A850C3190004980062932C /* MyDota-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyDota-Info.plist"; sourceTree = "<group>"; };
+		57A850C5190004980062932C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		57A850C7190004980062932C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		57A850C9190004980062932C /* MyDota-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyDota-Prefix.pch"; sourceTree = "<group>"; };
+		57A850CA190004980062932C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		57A850CB190004980062932C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		57A850CE190004980062932C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		57A850D1190004980062932C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		57A850D3190004980062932C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		57A850D4190004980062932C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		57A850D6190004980062932C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		57A850DC190004980062932C /* MyDotaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyDotaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		57A850DD190004980062932C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		57A850E5190004980062932C /* MyDotaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyDotaTests-Info.plist"; sourceTree = "<group>"; };
+		57A850E7190004980062932C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		57A850E9190004980062932C /* MyDotaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyDotaTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		57A850B5190004980062932C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5749066B19338F73003148E4 /* libz.1.2.5.dylib in Frameworks */,
+				5749066819338F4E003148E4 /* CFNetwork.framework in Frameworks */,
+				5749066619338F45003148E4 /* MobileCoreServices.framework in Frameworks */,
+				5749066419338F39003148E4 /* SystemConfiguration.framework in Frameworks */,
+				57A850BE190004980062932C /* CoreGraphics.framework in Frameworks */,
+				57A850C0190004980062932C /* UIKit.framework in Frameworks */,
+				57A850BC190004980062932C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57A850D9190004980062932C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57A850DE190004980062932C /* XCTest.framework in Frameworks */,
+				57A850E0190004980062932C /* UIKit.framework in Frameworks */,
+				57A850DF190004980062932C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5749063C19336FD0003148E4 /* ASIHttpRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5749063D19336FD0003148E4 /* ASIAuthenticationDialog.h */,
+				5749063E19336FD0003148E4 /* ASIAuthenticationDialog.m */,
+				5749063F19336FD0003148E4 /* ASICacheDelegate.h */,
+				5749064019336FD0003148E4 /* ASIDataCompressor.h */,
+				5749064119336FD0003148E4 /* ASIDataCompressor.m */,
+				5749064219336FD0003148E4 /* ASIDataDecompressor.h */,
+				5749064319336FD0003148E4 /* ASIDataDecompressor.m */,
+				5749064419336FD0003148E4 /* ASIDownloadCache.h */,
+				5749064519336FD0003148E4 /* ASIDownloadCache.m */,
+				5749064619336FD0003148E4 /* ASIFormDataRequest.h */,
+				5749064719336FD0003148E4 /* ASIFormDataRequest.m */,
+				5749064819336FD0003148E4 /* ASIHTTPRequest.h */,
+				5749064919336FD0003148E4 /* ASIHTTPRequest.m */,
+				5749064A19336FD0003148E4 /* ASIHTTPRequestConfig.h */,
+				5749064B19336FD0003148E4 /* ASIHTTPRequestDelegate.h */,
+				5749064C19336FD0003148E4 /* ASIInputStream.h */,
+				5749064D19336FD0003148E4 /* ASIInputStream.m */,
+				5749064E19336FD0003148E4 /* ASINetworkQueue.h */,
+				5749064F19336FD0003148E4 /* ASINetworkQueue.m */,
+				5749065019336FD0003148E4 /* ASIProgressDelegate.h */,
+				5749065119336FD0003148E4 /* PKReachability.h */,
+				5749065219336FD0003148E4 /* PKReachability.m */,
+			);
+			path = ASIHttpRequest;
+			sourceTree = "<group>";
+		};
+		5749066219338A9F003148E4 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				57A73627191140EB00DF2B97 /* HomeViewController.h */,
+				57A73628191140EB00DF2B97 /* HomeViewController.m */,
+				57A73629191140EB00DF2B97 /* HomeViewController.xib */,
+				5749065C19337E78003148E4 /* MyXmlPraser.h */,
+				5749065D19337E78003148E4 /* MyXmlPraser.m */,
+				5749065F193389D1003148E4 /* MyXmlData.h */,
+				57490660193389D1003148E4 /* MyXmlData.m */,
+			);
+			name = HomeViewController;
+			sourceTree = "<group>";
+		};
+		57A850AF190004980062932C = {
+			isa = PBXGroup;
+			children = (
+				57A850C1190004980062932C /* MyDota */,
+				57A850E3190004980062932C /* MyDotaTests */,
+				57A850BA190004980062932C /* Frameworks */,
+				57A850B9190004980062932C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		57A850B9190004980062932C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				57A850B8190004980062932C /* MyDota.app */,
+				57A850DC190004980062932C /* MyDotaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		57A850BA190004980062932C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5749066A19338F73003148E4 /* libz.1.2.5.dylib */,
+				5749066719338F4E003148E4 /* CFNetwork.framework */,
+				5749066519338F45003148E4 /* MobileCoreServices.framework */,
+				5749066319338F39003148E4 /* SystemConfiguration.framework */,
+				57A850BB190004980062932C /* Foundation.framework */,
+				57A850BD190004980062932C /* CoreGraphics.framework */,
+				57A850BF190004980062932C /* UIKit.framework */,
+				57A850DD190004980062932C /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		57A850C1190004980062932C /* MyDota */ = {
+			isa = PBXGroup;
+			children = (
+				5749063C19336FD0003148E4 /* ASIHttpRequest */,
+				57A850CA190004980062932C /* AppDelegate.h */,
+				57A850CB190004980062932C /* AppDelegate.m */,
+				57A850CD190004980062932C /* Main_iPhone.storyboard */,
+				57A850D0190004980062932C /* Main_iPad.storyboard */,
+				57A850D3190004980062932C /* ViewController.h */,
+				57A850D4190004980062932C /* ViewController.m */,
+				5749066219338A9F003148E4 /* HomeViewController */,
+				57A850D6190004980062932C /* Images.xcassets */,
+				57A850C2190004980062932C /* Supporting Files */,
+			);
+			path = MyDota;
+			sourceTree = "<group>";
+		};
+		57A850C2190004980062932C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				57A850C3190004980062932C /* MyDota-Info.plist */,
+				57A850C4190004980062932C /* InfoPlist.strings */,
+				57A850C7190004980062932C /* main.m */,
+				57A850C9190004980062932C /* MyDota-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		57A850E3190004980062932C /* MyDotaTests */ = {
+			isa = PBXGroup;
+			children = (
+				57A850E9190004980062932C /* MyDotaTests.m */,
+				57A850E4190004980062932C /* Supporting Files */,
+			);
+			path = MyDotaTests;
+			sourceTree = "<group>";
+		};
+		57A850E4190004980062932C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				57A850E5190004980062932C /* MyDotaTests-Info.plist */,
+				57A850E6190004980062932C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		57A850B7190004980062932C /* MyDota */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 57A850ED190004980062932C /* Build configuration list for PBXNativeTarget "MyDota" */;
+			buildPhases = (
+				57A850B4190004980062932C /* Sources */,
+				57A850B5190004980062932C /* Frameworks */,
+				57A850B6190004980062932C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyDota;
+			productName = MyDota;
+			productReference = 57A850B8190004980062932C /* MyDota.app */;
+			productType = "com.apple.product-type.application";
+		};
+		57A850DB190004980062932C /* MyDotaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 57A850F0190004980062932C /* Build configuration list for PBXNativeTarget "MyDotaTests" */;
+			buildPhases = (
+				57A850D8190004980062932C /* Sources */,
+				57A850D9190004980062932C /* Frameworks */,
+				57A850DA190004980062932C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				57A850E2190004980062932C /* PBXTargetDependency */,
+			);
+			name = MyDotaTests;
+			productName = MyDotaTests;
+			productReference = 57A850DC190004980062932C /* MyDotaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		57A850B0190004980062932C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Simplan;
+				TargetAttributes = {
+					57A850DB190004980062932C = {
+						TestTargetID = 57A850B7190004980062932C;
+					};
+				};
+			};
+			buildConfigurationList = 57A850B3190004980062932C /* Build configuration list for PBXProject "MyDota" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 57A850AF190004980062932C;
+			productRefGroup = 57A850B9190004980062932C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				57A850B7190004980062932C /* MyDota */,
+				57A850DB190004980062932C /* MyDotaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		57A850B6190004980062932C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57A850D2190004980062932C /* Main_iPad.storyboard in Resources */,
+				57A850D7190004980062932C /* Images.xcassets in Resources */,
+				57A7362B191140EB00DF2B97 /* HomeViewController.xib in Resources */,
+				57A850CF190004980062932C /* Main_iPhone.storyboard in Resources */,
+				57A850C6190004980062932C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57A850DA190004980062932C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57A850E8190004980062932C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		57A850B4190004980062932C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5749065419336FD0003148E4 /* ASIDataCompressor.m in Sources */,
+				57A850D5190004980062932C /* ViewController.m in Sources */,
+				5749065E19337E78003148E4 /* MyXmlPraser.m in Sources */,
+				57A850CC190004980062932C /* AppDelegate.m in Sources */,
+				5749065319336FD0003148E4 /* ASIAuthenticationDialog.m in Sources */,
+				5749065719336FD0003148E4 /* ASIFormDataRequest.m in Sources */,
+				5749065B19336FD0003148E4 /* PKReachability.m in Sources */,
+				57490661193389D1003148E4 /* MyXmlData.m in Sources */,
+				5749065519336FD0003148E4 /* ASIDataDecompressor.m in Sources */,
+				57A850C8190004980062932C /* main.m in Sources */,
+				5749065919336FD0003148E4 /* ASIInputStream.m in Sources */,
+				5749065A19336FD0003148E4 /* ASINetworkQueue.m in Sources */,
+				5749065819336FD0003148E4 /* ASIHTTPRequest.m in Sources */,
+				5749065619336FD0003148E4 /* ASIDownloadCache.m in Sources */,
+				57A7362A191140EB00DF2B97 /* HomeViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57A850D8190004980062932C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				57A850EA190004980062932C /* MyDotaTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		57A850E2190004980062932C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 57A850B7190004980062932C /* MyDota */;
+			targetProxy = 57A850E1190004980062932C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		57A850C4190004980062932C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				57A850C5190004980062932C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		57A850CD190004980062932C /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				57A850CE190004980062932C /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		57A850D0190004980062932C /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				57A850D1190004980062932C /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		57A850E6190004980062932C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				57A850E7190004980062932C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		57A850EB190004980062932C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		57A850EC190004980062932C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		57A850EE190004980062932C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyDota/MyDota-Prefix.pch";
+				INFOPLIST_FILE = "MyDota/MyDota-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		57A850EF190004980062932C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyDota/MyDota-Prefix.pch";
+				INFOPLIST_FILE = "MyDota/MyDota-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		57A850F1190004980062932C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MyDota.app/MyDota";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyDota/MyDota-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MyDotaTests/MyDotaTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		57A850F2190004980062932C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MyDota.app/MyDota";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MyDota/MyDota-Prefix.pch";
+				INFOPLIST_FILE = "MyDotaTests/MyDotaTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		57A850B3190004980062932C /* Build configuration list for PBXProject "MyDota" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				57A850EB190004980062932C /* Debug */,
+				57A850EC190004980062932C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		57A850ED190004980062932C /* Build configuration list for PBXNativeTarget "MyDota" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				57A850EE190004980062932C /* Debug */,
+				57A850EF190004980062932C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		57A850F0190004980062932C /* Build configuration list for PBXNativeTarget "MyDotaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				57A850F1190004980062932C /* Debug */,
+				57A850F2190004980062932C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 57A850B0190004980062932C /* Project object */;
+}
