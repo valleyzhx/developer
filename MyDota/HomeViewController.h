@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "MyXmlPraser.h"
-@interface HomeViewController : UIViewController<MyXmlPraserDelegate>
+#import "LoadMoreTableFooterView.h"
+@interface HomeViewController : UIViewController<MyXmlPraserDelegate,LoadMoreTableFooterDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *listTable;
 
 @end

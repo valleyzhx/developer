@@ -21,15 +21,17 @@
 {
     [super viewDidLoad];
 	homeView = [[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:nil];
+    homeView.view.frame = self.view.frame;
     [self.view addSubview:homeView.view];
-    
-    
 }
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     
 }
-
+-(void)dealloc{
+    homeView = nil;
+}
 @end

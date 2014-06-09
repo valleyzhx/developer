@@ -22,6 +22,25 @@
 		5749066619338F45003148E4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5749066519338F45003148E4 /* MobileCoreServices.framework */; };
 		5749066819338F4E003148E4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5749066719338F4E003148E4 /* CFNetwork.framework */; };
 		5749066B19338F73003148E4 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5749066A19338F73003148E4 /* libz.1.2.5.dylib */; };
+		574EC2D01942AF5F003F986A /* LoadMoreTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 574EC2CD1942AF5F003F986A /* LoadMoreTableFooterView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		574EC2D81942B924003F986A /* SCGIFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 574EC2D71942B924003F986A /* SCGIFImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		574EC2DA1942B95B003F986A /* sf.gif in Resources */ = {isa = PBXBuildFile; fileRef = 574EC2D91942B95B003F986A /* sf.gif */; };
+		574EC2DD1942B9DC003F986A /* MyLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 574EC2DC1942B9DC003F986A /* MyLoadingView.m */; };
+		576DC4C81934F36100D0A13D /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 576DC4C71934F36100D0A13D /* VideoViewController.m */; };
+		57722FDB1940CAF100CA5267 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FD91940CAF100CA5267 /* libMobClickLibrary.a */; };
+		57722FE61940D78600CA5267 /* DomobAdSDKBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 57722FE41940D78600CA5267 /* DomobAdSDKBundle.bundle */; };
+		57722FE71940D78600CA5267 /* libDomobAdSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FE51940D78600CA5267 /* libDomobAdSDK.a */; };
+		57722FE91940DA1600CA5267 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FE81940DA1600CA5267 /* libsqlite3.dylib */; };
+		57722FEB1940DA2500CA5267 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FEA1940DA2500CA5267 /* CoreMedia.framework */; };
+		57722FED1940DA3000CA5267 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FEC1940DA3000CA5267 /* MediaPlayer.framework */; };
+		57722FEF1940DA4100CA5267 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FEE1940DA4100CA5267 /* QuartzCore.framework */; };
+		57722FF11940DA4F00CA5267 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FF01940DA4F00CA5267 /* CoreText.framework */; };
+		57722FF31940DA6200CA5267 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FF21940DA6200CA5267 /* StoreKit.framework */; };
+		57722FF51940DA7000CA5267 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FF41940DA7000CA5267 /* PassKit.framework */; };
+		57722FF71940DA7C00CA5267 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FF61940DA7C00CA5267 /* Social.framework */; };
+		57722FF91940DA8600CA5267 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FF81940DA8600CA5267 /* EventKit.framework */; };
+		57722FFB1940DA8E00CA5267 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FFA1940DA8E00CA5267 /* AVFoundation.framework */; };
+		57722FFD1940DA9800CA5267 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FFC1940DA9800CA5267 /* AudioToolbox.framework */; };
 		57A7362A191140EB00DF2B97 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A73628191140EB00DF2B97 /* HomeViewController.m */; };
 		57A7362B191140EB00DF2B97 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57A73629191140EB00DF2B97 /* HomeViewController.xib */; };
 		57A850BC190004980062932C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A850BB190004980062932C /* Foundation.framework */; };
@@ -82,6 +101,36 @@
 		5749066519338F45003148E4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5749066719338F4E003148E4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		5749066A19338F73003148E4 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		574EC2CC1942AF5F003F986A /* LoadMoreTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreTableFooterView.h; sourceTree = "<group>"; };
+		574EC2CD1942AF5F003F986A /* LoadMoreTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreTableFooterView.m; sourceTree = "<group>"; };
+		574EC2D61942B924003F986A /* SCGIFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGIFImageView.h; sourceTree = "<group>"; };
+		574EC2D71942B924003F986A /* SCGIFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCGIFImageView.m; sourceTree = "<group>"; };
+		574EC2D91942B95B003F986A /* sf.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sf.gif; sourceTree = "<group>"; };
+		574EC2DB1942B9DC003F986A /* MyLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLoadingView.h; sourceTree = "<group>"; };
+		574EC2DC1942B9DC003F986A /* MyLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLoadingView.m; sourceTree = "<group>"; };
+		576DC4C61934F36100D0A13D /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		576DC4C71934F36100D0A13D /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		57722FD91940CAF100CA5267 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		57722FDA1940CAF100CA5267 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		57722FDD1940D78600CA5267 /* DMAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMAdView.h; sourceTree = "<group>"; };
+		57722FDE1940D78600CA5267 /* DMFeedsAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMFeedsAdView.h; sourceTree = "<group>"; };
+		57722FDF1940D78600CA5267 /* DMInterstitialAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMInterstitialAdController.h; sourceTree = "<group>"; };
+		57722FE01940D78600CA5267 /* DMRTSplashAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRTSplashAdController.h; sourceTree = "<group>"; };
+		57722FE11940D78600CA5267 /* DMSplashAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMSplashAdController.h; sourceTree = "<group>"; };
+		57722FE21940D78600CA5267 /* DMTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMTools.h; sourceTree = "<group>"; };
+		57722FE41940D78600CA5267 /* DomobAdSDKBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DomobAdSDKBundle.bundle; sourceTree = "<group>"; };
+		57722FE51940D78600CA5267 /* libDomobAdSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDomobAdSDK.a; sourceTree = "<group>"; };
+		57722FE81940DA1600CA5267 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		57722FEA1940DA2500CA5267 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		57722FEC1940DA3000CA5267 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		57722FEE1940DA4100CA5267 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		57722FF01940DA4F00CA5267 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		57722FF21940DA6200CA5267 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		57722FF41940DA7000CA5267 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
+		57722FF61940DA7C00CA5267 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		57722FF81940DA8600CA5267 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		57722FFA1940DA8E00CA5267 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		57722FFC1940DA9800CA5267 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		57A73627191140EB00DF2B97 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		57A73628191140EB00DF2B97 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		57A73629191140EB00DF2B97 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -112,11 +161,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57722FFD1940DA9800CA5267 /* AudioToolbox.framework in Frameworks */,
+				57722FFB1940DA8E00CA5267 /* AVFoundation.framework in Frameworks */,
+				57722FF91940DA8600CA5267 /* EventKit.framework in Frameworks */,
+				57722FF71940DA7C00CA5267 /* Social.framework in Frameworks */,
+				57722FF51940DA7000CA5267 /* PassKit.framework in Frameworks */,
+				57722FF31940DA6200CA5267 /* StoreKit.framework in Frameworks */,
+				57A850BE190004980062932C /* CoreGraphics.framework in Frameworks */,
+				57722FF11940DA4F00CA5267 /* CoreText.framework in Frameworks */,
+				57722FEF1940DA4100CA5267 /* QuartzCore.framework in Frameworks */,
+				57722FED1940DA3000CA5267 /* MediaPlayer.framework in Frameworks */,
+				57722FEB1940DA2500CA5267 /* CoreMedia.framework in Frameworks */,
+				57722FE91940DA1600CA5267 /* libsqlite3.dylib in Frameworks */,
 				5749066B19338F73003148E4 /* libz.1.2.5.dylib in Frameworks */,
 				5749066819338F4E003148E4 /* CFNetwork.framework in Frameworks */,
+				57722FE71940D78600CA5267 /* libDomobAdSDK.a in Frameworks */,
 				5749066619338F45003148E4 /* MobileCoreServices.framework in Frameworks */,
+				57722FDB1940CAF100CA5267 /* libMobClickLibrary.a in Frameworks */,
 				5749066419338F39003148E4 /* SystemConfiguration.framework in Frameworks */,
-				57A850BE190004980062932C /* CoreGraphics.framework in Frameworks */,
 				57A850C0190004980062932C /* UIKit.framework in Frameworks */,
 				57A850BC190004980062932C /* Foundation.framework in Frameworks */,
 			);
@@ -174,8 +236,52 @@
 				5749065D19337E78003148E4 /* MyXmlPraser.m */,
 				5749065F193389D1003148E4 /* MyXmlData.h */,
 				57490660193389D1003148E4 /* MyXmlData.m */,
+				576DC4C61934F36100D0A13D /* VideoViewController.h */,
+				576DC4C71934F36100D0A13D /* VideoViewController.m */,
 			);
 			name = HomeViewController;
+			sourceTree = "<group>";
+		};
+		574EC2CB1942AF2A003F986A /* LoadMoreTableFooterView */ = {
+			isa = PBXGroup;
+			children = (
+				574EC2CC1942AF5F003F986A /* LoadMoreTableFooterView.h */,
+				574EC2CD1942AF5F003F986A /* LoadMoreTableFooterView.m */,
+			);
+			name = LoadMoreTableFooterView;
+			path = ASIHttpRequest;
+			sourceTree = "<group>";
+		};
+		57722FD81940CADE00CA5267 /* MobClick */ = {
+			isa = PBXGroup;
+			children = (
+				57722FD91940CAF100CA5267 /* libMobClickLibrary.a */,
+				57722FDA1940CAF100CA5267 /* MobClick.h */,
+			);
+			name = MobClick;
+			sourceTree = "<group>";
+		};
+		57722FDC1940D78600CA5267 /* DomobAdSDK */ = {
+			isa = PBXGroup;
+			children = (
+				57722FDD1940D78600CA5267 /* DMAdView.h */,
+				57722FDE1940D78600CA5267 /* DMFeedsAdView.h */,
+				57722FDF1940D78600CA5267 /* DMInterstitialAdController.h */,
+				57722FE01940D78600CA5267 /* DMRTSplashAdController.h */,
+				57722FE11940D78600CA5267 /* DMSplashAdController.h */,
+				57722FE21940D78600CA5267 /* DMTools.h */,
+				57722FE31940D78600CA5267 /* DomobAdSDKBundle */,
+				57722FE51940D78600CA5267 /* libDomobAdSDK.a */,
+			);
+			path = DomobAdSDK;
+			sourceTree = "<group>";
+		};
+		57722FE31940D78600CA5267 /* DomobAdSDKBundle */ = {
+			isa = PBXGroup;
+			children = (
+				57722FE41940D78600CA5267 /* DomobAdSDKBundle.bundle */,
+			);
+			path = DomobAdSDKBundle;
 			sourceTree = "<group>";
 		};
 		57A850AF190004980062932C = {
@@ -200,6 +306,17 @@
 		57A850BA190004980062932C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57722FFC1940DA9800CA5267 /* AudioToolbox.framework */,
+				57722FFA1940DA8E00CA5267 /* AVFoundation.framework */,
+				57722FF81940DA8600CA5267 /* EventKit.framework */,
+				57722FF61940DA7C00CA5267 /* Social.framework */,
+				57722FF41940DA7000CA5267 /* PassKit.framework */,
+				57722FF21940DA6200CA5267 /* StoreKit.framework */,
+				57722FF01940DA4F00CA5267 /* CoreText.framework */,
+				57722FEE1940DA4100CA5267 /* QuartzCore.framework */,
+				57722FEC1940DA3000CA5267 /* MediaPlayer.framework */,
+				57722FEA1940DA2500CA5267 /* CoreMedia.framework */,
+				57722FE81940DA1600CA5267 /* libsqlite3.dylib */,
 				5749066A19338F73003148E4 /* libz.1.2.5.dylib */,
 				5749066719338F4E003148E4 /* CFNetwork.framework */,
 				5749066519338F45003148E4 /* MobileCoreServices.framework */,
@@ -215,6 +332,14 @@
 		57A850C1190004980062932C /* MyDota */ = {
 			isa = PBXGroup;
 			children = (
+				574EC2D91942B95B003F986A /* sf.gif */,
+				574EC2D61942B924003F986A /* SCGIFImageView.h */,
+				574EC2D71942B924003F986A /* SCGIFImageView.m */,
+				574EC2DB1942B9DC003F986A /* MyLoadingView.h */,
+				574EC2DC1942B9DC003F986A /* MyLoadingView.m */,
+				57722FDC1940D78600CA5267 /* DomobAdSDK */,
+				57722FD81940CADE00CA5267 /* MobClick */,
+				574EC2CB1942AF2A003F986A /* LoadMoreTableFooterView */,
 				5749063C19336FD0003148E4 /* ASIHttpRequest */,
 				57A850CA190004980062932C /* AppDelegate.h */,
 				57A850CB190004980062932C /* AppDelegate.m */,
@@ -337,8 +462,10 @@
 				57A850D2190004980062932C /* Main_iPad.storyboard in Resources */,
 				57A850D7190004980062932C /* Images.xcassets in Resources */,
 				57A7362B191140EB00DF2B97 /* HomeViewController.xib in Resources */,
+				57722FE61940D78600CA5267 /* DomobAdSDKBundle.bundle in Resources */,
 				57A850CF190004980062932C /* Main_iPhone.storyboard in Resources */,
 				57A850C6190004980062932C /* InfoPlist.strings in Resources */,
+				574EC2DA1942B95B003F986A /* sf.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,9 +487,12 @@
 				5749065419336FD0003148E4 /* ASIDataCompressor.m in Sources */,
 				57A850D5190004980062932C /* ViewController.m in Sources */,
 				5749065E19337E78003148E4 /* MyXmlPraser.m in Sources */,
+				574EC2DD1942B9DC003F986A /* MyLoadingView.m in Sources */,
+				574EC2D81942B924003F986A /* SCGIFImageView.m in Sources */,
 				57A850CC190004980062932C /* AppDelegate.m in Sources */,
 				5749065319336FD0003148E4 /* ASIAuthenticationDialog.m in Sources */,
 				5749065719336FD0003148E4 /* ASIFormDataRequest.m in Sources */,
+				576DC4C81934F36100D0A13D /* VideoViewController.m in Sources */,
 				5749065B19336FD0003148E4 /* PKReachability.m in Sources */,
 				57490661193389D1003148E4 /* MyXmlData.m in Sources */,
 				5749065519336FD0003148E4 /* ASIDataDecompressor.m in Sources */,
@@ -372,6 +502,7 @@
 				5749065819336FD0003148E4 /* ASIHTTPRequest.m in Sources */,
 				5749065619336FD0003148E4 /* ASIDownloadCache.m in Sources */,
 				57A7362A191140EB00DF2B97 /* HomeViewController.m in Sources */,
+				574EC2D01942AF5F003F986A /* LoadMoreTableFooterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +594,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -495,6 +627,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -513,7 +646,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyDota/MyDota-Prefix.pch";
 				INFOPLIST_FILE = "MyDota/MyDota-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyDota",
+					"$(PROJECT_DIR)/MyDota/DomobAdSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 ";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -530,7 +669,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyDota/MyDota-Prefix.pch";
 				INFOPLIST_FILE = "MyDota/MyDota-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyDota",
+					"$(PROJECT_DIR)/MyDota/DomobAdSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 ";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

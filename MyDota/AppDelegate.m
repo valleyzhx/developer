@@ -7,12 +7,16 @@
 //
 
 #import "AppDelegate.h"
+#import "MobClick.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [MobClick startWithAppkey:@"539093f556240b01ab039989" reportPolicy:SEND_INTERVAL   channelId:@""];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:version];
     return YES;
 }
 							
