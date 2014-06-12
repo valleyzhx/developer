@@ -11,7 +11,7 @@
 #import "ASIDownloadCache.h"
 #import "VideoViewController.h"
 #import "MyLoadingView.h"
-
+#import "MJRefresh.h"
 
 @interface HomeViewController ()
 
@@ -21,9 +21,7 @@
 {
     NSArray *dataArray;
     int currentCount;
-    BOOL _reloading;
     VideoViewController *videoVC;
-    LoadMoreTableFooterView *_loadMoreFooterView;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,29 +31,20 @@
     }
     return self;
 }
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self setExtraCellLineHidden:_listTable];
     currentCount = 0;
-    ASIHTTPRequest *request = [[ASIHTTPRequest alloc]initWithURL:[NSURL URLWithString:@"http://dota.uuu9.com/rss.xml"]];
-    request.cacheStoragePolicy = ASICachePermanentlyCacheStoragePolicy;
-    request.cachePolicy = ASIAskServerIfModifiedCachePolicy|ASIFallbackToCacheIfLoadFailsCachePolicy;
-    [request setDownloadCache:[ASIDownloadCache sharedCache]];
-    [request setDidFailSelector:@selector(failMethod:)];
-    [request setDidFinishSelector:@selector(finishMethod:)];
-    [request setDelegate:self];
-    [request startAsynchronous];
+    [self loadTheHttpData];
+    [_listTable addFooterWithTarget:self action:@selector(refreshTheTable)];
+    [_listTable addHeaderWithTarget:self action:@selector(loadTheHttpData)];
     [[MyLoadingView shareLoadingView]showLoadingIn:self.view];
-    if (_loadMoreFooterView == nil) {
-		LoadMoreTableFooterView *view = [[LoadMoreTableFooterView alloc] initWithFrame:CGRectMake(0.0f, _listTable.contentSize.height, _listTable.frame.size.width, _listTable.bounds.size.height)];
-		view.delegate = self;
-		[_listTable addSubview:view];
-		_loadMoreFooterView = view;
-	}
-
-    
 }
 -(void)failMethod:(ASIHTTPRequest*)request
 {
@@ -68,19 +57,30 @@
     parser.delegate = self;
     [parser startPrase];
 }
-- (void)reloadTableViewDataSource{
-	
-	//  should be calling your tableviews data source model to reload
-	//  put here just for demo
-	_reloading = YES;
-	
+-(void)loadTheHttpData
+{
+    ASIHTTPRequest *request = [[ASIHTTPRequest alloc]initWithURL:[NSURL URLWithString:@"http://dota.uuu9.com/rss.xml"]];
+    request.cacheStoragePolicy = ASICachePermanentlyCacheStoragePolicy;
+    request.cachePolicy = ASIAskServerIfModifiedCachePolicy|ASIFallbackToCacheIfLoadFailsCachePolicy;
+    [request setDownloadCache:[ASIDownloadCache sharedCache]];
+    [request setDidFailSelector:@selector(failMethod:)];
+    [request setDidFinishSelector:@selector(finishMethod:)];
+    [request setDelegate:self];
+    [request startAsynchronous];
+    
 }
-
-- (void)doneLoadingTableViewData{
-	
-	//  model should call this when its done loading
-	_reloading = NO;
-	[_loadMoreFooterView loadMoreScrollViewDataSourceDidFinishedLoading:_listTable];
+-(void)refreshTheTable
+{
+    if (currentCount<dataArray.count) {
+        currentCount = MIN(dataArray.count, currentCount+10);
+    }else{
+        [_listTable footerEndRefreshing];
+        return;
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_listTable reloadData];
+        [_listTable footerEndRefreshing];
+    });
 }
 #pragma  mark myxmlpraserdelegate
 -(void)finishPraseWithResultArray:(NSArray *)array
@@ -89,8 +89,8 @@
         dataArray = [[NSArray alloc]initWithArray:array];
         currentCount = MIN(15, dataArray.count);
         [_listTable reloadData];
+        [_listTable headerEndRefreshing];
     }];
-    
     
 }
 #pragma mark tableviewdelegate And datasource
@@ -118,28 +118,6 @@
     [self presentModalViewController:nav animated:YES];
     
 }
-#pragma mark UIScrollViewDelegate Methods
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-	
-	[_loadMoreFooterView loadMoreScrollViewDidScroll:scrollView];
-	
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-	
-	[_loadMoreFooterView loadMoreScrollViewDidEndDragging:scrollView];
-	
-}
-- (void)loadMoreTableFooterDidTriggerRefresh:(LoadMoreTableFooterView *)view
-{
-    [self reloadTableViewDataSource];
-	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
-}
-- (BOOL)loadMoreTableFooterDataSourceIsLoading:(LoadMoreTableFooterView *)view
-{
-    return _reloading;
-}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -155,7 +133,6 @@
 {
     dataArray = nil;
     videoVC = nil;
-    _loadMoreFooterView = nil;
 }
 
 @end

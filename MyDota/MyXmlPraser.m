@@ -7,7 +7,6 @@
 //
 
 #import "MyXmlPraser.h"
-#define kLimitCount 10
 
 @implementation MyXmlPraser
 {

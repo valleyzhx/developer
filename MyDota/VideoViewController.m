@@ -70,7 +70,7 @@
     _dmAdView.frame = CGRectMake(0, 66, FLEXIBLE_SIZE.width,FLEXIBLE_SIZE.height);
     _dmAdView.delegate = self;
     _dmAdView.rootViewController = self; // set RootViewController
-    [self.view addSubview:_dmAdView];
+    [_webView addSubview:_dmAdView];
     [_dmAdView loadAd]; // start load advertisement
     
     
