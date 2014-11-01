@@ -10,7 +10,7 @@
 
 @implementation MyXmlPraser
 {
-    NSXMLParser *parser;
+    NSXMLParser *parsering;
     MyXmlData *myData;
     NSMutableArray *contentArray;
     BOOL canCreatData;
@@ -18,22 +18,23 @@
 }
 -(id)initWithXMLData:(NSData *)data{
     if (self =[super init]) {
-         parser= [[NSXMLParser alloc]initWithData:data];
-        [parser setShouldProcessNamespaces:NO];
-        [parser setShouldReportNamespacePrefixes:NO];
-        [parser setShouldResolveExternalEntities:NO];
-        [parser setDelegate:self];
+         parsering= [[NSXMLParser alloc]initWithData:data];
+        [parsering setShouldProcessNamespaces:NO];
+        [parsering setShouldReportNamespacePrefixes:NO];
+        [parsering setShouldResolveExternalEntities:NO];
+        [parsering setDelegate:self];
         contentArray = [[NSMutableArray alloc]initWithCapacity:0];
     }
     return self;
 }
 -(void)startPrase{
-    [parser parse];
+    [parsering parse];
 }
-static NSString * const kItemKey = @"item";
-static NSString * const kItemTitleKey = @"title";
-static NSString * const kItemLinkKey = @"link";
-static NSString * const kItemPubDate = @"pubDate";
+#define kItemKey  @"item"
+#define kItemTitleKey  @"title"
+#define kItemLinkKey  @"link"
+#define kItemPubDate  @"pubDate"
+#define kItemDescription @"description"
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict{
     if ([elementName isEqualToString:kItemKey]) {
         canCreatData = YES;
@@ -52,15 +53,37 @@ static NSString * const kItemPubDate = @"pubDate";
         return;
     }
     if ([elementName isEqualToString:kItemTitleKey]) {
+        
         myData.title = tempString;
     }
     if ([elementName isEqualToString:kItemLinkKey]) {
         myData.urlStr = tempString;
     }
+    
+    if ([elementName isEqualToString:kItemDescription]) {
+        tempString = [tempString stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+        tempString = [tempString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        if ([tempString hasPrefix:@"player = new YKU.Player"]) {
+            NSArray *arr = [tempString componentsSeparatedByString:@"{"];
+            if (arr.count>1) {
+                NSString *str = [arr[1]stringByReplacingOccurrencesOfString:@"});" withString:@""];
+                myData.player = [NSString stringWithFormat:@"%@",str];
+            }
+            
+        }
+    }
     if ([elementName isEqualToString:kItemPubDate]) {
         myData.pubDate = tempString;
+        int year = tempString.intValue;
+        if (year<2014) {
+            [_delegate praseFailed];
+            [parsering abortParsing];
+        }
         canCreatData = NO;
-        [contentArray addObject:myData];
+        if (myData.player) {
+            [contentArray addObject:myData];
+        }
+        
     }
 }
 - (void)parserDidEndDocument:(NSXMLParser *)parser

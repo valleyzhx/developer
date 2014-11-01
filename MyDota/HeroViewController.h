@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface HeroViewController : UIViewController
+- (IBAction)clickTheButton:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIScrollView *myScroll;
 
+@property (weak, nonatomic) IBOutlet UIView *secondView;
 @end
+
+
+
+

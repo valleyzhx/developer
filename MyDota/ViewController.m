@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "HomeViewController.h"
 #import "HeroViewController.h"
+#import "ASIHTTPRequest.h"
 
 @interface ViewController ()
 
@@ -22,7 +23,37 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+    NSFileManager *fileMan = [NSFileManager defaultManager];
+    if (![fileMan fileExistsAtPath:[NSString stringWithFormat:@"%@/dota.html",[self getPath]]]) {
+        [fileMan copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"dota" ofType:@"html"]  toPath:[NSString stringWithFormat:@"%@/dota.html",[self getPath]] error:nil];
+    }
+    if (![fileMan fileExistsAtPath:[NSString stringWithFormat:@"%@/rss.xml",[self getPath]]]) {
+        [fileMan copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"rss" ofType:@"xml"]  toPath:[NSString stringWithFormat:@"%@/rss.xml",[self getPath]] error:nil];
+    }
+    [self performSelectorInBackground:@selector(downloadHtml:) withObject:@"http://dota.db.766.com"];
+}
+-(NSString*)getPath{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    return [paths objectAtIndex:0];
+}
+-(void)downloadHtml:(NSString*)url{
+    ASIHTTPRequest *request = [[ASIHTTPRequest alloc]initWithURL:[NSURL URLWithString:url]];
+    [request setCompletionBlock:^{
+        if (request.responseStatusCode == 200) {
+            if ([url isEqualToString:@"http://dota.db.766.com"]) {
+                [request.responseData writeToFile:[NSString stringWithFormat:@"%@/dota.html",[self getPath]] atomically:YES];
+                [self downloadHtml:@"http://dota.uuu9.com/rss.xml"];
+            }else{
+                
+                [request.responseData writeToFile:[NSString stringWithFormat:@"%@/rss.xml",[self getPath]] atomically:YES];
+            }
+        }
+    }];
+    [request setFailedBlock:^{
+        
+    }];
+
+    [request startAsynchronous];
 }
 -(void)pushAnimationView:(UIView*)view
 {

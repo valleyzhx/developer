@@ -36,43 +36,34 @@
     [super viewDidAppear:animated];
     
 }
+-(NSString*)getPath{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSLog(@"%@",paths);
+    return [NSString stringWithFormat:@"%@/rss.xml",[paths objectAtIndex:0]];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self setExtraCellLineHidden:_listTable];
     currentCount = 0;
-    [self loadTheHttpData];
+    [self loadXmlFile];
     [_listTable addFooterWithTarget:self action:@selector(refreshTheTable)];
-    [_listTable addHeaderWithTarget:self action:@selector(loadTheHttpData)];
+    //[_listTable addHeaderWithTarget:self action:@selector(loadXmlFile)];
     [[MyLoadingView shareLoadingView]showLoadingIn:self.view];
 }
--(void)failMethod:(ASIHTTPRequest*)request
+
+-(void)loadXmlFile
 {
-    
-}
--(void)finishMethod:(ASIHTTPRequest*)request
-{
-    NSData *data = request.responseData;
+    NSData *data = [NSData dataWithContentsOfFile:[self getPath]];
     MyXmlPraser *parser = [[MyXmlPraser alloc]initWithXMLData:data];
     parser.delegate = self;
     [parser startPrase];
-}
--(void)loadTheHttpData
-{
-    ASIHTTPRequest *request = [[ASIHTTPRequest alloc]initWithURL:[NSURL URLWithString:@"http://dota.uuu9.com/rss.xml"]];
-    request.cacheStoragePolicy = ASICachePermanentlyCacheStoragePolicy;
-    request.cachePolicy = ASIAskServerIfModifiedCachePolicy|ASIFallbackToCacheIfLoadFailsCachePolicy;
-    [request setDownloadCache:[ASIDownloadCache sharedCache]];
-    [request setDidFailSelector:@selector(failMethod:)];
-    [request setDidFinishSelector:@selector(finishMethod:)];
-    [request setDelegate:self];
-    [request startAsynchronous];
     
 }
 -(void)refreshTheTable
 {
     if (currentCount<dataArray.count) {
-        currentCount = MIN(dataArray.count, currentCount+10);
+        currentCount = MIN((int)dataArray.count, currentCount+10);
     }else{
         [_listTable footerEndRefreshing];
         return;
@@ -87,7 +78,7 @@
 {
     [[MyLoadingView shareLoadingView]stopWithFinished:^{
         dataArray = [[NSArray alloc]initWithArray:array];
-        currentCount = MIN(15, dataArray.count);
+        currentCount = MIN(15, (int)dataArray.count);
         [_listTable reloadData];
         [_listTable headerEndRefreshing];
     }];
@@ -112,7 +103,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MyXmlData *data = dataArray[indexPath.row];
-    videoVC = [[VideoViewController alloc]initWithNibName:nil bundle:nil linkUrlString:data.urlStr];
+    NSString *url = data.urlStr;
+    NSArray *arr = [data.player componentsSeparatedByString:@"'"];
+    if (arr.count>=4) {
+        NSString *clientId = arr[1];
+        NSString *vid = arr[3];
+        //http://player.youku.com/player.php/sid/XODE1MjkwOTEy/partnerid/c9bb14f8593c7a8b/v.swf
+        url = [NSString stringWithFormat:@"http://player.youku.com/player.php/sid/%@/partnerid/%@/v.swf",vid,clientId];
+    }
+    url = [[NSBundle mainBundle]pathForResource:@"new_file" ofType:@"html"];
+    videoVC = [[VideoViewController alloc]initWithNibName:nil bundle:nil linkUrlString:url];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:videoVC];
     nav.title = data.title;
     [self presentModalViewController:nav animated:YES];

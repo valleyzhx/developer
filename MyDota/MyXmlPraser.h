@@ -11,6 +11,7 @@
 @protocol MyXmlPraserDelegate <NSObject>
 @required
 -(void)finishPraseWithResultArray:(NSArray*)array;
+-(void)praseFailed;
 
 @end
 

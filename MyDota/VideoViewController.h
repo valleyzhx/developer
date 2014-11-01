@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DMAdView.h"
 
-@interface VideoViewController : UIViewController<DMAdViewDelegate>
+@interface VideoViewController : UIViewController<DMAdViewDelegate,UIWebViewDelegate>
 @property (nonatomic,retain)UIWebView *webView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil linkUrlString:(NSString*)string;
 

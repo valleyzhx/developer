@@ -40,6 +40,13 @@
 		57722FF91940DA8600CA5267 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FF81940DA8600CA5267 /* EventKit.framework */; };
 		57722FFB1940DA8E00CA5267 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FFA1940DA8E00CA5267 /* AVFoundation.framework */; };
 		57722FFD1940DA9800CA5267 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57722FFC1940DA9800CA5267 /* AudioToolbox.framework */; };
+		57A05DAC1A047FBF00D5060B /* dota.html in Resources */ = {isa = PBXBuildFile; fileRef = 57A05DAB1A047FBF00D5060B /* dota.html */; };
+		57A05DB01A048A6C00D5060B /* agility.gif in Resources */ = {isa = PBXBuildFile; fileRef = 57A05DAD1A048A6C00D5060B /* agility.gif */; };
+		57A05DB11A048A6C00D5060B /* intelligence.gif in Resources */ = {isa = PBXBuildFile; fileRef = 57A05DAE1A048A6C00D5060B /* intelligence.gif */; };
+		57A05DB21A048A6C00D5060B /* strength.gif in Resources */ = {isa = PBXBuildFile; fileRef = 57A05DAF1A048A6C00D5060B /* strength.gif */; };
+		57A05DB51A04996900D5060B /* HeroBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A05DB41A04996900D5060B /* HeroBarView.m */; };
+		57A05DBB1A04DD8400D5060B /* rss.xml in Resources */ = {isa = PBXBuildFile; fileRef = 57A05DBA1A04DD8400D5060B /* rss.xml */; };
+		57A05E0E1A051DFE00D5060B /* new_file.html in Resources */ = {isa = PBXBuildFile; fileRef = 57A05E0D1A051DFE00D5060B /* new_file.html */; };
 		57A7362A191140EB00DF2B97 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A73628191140EB00DF2B97 /* HomeViewController.m */; };
 		57A7362B191140EB00DF2B97 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57A73629191140EB00DF2B97 /* HomeViewController.xib */; };
 		57A850BC190004980062932C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A850BB190004980062932C /* Foundation.framework */; };
@@ -142,6 +149,14 @@
 		57722FF81940DA8600CA5267 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		57722FFA1940DA8E00CA5267 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		57722FFC1940DA9800CA5267 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		57A05DAB1A047FBF00D5060B /* dota.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = dota.html; sourceTree = "<group>"; };
+		57A05DAD1A048A6C00D5060B /* agility.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = agility.gif; sourceTree = "<group>"; };
+		57A05DAE1A048A6C00D5060B /* intelligence.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = intelligence.gif; sourceTree = "<group>"; };
+		57A05DAF1A048A6C00D5060B /* strength.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = strength.gif; sourceTree = "<group>"; };
+		57A05DB31A04996900D5060B /* HeroBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroBarView.h; sourceTree = "<group>"; };
+		57A05DB41A04996900D5060B /* HeroBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroBarView.m; sourceTree = "<group>"; };
+		57A05DBA1A04DD8400D5060B /* rss.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = rss.xml; sourceTree = "<group>"; };
+		57A05E0D1A051DFE00D5060B /* new_file.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = new_file.html; sourceTree = "<group>"; };
 		57A73627191140EB00DF2B97 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		57A73628191140EB00DF2B97 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		57A73629191140EB00DF2B97 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -181,6 +196,7 @@
 		57B1F96819474ACF0083B65F /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		57B1F96919474ACF0083B65F /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		57B1F96A19474ACF0083B65F /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		57C28B1B198A84640024338F /* cofig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cofig.h; sourceTree = "<group>"; };
 		57F4FBF91949E88200DDF40D /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
 		57F4FBFA1949E88200DDF40D /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
 		57F4FBFB1949E88200DDF40D /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
@@ -276,6 +292,8 @@
 				57490660193389D1003148E4 /* MyXmlData.m */,
 				576DC4C61934F36100D0A13D /* VideoViewController.h */,
 				576DC4C71934F36100D0A13D /* VideoViewController.m */,
+				57A05E0D1A051DFE00D5060B /* new_file.html */,
+				57A05DBA1A04DD8400D5060B /* rss.xml */,
 			);
 			name = HomeViewController;
 			sourceTree = "<group>";
@@ -388,6 +406,7 @@
 				57A850C4190004980062932C /* InfoPlist.strings */,
 				57A850C7190004980062932C /* main.m */,
 				57A850C9190004980062932C /* MyDota-Prefix.pch */,
+				57C28B1B198A84640024338F /* cofig.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -436,11 +455,17 @@
 		57F4FBF41949E59B00DDF40D /* HeroViewController */ = {
 			isa = PBXGroup;
 			children = (
-				57F4FC001949EAFE00DDF40D /* HeroViewController.h */,
+				57A05DAD1A048A6C00D5060B /* agility.gif */,
+				57A05DAE1A048A6C00D5060B /* intelligence.gif */,
+				57A05DAF1A048A6C00D5060B /* strength.gif */,
+				57A05DAB1A047FBF00D5060B /* dota.html */,
 				57F4FC0B1949F26400DDF40D /* DotaHeroBar.h */,
 				57F4FC0C1949F26400DDF40D /* DotaHeroBar.m */,
+				57F4FC001949EAFE00DDF40D /* HeroViewController.h */,
 				57F4FC011949EAFE00DDF40D /* HeroViewController.m */,
 				57F4FC021949EAFE00DDF40D /* HeroViewController.xib */,
+				57A05DB31A04996900D5060B /* HeroBarView.h */,
+				57A05DB41A04996900D5060B /* HeroBarView.m */,
 			);
 			name = HeroViewController;
 			sourceTree = "<group>";
@@ -548,11 +573,17 @@
 				57A850D7190004980062932C /* Images.xcassets in Resources */,
 				57A7362B191140EB00DF2B97 /* HomeViewController.xib in Resources */,
 				57722FE61940D78600CA5267 /* DomobAdSDKBundle.bundle in Resources */,
+				57A05DAC1A047FBF00D5060B /* dota.html in Resources */,
 				57A850CF190004980062932C /* Main_iPhone.storyboard in Resources */,
 				57F4FC041949EAFE00DDF40D /* HeroViewController.xib in Resources */,
+				57A05E0E1A051DFE00D5060B /* new_file.html in Resources */,
+				57A05DB11A048A6C00D5060B /* intelligence.gif in Resources */,
 				57A850C6190004980062932C /* InfoPlist.strings in Resources */,
 				57B1F96B19474ACF0083B65F /* MJRefresh.bundle in Resources */,
+				57A05DB21A048A6C00D5060B /* strength.gif in Resources */,
 				574EC2DA1942B95B003F986A /* sf.gif in Resources */,
+				57A05DB01A048A6C00D5060B /* agility.gif in Resources */,
+				57A05DBB1A04DD8400D5060B /* rss.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,6 +610,7 @@
 				57F4FBFE1949E88200DDF40D /* HTMLParser.m in Sources */,
 				57B1F96D19474ACF0083B65F /* MJRefreshConst.m in Sources */,
 				574EC2D81942B924003F986A /* SCGIFImageView.m in Sources */,
+				57A05DB51A04996900D5060B /* HeroBarView.m in Sources */,
 				57F4FC0D1949F26400DDF40D /* DotaHeroBar.m in Sources */,
 				57B1F96E19474ACF0083B65F /* MJRefreshFooterView.m in Sources */,
 				57A850CC190004980062932C /* AppDelegate.m in Sources */,

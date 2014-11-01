@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface DotaHeroBar : NSObject
 @property (nonatomic,strong)NSString *barName;
 @property (nonatomic,strong)NSMutableArray *heroArray;
@@ -19,3 +18,8 @@
 @property (nonatomic,strong)NSString *dataUrl;
 @property (nonatomic,strong)NSString *imgUrl;
 @end
+
+@interface UIImage (webImage)
++(id)imageWithUrl:(NSString*)urlStr;
+@end
+

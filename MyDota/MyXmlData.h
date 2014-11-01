@@ -12,4 +12,5 @@
 @property (nonatomic,strong)NSString *title;
 @property (nonatomic,strong)NSString *urlStr;
 @property (nonatomic,strong)NSString *pubDate;
+@property (nonatomic,strong)NSString *player;
 @end

@@ -111,7 +111,8 @@
 	{
 		return nil;
 	}
-	
+    NSString *str = [[NSString alloc]initWithData:_data encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",str);
 	self = [self initWithData:_data error:error];
 	
 	return self;

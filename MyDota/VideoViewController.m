@@ -52,12 +52,19 @@
     UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(collectTheViedo)];
     self.navigationItem.rightBarButtonItem = right;
     _webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
+    _webView.delegate = self;
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
+   
     _webView.scalesPageToFit = YES;
     [self.view addSubview:_webView];
     [MobClick event:watchVideoView];
-    
     [self loadAdView];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
     
 }
 -(void)loadAdView
@@ -67,7 +74,7 @@
     
     // 设置广告视图的位置 宽与高设置为0即可 该广告视图默认是横竖屏自适应 但需要在旋转时调用orientationChanged 方法
     // Set the frame of advertisement view
-    _dmAdView.frame = CGRectMake(0, 66, FLEXIBLE_SIZE.width,FLEXIBLE_SIZE.height);
+    _dmAdView.frame = CGRectMake(0, self.view.frame.size.height-80, FLEXIBLE_SIZE.width,FLEXIBLE_SIZE.height);
     _dmAdView.delegate = self;
     _dmAdView.rootViewController = self; // set RootViewController
     [_webView addSubview:_dmAdView];
