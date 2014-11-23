@@ -64,19 +64,14 @@
         tempString = [tempString stringByReplacingOccurrencesOfString:@"\r" withString:@""];
         tempString = [tempString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         if ([tempString hasPrefix:@"player = new YKU.Player"]) {
-            NSArray *arr = [tempString componentsSeparatedByString:@"{"];
-            if (arr.count>1) {
-                NSString *str = [arr[1]stringByReplacingOccurrencesOfString:@"});" withString:@""];
-                myData.player = [NSString stringWithFormat:@"%@",str];
-            }
-            
+            myData.player = tempString;
         }
     }
     if ([elementName isEqualToString:kItemPubDate]) {
         myData.pubDate = tempString;
         int year = tempString.intValue;
         if (year<2014) {
-            [_delegate praseFailed];
+            //[_delegate praseFailed];
             [parsering abortParsing];
         }
         canCreatData = NO;

@@ -54,7 +54,8 @@
 
 -(void)loadXmlFile
 {
-    NSData *data = [NSData dataWithContentsOfFile:[self getPath]];
+    NSString *s = [[NSBundle mainBundle]pathForResource:@"rss" ofType:@"xml"];
+    NSData *data = [NSData dataWithContentsOfFile:s];
     MyXmlPraser *parser = [[MyXmlPraser alloc]initWithXMLData:data];
     parser.delegate = self;
     [parser startPrase];
@@ -103,16 +104,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MyXmlData *data = dataArray[indexPath.row];
-    NSString *url = data.urlStr;
-    NSArray *arr = [data.player componentsSeparatedByString:@"'"];
-    if (arr.count>=4) {
-        NSString *clientId = arr[1];
-        NSString *vid = arr[3];
-        //http://player.youku.com/player.php/sid/XODE1MjkwOTEy/partnerid/c9bb14f8593c7a8b/v.swf
-        url = [NSString stringWithFormat:@"http://player.youku.com/player.php/sid/%@/partnerid/%@/v.swf",vid,clientId];
-    }
-    url = [[NSBundle mainBundle]pathForResource:@"new_file" ofType:@"html"];
-    videoVC = [[VideoViewController alloc]initWithNibName:nil bundle:nil linkUrlString:url];
+    videoVC = [[VideoViewController alloc]initWithNibName:nil bundle:nil yukuPlayer:data.player];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:videoVC];
     nav.title = data.title;
     [self presentModalViewController:nav animated:YES];

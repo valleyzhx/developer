@@ -95,8 +95,8 @@
     
 }
 -(void)changeToDetailView:(DotaHero*)hero{
-       
-    
+    NSString *url = hero.dataUrl;
+    NSLog(@"%@",url);
 }
 
 

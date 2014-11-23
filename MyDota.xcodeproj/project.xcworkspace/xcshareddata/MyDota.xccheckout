@@ -10,22 +10,26 @@
 	<string>MyDota</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>C5A2CF10D4F3FC4735136A94101D9647156D09FD</key>
+		<string>https://github.com/valleyzhx/developer.git</string>
 		<key>DFE5F810-5D53-4BE8-81EE-FB3933BE39D3</key>
 		<string>https://github.com/valleyzhx/developer.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MyDota.xcodeproj/project.xcworkspace</string>
+	<string>MyDota.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>DFE5F810-5D53-4BE8-81EE-FB3933BE39D3</key>
+		<key>C5A2CF10D4F3FC4735136A94101D9647156D09FD</key>
 		<string>../..</string>
+		<key>DFE5F810-5D53-4BE8-81EE-FB3933BE39D3</key>
+		<string>../../../MyDota</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/valleyzhx/developer.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>DFE5F810-5D53-4BE8-81EE-FB3933BE39D3</string>
+	<string>C5A2CF10D4F3FC4735136A94101D9647156D09FD</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>DFE5F810-5D53-4BE8-81EE-FB3933BE39D3</string>
 			<key>IDESourceControlWCCName</key>
 			<string>MyDota</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C5A2CF10D4F3FC4735136A94101D9647156D09FD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>simplan</string>
 		</dict>
 	</array>
 </dict>

@@ -11,6 +11,6 @@
 
 @interface VideoViewController : UIViewController<DMAdViewDelegate,UIWebViewDelegate>
 @property (nonatomic,retain)UIWebView *webView;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil linkUrlString:(NSString*)string;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil yukuPlayer:(NSString*)string;
 
 @end

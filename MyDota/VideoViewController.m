@@ -21,7 +21,7 @@
     NSString *urlString;
     DMAdView *_dmAdView;
 }
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil linkUrlString:(NSString*)string
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil yukuPlayer:(NSString*)string
 {
     self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -53,14 +53,18 @@
     self.navigationItem.rightBarButtonItem = right;
     _webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
     _webView.delegate = self;
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
-   
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"new_file" ofType:@"html"];
+    NSString *htmlString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"CNM" withString:urlString];
+    [_webView loadHTMLString:htmlString baseURL:nil];
     _webView.scalesPageToFit = YES;
     [self.view addSubview:_webView];
     [MobClick event:watchVideoView];
     [self loadAdView];
 }
-
+-(void)webViewDidStartLoad:(UIWebView *)webView{
+    
+}
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     
 }

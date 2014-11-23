@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "HomeViewController.h"
 #import "HeroViewController.h"
+#import "ScoreViewController.h"
 #import "ASIHTTPRequest.h"
 
 @interface ViewController ()
@@ -19,6 +20,7 @@
 {
     HomeViewController *homeView;
     HeroViewController *heroView;
+    ScoreViewController *scoreView;
 }
 - (void)viewDidLoad
 {
@@ -95,6 +97,12 @@
             heroView = [[HeroViewController alloc]initWithNibName:@"HeroViewController" bundle:nil];
             heroView.view.frame = self.view.bounds;
             [self pushAnimationView:heroView.view];
+        }
+            break;
+        case 2:{
+            scoreView = [[ScoreViewController alloc]initWithNibName:@"ScoreViewController" bundle:nil];
+            scoreView.view.frame = self.view.bounds;
+            [self pushAnimationView:scoreView.view];
         }
             break;
         default:
