@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScoreTableScollDelegate.h"
 
 @interface JJCTableViewController : UITableViewController
-
+@property(nonatomic,assign)id<ScoreTableScollDelegate>scoreDelegate;
 @end

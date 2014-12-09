@@ -174,6 +174,7 @@
 		57722FF81940DA8600CA5267 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		57722FFA1940DA8E00CA5267 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		57722FFC1940DA9800CA5267 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		579E1FB91A21FFC100B9F69C /* ScoreTableScollDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreTableScollDelegate.h; sourceTree = "<group>"; };
 		57A05DAB1A047FBF00D5060B /* dota.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = dota.html; sourceTree = "<group>"; };
 		57A05DAD1A048A6C00D5060B /* agility.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = agility.gif; sourceTree = "<group>"; };
 		57A05DAE1A048A6C00D5060B /* intelligence.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = intelligence.gif; sourceTree = "<group>"; };
@@ -483,6 +484,7 @@
 				571BE7181A208B3F00CF4D82 /* ScoreDetialViewController.h */,
 				571BE7191A208B3F00CF4D82 /* ScoreDetialViewController.m */,
 				571BE71A1A208B3F00CF4D82 /* ScoreDetialViewController.xib */,
+				579E1FB91A21FFC100B9F69C /* ScoreTableScollDelegate.h */,
 				571BE7151A206BBB00CF4D82 /* ScoreData.h */,
 				571BE7161A206BBB00CF4D82 /* ScoreData.m */,
 				571BE71D1A2092D100CF4D82 /* ScoreTableViewController */,

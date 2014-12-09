@@ -10,6 +10,7 @@
 #import "ASIFormDataRequest.h"
 #import "ScoreData.h"
 #import "MyLoadingView.h"
+#import "ScoreDetialViewController.h"
 
 @interface ScoreViewController ()
 
@@ -87,6 +88,10 @@
         if (error==0) {
             NSLog(@"%@",dic);
             ScoreData *data = [[ScoreData alloc]initWith11Dic:dic];
+            ScoreDetialViewController *controllor = [[ScoreDetialViewController alloc]initWithNibName:@"ScoreDetialViewController" bundle:nil withData:data];
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:controllor];
+            nav.title = _myTextField.text;
+            [self presentModalViewController:nav animated:YES];
             
         }
     }];

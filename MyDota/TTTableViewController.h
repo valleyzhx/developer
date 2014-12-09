@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScoreTableScollDelegate.h"
 
 @interface TTTableViewController : UITableViewController
+@property(nonatomic,assign)id<ScoreTableScollDelegate>scoreDelegate;
 -(void)setTTDataWithTTInfos:(NSDictionary*)infos;
 @end

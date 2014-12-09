@@ -28,8 +28,21 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UILabel *leb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 150, 40)];
+    leb.backgroundColor = [UIColor clearColor];
+    leb.font = [UIFont systemFontOfSize:13];
+    leb.text = self.navigationController.title;
+    self.navigationItem.titleView = leb;
+    UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelViewAction)];
+    self.navigationItem.leftBarButtonItem = left;
+    
+    
+    
     _myScroll.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width *3, [UIScreen mainScreen].bounds.size.height);
     TTTableViewController *ttTable = [[TTTableViewController alloc]initWithNibName:@"TTTableViewController" bundle:nil];
+    
+    ttTable.scoreDelegate = self;
     [_myScroll addSubview:ttTable.view];
     // Do any additional setup after loading the view from its nib.
 }
@@ -38,15 +51,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)cancelViewAction{
+    [self dismissModalViewControllerAnimated:YES];
 }
-*/
+
+#pragma mark - scrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+}
+
+-(void)detailScrollEnabled:(BOOL)isEnable{
+    _myScroll.scrollEnabled = isEnable;
+}
 
 @end

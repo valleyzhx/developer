@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ScoreData.h"
+#import "ScoreTableScollDelegate.h"
 
-@interface ScoreDetialViewController : UIViewController
+@interface ScoreDetialViewController : UIViewController<ScoreTableScollDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *myScroll;
-@property (weak, nonatomic) IBOutlet UIView *firstView;
-@property (weak, nonatomic) IBOutlet UIView *secondView;
+
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withData:(ScoreData*)scoreData;
 @end
