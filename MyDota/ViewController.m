@@ -46,8 +46,14 @@
                 [request.responseData writeToFile:[NSString stringWithFormat:@"%@/dota.html",[self getPath]] atomically:YES];
                 [self downloadHtml:@"http://dota.uuu9.com/rss.xml"];
             }else{
-                
-                [request.responseData writeToFile:[NSString stringWithFormat:@"%@/rss.xml",[self getPath]] atomically:YES];
+                NSString *str = request.responseString;
+                NSArray *array = [str componentsSeparatedByString:@"http://dota.uuu9.com/2013"];
+                if (array.count) {
+                    [request cancel];
+                    [self downloadHtml:url];
+                }else{
+                  [request.responseData writeToFile:[NSString stringWithFormat:@"%@/rss.xml",[self getPath]] atomically:YES];
+                }
             }
         }
     }];

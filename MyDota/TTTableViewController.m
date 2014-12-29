@@ -7,20 +7,48 @@
 //
 
 #import "TTTableViewController.h"
+#import "ChartView.h"
+#import "TotalInfoCell.h"
+#import "HeroInfoCell.h"
 
 @interface TTTableViewController ()
 
 @end
 
-@implementation TTTableViewController
+@implementation TTTableViewController{
+    NSMutableArray *heroArr;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.delegate = self;
-    [self.tableView reloadData];
-    
 }
-
+-(void)setScoreInfoDic:(NSDictionary *)scoreInfoDic{
+    _scoreInfoDic = scoreInfoDic;
+    if (heroArr==nil) {
+        heroArr = [[NSMutableArray alloc]initWithArray:_scoreInfoDic[@"ratingHeros"]];
+    }else{
+        heroArr = scoreInfoDic[@"ratingHeros"];
+    }
+     [self makeSortOfArray:heroArr];
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.tableView reloadData];
+}
+-(void)makeSortOfArray:(NSMutableArray*)array{
+    NSComparator comparator =^(id obj1, id obj2){
+        int a = [obj1[@"score"]intValue];
+        int b = [obj2[@"score"]intValue];
+        if (a < b) {
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+        if (a > b) {
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+        return (NSComparisonResult)NSOrderedSame;
+    };
+    [array sortUsingComparator:comparator];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -31,21 +59,51 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 1;
+    if (section==0) {
+        return 2;
+    }
+    return heroArr.count;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==0) {
+        return indexPath.row?106:200;
+    }
+    
+    return 56;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
-    // Configure the cell...
+
+    if (indexPath.section==0) {
+        if (indexPath.row == 0) {
+         UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chartView"];
+            ChartView *view = [[ChartView alloc]initWithArray:_scoreInfoDic[@"heroRoadInfos"]];
+            [cell.contentView addSubview:view];
+            return cell;
+        }else if (indexPath.row == 1){
+            TotalInfoCell *infoCell = [[TotalInfoCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"infoCell"];
+            [infoCell setCellDataWithData:_totalDic];
+            return infoCell;
+            
+        }
+    }
+    else{
+       HeroInfoCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        if (cell==nil) {
+            cell = [[[NSBundle mainBundle]loadNibNamed:@"HeroInfoCell" owner:nil options:nil]objectAtIndex:0];
+        }
+       
+        NSDictionary *dic = heroArr[indexPath.row];
+        [cell setSocreWithData:dic];
+        return cell;
+    }
+    return nil;
     
-    return cell;
 }
 
 

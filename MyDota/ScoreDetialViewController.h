@@ -12,6 +12,8 @@
 
 @interface ScoreDetialViewController : UIViewController<ScoreTableScollDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *myScroll;
+@property (strong,nonatomic)NSString *userId;
+@property (strong,nonatomic)NSDictionary *ttScoreInfoDic;
 
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withData:(ScoreData*)scoreData;
 @end

@@ -38,9 +38,8 @@
             int origin = (frameWithd/4 - btnWidth)/2;
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
             [btn setFrame:CGRectMake(origin+(i%4)*(frameWithd/4), 5+(i/4)*(btnWidth+5), btnWidth, btnWidth)];
-            [UIImage imageWithUrl:hero.imgUrl complish:^(UIImage *image) {
-                [btn setImage:image forState:UIControlStateNormal];
-            }];
+            [btn sd_setImageWithURL:hero.imgUrl forState:UIControlStateNormal];
+            
             [btn addTarget:self action:@selector(clickToDetailView:) forControlEvents:UIControlEventTouchUpInside];
             [contentView addSubview:btn];
         }

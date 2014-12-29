@@ -68,12 +68,7 @@
         }
     }
     if ([elementName isEqualToString:kItemPubDate]) {
-        myData.pubDate = tempString;
-        int year = tempString.intValue;
-        if (year<2014) {
-            //[_delegate praseFailed];
-            [parsering abortParsing];
-        }
+        myData.pubDate = [[tempString componentsSeparatedByString:@" "]objectAtIndex:0];
         canCreatData = NO;
         if (myData.player) {
             [contentArray addObject:myData];

@@ -8,6 +8,9 @@
 
 #define watchVideoView @"watchTheViedoView"
 #define iOS7 [[[UIDevice currentDevice]systemVersion]floatValue]>=7.0
+#define screenWidth [UIScreen mainScreen].bounds.size.width
+#define screenHeight [UIScreen mainScreen].bounds.size.height
+#define img11Url(heroId) [NSString stringWithFormat:@"http://i.5211game.com/img/dota/hero/%@.jpg",heroId]
 
 #ifndef __IPHONE_5_0
 #warning "This project uses features only available in iOS SDK 5.0 and later."

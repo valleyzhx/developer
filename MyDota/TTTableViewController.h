@@ -11,5 +11,7 @@
 
 @interface TTTableViewController : UITableViewController
 @property(nonatomic,assign)id<ScoreTableScollDelegate>scoreDelegate;
--(void)setTTDataWithTTInfos:(NSDictionary*)infos;
+@property(nonatomic,strong)NSString *userId;
+@property(nonatomic,strong)NSDictionary *scoreInfoDic;
+@property(nonatomic,strong)NSDictionary *totalDic;
 @end

@@ -31,11 +31,7 @@
     }
     return self;
 }
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-}
+
 -(NSString*)getPath{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
     NSLog(@"%@",paths);
@@ -54,8 +50,7 @@
 
 -(void)loadXmlFile
 {
-    NSString *s = [[NSBundle mainBundle]pathForResource:@"rss" ofType:@"xml"];
-    NSData *data = [NSData dataWithContentsOfFile:s];
+    NSData *data = [NSData dataWithContentsOfFile:[self getPath]];
     MyXmlPraser *parser = [[MyXmlPraser alloc]initWithXMLData:data];
     parser.delegate = self;
     [parser startPrase];
@@ -85,20 +80,37 @@
     }];
     
 }
+-(void)praseFailed{
+    
+}
 #pragma mark tableviewdelegate And datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return currentCount;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    UILabel *dateLab;
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        dateLab = [[UILabel alloc]initWithFrame:CGRectMake(16, cell.contentView.frame.size.height-10, 100, 10)];
+        dateLab.font = [UIFont systemFontOfSize:10];
+        dateLab.textColor = [UIColor grayColor];
+        [cell.contentView addSubview:dateLab];
     }
     MyXmlData *data = dataArray[indexPath.row];
-    cell.textLabel.font = [UIFont systemFontOfSize:10];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",data.title,data.pubDate];
+    cell.textLabel.font = [UIFont systemFontOfSize:13];
+    dateLab.text = data.pubDate;
+    if ([data.title hasPrefix:@"<"]) {
+        NSMutableAttributedString *atrring = [[NSMutableAttributedString alloc]initWithData:[data.title dataUsingEncoding:NSUTF8StringEncoding]  options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType,NSCharacterEncodingDocumentAttribute:@(NSUTF8StringEncoding)} documentAttributes:nil error:nil];
+        cell.textLabel.attributedText = atrring;
+    }else{
+      cell.textLabel.text = data.title;
+    }
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
