@@ -7,6 +7,8 @@
 //
 
 #import "MJTableViewController.h"
+#import "HeroInfoCell.h"
+#import "MJFirstCell.h"
 
 @interface MJTableViewController ()
 
@@ -22,6 +24,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,28 +33,58 @@
 }
 
 #pragma mark - Table view data source
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section) {
+        return 60;
+    }else{
+        return 200;
+    }
+}
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return [NSString stringWithFormat:@"等级:%@ 场次:%@ 胜率:%@",_data.mjInfos[@"MingJiang"],_data.mjInfos[@"Sum"],_data.mjInfos[@"P_Win"]];
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section) {
+        return 0;
+    }
+    return 30;
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
-    return 0;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    if (section) {
+      return  self.data.mjheroInfos.count;
+    }
+    return 1;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    
+    if (indexPath.section==0) {
+        MJFirstCell *cell = [[[NSBundle mainBundle]loadNibNamed:@"MJFirstCell" owner:nil options:nil]objectAtIndex:0];
+        [cell setCellDataWithMJInfo:_data.mjInfos];
+        return cell;
+    }else{
+        NSDictionary *heroInfo = self.data.mjheroInfos[indexPath.row];
+        HeroInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HeroInfoCell"];
+        if (cell==nil) {
+            cell = [[[NSBundle mainBundle]loadNibNamed:@"HeroInfoCell" owner:nil options:nil]objectAtIndex:0];
+            
+        }
+        [cell setMingJiangWithData:heroInfo];
+        return cell;
+    }
+    
     
     // Configure the cell...
     
-    return cell;
+    return nil;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -103,16 +136,5 @@
 }
 */
 
-#pragma mark - scrollViewDelegate
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    if (_scoreDelegate) {
-        [_scoreDelegate detailScrollEnabled:NO];
-    }
-}
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    if (_scoreDelegate) {
-        [_scoreDelegate detailScrollEnabled:YES];
-    }
-}
 
 @end

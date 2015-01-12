@@ -16,6 +16,8 @@
 @end
 
 @interface HeroBarView : UIView
+@property(nonatomic,assign)BOOL isLoading;
 -(id)initWithHeroArray:(NSArray*)heroArr withDelegate:(id)delegate;
 -(void)showInTheView:(UIView*)view;
+-(void)closeSelf;
 @end

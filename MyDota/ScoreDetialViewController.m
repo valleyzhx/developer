@@ -9,7 +9,6 @@
 #import "ScoreDetialViewController.h"
 #import "TTTableViewController.h"
 #import "MJTableViewController.h"
-#import "JJCTableViewController.h"
 
 
 @interface ScoreDetialViewController ()
@@ -21,7 +20,7 @@
     ScoreData *myData;
     TTTableViewController *ttTable;
     MJTableViewController *mjTable;
-    JJCTableViewController *jjcTable;
+    TTTableViewController *jjcTable;
 }
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withData:(ScoreData*)scoreData{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -53,24 +52,45 @@
     _myScroll.frame = self.view.bounds;
     _myScroll.contentSize = CGSizeMake(screenWidth *3, _myScroll.bounds.size.height);
     
-    ttTable = [[TTTableViewController alloc]initWithNibName:@"TTTableViewController" bundle:nil];
-    ttTable.view.frame = CGRectMake(0, 0, screenWidth , screenHeight-64);
-    ttTable.scoreInfoDic = self.ttScoreInfoDic;
-    ttTable.totalDic = myData.ttInfos;
+    if (myData.ttInfos) {
+        ttTable = [[TTTableViewController alloc]initWithNibName:@"TTTableViewController" bundle:nil];
+        ttTable.view.frame = CGRectMake(0, 0, screenWidth , screenHeight-64);
+        ttTable.scoreInfoDic = self.ttScoreInfoDic;
+        ttTable.totalDic = myData.ttInfos;
+        [_myScroll addSubview:ttTable.view];
+    }else{
+        UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(0, (screenHeight-64)/2-20, screenWidth, 40)];
+        lab.textAlignment = NSTextAlignmentCenter;
+        lab.text = @"查无天梯信息";
+        [_myScroll addSubview:lab];
+    }
     
-    ttTable.scoreDelegate = self;
-    ttTable.userId = self.userId;
-    [_myScroll addSubview:ttTable.view];
+    if (myData.mjheroInfos.count) {
+        mjTable = [[MJTableViewController alloc]initWithNibName:@"MJTableViewController" bundle:nil];
+        mjTable.view.frame = CGRectMake(screenWidth, 0 , screenWidth , screenHeight-64);
+        mjTable.data = myData;
+        [_myScroll addSubview:mjTable.view];
+    }else{
+        UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(screenWidth, (screenHeight-64)/2-20, screenWidth, 40)];
+        lab.textAlignment = NSTextAlignmentCenter;
+        lab.text = @"查无名将信息";
+        [_myScroll addSubview:lab];
+    }
     
-    mjTable = [[MJTableViewController alloc]initWithNibName:@"MJTableViewController" bundle:nil];
-    mjTable.view.frame = CGRectMake(0, screenWidth, screenWidth , screenHeight-64);
-    mjTable.scoreDelegate = self;
-    [_myScroll addSubview:mjTable.view];
     
-    jjcTable = [[JJCTableViewController alloc]initWithNibName:@"JJCTableViewController" bundle:nil];
-    mjTable.view.frame = CGRectMake(0, screenWidth*2, screenWidth , screenHeight-64);
-    mjTable.scoreDelegate = self;
-    [_myScroll addSubview:mjTable.view];
+    if (myData.jjcInfos) {
+        jjcTable = [[TTTableViewController alloc]initWithNibName:@"TTTableViewController" bundle:nil];
+        jjcTable.view.frame = CGRectMake(screenWidth*2,0, screenWidth , screenHeight-64);
+        jjcTable.scoreInfoDic = self.jjcScoreInfoDic;
+        jjcTable.totalDic = myData.jjcInfos;
+        [_myScroll addSubview:jjcTable.view];
+    }else{
+        UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(screenWidth*2, (screenHeight-64)/2-20, screenWidth, 40)];
+        lab.textAlignment = NSTextAlignmentCenter;
+        lab.text = @"查无竞技场信息";
+        [_myScroll addSubview:lab];
+    }
+    
     
     
     
@@ -80,6 +100,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 -(void)cancelViewAction{
     [self dismissModalViewControllerAnimated:YES];
 }

@@ -31,14 +31,16 @@
         [self addSubview:scoreLabel];
         dataArray = [rateArr copy];
         self.backgroundColor = [UIColor whiteColor];
-        [self findMaxAndMinWithDataArray:rateArr];
-        UISlider *slider = [[UISlider alloc]initWithFrame:CGRectMake(edge, ViewHeight+10, screenWidth-2*edge, 5)];
-        slider.maximumValue = screenWidth-edge;
-        slider.minimumValue = edge;
-        slider.value = slider.maximumValue;
-        tempTag = (int)dataArray.count;
-        [slider addTarget:self action:@selector(changeTheValue:) forControlEvents:UIControlEventValueChanged];
-        [self addSubview:slider];
+        if (rateArr.count) {
+            [self findMaxAndMinWithDataArray:rateArr];
+            UISlider *slider = [[UISlider alloc]initWithFrame:CGRectMake(edge, ViewHeight+10, screenWidth-2*edge, 5)];
+            slider.maximumValue = screenWidth-edge;
+            slider.minimumValue = edge;
+            slider.value = slider.maximumValue;
+            tempTag = (int)dataArray.count;
+            [slider addTarget:self action:@selector(changeTheValue:) forControlEvents:UIControlEventValueChanged];
+            [self addSubview:slider];
+        }
     }
     return self;
 }
@@ -53,7 +55,7 @@
     max = ceil(max/100.0)*100;
 }
 - (void)drawRect:(CGRect)rect {
-    float ScoreHeight = (max-min)/5.0;
+    float ScoreHeight = (max-min)/average;
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGColorRef backColorRef = [UIColor lightGrayColor].CGColor;
@@ -97,7 +99,6 @@
         UIView *cirView = [[UIView alloc]initWithFrame:CGRectMake(startX-2, startY-2, 4, 4)];
         cirView.backgroundColor = [UIColor orangeColor];
         cirView.tag = i+1;
-        NSLog(@"%d",i+1);
         [self addSubview:cirView];
         
     }

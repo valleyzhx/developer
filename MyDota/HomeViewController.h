@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MyXmlPraser.h"
 
-@interface HomeViewController : UIViewController<MyXmlPraserDelegate>
+@interface HomeViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView *listTable;
 
 @end

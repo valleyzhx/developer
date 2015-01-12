@@ -23,7 +23,9 @@
             _jjcInfos = [[NSDictionary alloc]initWithDictionary:dic[@"jjcInfos"]];
         }
         if ([dic[@"mjheroInfos"] isKindOfClass:[NSArray class]]) {
-            _mjheroInfos = [[NSArray alloc]initWithArray:dic[@"mjheroInfos"]];
+            NSMutableArray *arr = [NSMutableArray arrayWithArray:dic[@"mjheroInfos"]];
+            [self makeSortOfArray:arr];
+            _mjheroInfos = [[NSArray alloc]initWithArray:arr];
         }
         if ([dic[@"rankInfos"] isKindOfClass:[NSArray class]]) {
             _rankInfos = [[NSArray alloc]initWithArray:dic[@"rankInfos"]];
@@ -37,12 +39,22 @@
         if (dic[@"jjcRating"]) {
             _rating = [NSString stringWithFormat:@"%@",dic[@"jjcRating"]];
         }
-        
-        
-        
-        
-        
+          
     }
     return self;
+}
+-(void)makeSortOfArray:(NSMutableArray*)array{
+    NSComparator comparator =^(id obj1, id obj2){
+        int a = [obj1[@"cscore"]intValue];
+        int b = [obj2[@"cscore"]intValue];
+        if (a < b) {
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+        if (a > b) {
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+        return (NSComparisonResult)NSOrderedSame;
+    };
+    [array sortUsingComparator:comparator];
 }
 @end

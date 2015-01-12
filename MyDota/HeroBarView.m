@@ -29,7 +29,7 @@
         backView.alpha = 0.7;
         [self addSubview:backView];
         contentView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, frameWithd, row*(btnWidth+5)+5)];
-        contentView.backgroundColor = [UIColor orangeColor];
+        contentView.backgroundColor = [UIColor lightGrayColor];
         contentView.center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
         [self addSubview:contentView];
         
@@ -38,8 +38,9 @@
             int origin = (frameWithd/4 - btnWidth)/2;
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
             [btn setFrame:CGRectMake(origin+(i%4)*(frameWithd/4), 5+(i/4)*(btnWidth+5), btnWidth, btnWidth)];
-            [btn sd_setImageWithURL:hero.imgUrl forState:UIControlStateNormal];
+            [btn sd_setImageWithURL:[NSURL URLWithString:hero.imgUrl] forState:UIControlStateNormal];
             
+            btn.tag = i;
             [btn addTarget:self action:@selector(clickToDetailView:) forControlEvents:UIControlEventTouchUpInside];
             [contentView addSubview:btn];
         }
@@ -50,6 +51,10 @@
     return self;
 }
 -(void)clickToDetailView:(UIButton*)btn{
+    if (_isLoading) {
+        return;
+    }
+    _isLoading = YES;
     NSInteger tag = btn.tag;
     DotaHero *hero = [dataArr objectAtIndex:tag];
     if (heroDelegate) {
@@ -75,5 +80,8 @@
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
+}
+-(void)closeSelf{
+    [self tapTheBackground:nil];
 }
 @end

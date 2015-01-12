@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeroViewController">
@@ -29,7 +29,7 @@
                                     <rect key="frame" x="0.0" y="54" width="284" height="54"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                    <state key="normal" title="         力量(DOTA英雄出装)近卫-2" backgroundImage="strength.gif">
+                                    <state key="normal" title="力量-近卫2" backgroundImage="strength.gif">
                                         <color key="titleColor" red="0.53725490200000003" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
@@ -40,7 +40,7 @@
                                     <rect key="frame" x="0.0" y="108" width="284" height="54"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                    <state key="normal" title="         敏捷(DOTA英雄出装)近卫-1" backgroundImage="agility.gif">
+                                    <state key="normal" title="敏捷-近卫1" backgroundImage="agility.gif">
                                         <color key="titleColor" red="0.53725490200000003" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
@@ -51,7 +51,7 @@
                                     <rect key="frame" x="0.0" y="162" width="284" height="54"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                    <state key="normal" title="         敏捷(DOTA英雄出装)近卫-2" backgroundImage="agility.gif">
+                                    <state key="normal" title="敏捷-近卫2" backgroundImage="agility.gif">
                                         <color key="titleColor" red="0.53725490200000003" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
@@ -62,7 +62,7 @@
                                     <rect key="frame" x="0.0" y="216" width="284" height="54"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                    <state key="normal" title="         智力(DOTA英雄出装)近卫-1" backgroundImage="intelligence.gif">
+                                    <state key="normal" title="智力-近卫1" backgroundImage="intelligence.gif">
                                         <color key="titleColor" red="0.53725490200000003" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
@@ -73,7 +73,7 @@
                                     <rect key="frame" x="0.0" y="270" width="284" height="54"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                    <state key="normal" title="         智力(DOTA英雄出装)近卫-2" backgroundImage="intelligence.gif">
+                                    <state key="normal" title="智力-近卫2" backgroundImage="intelligence.gif">
                                         <color key="titleColor" red="0.53725490200000003" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
@@ -84,7 +84,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="284" height="54"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                    <state key="normal" title="         力量(DOTA英雄出装)近卫-1" backgroundImage="strength.gif">
+                                    <state key="normal" title="力量-近卫1" backgroundImage="strength.gif">
                                         <color key="titleColor" red="0.53725490196078429" green="0.0" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
@@ -95,14 +95,25 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <view contentMode="scaleToFill" id="efc-xP-yyO">
-                            <rect key="frame" x="18" y="373" width="284" height="344"/>
+                            <rect key="frame" x="18" y="373" width="284" height="324"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UFH-TP-SKw">
+                                    <rect key="frame" x="0.0" y="0.0" width="284" height="54"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                    <state key="normal" title="力量-天灾1" backgroundImage="strength.gif">
+                                        <color key="titleColor" red="0.53725490200000003" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="clickTheButton:" destination="-1" eventType="touchUpInside" id="xJW-0L-hsh"/>
+                                    </connections>
+                                </button>
                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zyd-Ro-0fa">
                                     <rect key="frame" x="0.0" y="54" width="284" height="54"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                    <state key="normal" title="         力量(DOTA英雄出装)天灾-2" backgroundImage="strength.gif">
+                                    <state key="normal" title="力量-天灾2" backgroundImage="strength.gif">
                                         <color key="titleColor" red="0.53725490200000003" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
@@ -113,7 +124,7 @@
                                     <rect key="frame" x="0.0" y="108" width="284" height="54"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                    <state key="normal" title="         敏捷(DOTA英雄出装)天灾-1" backgroundImage="agility.gif">
+                                    <state key="normal" title="敏捷-天灾1" backgroundImage="agility.gif">
                                         <color key="titleColor" red="0.53725490200000003" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
@@ -124,7 +135,7 @@
                                     <rect key="frame" x="0.0" y="162" width="284" height="54"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                    <state key="normal" title="         敏捷(DOTA英雄出装)天灾-2" backgroundImage="agility.gif">
+                                    <state key="normal" title="敏捷-天灾2" backgroundImage="agility.gif">
                                         <color key="titleColor" red="0.53725490200000003" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
@@ -135,7 +146,7 @@
                                     <rect key="frame" x="0.0" y="216" width="284" height="54"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                    <state key="normal" title="         智力(DOTA英雄出装)天灾-1" backgroundImage="intelligence.gif">
+                                    <state key="normal" title="智力-天灾1" backgroundImage="intelligence.gif">
                                         <color key="titleColor" red="0.53725490200000003" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
@@ -146,22 +157,11 @@
                                     <rect key="frame" x="0.0" y="270" width="284" height="54"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                    <state key="normal" title="         智力(DOTA英雄出装)天灾-2" backgroundImage="intelligence.gif">
+                                    <state key="normal" title="智力-天灾2" backgroundImage="intelligence.gif">
                                         <color key="titleColor" red="0.53725490200000003" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                     <connections>
                                         <action selector="clickTheButton:" destination="-1" eventType="touchUpInside" id="cIl-90-bNB"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UFH-TP-SKw">
-                                    <rect key="frame" x="0.0" y="0.0" width="284" height="54"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                    <state key="normal" title="         力量(DOTA英雄出装)天灾-1" backgroundImage="strength.gif">
-                                        <color key="titleColor" red="0.53725490200000003" green="0.0" blue="0.066666666669999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="clickTheButton:" destination="-1" eventType="touchUpInside" id="xJW-0L-hsh"/>
                                     </connections>
                                 </button>
                             </subviews>

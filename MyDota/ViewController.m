@@ -11,6 +11,7 @@
 #import "HeroViewController.h"
 #import "ScoreViewController.h"
 #import "ASIHTTPRequest.h"
+#import "UMFeedback.h"
 
 @interface ViewController ()
 
@@ -25,35 +26,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSLog(@"aaaaa");
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSDateFormatter* dateFormat = [[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat:@"dd"];
+    NSString *dateStr = [dateFormat stringFromDate:date];
+    int num = dateStr.intValue;
+    _backgroundView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.png",num%4+1]];
+    
     NSFileManager *fileMan = [NSFileManager defaultManager];
     if (![fileMan fileExistsAtPath:[NSString stringWithFormat:@"%@/dota.html",[self getPath]]]) {
         [fileMan copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"dota" ofType:@"html"]  toPath:[NSString stringWithFormat:@"%@/dota.html",[self getPath]] error:nil];
     }
-    if (![fileMan fileExistsAtPath:[NSString stringWithFormat:@"%@/rss.xml",[self getPath]]]) {
-        [fileMan copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"rss" ofType:@"xml"]  toPath:[NSString stringWithFormat:@"%@/rss.xml",[self getPath]] error:nil];
-    }
-    [self performSelectorInBackground:@selector(downloadHtml:) withObject:@"http://dota.db.766.com"];
+        [self performSelectorInBackground:@selector(downloadHtml:) withObject:@"http://dota.uuu9.com/v/"];
 }
 -(NSString*)getPath{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
     return [paths objectAtIndex:0];
 }
 -(void)downloadHtml:(NSString*)url{
-    ASIHTTPRequest *request = [[ASIHTTPRequest alloc]initWithURL:[NSURL URLWithString:url]];
+   __weak ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setCompletionBlock:^{
         if (request.responseStatusCode == 200) {
-            if ([url isEqualToString:@"http://dota.db.766.com"]) {
-                [request.responseData writeToFile:[NSString stringWithFormat:@"%@/dota.html",[self getPath]] atomically:YES];
-                [self downloadHtml:@"http://dota.uuu9.com/rss.xml"];
-            }else{
-                NSString *str = request.responseString;
-                NSArray *array = [str componentsSeparatedByString:@"http://dota.uuu9.com/2013"];
-                if (array.count) {
-                    [request cancel];
-                    [self downloadHtml:url];
-                }else{
-                  [request.responseData writeToFile:[NSString stringWithFormat:@"%@/rss.xml",[self getPath]] atomically:YES];
-                }
+            if ([url isEqualToString:@"http://dota.uuu9.com/v/"]) {
+                
+                NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+                
+                NSString *str = [[NSString alloc]initWithData:request.responseData encoding:enc];
+                [[str dataUsingEncoding:NSUTF8StringEncoding] writeToFile:[NSString stringWithFormat:@"%@/dota.html",[self getPath]] atomically:YES];
             }
         }
     }];
@@ -111,6 +111,10 @@
             [self pushAnimationView:scoreView.view];
         }
             break;
+        case 3:{
+            [self presentViewController:[UMFeedback feedbackModalViewController]  animated:YES completion:nil];
+            
+        }
         default:
             break;
     }

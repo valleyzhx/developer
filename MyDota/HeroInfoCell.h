@@ -14,4 +14,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLab;
 @property (weak, nonatomic) IBOutlet UILabel *winLostLab;
 -(void)setSocreWithData:(NSDictionary*)heroInfo;
+-(void)setMingJiangWithData:(NSDictionary*)heroInfo;
 @end

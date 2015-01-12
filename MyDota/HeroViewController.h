@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HeroBarView.h"
+#import "HeroShowList.h"
 
-@interface HeroViewController : UIViewController
+@interface HeroViewController : UIViewController<heroViewDelegate,heroShowListDelegate,UIScrollViewDelegate>
 - (IBAction)clickTheButton:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIScrollView *myScroll;
 

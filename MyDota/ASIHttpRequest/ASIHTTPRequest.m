@@ -280,9 +280,10 @@ static NSOperationQueue *sharedQueue = nil;
 {
 	self = [self init];
 	[self setRequestMethod:@"GET"];
+    
 
 	[self setRunLoopMode:NSDefaultRunLoopMode];
-	[self setShouldAttemptPersistentConnection:YES];
+	[self setShouldAttemptPersistentConnection:NO];
 	[self setPersistentConnectionTimeoutSeconds:60.0];
 	[self setShouldPresentCredentialsBeforeChallenge:YES];
 	[self setShouldRedirect:YES];

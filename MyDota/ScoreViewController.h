@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AdMoGoDelegateProtocol.h"
+#import "AdMoGoView.h"
 
-@interface ScoreViewController : UIViewController
+@interface ScoreViewController : UIViewController<AdMoGoDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *myTextField;
 @property (weak, nonatomic) IBOutlet UIButton *findBtn;
+@property (nonatomic,strong)AdMoGoView *adView;
 
 - (IBAction)checkAction:(id)sender;
+- (IBAction)returnTheKeyBoard:(id)sender;
 
 @end

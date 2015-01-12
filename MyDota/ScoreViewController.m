@@ -11,6 +11,7 @@
 #import "ScoreData.h"
 #import "MyLoadingView.h"
 #import "ScoreDetialViewController.h"
+#import "LoadingView.h"
 
 @interface ScoreViewController ()
 
@@ -18,6 +19,7 @@
 
 @implementation ScoreViewController{
     ScoreDetialViewController *controllor;
+    ScoreData *data;
 }
 
 - (void)viewDidLoad {
@@ -43,12 +45,27 @@
         }];
     }];
     [requset setFailedBlock:^{
-        NSError *err = requset.error;
+        
         
     }];
 
     [requset startAsynchronous];
-    _myTextField.text = @"喑哑的平原";
+    _myTextField.text = @"骄傲的灭亡";
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    backBtn.frame = CGRectMake(10, screenHeight-90, 32, 32);
+    [backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:backBtn];
+    
+    _adView = [[AdMoGoView alloc]initWithAppKey:@"b54208fc718045ada08654e52d010b0e" adType:AdViewTypeNormalBanner adMoGoViewDelegate:self autoScale:YES];
+    _adView.frame = CGRectZero;
+    [_adView setViewPointType:AdMoGoViewPointTypeDown_left];
+    [self.view addSubview:_adView];
+    
+}
+-(UIViewController*)viewControllerForPresentingModalView{
+    return self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,13 +79,19 @@
     
     [self doCheckUserName:_myTextField.text];
 }
+
+- (IBAction)returnTheKeyBoard:(id)sender {
+    
+    [_myTextField resignFirstResponder];
+    
+}
 -(void)doCheckUserName:(NSString*)name{
     NSNumber *uid = [[NSUserDefaults standardUserDefaults]objectForKey:name];
     if (uid.intValue !=0) {
         [self getTheScoreWithUid:uid];
         return;
     }
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/?r=1415282734594"]];
+   __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/?r=1415282734594"]];
     [request setRequestMethod:@"POST"];
     [request addPostValue:name forKey:@"name"];
     [request addPostValue:@"getuidbypname" forKey:@"method"];
@@ -76,10 +99,16 @@
         
         NSDictionary *result = [NSJSONSerialization JSONObjectWithData:request.responseData options:NSJSONReadingMutableContainers error:nil];
         if (result.count) {
-            NSNumber *uid = result[@"uid"];
-            [[NSUserDefaults standardUserDefaults]setObject:uid forKey:name];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-            [self getTheScoreWithUid:uid];
+            if ([result[@"error"]intValue]==0) {
+                NSNumber *uid = result[@"uid"];
+                [[NSUserDefaults standardUserDefaults]setObject:uid forKey:name];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+                [self getTheScoreWithUid:uid];
+            }else{
+                LoadingView *view = [[LoadingView alloc]initWithString:@"没有此用户信息"];
+                [view show];
+            }
+            
         }
         
     }];
@@ -89,7 +118,7 @@
     [request startAsynchronous];
 }
 -(void)getTheScoreWithUid:(NSNumber*)uid{
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/rating/?r=1415283385790"]];
+  __weak  ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/rating/?r=1415283385790"]];
     [request setRequestMethod:@"POST"];
     [request addPostValue:@"getrating" forKey:@"method"];
     [request addPostValue:uid forKey:@"u"];
@@ -99,18 +128,46 @@
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:request.responseData options:NSJSONReadingMutableContainers error:nil];
         int error = [dic[@"error"]intValue];
         if (error==0) {
-            ScoreData *data = [[ScoreData alloc]initWith11Dic:dic];
+            data = [[ScoreData alloc]initWith11Dic:dic];
             controllor = [[ScoreDetialViewController alloc]initWithNibName:@"ScoreDetialViewController" bundle:nil withData:data];
             controllor.userId = uid;
+            if (data.jjcInfos) {
+                [self loadJJCScore:uid];
+            }else if (data.ttInfos){
+                [self loadTTScore:uid];
+            }else{
+                [self presentDetailController];
+            }
             
-            [self loadTTScore:uid];
             
         }
     }];
     [request startAsynchronous];
 }
--(void)loadTTScore:(NSString*)_userId{
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/rating/?r=1419043495810"]];
+-(void)loadJJCScore:(NSNumber*)_userId{
+   __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/rating/?r=1420112767953"]];
+    [request setRequestMethod:@"POST"];
+    [request addPostValue:@"ladderheros" forKey:@"method"];
+    [request addPostValue:_userId forKey:@"u"];
+    [request addPostValue:@"10032" forKey:@"t"];
+    [request setCompletionBlock:^{
+        //NSLog(@"%@",request.responseString);
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:request.responseData options:NSJSONReadingMutableContainers error:nil];
+        int error = [dic[@"error"]intValue];
+        if (error==0) {
+            controllor.jjcScoreInfoDic = dic;
+            if (data.ttInfos){
+                [self loadTTScore:_userId];
+            }else{
+                [self presentDetailController];
+            }
+            
+        }
+    }];
+    [request startAsynchronous];
+}
+-(void)loadTTScore:(NSNumber*)_userId{
+   __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/rating/?r=1419043495810"]];
     [request setRequestMethod:@"POST"];
     [request addPostValue:@"ladderheros" forKey:@"method"];
     [request addPostValue:_userId forKey:@"u"];
@@ -121,15 +178,31 @@
         int error = [dic[@"error"]intValue];
         if (error==0) {
             controllor.ttScoreInfoDic = dic;
-            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:controllor];
-            nav.title = _myTextField.text;
-            [self presentModalViewController:nav animated:YES];
-
+            [self presentDetailController];
         }
     }];
     [request startAsynchronous];
 }
+-(void)presentDetailController{
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:controllor];
+    controllor.title = _myTextField.text;
+    [self presentViewController:nav animated:YES completion:nil];
+}
 -(void)dealloc{
     controllor = nil;
+}
+-(void)backAction:(UIButton*)btn{
+    btn.hidden = YES;
+    float y = 0;
+    if (!iOS7) {
+        y = -20;
+    }
+    [UIView animateWithDuration:0.5 animations:^{
+        self.view.center = CGPointMake(self.view.frame.size.width*1.5, self.view.center.y+y);
+        self.view.alpha = 0.3;
+    } completion:^(BOOL finished) {
+        [self.view removeFromSuperview];
+    }];
+    
 }
 @end

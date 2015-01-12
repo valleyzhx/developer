@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DMAdView.h"
+#import "AdMoGoDelegateProtocol.h"
+#import "AdMoGoView.h"
 
-@interface VideoViewController : UIViewController<DMAdViewDelegate,UIWebViewDelegate>
-@property (nonatomic,retain)UIWebView *webView;
+
+@interface VideoViewController : UIViewController<UIWebViewDelegate,AdMoGoDelegate>
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic,strong)AdMoGoView *adView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil yukuPlayer:(NSString*)string;
-
 @end

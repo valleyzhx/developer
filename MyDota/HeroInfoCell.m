@@ -23,6 +23,14 @@
     [_iconView sd_setImageWithURL:[NSURL URLWithString:img11Url(heroInfo[@"heroId"])]];
 
 }
+-(void)setMingJiangWithData:(NSDictionary *)heroInfo{
+    _titleLab.text = heroInfo[@"heroname"];
+    _winLostLab.text = [NSString stringWithFormat:@"%@胜%@负",heroInfo[@"win"],heroInfo[@"lost"]];
+    _scoreLab.text = [NSString stringWithFormat:@"%@",heroInfo[@"cscore"]];
+    _iconView.image = nil;
+    
+    [_iconView sd_setImageWithURL:[NSURL URLWithString:img11Url(heroInfo[@"heroId"])]];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

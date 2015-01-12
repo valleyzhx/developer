@@ -82,6 +82,7 @@
     if (indexPath.section==0) {
         if (indexPath.row == 0) {
          UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chartView"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             ChartView *view = [[ChartView alloc]initWithArray:_scoreInfoDic[@"heroRoadInfos"]];
             [cell.contentView addSubview:view];
             return cell;
@@ -93,7 +94,7 @@
         }
     }
     else{
-       HeroInfoCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+       HeroInfoCell* cell = [tableView dequeueReusableCellWithIdentifier:@"HeroInfoCell"];
         if (cell==nil) {
             cell = [[[NSBundle mainBundle]loadNibNamed:@"HeroInfoCell" owner:nil options:nil]objectAtIndex:0];
         }
