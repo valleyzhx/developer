@@ -12,6 +12,7 @@
 #import "MyLoadingView.h"
 #import "ScoreDetialViewController.h"
 #import "LoadingView.h"
+#import "MobClick.h"
 
 @interface ScoreViewController ()
 
@@ -50,7 +51,9 @@
     }];
 
     [requset startAsynchronous];
+#if DEBUG
     _myTextField.text = @"骄傲的灭亡";
+#endif
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     backBtn.frame = CGRectMake(10, screenHeight-90, 32, 32);
@@ -76,7 +79,7 @@
 
 
 - (IBAction)checkAction:(id)sender {
-    
+    [(UIButton*)sender setUserInteractionEnabled:NO];
     [self doCheckUserName:_myTextField.text];
 }
 
@@ -184,9 +187,11 @@
     [request startAsynchronous];
 }
 -(void)presentDetailController{
+    [_findBtn setUserInteractionEnabled:YES];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:controllor];
     controllor.title = _myTextField.text;
     [self presentViewController:nav animated:YES completion:nil];
+    [MobClick event:watchVideoView];
 }
 -(void)dealloc{
     controllor = nil;
@@ -203,6 +208,6 @@
     } completion:^(BOOL finished) {
         [self.view removeFromSuperview];
     }];
-    
+    [_findBtn setUserInteractionEnabled:YES];
 }
 @end

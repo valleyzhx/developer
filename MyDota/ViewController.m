@@ -33,6 +33,8 @@
     NSString *dateStr = [dateFormat stringFromDate:date];
     int num = dateStr.intValue;
     _backgroundView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.png",num%4+1]];
+    NSString *ver = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleShortVersionString"];
+    _versionLab.text = [NSString stringWithFormat:@"Dota助手:V%@",ver];
     
     NSFileManager *fileMan = [NSFileManager defaultManager];
     if (![fileMan fileExistsAtPath:[NSString stringWithFormat:@"%@/dota.html",[self getPath]]]) {

@@ -20,6 +20,7 @@ static MyLoadingView* shareLoading;
         [shareLoading addSubview:gifImageView];
         shareLoading.layer.cornerRadius = 15;
         shareLoading.layer.masksToBounds = YES;
+        shareLoading.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
     }
     return shareLoading;
 }
@@ -33,6 +34,7 @@ static MyLoadingView* shareLoading;
 -(void)showLoadingIn:(UIView *)view
 {
     shareLoading.center = view.center;
+    
     [view addSubview:shareLoading];
 }
 -(void)stopWithFinished:(void (^)(void))finish

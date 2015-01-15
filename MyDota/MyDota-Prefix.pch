@@ -7,6 +7,7 @@
 #import <Availability.h>
 
 #define watchVideoView @"watchTheViedoView"
+#define checkout11 @"checkout11"
 #define iOS7 [[[UIDevice currentDevice]systemVersion]floatValue]>=7.0
 #define screenWidth [UIScreen mainScreen].bounds.size.width
 #define screenHeight [UIScreen mainScreen].bounds.size.height
