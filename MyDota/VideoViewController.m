@@ -96,6 +96,8 @@
 - (void)dealloc
 {
     urlString = nil;
+    _adView = nil;
+    _webView = nil;
 }
 - (void)didReceiveMemoryWarning
 {

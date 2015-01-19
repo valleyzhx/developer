@@ -73,9 +73,10 @@
     NSInteger tag = btn.tag;
     NSDictionary *hero = [dataArr objectAtIndex:tag];
     NSString *url = hero[@"href"];
-   __weak ASIHTTPRequest *requset = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-    [requset setCompletionBlock:^{
-        NSString *str = requset.responseString;
+    ASIHTTPRequest *requset = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __weak ASIHTTPRequest *req = requset;
+    [req setCompletionBlock:^{
+        NSString *str = req.responseString;
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\bhttp://player.youku.com\\b.*\\bswf\\b" options:NSRegularExpressionCaseInsensitive error:nil];
         NSArray *array = [regex matchesInString:str options:0 range:NSMakeRange(0, [str length])];
         NSString *youkuStr;
@@ -98,8 +99,9 @@
         if (_heroDelegate) {
             [_heroDelegate changeToVideo:youkuStr];
         }
+        [req clearDelegatesAndCancel];
     }];
-    [requset startAsynchronous];
+    [req startAsynchronous];
 //    if (heroDelegate) {
 //        [heroDelegate changeToDetailView:hero];
 //    }

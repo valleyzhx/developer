@@ -22,7 +22,6 @@
 {
     //NSArray *dataArray;
     int currentCount;
-    VideoViewController *videoVC;
     NSMutableArray *dicsArray;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -141,7 +140,12 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     NSDictionary *data = dicsArray[indexPath.row];
-    cell.textLabel.font = [UIFont systemFontOfSize:11];
+    if (screenWidth>320) {
+      cell.textLabel.font = [UIFont systemFontOfSize:13];
+    }else{
+        cell.textLabel.font = [UIFont systemFontOfSize:12];
+    }
+    
     
       cell.textLabel.text = [NSString stringWithFormat:@" %@",data[@"title"]];
     
@@ -153,9 +157,11 @@
     NSDictionary *data = dicsArray[indexPath.row];
     
     NSString *url = data[@"href"];
-    __weak ASIHTTPRequest *requset = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-    [requset setCompletionBlock:^{
-        NSString *str = requset.responseString;
+    ASIHTTPRequest* requset = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __weak ASIHTTPRequest *req = requset;
+    __weak HomeViewController *selContrl = self;
+    [req setCompletionBlock:^{
+        NSString *str = req.responseString;
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\bhttp://player.youku.com\\b.*\\bswf\\b" options:NSRegularExpressionCaseInsensitive error:nil];
         NSArray *array = [regex matchesInString:str options:0 range:NSMakeRange(0, [str length])];
         NSString *youkuStr;
@@ -172,27 +178,29 @@
             }
             NSArray *secArr = [[arr objectAtIndex:1]componentsSeparatedByString:@"<"];
             youkuStr = secArr[0];
-            videoVC = [[VideoViewController alloc]initWithNibName:@"VideoViewController" bundle:nil yukuPlayer:youkuStr];
+            VideoViewController *videoVC = [[VideoViewController alloc]initWithNibName:@"VideoViewController" bundle:nil yukuPlayer:youkuStr];
             videoVC.title = data[@"title"];
             UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:videoVC];
-            [self presentViewController:nav animated:YES completion:^{
+            [selContrl presentViewController:nav animated:YES completion:^{
                 
             }];
             return ;
         }
-        videoVC = [[VideoViewController alloc]initWithNibName:@"VideoViewController" bundle:nil];
-        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:videoVC];
-        videoVC.title = data[@"title"];
-        [self presentViewController:nav animated:YES completion:^{
-            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"flash" ofType:@"html"]]];
-            [videoVC.webView loadRequest:request];
-        }];
+        LoadingView *view = [[LoadingView alloc]initWithString:@"iOS暂不支持此视频,请观看其他视频"];
+        [view show];
+//        videoVC = [[VideoViewController alloc]initWithNibName:@"VideoViewController" bundle:nil];
+//        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:videoVC];
+//        videoVC.title = data[@"title"];
+//        [self presentViewController:nav animated:YES completion:^{
+//            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[[NSBundle mainBundle] pathForResource:@"flash" ofType:@"html"]]];
+//            [videoVC.webView loadRequest:request];
+//        }];
         
     }];
-    [requset setFailedBlock:^{
+    [req setFailedBlock:^{
         
     }];
-    [requset startAsynchronous];
+    [req startAsynchronous];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -218,7 +226,6 @@
 -(void)dealloc
 {
     //dataArray = nil;
-    videoVC = nil;
     dicsArray = nil;
 }
 -(void)backAction:(UIButton*)btn{

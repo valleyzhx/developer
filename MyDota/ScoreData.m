@@ -12,10 +12,10 @@
 -(id)initWith11Dic:(NSDictionary*)dic{
     self = [super init];
     if (self) {
-        if (dic[@"mjInfos"]) {
+        if ([dic[@"mjInfos"]isKindOfClass:[NSDictionary class]]) {
             _mjInfos = [[NSDictionary alloc]initWithDictionary:dic[@"mjInfos"]];
         }
-        if (dic[@"ttInfos"]) {
+        if ([dic[@"ttInfos"]isKindOfClass:[NSDictionary class]]) {
             _ttInfos = [[NSDictionary alloc]initWithDictionary:dic[@"ttInfos"]];
         }
     

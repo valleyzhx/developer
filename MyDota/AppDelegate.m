@@ -16,10 +16,11 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+{//乐乐齐步走
     // Override point for customization after application launch.
     [MobClick startWithAppkey:@"539093f556240b01ab039989" reportPolicy:SEND_INTERVAL   channelId:@""];
-    //[UMFeedback setAppkey:@"539093f556240b01ab039989"];
+    //[MobClick startWithAppkey:@"539093f556240b01ab039989" reportPolicy:SEND_INTERVAL   channelId:@"91"];
+    [UMFeedback setAppkey:@"539093f556240b01ab039989"];
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:version];
     

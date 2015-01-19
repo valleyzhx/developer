@@ -54,9 +54,10 @@
 #if DEBUG
     _myTextField.text = @"骄傲的灭亡";
 #endif
+    //_myTextField.text = @"乐乐齐步走";
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    backBtn.frame = CGRectMake(10, screenHeight-90, 32, 32);
+    backBtn.frame = CGRectMake(10, screenHeight-100, 32, 32);
     [backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backBtn];
@@ -94,11 +95,12 @@
         [self getTheScoreWithUid:uid];
         return;
     }
-   __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/?r=1415282734594"]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/?r=1415282734594"]];
     [request setRequestMethod:@"POST"];
     [request addPostValue:name forKey:@"name"];
     [request addPostValue:@"getuidbypname" forKey:@"method"];
-    [request setCompletionBlock:^{
+    __weak ASIFormDataRequest *req = request;
+    [req setCompletionBlock:^{
         
         NSDictionary *result = [NSJSONSerialization JSONObjectWithData:request.responseData options:NSJSONReadingMutableContainers error:nil];
         if (result.count) {
@@ -113,22 +115,25 @@
             }
             
         }
+        [req clearDelegatesAndCancel];
+        
         
     }];
-    [request setFailedBlock:^{
+    [req setFailedBlock:^{
         
     }];
-    [request startAsynchronous];
+    [req startAsynchronous];
 }
 -(void)getTheScoreWithUid:(NSNumber*)uid{
-  __weak  ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/rating/?r=1415283385790"]];
+     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/rating/?r=1415283385790"]];
     [request setRequestMethod:@"POST"];
     [request addPostValue:@"getrating" forKey:@"method"];
     [request addPostValue:uid forKey:@"u"];
     [request addPostValue:@"10001" forKey:@"t"];
-    [request setCompletionBlock:^{
+    __weak ASIFormDataRequest *req = request;
+    [req setCompletionBlock:^{
         //NSLog(@"%@",request.responseString);
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:request.responseData options:NSJSONReadingMutableContainers error:nil];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableContainers error:nil];
         int error = [dic[@"error"]intValue];
         if (error==0) {
             data = [[ScoreData alloc]initWith11Dic:dic];
@@ -144,18 +149,20 @@
             
             
         }
+        [req clearDelegatesAndCancel];
     }];
-    [request startAsynchronous];
+    [req startAsynchronous];
 }
 -(void)loadJJCScore:(NSNumber*)_userId{
-   __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/rating/?r=1420112767953"]];
+    __block ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/rating/?r=1420112767953"]];
     [request setRequestMethod:@"POST"];
     [request addPostValue:@"ladderheros" forKey:@"method"];
     [request addPostValue:_userId forKey:@"u"];
     [request addPostValue:@"10032" forKey:@"t"];
-    [request setCompletionBlock:^{
+    __weak ASIFormDataRequest *req = request;
+    [req setCompletionBlock:^{
         //NSLog(@"%@",request.responseString);
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:request.responseData options:NSJSONReadingMutableContainers error:nil];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableContainers error:nil];
         int error = [dic[@"error"]intValue];
         if (error==0) {
             controllor.jjcScoreInfoDic = dic;
@@ -166,25 +173,28 @@
             }
             
         }
+        [req clearDelegatesAndCancel];
     }];
-    [request startAsynchronous];
+    [req startAsynchronous];
 }
 -(void)loadTTScore:(NSNumber*)_userId{
-   __weak ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/rating/?r=1419043495810"]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/rating/?r=1419043495810"]];
     [request setRequestMethod:@"POST"];
     [request addPostValue:@"ladderheros" forKey:@"method"];
     [request addPostValue:_userId forKey:@"u"];
     [request addPostValue:@"10001" forKey:@"t"];
-    [request setCompletionBlock:^{
+    __weak ASIFormDataRequest *req = request;
+    [req setCompletionBlock:^{
         //NSLog(@"%@",request.responseString);
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:request.responseData options:NSJSONReadingMutableContainers error:nil];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:req.responseData options:NSJSONReadingMutableContainers error:nil];
         int error = [dic[@"error"]intValue];
         if (error==0) {
             controllor.ttScoreInfoDic = dic;
             [self presentDetailController];
         }
+        [req clearDelegatesAndCancel];
     }];
-    [request startAsynchronous];
+    [req startAsynchronous];
 }
 -(void)presentDetailController{
     [_findBtn setUserInteractionEnabled:YES];
@@ -195,6 +205,7 @@
 }
 -(void)dealloc{
     controllor = nil;
+    _adView = nil;
 }
 -(void)backAction:(UIButton*)btn{
     btn.hidden = YES;

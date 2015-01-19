@@ -28,6 +28,8 @@
     if (self) {
         scoreLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 8, screenWidth, 20)];
         scoreLabel.textAlignment = NSTextAlignmentCenter;
+        int num = [[rateArr lastObject]intValue];
+        scoreLabel.text = [NSString stringWithFormat:@"%d",num];
         [self addSubview:scoreLabel];
         dataArray = [rateArr copy];
         self.backgroundColor = [UIColor whiteColor];

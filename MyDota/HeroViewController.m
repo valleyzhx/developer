@@ -114,10 +114,11 @@
         videoArray = [NSMutableArray array];
     }
     NSString *url = [NSString stringWithFormat:@"%@/Index.shtml",hero.dataUrl];
-    __weak ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-    [request setCompletionBlock:^{
+     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __weak ASIHTTPRequest *req = request;
+    [req setCompletionBlock:^{
         NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-        NSString *str = [[NSString alloc]initWithData:request.responseData encoding:enc];
+        NSString *str = [[NSString alloc]initWithData:req.responseData encoding:enc];
         HTMLParser *parser = [[HTMLParser alloc]initWithString:str error:nil];
         HTMLNode *bodyNode = [parser body];
         NSArray *inputNodes = [bodyNode findChildrenOfClass:@"videolist3"];
@@ -140,7 +141,7 @@
         
     }];
 
-    [request startAsynchronous];
+    [req startAsynchronous];
     
     
 }

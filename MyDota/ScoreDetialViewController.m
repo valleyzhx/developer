@@ -102,7 +102,7 @@
 }
 
 -(void)cancelViewAction{
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - scrollViewDelegate
