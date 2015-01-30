@@ -78,7 +78,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
     if (indexPath.section==0) {
         if (indexPath.row == 0) {
          UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chartView"];
@@ -103,6 +102,7 @@
         [cell setSocreWithData:dic];
         return cell;
     }
+    
     return nil;
     
 }

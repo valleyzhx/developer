@@ -49,7 +49,6 @@
 -(void)downloadHtml:(NSString*)url{
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     __weak ASIHTTPRequest *req = request;
-    __weak NSString* path = [self getPath];
     [req setCompletionBlock:^{
         if (req.responseStatusCode == 200) {
             if ([url isEqualToString:@"http://dota.uuu9.com/v/"]) {
@@ -57,7 +56,10 @@
                 NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
                 
                 NSString *str = [[NSString alloc]initWithData:req.responseData encoding:enc];
-                [[str dataUsingEncoding:NSUTF8StringEncoding] writeToFile:[NSString stringWithFormat:@"%@/dota.html",path] atomically:YES];
+                if (str.length) {
+                  [self performSelectorOnMainThread:@selector(saveTheString:) withObject:str waitUntilDone:YES];
+                }
+                
             }
         }
         [req clearDelegatesAndCancel];
@@ -67,6 +69,10 @@
     }];
 
     [req startAsynchronous];
+}
+-(void)saveTheString:(NSString*)str{
+    NSString* path = [self getPath];
+    [str writeToFile:[NSString stringWithFormat:@"%@/dota.html",path] atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 -(void)pushAnimationView:(UIView*)view
 {

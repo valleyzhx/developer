@@ -161,7 +161,6 @@
 		570929E41A5CE92000C243A2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570929E31A5CE92000C243A2 /* OpenGLES.framework */; };
 		570929E61A5CE93B00C243A2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570929E51A5CE93B00C243A2 /* Security.framework */; };
 		570929E81A5CE96700C243A2 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 570929E71A5CE96700C243A2 /* libsqlite3.0.dylib */; };
-		570929F41A5D034500C243A2 /* AdsameCubeMaxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570929ED1A5CEEF800C243A2 /* AdsameCubeMaxSDK.framework */; };
 		570929F61A5D092F00C243A2 /* b54208fc718045ada08654e52d010b0e.config in Resources */ = {isa = PBXBuildFile; fileRef = 570929F51A5D092F00C243A2 /* b54208fc718045ada08654e52d010b0e.config */; };
 		571BE7171A206BBB00CF4D82 /* ScoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 571BE7161A206BBB00CF4D82 /* ScoreData.m */; };
 		571BE71B1A208B3F00CF4D82 /* ScoreDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571BE7191A208B3F00CF4D82 /* ScoreDetialViewController.m */; };
@@ -211,7 +210,6 @@
 		57819AB71A62DC6D0092CAF6 /* AdMoGoAdapterBaiduMobAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 57819A341A62DC6D0092CAF6 /* AdMoGoAdapterBaiduMobAd.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		57819AB81A62DC6D0092CAF6 /* AdMoGoAdapterBaiduSplash.m in Sources */ = {isa = PBXBuildFile; fileRef = 57819A361A62DC6D0092CAF6 /* AdMoGoAdapterBaiduSplash.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		57819AB91A62DC6D0092CAF6 /* baidumobadsdk.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 57819A3C1A62DC6D0092CAF6 /* baidumobadsdk.bundle */; };
-		57819ABA1A62DC6D0092CAF6 /* libBaiduMobAdSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57819A3E1A62DC6D0092CAF6 /* libBaiduMobAdSdk.a */; };
 		57819ABB1A62DC6D0092CAF6 /* mongoose.c in Sources */ = {isa = PBXBuildFile; fileRef = 57819A401A62DC6D0092CAF6 /* mongoose.c */; };
 		57819ABC1A62DC6D0092CAF6 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 57819A441A62DC6D0092CAF6 /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		57819ABD1A62DC6D0092CAF6 /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 57819A471A62DC6D0092CAF6 /* CDataScanner.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -246,6 +244,7 @@
 		57A05DB21A048A6C00D5060B /* strength.gif in Resources */ = {isa = PBXBuildFile; fileRef = 57A05DAF1A048A6C00D5060B /* strength.gif */; };
 		57A05DB51A04996900D5060B /* HeroBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A05DB41A04996900D5060B /* HeroBarView.m */; };
 		57A05E0E1A051DFE00D5060B /* new_file.html in Resources */ = {isa = PBXBuildFile; fileRef = 57A05E0D1A051DFE00D5060B /* new_file.html */; };
+		57A2DB451A6E28E000115E03 /* libBaiduMobAdSdk64bit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A2DB441A6E28E000115E03 /* libBaiduMobAdSdk64bit.a */; };
 		57A7362A191140EB00DF2B97 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A73628191140EB00DF2B97 /* HomeViewController.m */; };
 		57A7362B191140EB00DF2B97 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57A73629191140EB00DF2B97 /* HomeViewController.xib */; };
 		57A850BC190004980062932C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A850BB190004980062932C /* Foundation.framework */; };
@@ -518,7 +517,6 @@
 		570929E31A5CE92000C243A2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		570929E51A5CE93B00C243A2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		570929E71A5CE96700C243A2 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		570929ED1A5CEEF800C243A2 /* AdsameCubeMaxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdsameCubeMaxSDK.framework; path = MyDota/AdsMoGoLib/AdNetworkLibs/AdsameCube_SDK_105/AdsameCubeMaxSDK.framework; sourceTree = "<group>"; };
 		570929F51A5D092F00C243A2 /* b54208fc718045ada08654e52d010b0e.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = b54208fc718045ada08654e52d010b0e.config; sourceTree = "<group>"; };
 		571BE7151A206BBB00CF4D82 /* ScoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreData.h; sourceTree = "<group>"; };
 		571BE7161A206BBB00CF4D82 /* ScoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreData.m; sourceTree = "<group>"; };
@@ -616,7 +614,6 @@
 		57819A3B1A62DC6D0092CAF6 /* BaiduMobAdInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobAdInterstitialDelegate.h; sourceTree = "<group>"; };
 		57819A3C1A62DC6D0092CAF6 /* baidumobadsdk.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = baidumobadsdk.bundle; sourceTree = "<group>"; };
 		57819A3D1A62DC6D0092CAF6 /* BaiduMobAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobAdView.h; sourceTree = "<group>"; };
-		57819A3E1A62DC6D0092CAF6 /* libBaiduMobAdSdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobAdSdk.a; sourceTree = "<group>"; };
 		57819A401A62DC6D0092CAF6 /* mongoose.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mongoose.c; sourceTree = "<group>"; };
 		57819A411A62DC6D0092CAF6 /* mongoose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mongoose.h; sourceTree = "<group>"; };
 		57819A431A62DC6D0092CAF6 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
@@ -703,6 +700,7 @@
 		57A05DB31A04996900D5060B /* HeroBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroBarView.h; sourceTree = "<group>"; };
 		57A05DB41A04996900D5060B /* HeroBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeroBarView.m; sourceTree = "<group>"; };
 		57A05E0D1A051DFE00D5060B /* new_file.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = new_file.html; sourceTree = "<group>"; };
+		57A2DB441A6E28E000115E03 /* libBaiduMobAdSdk64bit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobAdSdk64bit.a; sourceTree = "<group>"; };
 		57A73627191140EB00DF2B97 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		57A73628191140EB00DF2B97 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		57A73629191140EB00DF2B97 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -773,9 +771,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				570929F41A5D034500C243A2 /* AdsameCubeMaxSDK.framework in Frameworks */,
 				57819AB21A62DC6D0092CAF6 /* libGoogleAdMobAds.a in Frameworks */,
-				57819ABA1A62DC6D0092CAF6 /* libBaiduMobAdSdk.a in Frameworks */,
 				570929E81A5CE96700C243A2 /* libsqlite3.0.dylib in Frameworks */,
 				5749066419338F39003148E4 /* SystemConfiguration.framework in Frameworks */,
 				57722FF31940DA6200CA5267 /* StoreKit.framework in Frameworks */,
@@ -821,6 +817,7 @@
 				5749066819338F4E003148E4 /* CFNetwork.framework in Frameworks */,
 				57E4F6801A5A1A4900268CA8 /* libUMFeedback.a in Frameworks */,
 				57722FDB1940CAF100CA5267 /* libMobClickLibrary.a in Frameworks */,
+				57A2DB451A6E28E000115E03 /* libBaiduMobAdSdk64bit.a in Frameworks */,
 				57A850C0190004980062932C /* UIKit.framework in Frameworks */,
 				57A850BC190004980062932C /* Foundation.framework in Frameworks */,
 			);
@@ -1328,13 +1325,13 @@
 		57819A371A62DC6D0092CAF6 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				57A2DB441A6E28E000115E03 /* libBaiduMobAdSdk64bit.a */,
 				57819A381A62DC6D0092CAF6 /* BaiduMobAdCommonConfig.h */,
 				57819A391A62DC6D0092CAF6 /* BaiduMobAdDelegateProtocol.h */,
 				57819A3A1A62DC6D0092CAF6 /* BaiduMobAdInterstitial.h */,
 				57819A3B1A62DC6D0092CAF6 /* BaiduMobAdInterstitialDelegate.h */,
 				57819A3C1A62DC6D0092CAF6 /* baidumobadsdk.bundle */,
 				57819A3D1A62DC6D0092CAF6 /* BaiduMobAdView.h */,
-				57819A3E1A62DC6D0092CAF6 /* libBaiduMobAdSdk.a */,
 				57819A3F1A62DC6D0092CAF6 /* Mongoose */,
 				57819A421A62DC6D0092CAF6 /* OpenUDID */,
 				57819A451A62DC6D0092CAF6 /* TouchJSON */,
@@ -1581,7 +1578,6 @@
 		57A850BA190004980062932C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				570929ED1A5CEEF800C243A2 /* AdsameCubeMaxSDK.framework */,
 				570929E71A5CE96700C243A2 /* libsqlite3.0.dylib */,
 				570929E51A5CE93B00C243A2 /* Security.framework */,
 				570929E31A5CE92000C243A2 /* OpenGLES.framework */,
@@ -2195,8 +2191,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhang Xiang (BZ2BR27C6A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhang Xiang (BZ2BR27C6A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhang Xiang (SDLW8EYW74)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhang Xiang (SDLW8EYW74)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2220,7 +2216,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "f8e15cdc-3330-4ac5-afb5-8aa42f9c5288";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2242,8 +2238,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhang Xiang (BZ2BR27C6A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhang Xiang (BZ2BR27C6A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhang Xiang (SDLW8EYW74)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhang Xiang (SDLW8EYW74)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2260,7 +2256,7 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "f8e15cdc-3330-4ac5-afb5-8aa42f9c5288";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -2273,8 +2269,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhang Xiang (BZ2BR27C6A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhang Xiang (BZ2BR27C6A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhang Xiang (SDLW8EYW74)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhang Xiang (SDLW8EYW74)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -2341,12 +2337,13 @@
 					"$(PROJECT_DIR)/MyDota/AdsMoGoLib/AdNetworkLibs/zmedia_SDK_103/设备/lib",
 					"$(PROJECT_DIR)/MyDota/AdsMoGoLib/AdNetworkLibs/ZSHD_SDK_120/PagodaPearl_lib",
 					"$(PROJECT_DIR)/MyDota/AdsMoGoLib/AdsMoGoSDK",
+					"$(PROJECT_DIR)/MyDota/AdsMoGoLib/AdNetworkLibs/Baidu_3.5.2_SDK",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f8e15cdc-3330-4ac5-afb5-8aa42f9c5288";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2357,8 +2354,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhang Xiang (BZ2BR27C6A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhang Xiang (BZ2BR27C6A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhang Xiang (SDLW8EYW74)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhang Xiang (SDLW8EYW74)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -2425,12 +2422,13 @@
 					"$(PROJECT_DIR)/MyDota/AdsMoGoLib/AdNetworkLibs/zmedia_SDK_103/设备/lib",
 					"$(PROJECT_DIR)/MyDota/AdsMoGoLib/AdNetworkLibs/ZSHD_SDK_120/PagodaPearl_lib",
 					"$(PROJECT_DIR)/MyDota/AdsMoGoLib/AdsMoGoSDK",
+					"$(PROJECT_DIR)/MyDota/AdsMoGoLib/AdNetworkLibs/Baidu_3.5.2_SDK",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f8e15cdc-3330-4ac5-afb5-8aa42f9c5288";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

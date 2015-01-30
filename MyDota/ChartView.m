@@ -57,6 +57,9 @@
     max = ceil(max/100.0)*100;
 }
 - (void)drawRect:(CGRect)rect {
+    if (dataArray.count==0){
+        return;
+    }
     float ScoreHeight = (max-min)/average;
     
     CGContextRef context = UIGraphicsGetCurrentContext();

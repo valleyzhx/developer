@@ -57,7 +57,7 @@
     
     _adView = [[AdMoGoView alloc]initWithAppKey:@"b54208fc718045ada08654e52d010b0e" adType:AdViewTypeNormalBanner adMoGoViewDelegate:self autoScale:YES];
     _adView.frame = CGRectZero;
-    [_adView setViewPointType:AdMoGoViewPointTypeDown_left];
+    [_adView setViewPointType:AdMoGoViewPointTypeDown_middle];
     [self.view addSubview:_adView];
 }
 -(UIViewController*)viewControllerForPresentingModalView{
