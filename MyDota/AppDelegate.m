@@ -97,7 +97,42 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    NSFileManager *fileMan = [NSFileManager defaultManager];
+    if (![fileMan fileExistsAtPath:[NSString stringWithFormat:@"%@/dota.html",[self getPath]]]) {
+        [fileMan copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"dota" ofType:@"html"]  toPath:[NSString stringWithFormat:@"%@/dota.html",[self getPath]] error:nil];
+    }
+    [self performSelectorInBackground:@selector(downloadHtml:) withObject:@"http://dota.uuu9.com/List_275.shtml"];
     
+}
+-(NSString*)getPath{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    return [paths objectAtIndex:0];
+}
+-(void)downloadHtml:(NSString*)url{
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __weak ASIHTTPRequest *req = request;
+    [req setCompletionBlock:^{
+        if (req.responseStatusCode == 200) {
+            if ([url isEqualToString:@"http://dota.uuu9.com/List_275.shtml"]) {
+                NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+                NSString *str = [[NSString alloc]initWithData:req.responseData encoding:enc];
+                if (str.length) {
+                    [self performSelectorOnMainThread:@selector(saveTheString:) withObject:str waitUntilDone:YES];
+                }
+                
+            }
+        }
+        [req clearDelegatesAndCancel];
+    }];
+    [req setFailedBlock:^{
+        
+    }];
+    
+    [req startAsynchronous];
+}
+-(void)saveTheString:(NSString*)str{
+    NSString* path = [self getPath];
+    [str writeToFile:[NSString stringWithFormat:@"%@/dota.html",path] atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

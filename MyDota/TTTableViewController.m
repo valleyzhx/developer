@@ -104,9 +104,12 @@
     }
     
     return nil;
-    
-}
 
+}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    
+    return YES;
+}
 
 /*
 // Override to support conditional editing of the table view.

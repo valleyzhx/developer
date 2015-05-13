@@ -42,6 +42,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(windowVisible:)
+                                                 name:UIWindowDidBecomeVisibleNotification
+                                               object:self.view.window];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(windowHidden:)
+                                                 name:UIWindowDidBecomeHiddenNotification
+                                               object:self.view.window];
     UILabel *leb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 150, 40)];
     leb.backgroundColor = [UIColor clearColor];
     leb.font = [UIFont systemFontOfSize:13];
@@ -69,12 +77,34 @@
     [super viewWillAppear:animated];
     [self startLoadHtml];
 }
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+}
+
+- (void)viewDidLayoutSubviews {
+    
+}
+
 -(void)startLoadHtml{
     if (urlString) {
         [_webView loadHTMLString:urlString baseURL:nil];
     }
     
 }
+//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+//    if ([request.URL.scheme isEqualToString:@"videohandler"]) {
+//      //  NSLog(@"%@", request.URL.resourceSpecifier);//在这里可以获得事件
+//        if ([request.URL.resourceSpecifier isEqualToString:@"//video-beginfullscreen"]) {//视频播放
+//            
+//        }else if ([request.URL.resourceSpecifier isEqualToString:@"//video-endfullscreen"]){
+//            
+//        }
+//        
+//        return NO;
+//    }
+//    return YES;
+//}
 -(void)webViewDidStartLoad:(UIWebView *)webView{
     
 }
@@ -98,21 +128,42 @@
     urlString = nil;
     _adView = nil;
     _webView = nil;
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)windowVisible:(NSNotification *)notification
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+   //视频隐藏
+    
 }
-*/
+
+- (void)windowHidden:(NSNotification *)notification
+{
+    
+    //视频播放
+    //强制横屏
+    //http://player.youku.com/player.php/sid/XOTMwNjU4OTgw/partnerid/c9bb14f8593c7a8b/v.swf
+    //http://v.youku.com/player/getRealM3U8/vid/XOTMwNjU4OTgw/type/video.m3u8
+//file:///Users/simplan/Desktop/30%E5%A4%A9/%E3%80%90%E6%83%85%E4%B9%A6dota%E8%A7%A3%E8%AF%B4%E3%80%91%E8%BE%89%E8%80%80%E5%86%B0%E9%9B%B7%E5%8D%A1,%E7%96%AF%E7%8B%8227%E6%9D%80![%E9%AB%98%E6%B8%85%E7%89%88].m3u
+    //[self preferredInterfaceOrientationForPresentation];
+}
+//-(BOOL)shouldAutorotate{
+//    return YES;
+//}
+//- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+//
+//{
+//    return UIInterfaceOrientationLandscapeLeft;
+//}
 
 @end
+
+
+
+
+

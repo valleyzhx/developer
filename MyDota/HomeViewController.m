@@ -21,8 +21,9 @@
 @implementation HomeViewController
 {
     //NSArray *dataArray;
-    int currentCount;
+//    int currentCount;
     NSMutableArray *dicsArray;
+    int htmlPage;
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,7 +42,6 @@
 {
     [super viewDidLoad];
     [self setExtraCellLineHidden:_listTable];
-    currentCount = 0;
     //[self loadXmlFile];
     [self loadHtml];
     [_listTable addFooterWithTarget:self action:@selector(refreshTheTable)];
@@ -57,13 +57,22 @@
     [self.view addSubview:backBtn];
 }
 -(void)loadHtml{
-    
     NSString *string = [[NSString alloc]initWithContentsOfFile:[self getPath] encoding:NSUTF8StringEncoding error:nil];
+    
+    [self loadHtmlString:string];
+}
+-(void)loadHtmlString:(NSString*)string{
+    //<div class="cl"> <div class="pagebox">
+    NSArray *arr1 = [string componentsSeparatedByString:@"<div class=\"cl\">"];
+    NSString *contentStr;
+    if (arr1.count>1) {
+       contentStr = [arr1[1]componentsSeparatedByString:@"<div class=\"pagebox\">"][0];
+    }
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"href=\"http://dota.uuu9.com/\\d+(.*)\" title=.*>(.*)</a>" options:NSRegularExpressionCaseInsensitive error:nil];
-    NSArray *array = [regex matchesInString:string options:0 range:NSMakeRange(0, [string length])];
+    NSArray *array = [regex matchesInString:contentStr options:0 range:NSMakeRange(0, [contentStr length])];
     NSMutableArray *strArr = [NSMutableArray array];
     for (NSTextCheckingResult *st in array) {
-        NSString *s = [string substringWithRange:st.range];
+        NSString *s = [contentStr substringWithRange:st.range];
         NSArray *contentArr = [s componentsSeparatedByString:@"\""];
         NSString *href = contentArr[1];
         NSString *title = contentArr[3];
@@ -75,15 +84,23 @@
         [dicsArray addObject:dic];
         
     }
-    [[MyLoadingView shareLoadingView]stopWithFinished:^{
-                //dataArray = [[NSArray alloc]initWithArray:array];
-                currentCount = MIN(15, (int)dicsArray.count);
-                [_listTable reloadData];
-                [_listTable headerEndRefreshing];
-            }];
     
+    NSString * nextStr = [string componentsSeparatedByString:@"条,"][1];
+    if (htmlPage) {
+        htmlPage--;
+    }else{
+       htmlPage = nextStr.intValue-1;
+    }
+    
+    
+    
+    [[MyLoadingView shareLoadingView]stopWithFinished:^{
+        //dataArray = [[NSArray alloc]initWithArray:array];
+        
+        [_listTable reloadData];
+        [_listTable headerEndRefreshing];
+    }];
 }
-
 //-(void)loadXmlFile
 //{
 //    NSData *data = [NSData dataWithContentsOfFile:[self getPath]];
@@ -94,16 +111,26 @@
 //}
 -(void)refreshTheTable
 {
-    if (currentCount<dicsArray.count) {
-        currentCount = MIN((int)dicsArray.count, currentCount+10);
-    }else{
-        [_listTable footerEndRefreshing];
-        return;
-    }
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [_listTable reloadData];
-        [_listTable footerEndRefreshing];
-    });
+    NSString *url = [NSString stringWithFormat:@"http://dota.uuu9.com/List_275_%d.shtml",htmlPage];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    __weak ASIHTTPRequest *req = request;
+    [req setCompletionBlock:^{
+        if (req.responseStatusCode == 200) {
+            
+                NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+                NSString *str = [[NSString alloc]initWithData:req.responseData encoding:enc];
+            [self loadHtmlString:str];
+            
+            [_listTable footerEndRefreshing];
+            [_listTable reloadData];
+        }
+        [req clearDelegatesAndCancel];
+    }];
+    [req setFailedBlock:^{
+        
+    }];
+    
+    [req startAsynchronous];
 }
 //#pragma  mark myxmlpraserdelegate
 //-(void)finishPraseWithResultArray:(NSArray *)array
@@ -122,7 +149,7 @@
 #pragma mark tableviewdelegate And datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return currentCount;
+    return dicsArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
@@ -165,20 +192,21 @@
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\bhttp://player.youku.com\\b.*\\bswf\\b" options:NSRegularExpressionCaseInsensitive error:nil];
         NSArray *array = [regex matchesInString:str options:0 range:NSMakeRange(0, [str length])];
         NSString *youkuStr;
-        for (NSTextCheckingResult* b in array)
-        {
-            youkuStr = [str substringWithRange:b.range];
-        }
+        /*
+         player = new YKU.Player('youkuplayer',{
+         client_id: 'c9bb14f8593c7a8b',
+         vid: 'XOTMwNjU4OTgw'
+         });*/
         if (array.count==0) {
-            NSArray *arr = [str componentsSeparatedByString:@"<script type=\"text/javascript\" src=\"http://player.youku.com/jsapi\">"];
+            NSArray *arr = [str componentsSeparatedByString:@"player = new YKU.Player('youkuplayer',{"];
             if (arr.count==1) {
                 LoadingView *view = [[LoadingView alloc]initWithString:@"iOS暂不支持此视频,请观看其他视频"];
                 [view show];
                 return ;
             }
-            NSArray *secArr = [[arr objectAtIndex:1]componentsSeparatedByString:@"<"];
+            NSArray *secArr = [[arr objectAtIndex:1]componentsSeparatedByString:@"});"];
             youkuStr = secArr[0];
-            VideoViewController *videoVC = [[VideoViewController alloc]initWithNibName:@"VideoViewController" bundle:nil yukuPlayer:youkuStr];
+            VideoViewController *videoVC = [[VideoViewController alloc]initWithNibName:@"VideoViewController" bundle:nil yukuPlayer:[NSString stringWithFormat:@"%@,",youkuStr]];
             videoVC.title = data[@"title"];
             UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:videoVC];
             [selContrl presentViewController:nav animated:YES completion:^{

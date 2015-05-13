@@ -16,3 +16,5 @@
 @property (nonatomic,strong)AdMoGoView *adView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil yukuPlayer:(NSString*)string;
 @end
+
+

@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>MyDota.xcscheme</key>
+		<key>Debug.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>release.xcscheme</key>
+		<key>Release.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>

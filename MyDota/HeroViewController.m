@@ -52,9 +52,7 @@
     [self.view addSubview:backBtn];
 }
 -(NSString*)getPath{
-   return  [[NSBundle mainBundle]pathForResource:@"dota" ofType:@"html"];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-    return [NSString stringWithFormat:@"%@/dota.html",[paths objectAtIndex:0]];
+   return  [[NSBundle mainBundle]pathForResource:@"File" ofType:@"html"];
 }
 - (void)parseHTML {
     NSError *error = nil;

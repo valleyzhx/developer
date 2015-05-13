@@ -7,15 +7,17 @@
 //
 
 #import "MyLoadingView.h"
-#import "SCGIFImageView.h"
+#import "UIImage+GIF.h"
 @implementation MyLoadingView
 static MyLoadingView* shareLoading;
 +(id)shareLoadingView
 {
     if (shareLoading == nil) {
-        NSString* filePath = [[NSBundle mainBundle] pathForResource:@"sf.gif" ofType:nil];
-        SCGIFImageView* gifImageView = [[SCGIFImageView alloc] initWithGIFFile:filePath];
-        gifImageView.frame = CGRectMake(0, 0, gifImageView.image.size.width/4, gifImageView.image.size.height/4);
+        //NSString* filePath = [[NSBundle mainBundle] pathForResource:@"sf.gif" ofType:nil];
+
+        //SCGIFImageView* gifImageView = [[SCGIFImageView alloc] initWithGIFFile:filePath];
+        UIImageView *gifImageView = [[UIImageView alloc]initWithImage:[UIImage sd_animatedGIFNamed:@"sf"]];
+        gifImageView.frame = CGRectMake(0, 0, gifImageView.image.size.width/2, gifImageView.image.size.height/2);
         shareLoading = [[MyLoadingView alloc]initWithFrame:gifImageView.frame];
         [shareLoading addSubview:gifImageView];
         shareLoading.layer.cornerRadius = 15;

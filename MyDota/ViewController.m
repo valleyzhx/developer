@@ -26,54 +26,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"aaaaa");
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
-    NSDateFormatter* dateFormat = [[NSDateFormatter alloc]init];
-    [dateFormat setDateFormat:@"dd"];
-    NSString *dateStr = [dateFormat stringFromDate:date];
-    int num = dateStr.intValue;
-    _backgroundView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.png",num%4+1]];
-    NSString *ver = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleShortVersionString"];
-    _versionLab.text = [NSString stringWithFormat:@"Dota助手:V%@",ver];
+    _backgroundView.image = [UIImage imageNamed:@"3.png"];
     
-    NSFileManager *fileMan = [NSFileManager defaultManager];
-    if (![fileMan fileExistsAtPath:[NSString stringWithFormat:@"%@/dota.html",[self getPath]]]) {
-        [fileMan copyItemAtPath:[[NSBundle mainBundle] pathForResource:@"dota" ofType:@"html"]  toPath:[NSString stringWithFormat:@"%@/dota.html",[self getPath]] error:nil];
-    }
-        [self performSelectorInBackground:@selector(downloadHtml:) withObject:@"http://dota.uuu9.com/v/"];
+    NSString *ver = [[[NSBundle mainBundle]infoDictionary]objectForKey:@"CFBundleShortVersionString"];
+    _versionLab.text = [NSString stringWithFormat:@"刀一把:V%@",ver];
+    
+    
 }
--(NSString*)getPath{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-    return [paths objectAtIndex:0];
-}
--(void)downloadHtml:(NSString*)url{
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-    __weak ASIHTTPRequest *req = request;
-    [req setCompletionBlock:^{
-        if (req.responseStatusCode == 200) {
-            if ([url isEqualToString:@"http://dota.uuu9.com/v/"]) {
-                
-                NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-                
-                NSString *str = [[NSString alloc]initWithData:req.responseData encoding:enc];
-                if (str.length) {
-                  [self performSelectorOnMainThread:@selector(saveTheString:) withObject:str waitUntilDone:YES];
-                }
-                
-            }
-        }
-        [req clearDelegatesAndCancel];
-    }];
-    [req setFailedBlock:^{
-        
-    }];
 
-    [req startAsynchronous];
-}
--(void)saveTheString:(NSString*)str{
-    NSString* path = [self getPath];
-    [str writeToFile:[NSString stringWithFormat:@"%@/dota.html",path] atomically:YES encoding:NSUTF8StringEncoding error:nil];
-}
 -(void)pushAnimationView:(UIView*)view
 {
     float y = 0;
@@ -101,12 +61,17 @@
     heroView = nil;
 }
 - (IBAction)mainViewClicked:(UIButton *)sender {
+    homeView = nil;
+    heroView = nil;
+    scoreView = nil;
+    
     switch (sender.tag) {
         case 0:
         {
             homeView = [[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:nil];
             homeView.view.frame = self.view.bounds;
             [self pushAnimationView:homeView.view];
+            
         }
             break;
             case 1:

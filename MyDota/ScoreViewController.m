@@ -28,7 +28,8 @@
     // Do any additional setup after loading the view from its nib.
     [[MyLoadingView shareLoadingView]showLoadingIn:self.view];
     _findBtn.hidden = YES;
-    ASIFormDataRequest *requset = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://passport.5211game.com/11/t/login.aspx?siteid=50005&returnurl=http%3a%2f%2fi.5211game.com%2fLogin.aspx%3freturnurl%3dhttp%253a%252f%252fi.5211game.com%253a80%252f"]];
+    ASIFormDataRequest *dataReq = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://passport.5211game.com/11/t/login.aspx?siteid=50005&returnurl=http%3a%2f%2fi.5211game.com%2fLogin.aspx%3freturnurl%3dhttp%253a%252f%252fi.5211game.com%253a80%252f"]];
+    __weak ASIFormDataRequest *requset = dataReq;
     [requset setRequestMethod:@"POST"];
      NSString * __VIEWSTATE = @"/wEPDwULLTEyMzI3ODI2ODBkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYBBQxVc2VyQ2hlY2tCb3jQIGg7DwVBcZCffRMxe03M18OedA==";
      NSString* __EVENTVALIDATION = @"/wEWBQLe2+mbAQLB2tiHDgK1qbSWCwL07qXZBgLmwdLFDZc2mILMY55IspHL6KQgO25sOuhz";
@@ -126,6 +127,7 @@
     [req startAsynchronous];
 }
 -(void)getTheScoreWithUid:(NSNumber*)uid{
+    controllor = nil;
      ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://i.5211game.com/request/rating/?r=1415283385790"]];
     [request setRequestMethod:@"POST"];
     [request addPostValue:@"getrating" forKey:@"method"];
@@ -207,6 +209,7 @@
 -(void)dealloc{
     controllor = nil;
     _adView = nil;
+    data = nil;
 }
 -(void)backAction:(UIButton*)btn{
     btn.hidden = YES;
@@ -218,6 +221,8 @@
         self.view.center = CGPointMake(self.view.frame.size.width*1.5, self.view.center.y+y);
         self.view.alpha = 0.3;
     } completion:^(BOOL finished) {
+        [_adView removeFromSuperview];
+        _adView = nil;
         [self.view removeFromSuperview];
     }];
     [_findBtn setUserInteractionEnabled:YES];

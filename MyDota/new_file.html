@@ -43,7 +43,13 @@ if (isPhone()) {
     
     </script>
 <script type="text/javascript" src="http://player.youku.com/jsapi">
-    CNM
+    player = new YKU.Player('youkuplayer',{CNM
+                            events:{
+                            onPlayStart: function(){ window.location = 'videohandler://' + 'video-beginfullscreen'; },
+                            onPlayEnd: function(){ window.location = 'videohandler://' + 'video-endfullscreen'; }
+                            }
+                            });
+    
 </script>
 </p>
         </div> 

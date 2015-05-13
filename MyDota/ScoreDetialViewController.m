@@ -42,7 +42,7 @@
     [super viewDidLoad];
     
     UILabel *leb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 150, 40)];
-    leb.backgroundColor = [UIColor clearColor];
+    leb.backgroundColor  = [UIColor clearColor];
     leb.font = [UIFont systemFontOfSize:13];
     leb.text = self.navigationController.title;
     self.navigationItem.titleView = leb;
