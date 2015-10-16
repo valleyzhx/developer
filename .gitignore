@@ -6,3 +6,11 @@
 #
 # Pods/
 
+
+*.xcscmblueprint
+
+*.xcuserstate
+
+*.xcscheme
+
+*.plist
