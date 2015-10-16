@@ -1,0 +1,15 @@
+platform :ios, "7.0"
+
+pod "AFNetworking"
+pod 'Mantle'
+pod 'FMDB'
+pod 'MJRefresh'
+pod 'MBProgressHUD', '~> 0.9.1'
+pod 'ImagePlayerView'
+
+
+
+
+target :MyDotaTests, :exclusive => true do
+  # pod 'Kiwi'
+end
