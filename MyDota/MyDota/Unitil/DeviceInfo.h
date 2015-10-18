@@ -15,6 +15,5 @@
 +(NSString*)deviceMode;
 +(NSString*)iOSVersion;
 +(NSString*)screenResolution;
-+(NSString*)netWorkStatus;
 +(NSString*)appVersion;
 @end

@@ -20,4 +20,6 @@
 @property (nonatomic,assign) BOOL noTable;
 @property (nonatomic,strong) UITableView *tableView;
 
+
+
 @end

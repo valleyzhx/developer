@@ -7,23 +7,53 @@
 //
 
 #import "GGRequest.h"
+#import "AFNetworking/UIKit+AFNetworking/UIWebView+AFNetworking.h"
 
 @implementation GGRequest
 
 
 +(void)requestWithUrl:(NSString *)url withSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    if ([url hasSuffix:@".html"]) {
+        manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    }
+        [manager GET:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        if (success) {
+            success(operation,responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+        if (failure) {
+            failure(operation,error);
+        }
+    }];
+}
++(void)requestM3U8WithUrl:(NSString *)url withSuccess:(void (^)(NSString *))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-        
+        NSLog(@"%@",operation.responseString);
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
         
     }];
+    
+    
+    
+//    NSURL *requestUrl = [NSURL URLWithString:url];
+//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:[NSURLRequest requestWithURL:requestUrl]];
+//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+//        NSLog(@"%@",operation.responseString);
+//    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+//        
+//    }];
+//    
+//    
+//    [manager.operationQueue addOperation:operation];
+    
 }
 
-
-
++(void)requestHtmlWithUrl:(NSString *)url withSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure{
+    
+}
 
 +(void)downLoadBanerJS{//
     

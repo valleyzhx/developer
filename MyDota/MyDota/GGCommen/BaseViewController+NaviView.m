@@ -18,8 +18,9 @@
     }
     
     GGNavigationBar *view = [[GGNavigationBar alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
-    view.backgroundColor = Nav_Color;
-    view.alpha = 0.8;
+    view.title = self.title;
+    view.backgroundView.backgroundColor = Nav_Color;
+    view.backgroundView.alpha = 1;
     
     if (type == GGNavigationBarTypeNormal) {
         UIButton *backBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];

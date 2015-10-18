@@ -33,13 +33,18 @@
     [tabBarItem1 setTitle:@"我的"];
     tabBarItem1.imageInsets = UIEdgeInsetsMake(7, 0, -7, 0);
     tabBarItem1.titlePositionAdjustment = UIOffsetMake(0, -2);
-    
 }
 
 -(void)setAppearanceUI{
     [[UITabBar appearance] setTintColor:Nav_Color];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

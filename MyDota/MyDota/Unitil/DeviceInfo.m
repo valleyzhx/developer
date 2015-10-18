@@ -8,7 +8,6 @@
 
 #import "DeviceInfo.h"
 #import "sys/utsname.h"
-#import "Reachability.h"
 
 @implementation DeviceInfo
 
@@ -72,32 +71,7 @@
     CGFloat height = size_screen.height*scale_screen;
     return [NSString stringWithFormat:@"%.0f*%.0f",height,width];
 }
-+(NSString *)netWorkStatus{
-    NSString *netMode;
-    Reachability *netReachable = [Reachability reachabilityWithHostName:@"www.baidu.com"];
-    NetworkStatus netStatus = [netReachable currentReachabilityStatus];
-    switch (netStatus) {
-        case NotReachable:
-        {
-            netMode = @"nonet";
-        }
-            break;
-        case ReachableViaWiFi:
-        {
-            netMode = @"wifi";
-        }
-            break;
-        case ReachableViaWWAN:
-        {
-            netMode = @"3g";
-        }
-            break;
-        default:
-            netMode=@"";
-            break;
-    }
-    return netMode;
-}
+
 
 
 

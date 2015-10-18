@@ -5,9 +5,7 @@
 //  Created by lsx on 15/3/30.
 //  Copyright (c) 2015年 lsx. All rights reserved.
 //
-
-
-
+#import "AppDelegate.h"
 
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height

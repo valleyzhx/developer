@@ -9,7 +9,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CocoaLumberjack.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DTCoreText.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DTFoundation.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FXImageView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -29,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Mantle-HAL.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Mantle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -39,15 +64,55 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Reachability.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>VKFoundation.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>VKVideoPlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>290B74ACA1FE20B1AECE46991EB42E78</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>426BC4549A625B5E1E4200D5261A98BF</key>
+		<key>458A4096125DB3F7ED1CA8051596F811</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5274848432142B064787A7B27709C558</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53402BDE5D15A874C415114C0CCDEF51</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>618582A7BE2A420FC12D98DC5B496574</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>78239A33F829C2F1E81A0ACEDD00709E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,7 +132,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B9AB6907C2C5646AA6B6F6FBF5EDDB6C</key>
+		<key>D4CED237C212AD33569C6C4BF26759A6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DBE96D472C899450DDE6E4065C7946B9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DD684CEF78B7725D997FF4EABD47BD10</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DF3DC482123AE2E34B03A2D71B71B533</key>
 		<dict>
 			<key>primary</key>
 			<true/>

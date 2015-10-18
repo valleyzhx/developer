@@ -33,16 +33,14 @@
         self.tableView.showsVerticalScrollIndicator = NO;
         [self.tableView setHiddenExtrLine:YES];
         
-        self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-            
-        }];
-        self.tableView.footer.automaticallyHidden = YES;
+//        self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//            
+//        }];
         //self.tableView.hidden = YES;
         [self.view addSubview:_tableView];
     }
+    naviBar = [self setUpNaviViewWithType:GGNavigationBarTypeNormal];
     
-    naviBar = [self setUpNaviViewWithType:GGNavigationBarTypeCustom];
-
 }
 
 -(void)setTitle:(NSString *)title{

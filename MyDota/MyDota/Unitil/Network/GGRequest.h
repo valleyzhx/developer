@@ -20,4 +20,8 @@
                                                            responseObject))success
                                      failure:(void (^)(AFHTTPRequestOperation *operation,NSError *error))failure;
 
++(void)requestM3U8WithUrl:(NSString*)url
+              withSuccess:(void (^)(NSString *m3u8url))success
+                  failure:(void (^)(AFHTTPRequestOperation *operation,NSError *error))failure;
+
 @end
