@@ -12,8 +12,8 @@
 #define orgX 16
 
 @interface BaseViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
-    int pageIndex;
-    int totalPage;
+    int currentPage;
+    int total;
     GGNavigationBar *naviBar;
 }
 

@@ -8,6 +8,7 @@ pod 'MBProgressHUD', '~> 0.9.1'
 pod 'ImagePlayerView'
 pod 'VKVideoPlayer', '~> 0.1.1'
 pod "Mantle-HAL"
+pod 'UMengAnalytics'
 
 
 target :MyDotaTests, :exclusive => true do

@@ -65,7 +65,7 @@
     _rightView = rightView;
     if (_rightView) {
         _rightView.center = CGPointMake(self.frame.size.width-_rightView.frame.size.width/2-5, self.frame.size.height/2+navOrgY/2);
-        [self addSubview:_leftView];
+        [self addSubview:_rightView];
     }
 }
 -(void)setLeftView:(UIView *)leftView{

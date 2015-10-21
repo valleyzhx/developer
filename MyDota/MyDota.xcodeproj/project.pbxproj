@@ -26,8 +26,11 @@
 		F0A2676E1BD09F20004BB71D /* BaseViewController+NaviView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A2676D1BD09F20004BB71D /* BaseViewController+NaviView.m */; settings = {ASSET_TAGS = (); }; };
 		F0B3EF501BD0D69E00313C24 /* GGRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3EF4F1BD0D69E00313C24 /* GGRequestManager.m */; settings = {ASSET_TAGS = (); }; };
 		F0B3EF531BD0D6AD00313C24 /* GGRequestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3EF521BD0D6AD00313C24 /* GGRequestObserver.m */; settings = {ASSET_TAGS = (); }; };
-		F0D56B441BD384EC009CA293 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D56B421BD384EC009CA293 /* VideoListCell.m */; settings = {ASSET_TAGS = (); }; };
-		F0D56B451BD384EC009CA293 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0D56B431BD384EC009CA293 /* VideoListCell.xib */; settings = {ASSET_TAGS = (); }; };
+		F0CF6C8B1BD777FB00DF8017 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C8A1BD777FB00DF8017 /* SearchViewController.m */; settings = {ASSET_TAGS = (); }; };
+		F0CF6C8E1BD77C5600DF8017 /* VideoListBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C8D1BD77C5600DF8017 /* VideoListBaseController.m */; settings = {ASSET_TAGS = (); }; };
+		F0CF6C921BD77D3100DF8017 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C901BD77D3100DF8017 /* VideoListCell.m */; settings = {ASSET_TAGS = (); }; };
+		F0CF6C931BD77D3100DF8017 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0CF6C911BD77D3100DF8017 /* VideoListCell.xib */; settings = {ASSET_TAGS = (); }; };
+		F0CF6C991BD783B600DF8017 /* BaseViewController+GGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C981BD783B600DF8017 /* BaseViewController+GGRequest.m */; settings = {ASSET_TAGS = (); }; };
 		F0D56B491BD3B616009CA293 /* AuthourData.geojson in Resources */ = {isa = PBXBuildFile; fileRef = F0D56B481BD3B616009CA293 /* AuthourData.geojson */; settings = {ASSET_TAGS = (); }; };
 		F0D56B4C1BD3E5FB009CA293 /* VideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D56B4B1BD3E5FB009CA293 /* VideoListController.m */; settings = {ASSET_TAGS = (); }; };
 		F0EAF15A1BCE205500B18B81 /* DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF14C1BCE205500B18B81 /* DeviceInfo.m */; settings = {ASSET_TAGS = (); }; };
@@ -104,9 +107,15 @@
 		F0B3EF4F1BD0D69E00313C24 /* GGRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGRequestManager.m; sourceTree = "<group>"; };
 		F0B3EF511BD0D6AD00313C24 /* GGRequestObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGRequestObserver.h; sourceTree = "<group>"; };
 		F0B3EF521BD0D6AD00313C24 /* GGRequestObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGRequestObserver.m; sourceTree = "<group>"; };
-		F0D56B411BD384EC009CA293 /* VideoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListCell.h; sourceTree = "<group>"; };
-		F0D56B421BD384EC009CA293 /* VideoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListCell.m; sourceTree = "<group>"; };
-		F0D56B431BD384EC009CA293 /* VideoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListCell.xib; sourceTree = "<group>"; };
+		F0CF6C891BD777FB00DF8017 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		F0CF6C8A1BD777FB00DF8017 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		F0CF6C8C1BD77C5600DF8017 /* VideoListBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListBaseController.h; sourceTree = "<group>"; };
+		F0CF6C8D1BD77C5600DF8017 /* VideoListBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListBaseController.m; sourceTree = "<group>"; };
+		F0CF6C8F1BD77D3100DF8017 /* VideoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListCell.h; sourceTree = "<group>"; };
+		F0CF6C901BD77D3100DF8017 /* VideoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListCell.m; sourceTree = "<group>"; };
+		F0CF6C911BD77D3100DF8017 /* VideoListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoListCell.xib; sourceTree = "<group>"; };
+		F0CF6C971BD783B600DF8017 /* BaseViewController+GGRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BaseViewController+GGRequest.h"; sourceTree = "<group>"; };
+		F0CF6C981BD783B600DF8017 /* BaseViewController+GGRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BaseViewController+GGRequest.m"; sourceTree = "<group>"; };
 		F0D56B481BD3B616009CA293 /* AuthourData.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthourData.geojson; sourceTree = "<group>"; };
 		F0D56B4A1BD3E5FB009CA293 /* VideoListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListController.h; sourceTree = "<group>"; };
 		F0D56B4B1BD3E5FB009CA293 /* VideoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoListController.m; sourceTree = "<group>"; };
@@ -198,6 +207,13 @@
 				F00EF2221BCF806A009FEEB4 /* GGNavigationBar.m */,
 				F0A2676C1BD09F20004BB71D /* BaseViewController+NaviView.h */,
 				F0A2676D1BD09F20004BB71D /* BaseViewController+NaviView.m */,
+				F0CF6C971BD783B600DF8017 /* BaseViewController+GGRequest.h */,
+				F0CF6C981BD783B600DF8017 /* BaseViewController+GGRequest.m */,
+				F0CF6C8C1BD77C5600DF8017 /* VideoListBaseController.h */,
+				F0CF6C8D1BD77C5600DF8017 /* VideoListBaseController.m */,
+				F0CF6C8F1BD77D3100DF8017 /* VideoListCell.h */,
+				F0CF6C901BD77D3100DF8017 /* VideoListCell.m */,
+				F0CF6C911BD77D3100DF8017 /* VideoListCell.xib */,
 			);
 			path = GGCommen;
 			sourceTree = "<group>";
@@ -238,9 +254,8 @@
 				F021BDBC1BD34407001429CC /* AuthorVideoListController.m */,
 				F0D56B4A1BD3E5FB009CA293 /* VideoListController.h */,
 				F0D56B4B1BD3E5FB009CA293 /* VideoListController.m */,
-				F0D56B411BD384EC009CA293 /* VideoListCell.h */,
-				F0D56B421BD384EC009CA293 /* VideoListCell.m */,
-				F0D56B431BD384EC009CA293 /* VideoListCell.xib */,
+				F0CF6C891BD777FB00DF8017 /* SearchViewController.h */,
+				F0CF6C8A1BD777FB00DF8017 /* SearchViewController.m */,
 			);
 			path = subVC;
 			sourceTree = "<group>";
@@ -490,7 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0EF56051BCDEA680062ECE1 /* LaunchScreen.storyboard in Resources */,
-				F0D56B451BD384EC009CA293 /* VideoListCell.xib in Resources */,
+				F0CF6C931BD77D3100DF8017 /* VideoListCell.xib in Resources */,
 				F0EAF16B1BCE2B3200B18B81 /* Assets.xcassets in Resources */,
 				F0EF56001BCDEA680062ECE1 /* Main.storyboard in Resources */,
 				F0D56B491BD3B616009CA293 /* AuthourData.geojson in Resources */,
@@ -566,10 +581,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0D56B441BD384EC009CA293 /* VideoListCell.m in Sources */,
 				F021BDBD1BD34407001429CC /* AuthorVideoListController.m in Sources */,
 				F0EAF15A1BCE205500B18B81 /* DeviceInfo.m in Sources */,
 				F0EF55F71BCDEA680062ECE1 /* AppDelegate.m in Sources */,
+				F0CF6C8B1BD777FB00DF8017 /* SearchViewController.m in Sources */,
 				F0966F141BD202B2000A512F /* VideoViewController.m in Sources */,
 				F07619881BD1D1F70097686B /* M3U8SegmentInfoList.m in Sources */,
 				F00EF2201BCF8045009FEEB4 /* BaseViewController.m in Sources */,
@@ -581,6 +596,7 @@
 				F076198D1BD1DA940097686B /* M3U8Tool.m in Sources */,
 				F07619861BD1D1F70097686B /* M3U8Parser.m in Sources */,
 				F0EAF15D1BCE205600B18B81 /* ZXUnitil.mm in Sources */,
+				F0CF6C8E1BD77C5600DF8017 /* VideoListBaseController.m in Sources */,
 				F0EAF1661BCE215B00B18B81 /* UserCenterController.m in Sources */,
 				F07619871BD1D1F70097686B /* M3U8SegmentInfo.m in Sources */,
 				F00930AB1BD37FD5005E3E3E /* MTModel+GGRequest.m in Sources */,
@@ -592,6 +608,8 @@
 				F0EAF15F1BCE205600B18B81 /* MainTabBarController.m in Sources */,
 				F0A2676E1BD09F20004BB71D /* BaseViewController+NaviView.m in Sources */,
 				F0A2676B1BD0906C004BB71D /* GGRequest.m in Sources */,
+				F0CF6C921BD77D3100DF8017 /* VideoListCell.m in Sources */,
+				F0CF6C991BD783B600DF8017 /* BaseViewController+GGRequest.m in Sources */,
 				F0EAF1631BCE213C00B18B81 /* HomeController.m in Sources */,
 				F0EF55F41BCDEA680062ECE1 /* main.m in Sources */,
 			);

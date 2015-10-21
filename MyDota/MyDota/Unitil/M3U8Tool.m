@@ -25,6 +25,7 @@ static M3U8Tool *_tool = nil;
     if (_tool == nil) {
         _tool = [[M3U8Tool alloc]init];
     }
+    //htmlUrl = [NSString stringWithFormat:@"http://v.youku.com/v_show/id_XMTM2MTM5NzYzNg==.html?streamtypes=1,5"];
     [_tool requesetUrl:htmlUrl complised:block];
 
 }

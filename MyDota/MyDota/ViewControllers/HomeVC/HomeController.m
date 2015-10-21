@@ -18,6 +18,7 @@
 #import "UserModel.h"
 #import "AuthorVideoListController.h"
 #import "VideoListController.h"
+#import "SearchViewController.h"
 
 
 #define rowAd (180*timesOf320)
@@ -54,13 +55,21 @@
     UIView *footView = [[UIView  alloc]initWithFrame:CGRectMake(0, 0, 320, 48+5)];
     footView.backgroundColor = viewBGColor;
     self.tableView.tableFooterView = footView;
-    
+    [self setSearchButton];
 //    _authoList = @[@"2009",       @"情书",    @"小满",    @"牛蛙",   @"章鱼丸718", @"西瓦幽鬼",    @"舞ル灬",@"更多"];
 //    _authorIdArr = @[@"79241663",@"106382808",@"64331608",@"90146406",@"75496314",@"109937062",@"80985046"];
 //    
 //    _authorUrlArr = @[];
     
 }
+
+-(void)setSearchButton{
+    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
+    [btn setTitle:@"--" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(searchAction:) forControlEvents:UIControlEventTouchUpInside];
+    naviBar.rightView = btn;
+}
+
 
 -(void)loadDotaVideos{
     
@@ -80,6 +89,15 @@
     // Dispose of any resources that can be recreated.
     
 }
+
+#pragma mark Search Action
+-(void)searchAction:(UIButton*)btn{
+    SearchViewController *serchVC = [[SearchViewController alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:serchVC animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+}
+
 
 
 #pragma mark tableViewDataSource --- Delegate

@@ -52,6 +52,7 @@ PODS:
   - MBProgressHUD (0.9.1)
   - MJRefresh (2.4.12)
   - Reachability (3.1.1)
+  - UMengAnalytics (3.6.4)
   - VKFoundation (0.1.1):
     - CocoaLumberjack (~> 1.7.0)
     - DTCoreText (~> 1.6.11)
@@ -70,6 +71,7 @@ DEPENDENCIES:
   - Mantle-HAL
   - MBProgressHUD (~> 0.9.1)
   - MJRefresh
+  - UMengAnalytics
   - VKVideoPlayer (~> 0.1.1)
 
 SPEC CHECKSUMS:
@@ -85,6 +87,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MJRefresh: ca8e9589895977df32d379d46e6b8a5450b3ff44
   Reachability: dd9aa4fb6667b9f787690a74f53cb7634ce99893
+  UMengAnalytics: d24fb5200e13d2874f36b6337bc129b96511c54e
   VKFoundation: a3d26de016870f705a256c5c6dbab57865c4e99a
   VKVideoPlayer: 75d0c44d8cd208dd01ae397d2e75c52cfc51dd19
 

@@ -6,7 +6,7 @@
 //  Copyright © 2015年 iOGG. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "VideoListBaseController.h"
 
-@interface VideoListController : BaseViewController
+@interface VideoListController : VideoListBaseController
 @end
