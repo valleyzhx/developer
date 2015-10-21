@@ -1,0 +1,1 @@
+../../../Mantle-HAL/Pod/Classes/MTLHALResource.h
