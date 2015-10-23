@@ -22,6 +22,7 @@
     // Do any additional setup after loading the view.
     self.imagView.image = [UIImage imageNamed:@"user_Header.jpg"];
     self.tableView.backgroundColor = [UIColor clearColor];
+    [self.tableView setHiddenExtrLine:YES];
     self.tableView.tableHeaderView = ({
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 200)];
         view.backgroundColor = [UIColor clearColor];
@@ -44,7 +45,7 @@
     
     float y = scrollView.contentOffset.y;
     y = MIN(0, y);
-    _imagView.transform = CGAffineTransformMakeScale(1.0-y/400, 1.0-y/400);
+    _imagView.transform = CGAffineTransformMakeScale(1.0-y/200, 1.0-y/200);
     
 }
 
@@ -75,6 +76,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+    NSArray *arr = @[@"我的收藏",@"买套装备",@"意见反馈",@"给个好评",@"分享APP"];
+    cell.textLabel.text = arr[indexPath.row];
     return cell;
     
     return nil;

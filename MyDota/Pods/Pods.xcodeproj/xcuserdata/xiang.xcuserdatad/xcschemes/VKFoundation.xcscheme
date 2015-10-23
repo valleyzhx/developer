@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '802520747887341080A898F2'
+               BlueprintIdentifier = '4AC01657D0CF66D6A843DC51'
                BlueprintName = 'VKFoundation'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libVKFoundation.a'>

@@ -59,6 +59,8 @@ install_resource()
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "UzysAssetsPickerController/UzysAssetsPickerController/Library/UzysAssetsPickerController.xib"
+  install_resource "UzysAssetsPickerController/UzysAssetsPickerController/Library/UzysAssetPickerController.bundle"
   install_resource "VKFoundation/Assets/VKFoundation_themes.plist"
   install_resource "VKFoundation/Assets/VKPickerButton_bg.png"
   install_resource "VKFoundation/Assets/VKPickerButton_bg@2x.png"
@@ -96,6 +98,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "UzysAssetsPickerController/UzysAssetsPickerController/Library/UzysAssetsPickerController.xib"
+  install_resource "UzysAssetsPickerController/UzysAssetsPickerController/Library/UzysAssetPickerController.bundle"
   install_resource "VKFoundation/Assets/VKFoundation_themes.plist"
   install_resource "VKFoundation/Assets/VKPickerButton_bg.png"
   install_resource "VKFoundation/Assets/VKPickerButton_bg@2x.png"

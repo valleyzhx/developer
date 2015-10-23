@@ -9,7 +9,7 @@ pod 'ImagePlayerView'
 pod 'VKVideoPlayer', '~> 0.1.1'
 pod "Mantle-HAL"
 pod 'UMengAnalytics'
-
+pod 'UzysAssetsPickerController'
 
 target :MyDotaTests, :exclusive => true do
   # pod 'Kiwi'
