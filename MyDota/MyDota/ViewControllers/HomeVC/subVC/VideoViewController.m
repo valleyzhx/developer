@@ -15,6 +15,9 @@
 #import "UserModel.h"
 #import "UIKit+AFNetworking.h"
 #import "AuthorVideoListController.h"
+#import "VideoModel.h"
+#import "MTLHALResource+Helper.h"
+#import "DatabaseOperation.h"
 
 @interface ChooseView : UIView
 
@@ -31,11 +34,13 @@
 
 @implementation VideoViewController{
     NSDictionary *_inputDic;
+    VideoModel *_model;
     NSString *_m3u8Url;
     //NSMutableDictionary *_typeDic;
     NSString *_selectKey;
     ChooseView *_choosV;
     UserModel *_user;
+    BOOL _isFav;
 }
 
 -(id)initWithVideoDiction:(NSDictionary *)dic{
@@ -64,6 +69,7 @@
         _user = objc;
         [self.tableView reloadData];
     }];
+    _isFav = [VideoModel haveDataWithID:_inputDic[@"id"]];
 }
 
 -(void)startLoadRequest:(NSString*)htmlUrl{
@@ -332,6 +338,12 @@
 }
 -(void)favarateAction:(UIButton*)btn{
     
+    FMDatabase *db = [DatabaseOperation openDataBase];
+    if (_isFav) {
+        
+    }
+    [DatabaseOperation closeDataBase:db];
+    _isFav = NO;
 }
 #pragma mark - navi
 

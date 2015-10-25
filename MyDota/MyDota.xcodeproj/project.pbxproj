@@ -15,6 +15,8 @@
 		F00EF2201BCF8045009FEEB4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F00EF21F1BCF8045009FEEB4 /* BaseViewController.m */; settings = {ASSET_TAGS = (); }; };
 		F00EF2231BCF806A009FEEB4 /* GGNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F00EF2221BCF806A009FEEB4 /* GGNavigationBar.m */; settings = {ASSET_TAGS = (); }; };
 		F021BDBD1BD34407001429CC /* AuthorVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021BDBC1BD34407001429CC /* AuthorVideoListController.m */; settings = {ASSET_TAGS = (); }; };
+		F039AE061BDBA51800A9D910 /* DatabaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F039AE051BDBA51800A9D910 /* DatabaseOperation.m */; settings = {ASSET_TAGS = (); }; };
+		F039AE091BDBADC200A9D910 /* MTLHALResource+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = F039AE081BDBADC200A9D910 /* MTLHALResource+Helper.m */; settings = {ASSET_TAGS = (); }; };
 		F07619861BD1D1F70097686B /* M3U8Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = F076197D1BD1D1F70097686B /* M3U8Parser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F07619871BD1D1F70097686B /* M3U8SegmentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F076197F1BD1D1F70097686B /* M3U8SegmentInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F07619881BD1D1F70097686B /* M3U8SegmentInfoList.m in Sources */ = {isa = PBXBuildFile; fileRef = F07619811BD1D1F70097686B /* M3U8SegmentInfoList.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -83,6 +85,10 @@
 		F00EF2221BCF806A009FEEB4 /* GGNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGNavigationBar.m; sourceTree = "<group>"; };
 		F021BDBB1BD34407001429CC /* AuthorVideoListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorVideoListController.h; sourceTree = "<group>"; };
 		F021BDBC1BD34407001429CC /* AuthorVideoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorVideoListController.m; sourceTree = "<group>"; };
+		F039AE041BDBA51800A9D910 /* DatabaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseOperation.h; sourceTree = "<group>"; };
+		F039AE051BDBA51800A9D910 /* DatabaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseOperation.m; sourceTree = "<group>"; };
+		F039AE071BDBADC200A9D910 /* MTLHALResource+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTLHALResource+Helper.h"; sourceTree = "<group>"; };
+		F039AE081BDBADC200A9D910 /* MTLHALResource+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MTLHALResource+Helper.m"; sourceTree = "<group>"; };
 		F076197A1BD1D1F70097686B /* M3U8Kit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "M3U8Kit-Prefix.pch"; sourceTree = "<group>"; };
 		F076197B1BD1D1F70097686B /* M3U8Kit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M3U8Kit.h; sourceTree = "<group>"; };
 		F076197C1BD1D1F70097686B /* M3U8Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M3U8Parser.h; sourceTree = "<group>"; };
@@ -280,6 +286,10 @@
 				F07619781BD1D1F70097686B /* Libary */,
 				F0EAF14B1BCE205500B18B81 /* DeviceInfo.h */,
 				F0EAF14C1BCE205500B18B81 /* DeviceInfo.m */,
+				F039AE041BDBA51800A9D910 /* DatabaseOperation.h */,
+				F039AE051BDBA51800A9D910 /* DatabaseOperation.m */,
+				F039AE071BDBADC200A9D910 /* MTLHALResource+Helper.h */,
+				F039AE081BDBADC200A9D910 /* MTLHALResource+Helper.m */,
 				F0EAF14F1BCE205500B18B81 /* SvUDIDTools.h */,
 				F0EAF1501BCE205500B18B81 /* SvUDIDTools.m */,
 				F0EAF1511BCE205500B18B81 /* ZXUnitil.h */,
@@ -582,6 +592,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F021BDBD1BD34407001429CC /* AuthorVideoListController.m in Sources */,
+				F039AE091BDBADC200A9D910 /* MTLHALResource+Helper.m in Sources */,
 				F0EAF15A1BCE205500B18B81 /* DeviceInfo.m in Sources */,
 				F0EF55F71BCDEA680062ECE1 /* AppDelegate.m in Sources */,
 				F0CF6C8B1BD777FB00DF8017 /* SearchViewController.m in Sources */,
@@ -601,6 +612,7 @@
 				F07619871BD1D1F70097686B /* M3U8SegmentInfo.m in Sources */,
 				F00930AB1BD37FD5005E3E3E /* MTModel+GGRequest.m in Sources */,
 				F0B3EF501BD0D69E00313C24 /* GGRequestManager.m in Sources */,
+				F039AE061BDBA51800A9D910 /* DatabaseOperation.m in Sources */,
 				F00930AE1BD37FD5005E3E3E /* VideoModel.m in Sources */,
 				F076198A1BD1D1F70097686B /* NSURL+m3u8.m in Sources */,
 				F00930AD1BD37FD5005E3E3E /* VideoListModel.m in Sources */,

@@ -10,6 +10,8 @@
 
 @interface VideoModel : MTLHALResource
 
+@property (nonatomic,strong)NSString *VideoModelID;
+
 @property (nonatomic,strong)NSString *videoId;
 @property (nonatomic,strong)NSString *title;
 @property (nonatomic,strong)NSString *link;

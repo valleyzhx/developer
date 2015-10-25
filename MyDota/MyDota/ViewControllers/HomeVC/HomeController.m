@@ -49,7 +49,7 @@
     
     
     _authourList = [UserModel loadLocalGEOJsonData];
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 64)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
     view.backgroundColor = viewBGColor;
     self.tableView.tableHeaderView = view;
     UIView *footView = [[UIView  alloc]initWithFrame:CGRectMake(0, 0, 320, 48+5)];
