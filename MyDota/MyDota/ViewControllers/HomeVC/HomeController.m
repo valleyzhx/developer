@@ -19,7 +19,7 @@
 #import "AuthorVideoListController.h"
 #import "VideoListController.h"
 #import "SearchViewController.h"
-
+#import "VideoListModel.h"
 
 #define rowAd (180*timesOf320)
 #define  tail  10
@@ -31,7 +31,7 @@
 
 @implementation HomeController{
     GGRequestObserver *_reqeustObserver;
-    NSMutableArray *_dotaArr;
+    VideoListModel *_dotaListModel;
     
     ImagePlayerView *_imgView;
     UIWebView *_webView;
@@ -72,15 +72,11 @@
 
 
 -(void)loadDotaVideos{
-    
-    [GGRequest requestWithUrl:@"https://api.youku.com/quality/video/by/category.json?client_id=e2306ead120d2e34&cate=10&count=10" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (responseObject) {
-            _dotaArr = responseObject[@"videos"];
-            [self.tableView reloadData];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+    [VideoListModel getVideoListBy:@"https://api.youku.com/quality/video/by/category.json?client_id=e2306ead120d2e34&cate=10&count=10" complish:^(id object) {
+        _dotaListModel = object;
+        [self.tableView reloadData];
     }];
+    
 }
 
 
@@ -93,9 +89,7 @@
 #pragma mark Search Action
 -(void)searchAction:(UIButton*)btn{
     SearchViewController *serchVC = [[SearchViewController alloc]init];
-    self.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:serchVC animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
+    [self pushWithoutTabbar:serchVC];
 }
 
 
@@ -106,7 +100,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 2) {
-        if (_dotaArr.count<4) {
+        if (_dotaListModel.videos.count < 4) {
             return 0;
         }
     }
@@ -175,7 +169,7 @@
                 }
                 UserModel *info = _authourList[i];
                 nameLab.text = info.name;
-                if ([info.userId isEqualToString:@"64331608"]) {
+                if ([info.modelID isEqualToString:@"64331608"]) {
                     nameLab.text = @"小满";
                 }
 
@@ -208,19 +202,19 @@
                 
                 cell.contentView.backgroundColor = viewBGColor;
                 
-                NSInteger index = _dotaArr.count-(4-i);
+                NSInteger index = _dotaListModel.videos.count-(4-i);
                 btn.tag = index;
-                NSDictionary *dic = _dotaArr[index];
+                VideoModel *model = _dotaListModel.videos[index];
                 
-                [imgV setImageWithURL:[NSURL URLWithString:dic[@"thumbnail"]]];
-                nameLab.text = dic[@"title"];
+                [imgV setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+                nameLab.text = model.title;
                 [ZXUnitil fitTheLabel:nameLab];
                 
                 UILabel *detialLab = [[UILabel alloc]initWithFrame:CGRectMake(5, CGRectGetMaxY(imgV.frame)+5, wid-10, 20)];
                 detialLab.font = [UIFont systemFontOfSize:12];
                 detialLab.textColor = TextLightColor;
                 detialLab.textAlignment = NSTextAlignmentCenter;
-                detialLab.text = dic[@"published"];
+                detialLab.text = model.published;
                 [btn addSubview:detialLab];
                 
                 [cell.contentView addSubview:btn];
@@ -244,10 +238,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 3) {
-        self.hidesBottomBarWhenPushed = YES;
         VideoListController *vc = [[VideoListController alloc]init];
-        [self.navigationController pushViewController:vc animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
+        [self pushWithoutTabbar:vc];
     }
 }
 
@@ -260,19 +252,16 @@
         
     }else{
         UserModel *user = _authourList[btn.tag];
-        self.hidesBottomBarWhenPushed = YES;
         AuthorVideoListController *vc = [[AuthorVideoListController alloc]initWithUser:user];
-        [self.navigationController pushViewController:vc animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
+        [self pushWithoutTabbar:vc];
     }
 }
 
 -(void)clickedLargeBtn:(UIButton*)btn{
-    NSDictionary *dic = _dotaArr[btn.tag];
-    if (dic[@"link"]) {
-        self.hidesBottomBarWhenPushed = YES;
-        VideoViewController *vc = [[VideoViewController alloc]initWithVideoDiction:dic];
-        [self.navigationController pushViewController:vc animated:YES];
+    VideoModel *model = _dotaListModel.videos[btn.tag];
+    if (model.link) {
+        VideoViewController *vc = [[VideoViewController alloc]initWithVideoModel:model];
+        [self pushWithoutTabbar:vc];
     }
     
 }
@@ -282,29 +271,38 @@
 
 - (NSInteger)numberOfItems{
     
-    return MIN(_dotaArr.count, 6);
+    return MIN(_dotaListModel.videos.count, 6);
 }
 
 - (void)imagePlayerView:(ImagePlayerView *)imagePlayerView loadImageForImageView:(UIImageView *)imageView index:(NSInteger)index{
     
-    NSDictionary *dic = _dotaArr[index];
-    if (dic[@"thumbnail"]) {
+    VideoModel *model = _dotaListModel.videos[index];
+    if (model.thumbnail) {
         imageView.contentMode = UIViewContentModeScaleToFill;
-        [imageView setImageWithURL:[NSURL URLWithString:dic[@"thumbnail"]]];
+        [imageView setImageWithURL:[NSURL URLWithString:model.thumbnail]];
     }
     
 }
 - (void)imagePlayerView:(ImagePlayerView *)imagePlayerView didTapAtIndex:(NSInteger)index{
-    NSDictionary *dic = _dotaArr[index];
-    if (dic[@"link"]) {
-        self.hidesBottomBarWhenPushed = YES;
-        VideoViewController *vc = [[VideoViewController alloc]initWithVideoDiction:dic];
-        [self.navigationController pushViewController:vc animated:YES];
+    VideoModel *model = _dotaListModel.videos[index];
+    if (model.link) {
+        VideoViewController *vc = [[VideoViewController alloc]initWithVideoModel:model];
+        [self pushWithoutTabbar:vc];
     }else{
         
     }
 }
 
+
+
+
+#pragma mark -- pushAction
+
+-(void)pushWithoutTabbar:(UIViewController*)vc{
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+}
 
 
 

@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "GGRequest.h"
+#import "WXApi.h"
+#import "MobClick.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +22,8 @@
     // Override point for customization after application launch.
    // [GGRequest downLoadBanerJS];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-
+    [WXApi registerApp:@"wx1bc2f1985a2547b5"];
+    [MobClick startWithAppkey:@"539093f556240b01ab039989"];
     return YES;
 }
 

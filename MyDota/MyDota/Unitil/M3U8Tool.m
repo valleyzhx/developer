@@ -56,7 +56,8 @@ static M3U8Tool *_tool = nil;
 
 #pragma mark --- UIWebViewDelegate
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-    
+    NSString *oldAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+    NSLog(@"old agent :%@", oldAgent);
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{

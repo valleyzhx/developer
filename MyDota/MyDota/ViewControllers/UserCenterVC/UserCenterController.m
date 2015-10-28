@@ -9,6 +9,9 @@
 #import "UserCenterController.h"
 #import "MyDefines.h"
 #import "UzysAssetsPickerController.h"
+#import "WXApiRequestHandler.h"
+
+#define imageHeight 230*timesOf320
 
 @interface UserCenterController ()<UzysAssetsPickerControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imagView;
@@ -24,11 +27,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = viewBGColor;
-    self.imagView.image = [UIImage imageNamed:@"user_Header.jpg"];
+    
+    [self setHeaderImage];
+    
     self.tableView.backgroundColor = [UIColor clearColor];
     [self.tableView setHiddenExtrLine:YES];
     self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 230*timesOf320)];
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, imageHeight)];
         view.backgroundColor = [UIColor clearColor];
         UILongPressGestureRecognizer *longPressGr = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(panTheImageAction:)];
         [view addGestureRecognizer:longPressGr];
@@ -43,6 +48,16 @@
 //    [UzysAssetsPickerController setUpAppearanceConfig:appearanceConfig];
 //    
     
+}
+
+-(void)setHeaderImage{
+    NSString *path = [self getImagePath];
+    NSData *imgData = [NSData dataWithContentsOfFile:path];
+    if (imgData) {
+      self.imagView.image = [[UIImage alloc]initWithData:imgData];
+    }else{
+        self.imagView.image = [UIImage imageNamed:@"user_Header.jpg"];
+    }
 }
 
 
@@ -63,8 +78,7 @@
         scrollView.contentOffset = CGPointMake(0, 0);
     }
     y = MIN(0, y);
-    _imagView.transform = CGAffineTransformMakeScale(1.0-y/200, 1.0-y/200);
-    
+    _imagView.transform = CGAffineTransformMakeScale(1.0-y/150, 1.0-y/150);
 }
 
 
@@ -106,6 +120,21 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row == 3) {
+        UIImage *thumbImage = [UIImage imageNamed:@"res2.jpg"];
+        [WXApiRequestHandler sendAppContentData:nil
+                                        ExtInfo:@""
+                                         ExtURL:@"http"
+                                          Title:@"刀一把"
+                                    Description:@"最新最热Dota视频"
+                                     MessageExt:nil
+                                  MessageAction:nil
+                                     ThumbImage:thumbImage
+                                        InScene:WXSceneSession];
+    }
+    
+    
 }
 
 
@@ -140,10 +169,31 @@
 #pragma mark --- UzysAssetsPickerControllerDelegate
 
 - (void)uzysAssetsPickerController:(UzysAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets{
-    
+    if([[assets[0] valueForProperty:@"ALAssetPropertyType"] isEqualToString:@"ALAssetTypePhoto"]) //Photo
+    {
+        [assets enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            ALAsset *representation = obj;
+            
+            UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullResolutionImage
+                                               scale:representation.defaultRepresentation.scale
+                                         orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
+            _imagView.image = img;
+            *stop = YES;
+            NSString *path = [self getImagePath];
+            NSData *data = UIImageJPEGRepresentation(img, 1.0);
+            [data writeToFile:path atomically:NO];
+        }];
+        
+        
+    }
 }
 
 
-
+-(NSString*)getImagePath{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *DOCPath = [paths objectAtIndex:0];
+    NSString *fn = [DOCPath stringByAppendingPathComponent:@"image.png"];
+    return fn;
+}
 
 @end

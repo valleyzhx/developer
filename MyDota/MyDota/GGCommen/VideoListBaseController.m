@@ -60,11 +60,11 @@
         
     }
     
-    NSDictionary *dataDic = _listArr[indexPath.row];
+    VideoModel *model = _listArr[indexPath.row];
     
-    [cell.imgView setImageWithURL:[NSURL URLWithString:dataDic[@"thumbnail"]]];
-    cell.titleLab.text = dataDic[@"title"];
-    cell.publishLab.text = dataDic[@"published"];
+    [cell.imgView setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    cell.titleLab.text = model.title;
+    cell.publishLab.text = model.published;
     [ZXUnitil fitTheLabel:cell.titleLab];
     //userLab.text = dataDic[@""];
     float y = cell.publishLab.frame.origin.y - CGRectGetMaxY(cell.imgView.frame);
@@ -75,9 +75,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSDictionary *dataDic = _listArr[indexPath.row];
+    VideoModel *model = _listArr[indexPath.row];
     self.hidesBottomBarWhenPushed = YES;
-    VideoViewController *controller = [[VideoViewController alloc]initWithVideoDiction:dataDic];
+    VideoViewController *controller = [[VideoViewController alloc]initWithVideoModel:model];
     [self.navigationController pushViewController:controller animated:YES];
     
 }

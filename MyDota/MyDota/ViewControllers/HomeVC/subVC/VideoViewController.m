@@ -15,9 +15,7 @@
 #import "UserModel.h"
 #import "UIKit+AFNetworking.h"
 #import "AuthorVideoListController.h"
-#import "VideoModel.h"
-#import "MTLHALResource+Helper.h"
-#import "DatabaseOperation.h"
+#import "FMDBManager.h"
 
 @interface ChooseView : UIView
 
@@ -33,8 +31,7 @@
 @end
 
 @implementation VideoViewController{
-    NSDictionary *_inputDic;
-    VideoModel *_model;
+    VideoModel *_videoObject;
     NSString *_m3u8Url;
     //NSMutableDictionary *_typeDic;
     NSString *_selectKey;
@@ -43,9 +40,9 @@
     BOOL _isFav;
 }
 
--(id)initWithVideoDiction:(NSDictionary *)dic{
+-(id)initWithVideoModel:(VideoModel *)model{
     if (self = [super init]) {
-        _inputDic = dic;
+        _videoObject = model;
     }
     return self;
 }
@@ -55,21 +52,19 @@
     // Do any additional setup after loading the view.
     naviBar.backgroundView.alpha = 0;
     [self setVideoView];
-    [self startLoadRequest:_inputDic[@"link"]];
+    [self startLoadRequest:_videoObject.link];
     //[self loadTheVidList];
     CGRect r = self.tableView.frame;
     r.origin.y = self.player.view.frame.size.height;
     r.size.height -= r.origin.y;
     self.tableView.frame = r;
     [self.view bringSubviewToFront:naviBar];
-    if (!_userId) {
-        _userId = [_inputDic[@"userid"]integerValue];
-    }
-    [UserModel getUserInfoBy:@(_userId) complish:^(id objc) {
+    
+    [UserModel getUserInfoBy:@(_videoObject.userid.integerValue) complish:^(id objc) {
         _user = objc;
         [self.tableView reloadData];
     }];
-    _isFav = [VideoModel haveDataWithID:_inputDic[@"id"]];
+    _isFav = [[FMDBManager shareManager]hasTheModel:_user];
 }
 
 -(void)startLoadRequest:(NSString*)htmlUrl{
@@ -253,15 +248,17 @@
             [cell.contentView addSubview:titleLab];
             [cell.contentView addSubview:detialLab];
             
-            UIButton *favarBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
-            favarBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+            UIButton *favarBtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-44, 0, 44, 55)];
+            favarBtn.titleLabel.font = [UIFont systemFontOfSize:19];
+            [favarBtn setTitle:@"☆" forState:UIControlStateNormal];
+            [favarBtn setTitle:@"★" forState:UIControlStateSelected];
             [favarBtn setTitleColor:JDDarkOrange forState:UIControlStateNormal];
-            [favarBtn setTitle:@"收藏" forState:UIControlStateNormal];
             [favarBtn addTarget:self action:@selector(favarateAction:) forControlEvents:UIControlEventTouchUpInside];
-            cell.accessoryView = favarBtn;
+            favarBtn.selected = _isFav;
+            [cell.contentView addSubview:favarBtn];
         }
-        titleLab.text = _inputDic[@"title"];
-        detialLab.text = [NSString stringWithFormat:@"发布时间: %@",_inputDic[@"published"]];
+        titleLab.text = _videoObject.title;
+        detialLab.text = [NSString stringWithFormat:@"发布时间: %@",_videoObject.published];
     }else if (indexPath.row == 1){
         
         cell = [tableView dequeueReusableCellWithIdentifier:@"secondCell"];
@@ -315,11 +312,9 @@
             return;
         }
         
-        
-        AuthorVideoListController *vc = [[AuthorVideoListController alloc]initWithUser:_user selectCallback:^(NSDictionary *dic) {
-            _inputDic = nil;
-            _inputDic = dic;
-            [self startLoadRequest:dic[@"link"]];
+        AuthorVideoListController *vc = [[AuthorVideoListController alloc]initWithUser:_user selectCallback:^(VideoModel *model) {
+            _videoObject = model;
+            [self startLoadRequest:_videoObject.link];
             [self.tableView reloadData];
         }];
         vc.isFromVideo = YES;
@@ -331,19 +326,14 @@
 
 
 
-
-
--(void)dealloc{
-    
-}
 -(void)favarateAction:(UIButton*)btn{
-    
-    FMDatabase *db = [DatabaseOperation openDataBase];
     if (_isFav) {
-        
+        [[FMDBManager shareManager]deleteDataWithModel:_user];
+    }else{
+        [[FMDBManager shareManager]saveDataWithModel:_user];
     }
-    [DatabaseOperation closeDataBase:db];
-    _isFav = NO;
+    _isFav = !_isFav;
+    btn.selected = !btn.selected;
 }
 #pragma mark - navi
 
@@ -359,7 +349,9 @@
 
 
 
-
+-(void)dealloc{
+    
+}
 
 @end
 

@@ -14,6 +14,9 @@
     [self startRequestWithUrl:url complish:finished];
 }
 
++ (NSValueTransformer *)videosJSONTransformer{
+   return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:[VideoModel class]];
+}
 
 
 @end

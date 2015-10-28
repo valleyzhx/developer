@@ -11,10 +11,12 @@
 #import "GGRequest.h"
 
 @interface UserModel ()
-@property (nonatomic,strong)NSString *backgroundImg;
+//@property (nonatomic,strong)NSString *backgroundImg;
 @end
 
-@implementation UserModel
+@implementation UserModel{
+    NSString *_modelID;
+}
 
 +(void)getUserInfoBy:(id)userIdOrUserName complish:(void(^)(id))finished{
     NSString *url = @"https://openapi.youku.com/v2/users/show.json?client_id=%20e2306ead120d2e34&";
@@ -41,11 +43,19 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     NSMutableDictionary *keyPaths = [super JSONKeyPathsByPropertyKey].mutableCopy;
     [keyPaths addEntriesFromDictionary:@{
-                                         @"userId": @"id",
+                                         @"modelID": @"id",
                                          @"userDescription":@"description"
                                          }];
     
     return keyPaths;
+}
+
+#pragma mark MTLModelFMDBDelegate
+-(void)setModelID:(NSString *)modelID{
+    _modelID = modelID;
+}
+-(NSString *)modelID{
+    return _modelID;
 }
 
 @end

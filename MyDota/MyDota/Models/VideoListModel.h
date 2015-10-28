@@ -7,13 +7,15 @@
 //
 
 #import "MTModel+GGRequest.h"
+#import "VideoModel.h"
 
 
-@interface VideoListModel : MTLHALResource
-@property (nonatomic,strong)NSNumber *total;
-@property (nonatomic,strong)NSNumber *page;
-@property (nonatomic,strong)NSNumber *count;
-@property (nonatomic,strong)NSArray *videos;
+@interface VideoListModel : MTLHALResource  
+
+@property (nonatomic,assign)int total;
+@property (nonatomic,assign)int page;
+@property (nonatomic,assign)int count;
+@property (nonatomic,strong)NSArray <VideoModel*>*videos;
 @property (nonatomic,strong)NSString *last_item;
 
 +(void)getVideoListBy:(NSString*)url complish:(void(^)(id))finished;

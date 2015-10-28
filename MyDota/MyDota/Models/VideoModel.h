@@ -7,10 +7,9 @@
 //
 
 #import "MTModel+GGRequest.h"
+#import "MTModelFMDBDelegate.h"
 
-@interface VideoModel : MTLHALResource
-
-@property (nonatomic,strong)NSString *VideoModelID;
+@interface VideoModel : MTLHALResource<MTModelFMDBDelegate>
 
 @property (nonatomic,strong)NSString *videoId;
 @property (nonatomic,strong)NSString *title;
@@ -21,15 +20,15 @@
 @property (nonatomic,strong)NSString *state;
 @property (nonatomic,strong)NSString *published;
 @property (nonatomic,strong)NSString *public_type;
-@property (nonatomic,strong)NSNumber *view_count;
-@property (nonatomic,strong)NSNumber *favorite_count;
-@property (nonatomic,strong)NSNumber *comment_count;
-@property (nonatomic,strong)NSNumber *up_count;
-@property (nonatomic,strong)NSNumber *down_count;
+@property (nonatomic,assign)int view_count;
+@property (nonatomic,assign)int favorite_count;
+@property (nonatomic,assign)int comment_count;
+@property (nonatomic,assign)int up_count;
+@property (nonatomic,assign)int down_count;
 @property (nonatomic,assign)BOOL isinteract;
 
 @property (nonatomic,strong)NSArray *streamtypes;
 @property (nonatomic,strong)NSArray *operation_limit;
 
-
+@property (nonatomic,strong)NSString *userid;
 @end

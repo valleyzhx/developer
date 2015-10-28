@@ -8,9 +8,10 @@
 
 #import "BaseViewController.h"
 #import "UserModel.h"
+#import "VideoModel.h"
 
 @interface AuthorVideoListController : BaseViewController
 @property(nonatomic,assign) BOOL isFromVideo;
 -(id)initWithUser:(UserModel*)user;
--(id)initWithUser:(UserModel*)user selectCallback:(void(^)(NSDictionary*))block;
+-(id)initWithUser:(UserModel*)user selectCallback:(void(^)(VideoModel*))block;
 @end

@@ -7,9 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "VideoModel.h"
 
 @interface VideoListBaseController : BaseViewController
-@property (nonatomic,strong) NSMutableArray *listArr;
+@property (nonatomic,strong) NSMutableArray <VideoModel *>*listArr;
 
 
 @end

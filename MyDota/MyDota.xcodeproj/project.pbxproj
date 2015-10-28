@@ -15,8 +15,15 @@
 		F00EF2201BCF8045009FEEB4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F00EF21F1BCF8045009FEEB4 /* BaseViewController.m */; settings = {ASSET_TAGS = (); }; };
 		F00EF2231BCF806A009FEEB4 /* GGNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F00EF2221BCF806A009FEEB4 /* GGNavigationBar.m */; settings = {ASSET_TAGS = (); }; };
 		F021BDBD1BD34407001429CC /* AuthorVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021BDBC1BD34407001429CC /* AuthorVideoListController.m */; settings = {ASSET_TAGS = (); }; };
-		F039AE061BDBA51800A9D910 /* DatabaseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F039AE051BDBA51800A9D910 /* DatabaseOperation.m */; settings = {ASSET_TAGS = (); }; };
-		F039AE091BDBADC200A9D910 /* MTLHALResource+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = F039AE081BDBADC200A9D910 /* MTLHALResource+Helper.m */; settings = {ASSET_TAGS = (); }; };
+		F0634E9C1BE0B5A3003F45ED /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0634E981BE0B5A3003F45ED /* libWeChatSDK.a */; settings = {ASSET_TAGS = (); }; };
+		F0634E9D1BE0B5A3003F45ED /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0634E991BE0B5A3003F45ED /* read_me.txt */; settings = {ASSET_TAGS = (); }; };
+		F0634EA71BE0B73E003F45ED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0634EA61BE0B73E003F45ED /* CoreTelephony.framework */; };
+		F0634EAC1BE0B94A003F45ED /* WXApiRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EA91BE0B94A003F45ED /* WXApiRequestHandler.m */; settings = {ASSET_TAGS = (); }; };
+		F0634EAD1BE0B94A003F45ED /* WXApiResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EAB1BE0B94A003F45ED /* WXApiResponseHandler.m */; settings = {ASSET_TAGS = (); }; };
+		F0634EB01BE0B9AF003F45ED /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EAF1BE0B9AF003F45ED /* WXApiManager.m */; settings = {ASSET_TAGS = (); }; };
+		F0634EB91BE0BAE5003F45ED /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EB41BE0BAE5003F45ED /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m */; settings = {ASSET_TAGS = (); }; };
+		F0634EBA1BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EB61BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */; settings = {ASSET_TAGS = (); }; };
+		F0634EBB1BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EB81BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.m */; settings = {ASSET_TAGS = (); }; };
 		F07619861BD1D1F70097686B /* M3U8Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = F076197D1BD1D1F70097686B /* M3U8Parser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F07619871BD1D1F70097686B /* M3U8SegmentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F076197F1BD1D1F70097686B /* M3U8SegmentInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F07619881BD1D1F70097686B /* M3U8SegmentInfoList.m in Sources */ = {isa = PBXBuildFile; fileRef = F07619811BD1D1F70097686B /* M3U8SegmentInfoList.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -48,6 +55,7 @@
 		F0EF56051BCDEA680062ECE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0EF56031BCDEA680062ECE1 /* LaunchScreen.storyboard */; };
 		F0EF56101BCDEA680062ECE1 /* MyDotaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EF560F1BCDEA680062ECE1 /* MyDotaTests.m */; };
 		F0EF561B1BCDEA680062ECE1 /* MyDotaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EF561A1BCDEA680062ECE1 /* MyDotaUITests.m */; };
+		F0F58FCB1BDE29E300745E4C /* FMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F58FCA1BDE29E300745E4C /* FMDBManager.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,10 +93,28 @@
 		F00EF2221BCF806A009FEEB4 /* GGNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGNavigationBar.m; sourceTree = "<group>"; };
 		F021BDBB1BD34407001429CC /* AuthorVideoListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorVideoListController.h; sourceTree = "<group>"; };
 		F021BDBC1BD34407001429CC /* AuthorVideoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorVideoListController.m; sourceTree = "<group>"; };
-		F039AE041BDBA51800A9D910 /* DatabaseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseOperation.h; sourceTree = "<group>"; };
-		F039AE051BDBA51800A9D910 /* DatabaseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseOperation.m; sourceTree = "<group>"; };
-		F039AE071BDBADC200A9D910 /* MTLHALResource+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTLHALResource+Helper.h"; sourceTree = "<group>"; };
-		F039AE081BDBADC200A9D910 /* MTLHALResource+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MTLHALResource+Helper.m"; sourceTree = "<group>"; };
+		F0634E981BE0B5A3003F45ED /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		F0634E991BE0B5A3003F45ED /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
+		F0634E9A1BE0B5A3003F45ED /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		F0634E9B1BE0B5A3003F45ED /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		F0634E9E1BE0B69E003F45ED /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F0634EA01BE0B6AE003F45ED /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		F0634EA21BE0B6B6003F45ED /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		F0634EA41BE0B6C1003F45ED /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		F0634EA61BE0B73E003F45ED /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		F0634EA81BE0B94A003F45ED /* WXApiRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiRequestHandler.h; sourceTree = "<group>"; };
+		F0634EA91BE0B94A003F45ED /* WXApiRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiRequestHandler.m; sourceTree = "<group>"; };
+		F0634EAA1BE0B94A003F45ED /* WXApiResponseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiResponseHandler.h; sourceTree = "<group>"; };
+		F0634EAB1BE0B94A003F45ED /* WXApiResponseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiResponseHandler.m; sourceTree = "<group>"; };
+		F0634EAE1BE0B9AF003F45ED /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
+		F0634EAF1BE0B9AF003F45ED /* WXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiManager.m; sourceTree = "<group>"; };
+		F0634EB21BE0BAE5003F45ED /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		F0634EB31BE0BAE5003F45ED /* GetMessageFromWXResp+responseWithTextOrMediaMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GetMessageFromWXResp+responseWithTextOrMediaMessage.h"; sourceTree = "<group>"; };
+		F0634EB41BE0BAE5003F45ED /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GetMessageFromWXResp+responseWithTextOrMediaMessage.m"; sourceTree = "<group>"; };
+		F0634EB51BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SendMessageToWXReq+requestWithTextOrMediaMessage.h"; sourceTree = "<group>"; };
+		F0634EB61BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SendMessageToWXReq+requestWithTextOrMediaMessage.m"; sourceTree = "<group>"; };
+		F0634EB71BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXMediaMessage+messageConstruct.h"; sourceTree = "<group>"; };
+		F0634EB81BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXMediaMessage+messageConstruct.m"; sourceTree = "<group>"; };
 		F076197A1BD1D1F70097686B /* M3U8Kit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "M3U8Kit-Prefix.pch"; sourceTree = "<group>"; };
 		F076197B1BD1D1F70097686B /* M3U8Kit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M3U8Kit.h; sourceTree = "<group>"; };
 		F076197C1BD1D1F70097686B /* M3U8Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M3U8Parser.h; sourceTree = "<group>"; };
@@ -153,6 +179,9 @@
 		F0EF56161BCDEA680062ECE1 /* MyDotaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyDotaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0EF561A1BCDEA680062ECE1 /* MyDotaUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyDotaUITests.m; sourceTree = "<group>"; };
 		F0EF561C1BCDEA680062ECE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0F58FC91BDE29E300745E4C /* FMDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBManager.h; sourceTree = "<group>"; };
+		F0F58FCA1BDE29E300745E4C /* FMDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBManager.m; sourceTree = "<group>"; };
+		F0F58FCC1BDF08F500745E4C /* MTModelFMDBDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTModelFMDBDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +189,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0634EA71BE0B73E003F45ED /* CoreTelephony.framework in Frameworks */,
+				F0634E9C1BE0B5A3003F45ED /* libWeChatSDK.a in Frameworks */,
 				2A69127DDCA3943356112983 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,6 +215,11 @@
 		B6B8D3B2AB49C3C6DAD1352C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F0634EA61BE0B73E003F45ED /* CoreTelephony.framework */,
+				F0634EA41BE0B6C1003F45ED /* libc++.1.tbd */,
+				F0634EA21BE0B6B6003F45ED /* libsqlite3.0.tbd */,
+				F0634EA01BE0B6AE003F45ED /* libz.1.2.5.tbd */,
+				F0634E9E1BE0B69E003F45ED /* SystemConfiguration.framework */,
 				B6A8DF9817AA3EA787832365 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -194,6 +230,7 @@
 			children = (
 				F00930A11BD37FD5005E3E3E /* MTModel+GGRequest.h */,
 				F00930A21BD37FD5005E3E3E /* MTModel+GGRequest.m */,
+				F0F58FCC1BDF08F500745E4C /* MTModelFMDBDelegate.h */,
 				F00930A31BD37FD5005E3E3E /* UserModel.h */,
 				F00930A41BD37FD5005E3E3E /* UserModel.m */,
 				F00930A51BD37FD5005E3E3E /* VideoListModel.h */,
@@ -224,9 +261,42 @@
 			path = GGCommen;
 			sourceTree = "<group>";
 		};
+		F0634E971BE0B5A3003F45ED /* weChat */ = {
+			isa = PBXGroup;
+			children = (
+				F0634EB11BE0BAE5003F45ED /* Helper */,
+				F0634EAE1BE0B9AF003F45ED /* WXApiManager.h */,
+				F0634EAF1BE0B9AF003F45ED /* WXApiManager.m */,
+				F0634EA81BE0B94A003F45ED /* WXApiRequestHandler.h */,
+				F0634EA91BE0B94A003F45ED /* WXApiRequestHandler.m */,
+				F0634EAA1BE0B94A003F45ED /* WXApiResponseHandler.h */,
+				F0634EAB1BE0B94A003F45ED /* WXApiResponseHandler.m */,
+				F0634E981BE0B5A3003F45ED /* libWeChatSDK.a */,
+				F0634E991BE0B5A3003F45ED /* read_me.txt */,
+				F0634E9A1BE0B5A3003F45ED /* WXApi.h */,
+				F0634E9B1BE0B5A3003F45ED /* WXApiObject.h */,
+			);
+			path = weChat;
+			sourceTree = "<group>";
+		};
+		F0634EB11BE0BAE5003F45ED /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F0634EB21BE0BAE5003F45ED /* Constant.h */,
+				F0634EB31BE0BAE5003F45ED /* GetMessageFromWXResp+responseWithTextOrMediaMessage.h */,
+				F0634EB41BE0BAE5003F45ED /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m */,
+				F0634EB51BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.h */,
+				F0634EB61BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */,
+				F0634EB71BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.h */,
+				F0634EB81BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		F07619781BD1D1F70097686B /* Libary */ = {
 			isa = PBXGroup;
 			children = (
+				F0634E971BE0B5A3003F45ED /* weChat */,
 				F07619791BD1D1F70097686B /* M3U8Kit */,
 			);
 			path = Libary;
@@ -286,10 +356,8 @@
 				F07619781BD1D1F70097686B /* Libary */,
 				F0EAF14B1BCE205500B18B81 /* DeviceInfo.h */,
 				F0EAF14C1BCE205500B18B81 /* DeviceInfo.m */,
-				F039AE041BDBA51800A9D910 /* DatabaseOperation.h */,
-				F039AE051BDBA51800A9D910 /* DatabaseOperation.m */,
-				F039AE071BDBADC200A9D910 /* MTLHALResource+Helper.h */,
-				F039AE081BDBADC200A9D910 /* MTLHALResource+Helper.m */,
+				F0F58FC91BDE29E300745E4C /* FMDBManager.h */,
+				F0F58FCA1BDE29E300745E4C /* FMDBManager.m */,
 				F0EAF14F1BCE205500B18B81 /* SvUDIDTools.h */,
 				F0EAF1501BCE205500B18B81 /* SvUDIDTools.m */,
 				F0EAF1511BCE205500B18B81 /* ZXUnitil.h */,
@@ -478,6 +546,7 @@
 				TargetAttributes = {
 					F0EF55EE1BCDEA680062ECE1 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = BZ2BR27C6A;
 					};
 					F0EF560A1BCDEA680062ECE1 = {
 						CreatedOnToolsVersion = 7.0;
@@ -518,6 +587,7 @@
 				F0CF6C931BD77D3100DF8017 /* VideoListCell.xib in Resources */,
 				F0EAF16B1BCE2B3200B18B81 /* Assets.xcassets in Resources */,
 				F0EF56001BCDEA680062ECE1 /* Main.storyboard in Resources */,
+				F0634E9D1BE0B5A3003F45ED /* read_me.txt in Resources */,
 				F0D56B491BD3B616009CA293 /* AuthourData.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,16 +662,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				F021BDBD1BD34407001429CC /* AuthorVideoListController.m in Sources */,
-				F039AE091BDBADC200A9D910 /* MTLHALResource+Helper.m in Sources */,
 				F0EAF15A1BCE205500B18B81 /* DeviceInfo.m in Sources */,
 				F0EF55F71BCDEA680062ECE1 /* AppDelegate.m in Sources */,
+				F0634EBB1BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.m in Sources */,
 				F0CF6C8B1BD777FB00DF8017 /* SearchViewController.m in Sources */,
 				F0966F141BD202B2000A512F /* VideoViewController.m in Sources */,
 				F07619881BD1D1F70097686B /* M3U8SegmentInfoList.m in Sources */,
 				F00EF2201BCF8045009FEEB4 /* BaseViewController.m in Sources */,
+				F0F58FCB1BDE29E300745E4C /* FMDBManager.m in Sources */,
 				F00930AC1BD37FD5005E3E3E /* UserModel.m in Sources */,
+				F0634EAD1BE0B94A003F45ED /* WXApiResponseHandler.m in Sources */,
 				F0B3EF531BD0D6AD00313C24 /* GGRequestObserver.m in Sources */,
+				F0634EB91BE0BAE5003F45ED /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m in Sources */,
 				F07619891BD1D1F70097686B /* NSString+m3u8.m in Sources */,
+				F0634EBA1BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */,
 				F00EF2231BCF806A009FEEB4 /* GGNavigationBar.m in Sources */,
 				F0D56B4C1BD3E5FB009CA293 /* VideoListController.m in Sources */,
 				F076198D1BD1DA940097686B /* M3U8Tool.m in Sources */,
@@ -612,12 +686,13 @@
 				F07619871BD1D1F70097686B /* M3U8SegmentInfo.m in Sources */,
 				F00930AB1BD37FD5005E3E3E /* MTModel+GGRequest.m in Sources */,
 				F0B3EF501BD0D69E00313C24 /* GGRequestManager.m in Sources */,
-				F039AE061BDBA51800A9D910 /* DatabaseOperation.m in Sources */,
 				F00930AE1BD37FD5005E3E3E /* VideoModel.m in Sources */,
+				F0634EAC1BE0B94A003F45ED /* WXApiRequestHandler.m in Sources */,
 				F076198A1BD1D1F70097686B /* NSURL+m3u8.m in Sources */,
 				F00930AD1BD37FD5005E3E3E /* VideoListModel.m in Sources */,
 				F0EAF15C1BCE205500B18B81 /* SvUDIDTools.m in Sources */,
 				F0EAF15F1BCE205600B18B81 /* MainTabBarController.m in Sources */,
+				F0634EB01BE0B9AF003F45ED /* WXApiManager.m in Sources */,
 				F0A2676E1BD09F20004BB71D /* BaseViewController+NaviView.m in Sources */,
 				F0A2676B1BD0906C004BB71D /* GGRequest.m in Sources */,
 				F0CF6C921BD77D3100DF8017 /* VideoListCell.m in Sources */,
@@ -763,11 +838,16 @@
 			baseConfigurationReference = DA268A94AE4A824AC373461B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyDota/MyDota-Prefix.pch";
 				INFOPLIST_FILE = MyDota/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.iogg.MyDota;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyDota/Unitil/Libary/weChat",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplan.MyDota;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)";
 			};
@@ -778,11 +858,16 @@
 			baseConfigurationReference = D19AEA35F225D28540C4704D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyDota/MyDota-Prefix.pch";
 				INFOPLIST_FILE = MyDota/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = me.iogg.MyDota;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MyDota/Unitil/Libary/weChat",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplan.MyDota;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)";
 			};

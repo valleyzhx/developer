@@ -22,7 +22,7 @@
     int total;
     int currentPage;
     NSMutableArray *_listArr;
-    void (^finished)(NSDictionary*);
+    void (^finished)(VideoModel*);
 }
 
 -(id)initWithUser:(UserModel *)user{
@@ -33,7 +33,7 @@
 }
 
 
--(id)initWithUser:(UserModel *)user selectCallback:(void (^)(NSDictionary *))block{
+-(id)initWithUser:(UserModel*)user selectCallback:(void(^)(VideoModel*))block{
     if (self = [self initWithUser:user]) {
         finished = block;
     }
@@ -59,12 +59,12 @@
 
 -(void)loadVideoList:(int)page{
     
-    NSString *url = [NSString stringWithFormat:@"https://openapi.youku.com/v2/videos/by_user.json?client_id=e2306ead120d2e34&user_id=%@&page=%d",_user.userId,page];
+    NSString *url = [NSString stringWithFormat:@"https://openapi.youku.com/v2/videos/by_user.json?client_id=e2306ead120d2e34&user_id=%@&page=%d",_user.modelID,page];
     [VideoListModel getVideoListBy:url complish:^(id object) {
         VideoListModel *model = object;
         [_listArr addObject:model];
-        total = model.total.intValue;
-        currentPage = model.page.intValue;
+        total = model.total;
+        currentPage = model.page;
         [self.tableView reloadData];
         if (total==_listArr.count) {
             [self.tableView.footer endRefreshingWithNoMoreData];
@@ -105,11 +105,11 @@
     }
     
     VideoListModel *listInfo = _listArr[indexPath.section];
-    NSDictionary *dataDic = listInfo.videos[indexPath.row];
+    VideoModel *model = listInfo.videos[indexPath.row];
     
-    [cell.imgView setImageWithURL:[NSURL URLWithString:dataDic[@"thumbnail"]]];
-    cell.titleLab.text = dataDic[@"title"];
-    cell.publishLab.text = dataDic[@"published"];
+    [cell.imgView setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    cell.titleLab.text = model.title;
+    cell.publishLab.text = model.published;
     [ZXUnitil fitTheLabel:cell.titleLab];
     return cell;
 }
@@ -117,16 +117,16 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     VideoListModel *listInfo = _listArr[indexPath.section];
-    NSDictionary *dataDic = listInfo.videos[indexPath.row];
+    VideoModel *model = listInfo.videos[indexPath.row];
+    model.userid = _user.modelID;
     if (_isFromVideo) {//back
         if (finished) {
             [self.navigationController popViewControllerAnimated:YES];
-            finished(dataDic);
+            finished(model);
         }
     }else{
         self.hidesBottomBarWhenPushed = YES;
-        VideoViewController *controller = [[VideoViewController alloc]initWithVideoDiction:dataDic];
-        controller.userId = _user.userId.integerValue;
+        VideoViewController *controller = [[VideoViewController alloc]initWithVideoModel:model];
         controller.isFromAuthorList = YES;
         [self.navigationController pushViewController:controller animated:YES];
     }
