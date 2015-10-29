@@ -14,7 +14,7 @@
 @interface BaseViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
     int currentPage;
     int total;
-    GGNavigationBar *naviBar;
+    GGNavigationBar *_naviBar;
 }
 
 @property (nonatomic,assign) BOOL noTable;

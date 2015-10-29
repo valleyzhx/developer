@@ -11,7 +11,6 @@
 
 @interface VideoModel : MTLHALResource<MTModelFMDBDelegate>
 
-@property (nonatomic,strong)NSString *videoId;
 @property (nonatomic,strong)NSString *title;
 @property (nonatomic,strong)NSString *link;
 @property (nonatomic,strong)NSString *thumbnail;
@@ -27,8 +26,12 @@
 @property (nonatomic,assign)int down_count;
 @property (nonatomic,assign)BOOL isinteract;
 
-@property (nonatomic,strong)NSArray *streamtypes;
-@property (nonatomic,strong)NSArray *operation_limit;
+//@property (nonatomic,strong)NSArray *streamtypes;
+//@property (nonatomic,strong)NSArray *operation_limit;
 
 @property (nonatomic,strong)NSString *userid;
+
+@property (nonatomic,strong)NSString *userDicId;
+@property (nonatomic,strong)NSString *userDicName;
+
 @end

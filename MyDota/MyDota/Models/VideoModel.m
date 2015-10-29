@@ -16,7 +16,9 @@
     NSMutableDictionary *keyPaths = [super JSONKeyPathsByPropertyKey].mutableCopy;
     
     [keyPaths addEntriesFromDictionary:@{
-                                         @"modelID": @"id"
+                                         @"modelID": @"id",
+                                         @"userDicId": @"user.id",
+                                         @"userDicName":@"user.name"
                                          }];
     
     return keyPaths;

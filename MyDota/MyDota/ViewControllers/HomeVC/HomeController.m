@@ -42,17 +42,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    naviBar = [self setUpNaviViewWithType:GGNavigationBarTypeCustom];
-    naviBar.title = @"刀一把";
-    self.tableView.footer = nil;
+    self.edgesForExtendedLayout=UIRectEdgeNone;
+    _naviBar = [self setUpNaviViewWithType:GGNavigationBarTypeCustom];
+    _naviBar.alpha = 0;
+    _naviBar.title = @"刀一把";
+   // self.tableView.footer = nil;
     [self loadDotaVideos];
     
     
     _authourList = [UserModel loadLocalGEOJsonData];
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
-    view.backgroundColor = viewBGColor;
-    self.tableView.tableHeaderView = view;
-    UIView *footView = [[UIView  alloc]initWithFrame:CGRectMake(0, 0, 320, 48+5)];
+//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+//    view.backgroundColor = viewBGColor;
+//    self.tableView.tableHeaderView = view;
+    UIView *footView = [[UIView  alloc]initWithFrame:CGRectMake(0, 0, 320, 5)];
     footView.backgroundColor = viewBGColor;
     self.tableView.tableFooterView = footView;
     [self setSearchButton];
@@ -67,7 +69,7 @@
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
     [btn setTitle:@"--" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(searchAction:) forControlEvents:UIControlEventTouchUpInside];
-    naviBar.rightView = btn;
+    _naviBar.rightView = btn;
 }
 
 
@@ -134,7 +136,7 @@
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ADCell"];
             _imgView = [[ImagePlayerView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, rowAd)];
             _imgView.imagePlayerViewDelegate = self;
-            _imgView.scrollInterval = 4;
+            _imgView.scrollInterval = 5;
 //            _imgView.pageControl.currentPageIndicatorTintColor = JDDarkOrange;
 //            _imgView.pageControl.pageIndicatorTintColor = TextLightColor;
             [_imgView setPageControlPosition:ICPageControlPosition_BottomCenter];
@@ -243,7 +245,11 @@
     }
 }
 
-
+#pragma mark - UIScrollViewDelegate
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    float y = scrollView.contentOffset.y;
+    _naviBar.alpha = MIN(0.8, y/100);
+}
 
 
 

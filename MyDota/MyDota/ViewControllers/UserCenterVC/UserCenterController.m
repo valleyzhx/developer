@@ -10,8 +10,9 @@
 #import "MyDefines.h"
 #import "UzysAssetsPickerController.h"
 #import "WXApiRequestHandler.h"
+#import "FavoVideoListController.h"
 
-#define imageHeight 230*timesOf320
+#define imageHeight 230
 
 @interface UserCenterController ()<UzysAssetsPickerControllerDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imagView;
@@ -111,7 +112,9 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    
+    if (indexPath.row == 0) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
     cell.textLabel.text = _titleArr[indexPath.row];
     return cell;
     
@@ -121,13 +124,18 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    if (indexPath.row == 0) {
+        FavoVideoListController *controller = [[FavoVideoListController alloc]init];
+        [self pushWithoutTabbar:controller];
+    }
+    
     if (indexPath.row == 3) {
         UIImage *thumbImage = [UIImage imageNamed:@"res2.jpg"];
         [WXApiRequestHandler sendAppContentData:nil
                                         ExtInfo:@""
-                                         ExtURL:@"http"
+                                         ExtURL:nil
                                           Title:@"刀一把"
-                                    Description:@"最新最热Dota视频"
+                                    Description:@"最新最热Dota视频App"
                                      MessageExt:nil
                                   MessageAction:nil
                                      ThumbImage:thumbImage
@@ -196,4 +204,11 @@
     return fn;
 }
 
+#pragma mark -- pushAction
+
+-(void)pushWithoutTabbar:(UIViewController*)vc{
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+}
 @end

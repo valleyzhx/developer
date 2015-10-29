@@ -50,7 +50,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    naviBar.backgroundView.alpha = 0;
+    _naviBar.backgroundView.alpha = 0;
     [self setVideoView];
     [self startLoadRequest:_videoObject.link];
     //[self loadTheVidList];
@@ -58,13 +58,17 @@
     r.origin.y = self.player.view.frame.size.height;
     r.size.height -= r.origin.y;
     self.tableView.frame = r;
-    [self.view bringSubviewToFront:naviBar];
+    [self.view bringSubviewToFront:_naviBar];
     
-    [UserModel getUserInfoBy:@(_videoObject.userid.integerValue) complish:^(id objc) {
+    NSInteger userId = _videoObject.userid.integerValue;
+    if (userId==0) {
+        userId = _videoObject.userDicId.integerValue;
+    }
+    [UserModel getUserInfoBy:@(userId) complish:^(id objc) {
         _user = objc;
         [self.tableView reloadData];
     }];
-    _isFav = [[FMDBManager shareManager]hasTheModel:_user];
+    _isFav = [[FMDBManager shareManager]hasTheModel:_videoObject];
 }
 
 -(void)startLoadRequest:(NSString*)htmlUrl{
@@ -152,7 +156,7 @@
 
 - (void)videoPlayer:(VKVideoPlayer*)videoPlayer didControlByEvent:(VKVideoPlayerControlEvent)event{
     if (event == VKVideoPlayerControlEventTapFullScreen) {
-        naviBar.hidden = videoPlayer.isFullScreen;
+        _naviBar.hidden = videoPlayer.isFullScreen;
     }
 //    if (event == VKVideoPlayerControlEventTapVideoQuality) {
 //        if (_choosV) {
@@ -328,9 +332,9 @@
 
 -(void)favarateAction:(UIButton*)btn{
     if (_isFav) {
-        [[FMDBManager shareManager]deleteDataWithModel:_user];
+        [[FMDBManager shareManager]deleteDataWithModel:_videoObject];
     }else{
-        [[FMDBManager shareManager]saveDataWithModel:_user];
+        [[FMDBManager shareManager]saveDataWithModel:_videoObject];
     }
     _isFav = !_isFav;
     btn.selected = !btn.selected;

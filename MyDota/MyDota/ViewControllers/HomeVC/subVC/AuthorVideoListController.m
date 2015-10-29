@@ -45,7 +45,7 @@
     // Do any additional setup after loading the view.
     self.title = _user.name;
     _listArr = [NSMutableArray array];
-    naviBar.backgroundView.alpha = 1;
+    _naviBar.backgroundView.alpha = 1;
     [self loadVideoList:1];
     self.tableView.tableHeaderView = ({
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 48)];

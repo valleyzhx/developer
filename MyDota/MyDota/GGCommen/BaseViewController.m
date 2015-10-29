@@ -39,13 +39,13 @@
         //self.tableView.hidden = YES;
         [self.view addSubview:_tableView];
     }
-    naviBar = [self setUpNaviViewWithType:GGNavigationBarTypeNormal];
+    _naviBar = [self setUpNaviViewWithType:GGNavigationBarTypeNormal];
     
 }
 
 -(void)setTitle:(NSString *)title{
     [super setTitle:title];
-    naviBar.title = title;
+    _naviBar.title = title;
 }
 
 

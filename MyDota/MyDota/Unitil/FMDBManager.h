@@ -16,6 +16,8 @@
 
 +(id)shareManager;
 
+-(NSArray*)queryTable:(Class)modelClass QueryString:(NSString *)sql;
+
 -(BOOL)saveDataWithModel:(MTLModel<MTModelFMDBDelegate>*)model;
 -(BOOL)saveDataWithModelArray:(NSArray<MTLModel<MTModelFMDBDelegate>*>*)modelList;
 

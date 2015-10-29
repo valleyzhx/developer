@@ -161,18 +161,48 @@ static FMDBManager *_shareManager;
     return rtrnStr;
 }
 
-
+-(NSArray*)getAllCloumnNamesFromTable:(NSString*)tableName dataBase:(FMDatabase*)db{
+    NSMutableArray *nameArr = [NSMutableArray array];
+    NSString *sql = [NSString stringWithFormat:@"select * from %@ limit 1",tableName];
+       FMResultSet *ret = [db executeQuery:sql];
+    if (ret) {
+        int count = [ret columnCount];
+        for (int i=0; i<count; i++) {
+            NSString *name = [ret columnNameForIndex:i];
+            [nameArr addObject:name];
+        }
+    }
+    return nameArr;
+}
 
 
 
 #pragma mark --- sql action 
+
+-(NSArray *)queryTable:(Class)modelClass QueryString:(NSString *)sql{
+    NSMutableArray *resultArr = [NSMutableArray array];
+    
+    [_operation inDatabase:^(FMDatabase *db) {
+        [db executeStatements:sql withResultBlock:^int(NSDictionary *resultsDictionary) {
+           
+            return 0;
+        }];
+        
+    }];
+    
+    
+    return resultArr;
+}
+
+
+
+
 -(BOOL)saveDataWithModel:(MTLModel<MTModelFMDBDelegate> *)model{
     
     __block BOOL success = YES;
     [_operation inDatabase:^(FMDatabase *db) {
-        NSString *sql = [self getInserSqlWithModel:model];
-        success = [db executeUpdate:sql];
-        
+        NSArray *namesArr =  [self getAllCloumnNamesFromTable:NSStringFromClass(model.class) dataBase:db];
+       success = [self inserSqlWithModel:model clomnNameArr:namesArr dataBase:db];
     }];
     
     return success;
@@ -180,9 +210,10 @@ static FMDBManager *_shareManager;
 
 -(BOOL)saveDataWithModelArray:(NSArray<MTLModel<MTModelFMDBDelegate> *> *)modelList{
     [_operation inDatabase:^(FMDatabase *db) {
+        MTLModel *firstMoel = modelList.firstObject;
+        NSArray *namesArr =  [self getAllCloumnNamesFromTable:NSStringFromClass(firstMoel.class) dataBase:db];
         for (MTLModel *model in modelList) {
-            NSString *sql = [self getInserSqlWithModel:model];
-            [db executeUpdate:sql];
+            [self inserSqlWithModel:model clomnNameArr:namesArr dataBase:db];
         }
     }];
     return YES;
@@ -190,7 +221,8 @@ static FMDBManager *_shareManager;
 
 
 
--(NSString*)getInserSqlWithModel:(MTLModel*)model{
+
+-(BOOL)inserSqlWithModel:(MTLModel*)model clomnNameArr:(NSArray*)clomnArr dataBase:(FMDatabase*)db{
     NSArray *a1 = [self getPropertyAndType_OC:[model class]];       //取得oc的类型
     NSString *tableName = NSStringFromClass([model class]);
     
@@ -205,6 +237,14 @@ static FMDBManager *_shareManager;
     {
         fn = nameArr[i];        //NSLog(@"name:%@",fn);
         ft = typeArr[i];        //NSLog(@"type:%@",ft);
+        if ([ft containsString:@"Array"]) {
+            continue;
+        }
+        
+        if ([clomnArr containsObject:fn]==NO) {
+             NSString *updateSQL = [NSString stringWithFormat: @"ALTER TABLE %@ ADD COLUMN %@ %@",tableName,fn,ft];
+            [db executeUpdate:updateSQL];
+        }
         
         
         if ([ft isEqualToString:@"int"] || [ft isEqualToString:@"bool"] || [ft isEqualToString:@"BOOL"])
@@ -236,6 +276,7 @@ static FMDBManager *_shareManager;
             //添加到 field_value 字符串中
             field_value = [field_value stringByAppendingFormat:@",'%@'",fv];
         }
+       
         field_name = [field_name stringByAppendingFormat:@",%@",[[a1 objectAtIndex:0] objectAtIndex:i]];
         
         
@@ -245,7 +286,7 @@ static FMDBManager *_shareManager;
     field_value = [field_value substringFromIndex:1];                  //截掉，
     //生成sqlite
     NSString *insert_sql = [NSString stringWithFormat:@"INSERT OR REPLACE INTO %@(%@) VALUES(%@)",tableName,field_name,field_value];
-    return insert_sql;
+   return [db executeUpdate:insert_sql];
 }
 
 
@@ -268,8 +309,6 @@ static FMDBManager *_shareManager;
         }
     }];
     
-    
-    
     return YES;
 }
 
@@ -283,7 +322,7 @@ static FMDBManager *_shareManager;
     NSString *modelIDValue = [model valueForKey:@"modelID"];
     __block int count = 0;
     if (modelIDValue) {
-        NSString *sql = [NSString stringWithFormat:@"SELECT COUNT(*) %@ where modelID ='%@'",tableName,modelIDValue];
+        NSString *sql = [NSString stringWithFormat:@"SELECT COUNT(*) from %@ where modelID ='%@'",tableName,modelIDValue];
         [_operation inSavePoint:^(FMDatabase *db, BOOL *rollback) {
             FMResultSet *set = [db executeQuery:sql];
             if ([set next]) {
