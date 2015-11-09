@@ -18,7 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-   NSArray *arr = [[FMDBManager shareManager]queryTable:[VideoModel class] QueryString:@"select count(*) as count from VideoModel;"];
+    self.title = @"我的收藏";
+    NSArray *arr = [[FMDBManager shareManager]queryTable:[VideoModel class] QueryString:@"select * from VideoModel;"];
+    self.listArr = [NSMutableArray arrayWithArray:arr];
 }
 
 

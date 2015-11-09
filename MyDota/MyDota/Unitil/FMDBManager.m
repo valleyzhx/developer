@@ -181,10 +181,21 @@ static FMDBManager *_shareManager;
 
 -(NSArray *)queryTable:(Class)modelClass QueryString:(NSString *)sql{
     NSMutableArray *resultArr = [NSMutableArray array];
-    
+    NSArray *a1 = [self getPropertyAndType_OC:modelClass][0];       //取得oc的类型
+
     [_operation inDatabase:^(FMDatabase *db) {
         [db executeStatements:sql withResultBlock:^int(NSDictionary *resultsDictionary) {
-           
+            MTLModel *model = [[modelClass alloc]init];
+            for (NSString *key in a1) {
+                id value = resultsDictionary[key];
+                if (value&&![value isKindOfClass:[NSNull class]]) {
+                    [model setValue:resultsDictionary[key] forKey:key];
+                }else{
+                    
+                }
+            }
+            
+            [resultArr addObject:model];
             return 0;
         }];
         
@@ -237,6 +248,10 @@ static FMDBManager *_shareManager;
     {
         fn = nameArr[i];        //NSLog(@"name:%@",fn);
         ft = typeArr[i];        //NSLog(@"type:%@",ft);
+        id fv = [model valueForKey:fn] ;
+        if (fv == nil) {
+            continue;
+        }
         if ([ft containsString:@"Array"]) {
             continue;
         }
@@ -249,30 +264,21 @@ static FMDBManager *_shareManager;
         
         if ([ft isEqualToString:@"int"] || [ft isEqualToString:@"bool"] || [ft isEqualToString:@"BOOL"])
         {
-            int aa = [[model valueForKey:fn] intValue];
+            int aa = [fv intValue];
+            
             field_value = [field_value stringByAppendingFormat:@",%d",aa];
         }
-        //        else if ([ft isEqualToString:@"float"])
-        //        {
-        //            float aa = [[obj valueForKey:fn] floatValue];
-        //            field_value = [field_value stringByAppendingFormat:@",%.0f",aa];
-        //        }
         else if ([ft isEqualToString:@"double"])
         {
-            //            NSLog(@"%@",[obj valueForKey:fn]);
-            //            NSLog(@"%f,,,%f",[[obj valueForKey:fn] doubleValue],[[obj valueForKey:fn] floatValue]);
-            double bb = [[model valueForKey:fn] doubleValue];
+            double bb = [fv doubleValue];
             field_value = [field_value stringByAppendingFormat:@",%.6f",bb];
         }
         else if ([ft isEqualToString:@"NSString"])
         {
-            NSString *fv = [model valueForKey:fn];     //NSLog(@"string: %@",fv);
-            
             if ([fv respondsToSelector:@selector(stringByReplacingOccurrencesOfString:withString:)])
             {
                 fv = [fv stringByReplacingOccurrencesOfString:@"'" withString:@"''"];  //‘：字符串转义
             }
-            
             //添加到 field_value 字符串中
             field_value = [field_value stringByAppendingFormat:@",'%@'",fv];
         }

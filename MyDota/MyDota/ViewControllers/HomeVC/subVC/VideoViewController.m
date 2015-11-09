@@ -189,12 +189,16 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     if ([self.player isPlayingVideo]) {
         [self.player pauseContent];
     }
 }
 
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+}
 
 
 - (BOOL)prefersStatusBarHidden{

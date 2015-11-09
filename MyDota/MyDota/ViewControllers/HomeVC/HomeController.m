@@ -63,6 +63,13 @@
 //    
 //    _authorUrlArr = @[];
     
+    
+//    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//        [self loadDotaVideos];
+//    }];
+//    self.tableView.header.backgroundColor = JDLightOrange;
+
+
 }
 
 -(void)setSearchButton{
@@ -77,6 +84,7 @@
     [VideoListModel getVideoListBy:@"https://api.youku.com/quality/video/by/category.json?client_id=e2306ead120d2e34&cate=10&count=10" complish:^(id object) {
         _dotaListModel = object;
         [self.tableView reloadData];
+        [self.tableView.header endRefreshing];
     }];
     
 }
