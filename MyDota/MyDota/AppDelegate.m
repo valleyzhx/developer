@@ -10,6 +10,8 @@
 #import "GGRequest.h"
 #import "WXApi.h"
 #import "MobClick.h"
+#import "WXApiManager.h"
+#import "MyDefines.h"
 
 @interface AppDelegate ()
 
@@ -22,8 +24,8 @@
     // Override point for customization after application launch.
    // [GGRequest downLoadBanerJS];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    //[WXApi registerApp:@"wx1bc2f1985a2547b5"];
-    //[MobClick startWithAppkey:@"539093f556240b01ab039989"];
+    [WXApi registerApp:@"wx1bc2f1985a2547b5"];
+    [MobClick startWithAppkey:@"539093f556240b01ab039989"];
     return YES;
 }
 
@@ -50,6 +52,17 @@
 }
 
 
+
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    dispatchDelay(0.2, [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];);
+    return  YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    dispatchDelay(0.2, [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];);
+    return YES;
+}
 
 
 

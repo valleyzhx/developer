@@ -16,6 +16,7 @@
 #import "UIKit+AFNetworking.h"
 #import "AuthorVideoListController.h"
 #import "FMDBManager.h"
+#import "WXApiRequestHandler.h"
 
 @interface ChooseView : UIView
 
@@ -189,7 +190,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    //[[UIApplication sharedApplication] setStatusBarHidden:NO];
     if ([self.player isPlayingVideo]) {
         [self.player pauseContent];
     }
@@ -197,7 +198,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    //[[UIApplication sharedApplication] setStatusBarHidden:YES];
 }
 
 
@@ -215,7 +216,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 3+1;//增加分享
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
@@ -307,8 +308,16 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
         cell.textLabel.text = @"全部视频";
+    }else if (indexPath.row == 3){
+        cell =[tableView dequeueReusableCellWithIdentifier:@"forthCell"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"forthCell"];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        cell.textLabel.text = @"分享视频";
     }
-    cell.selectionStyle = indexPath.row==2?UITableViewCellSelectionStyleDefault:UITableViewCellSelectionStyleNone;
+    
+    cell.selectionStyle = (indexPath.row==2||indexPath.row==3)?UITableViewCellSelectionStyleDefault:UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -319,16 +328,30 @@
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
-        
+        __weak typeof(self) weakSelf = self;
         AuthorVideoListController *vc = [[AuthorVideoListController alloc]initWithUser:_user selectCallback:^(VideoModel *model) {
             _videoObject = model;
-            [self startLoadRequest:_videoObject.link];
-            [self.tableView reloadData];
+            [weakSelf startLoadRequest:_videoObject.link];
+            [weakSelf.tableView reloadData];
         }];
         vc.isFromVideo = YES;
         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
         self.hidesBottomBarWhenPushed = NO;
+    }
+    if (indexPath.row == 3) {//分享
+        
+       NSDictionary *dic = _videoObject.dictionaryValue;
+        NSString *content = [NSString stringWithFormat:@"%@\n%@",_videoObject.title,_videoObject.published];
+        [WXApiRequestHandler sendAppContentData:nil
+                                        ExtInfo:[dic jsonString]
+                                         ExtURL:nil
+                                          Title:[NSString stringWithFormat:@"我分享了 「%@」 的精彩视频",_user.name]
+                                    Description:content
+                                     MessageExt:NSStringFromClass([VideoModel class])
+                                  MessageAction:nil
+                                     ThumbImage:nil
+                                        InScene:WXSceneSession];
     }
 }
 
@@ -358,7 +381,9 @@
 
 
 -(void)dealloc{
-    
+    _videoObject = nil;
+    _choosV = nil;
+    _user = nil;
 }
 
 @end

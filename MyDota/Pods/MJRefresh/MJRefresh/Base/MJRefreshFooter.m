@@ -27,7 +27,9 @@
     [cmp setRefreshingTarget:target refreshingAction:action];
     return cmp;
 }
-
+-(void)dealloc{
+    
+}
 #pragma mark - 重写父类的方法
 - (void)prepare
 {

@@ -48,6 +48,8 @@
 }
 
 - (void)onReq:(BaseReq *)req {
+    
+
     if ([req isKindOfClass:[GetMessageFromWXReq class]]) {
         if (_delegate
             && [_delegate respondsToSelector:@selector(managerDidRecvGetMessageReq:)]) {

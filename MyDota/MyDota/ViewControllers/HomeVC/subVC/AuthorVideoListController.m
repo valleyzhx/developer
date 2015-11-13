@@ -52,15 +52,20 @@
         view.backgroundColor = viewBGColor;
         view;
     });
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [self loadVideoList:currentPage+1];
-    }];
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+
+}
+-(void)loadMoreData{
+    [self loadVideoList:currentPage+1];
 }
 
 -(void)loadVideoList:(int)page{
     
     NSString *url = [NSString stringWithFormat:@"https://openapi.youku.com/v2/videos/by_user.json?client_id=e2306ead120d2e34&user_id=%@&page=%d",_user.modelID,page];
     [VideoListModel getVideoListBy:url complish:^(id object) {
+        if (object == nil) {
+            return ;
+        }
         VideoListModel *model = object;
         [_listArr addObject:model];
         total = model.total;
@@ -72,6 +77,11 @@
             [self.tableView.footer endRefreshing];
         }
     }];
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
 }
 
 

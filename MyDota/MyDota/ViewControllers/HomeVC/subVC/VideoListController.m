@@ -21,15 +21,20 @@
     self.title = @"全部视频";
     _naviBar.backgroundView.alpha = 1;
     [self loadVideoList:2];
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [self loadVideoList:currentPage+1];
-    }];
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    
+}
+-(void)loadMoreData{
+    [self loadVideoList:currentPage+1];
 }
 
 -(void)loadVideoList:(int)page{
     NSString *url = [NSString stringWithFormat:@"https://api.youku.com/quality/video/by/category.json?client_id=e2306ead120d2e34&cate=10&count=10&page=%d",page];
     
     [VideoListModel getVideoListBy:url complish:^(id objc) {
+        if (objc == nil) {
+            return ;
+        }
         VideoListModel *model = objc;
         if (model.videos) {
             [self.listArr addObjectsFromArray:model.videos];
@@ -52,7 +57,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void)dealloc{
+    
+}
 
 
 @end

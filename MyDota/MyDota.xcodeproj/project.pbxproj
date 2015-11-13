@@ -8,55 +8,59 @@
 
 /* Begin PBXBuildFile section */
 		2A69127DDCA3943356112983 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A8DF9817AA3EA787832365 /* libPods.a */; };
-		F00930AB1BD37FD5005E3E3E /* MTModel+GGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F00930A21BD37FD5005E3E3E /* MTModel+GGRequest.m */; settings = {ASSET_TAGS = (); }; };
-		F00930AC1BD37FD5005E3E3E /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F00930A41BD37FD5005E3E3E /* UserModel.m */; settings = {ASSET_TAGS = (); }; };
-		F00930AD1BD37FD5005E3E3E /* VideoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F00930A61BD37FD5005E3E3E /* VideoListModel.m */; settings = {ASSET_TAGS = (); }; };
-		F00930AE1BD37FD5005E3E3E /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F00930A81BD37FD5005E3E3E /* VideoModel.m */; settings = {ASSET_TAGS = (); }; };
-		F00EF2201BCF8045009FEEB4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F00EF21F1BCF8045009FEEB4 /* BaseViewController.m */; settings = {ASSET_TAGS = (); }; };
-		F00EF2231BCF806A009FEEB4 /* GGNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F00EF2221BCF806A009FEEB4 /* GGNavigationBar.m */; settings = {ASSET_TAGS = (); }; };
-		F015988E1BE1FB82001083BC /* FavoVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F015988D1BE1FB82001083BC /* FavoVideoListController.m */; settings = {ASSET_TAGS = (); }; };
-		F021BDBD1BD34407001429CC /* AuthorVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021BDBC1BD34407001429CC /* AuthorVideoListController.m */; settings = {ASSET_TAGS = (); }; };
-		F0634E9C1BE0B5A3003F45ED /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0634E981BE0B5A3003F45ED /* libWeChatSDK.a */; settings = {ASSET_TAGS = (); }; };
-		F0634E9D1BE0B5A3003F45ED /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0634E991BE0B5A3003F45ED /* read_me.txt */; settings = {ASSET_TAGS = (); }; };
+		F00930AB1BD37FD5005E3E3E /* MTModel+GGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F00930A21BD37FD5005E3E3E /* MTModel+GGRequest.m */; };
+		F00930AC1BD37FD5005E3E3E /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F00930A41BD37FD5005E3E3E /* UserModel.m */; };
+		F00930AD1BD37FD5005E3E3E /* VideoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F00930A61BD37FD5005E3E3E /* VideoListModel.m */; };
+		F00930AE1BD37FD5005E3E3E /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F00930A81BD37FD5005E3E3E /* VideoModel.m */; };
+		F00EF2201BCF8045009FEEB4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F00EF21F1BCF8045009FEEB4 /* BaseViewController.m */; };
+		F00EF2231BCF806A009FEEB4 /* GGNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F00EF2221BCF806A009FEEB4 /* GGNavigationBar.m */; };
+		F015988E1BE1FB82001083BC /* FavoVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F015988D1BE1FB82001083BC /* FavoVideoListController.m */; };
+		F021BDBD1BD34407001429CC /* AuthorVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021BDBC1BD34407001429CC /* AuthorVideoListController.m */; };
+		F0634E9C1BE0B5A3003F45ED /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0634E981BE0B5A3003F45ED /* libWeChatSDK.a */; };
+		F0634E9D1BE0B5A3003F45ED /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0634E991BE0B5A3003F45ED /* read_me.txt */; };
 		F0634EA71BE0B73E003F45ED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0634EA61BE0B73E003F45ED /* CoreTelephony.framework */; };
-		F0634EAC1BE0B94A003F45ED /* WXApiRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EA91BE0B94A003F45ED /* WXApiRequestHandler.m */; settings = {ASSET_TAGS = (); }; };
-		F0634EAD1BE0B94A003F45ED /* WXApiResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EAB1BE0B94A003F45ED /* WXApiResponseHandler.m */; settings = {ASSET_TAGS = (); }; };
-		F0634EB01BE0B9AF003F45ED /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EAF1BE0B9AF003F45ED /* WXApiManager.m */; settings = {ASSET_TAGS = (); }; };
-		F0634EB91BE0BAE5003F45ED /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EB41BE0BAE5003F45ED /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m */; settings = {ASSET_TAGS = (); }; };
-		F0634EBA1BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EB61BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */; settings = {ASSET_TAGS = (); }; };
-		F0634EBB1BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EB81BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.m */; settings = {ASSET_TAGS = (); }; };
+		F0634EAC1BE0B94A003F45ED /* WXApiRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EA91BE0B94A003F45ED /* WXApiRequestHandler.m */; };
+		F0634EAD1BE0B94A003F45ED /* WXApiResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EAB1BE0B94A003F45ED /* WXApiResponseHandler.m */; };
+		F0634EB01BE0B9AF003F45ED /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EAF1BE0B9AF003F45ED /* WXApiManager.m */; };
+		F0634EB91BE0BAE5003F45ED /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EB41BE0BAE5003F45ED /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m */; };
+		F0634EBA1BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EB61BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */; };
+		F0634EBB1BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EB81BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.m */; };
 		F07619861BD1D1F70097686B /* M3U8Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = F076197D1BD1D1F70097686B /* M3U8Parser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F07619871BD1D1F70097686B /* M3U8SegmentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F076197F1BD1D1F70097686B /* M3U8SegmentInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F07619881BD1D1F70097686B /* M3U8SegmentInfoList.m in Sources */ = {isa = PBXBuildFile; fileRef = F07619811BD1D1F70097686B /* M3U8SegmentInfoList.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F07619891BD1D1F70097686B /* NSString+m3u8.m in Sources */ = {isa = PBXBuildFile; fileRef = F07619831BD1D1F70097686B /* NSString+m3u8.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F076198A1BD1D1F70097686B /* NSURL+m3u8.m in Sources */ = {isa = PBXBuildFile; fileRef = F07619851BD1D1F70097686B /* NSURL+m3u8.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F076198D1BD1DA940097686B /* M3U8Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = F076198C1BD1DA940097686B /* M3U8Tool.m */; settings = {ASSET_TAGS = (); }; };
-		F0966F141BD202B2000A512F /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0966F131BD202B2000A512F /* VideoViewController.m */; settings = {ASSET_TAGS = (); }; };
-		F0A2676B1BD0906C004BB71D /* GGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A2676A1BD0906C004BB71D /* GGRequest.m */; settings = {ASSET_TAGS = (); }; };
-		F0A2676E1BD09F20004BB71D /* BaseViewController+NaviView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A2676D1BD09F20004BB71D /* BaseViewController+NaviView.m */; settings = {ASSET_TAGS = (); }; };
-		F0B3EF501BD0D69E00313C24 /* GGRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3EF4F1BD0D69E00313C24 /* GGRequestManager.m */; settings = {ASSET_TAGS = (); }; };
-		F0B3EF531BD0D6AD00313C24 /* GGRequestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3EF521BD0D6AD00313C24 /* GGRequestObserver.m */; settings = {ASSET_TAGS = (); }; };
-		F0CF6C8B1BD777FB00DF8017 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C8A1BD777FB00DF8017 /* SearchViewController.m */; settings = {ASSET_TAGS = (); }; };
-		F0CF6C8E1BD77C5600DF8017 /* VideoListBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C8D1BD77C5600DF8017 /* VideoListBaseController.m */; settings = {ASSET_TAGS = (); }; };
-		F0CF6C921BD77D3100DF8017 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C901BD77D3100DF8017 /* VideoListCell.m */; settings = {ASSET_TAGS = (); }; };
-		F0CF6C931BD77D3100DF8017 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0CF6C911BD77D3100DF8017 /* VideoListCell.xib */; settings = {ASSET_TAGS = (); }; };
-		F0CF6C991BD783B600DF8017 /* BaseViewController+GGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C981BD783B600DF8017 /* BaseViewController+GGRequest.m */; settings = {ASSET_TAGS = (); }; };
-		F0D56B491BD3B616009CA293 /* AuthourData.geojson in Resources */ = {isa = PBXBuildFile; fileRef = F0D56B481BD3B616009CA293 /* AuthourData.geojson */; settings = {ASSET_TAGS = (); }; };
-		F0D56B4C1BD3E5FB009CA293 /* VideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D56B4B1BD3E5FB009CA293 /* VideoListController.m */; settings = {ASSET_TAGS = (); }; };
-		F0EAF15A1BCE205500B18B81 /* DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF14C1BCE205500B18B81 /* DeviceInfo.m */; settings = {ASSET_TAGS = (); }; };
+		F076198D1BD1DA940097686B /* M3U8Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = F076198C1BD1DA940097686B /* M3U8Tool.m */; };
+		F0966F141BD202B2000A512F /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0966F131BD202B2000A512F /* VideoViewController.m */; };
+		F0A2676B1BD0906C004BB71D /* GGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A2676A1BD0906C004BB71D /* GGRequest.m */; };
+		F0A2676E1BD09F20004BB71D /* BaseViewController+NaviView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A2676D1BD09F20004BB71D /* BaseViewController+NaviView.m */; };
+		F0B1E4031BF5D0C600CED836 /* IntroControll.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B1E3FD1BF5D0C600CED836 /* IntroControll.m */; };
+		F0B1E4041BF5D0C600CED836 /* IntroModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B1E3FF1BF5D0C600CED836 /* IntroModel.m */; };
+		F0B1E4051BF5D0C600CED836 /* IntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B1E4011BF5D0C600CED836 /* IntroView.m */; };
+		F0B1E4061BF5D0C600CED836 /* shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B1E4021BF5D0C600CED836 /* shadow@2x.png */; };
+		F0B3EF501BD0D69E00313C24 /* GGRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3EF4F1BD0D69E00313C24 /* GGRequestManager.m */; };
+		F0B3EF531BD0D6AD00313C24 /* GGRequestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3EF521BD0D6AD00313C24 /* GGRequestObserver.m */; };
+		F0CF6C8B1BD777FB00DF8017 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C8A1BD777FB00DF8017 /* SearchViewController.m */; };
+		F0CF6C8E1BD77C5600DF8017 /* VideoListBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C8D1BD77C5600DF8017 /* VideoListBaseController.m */; };
+		F0CF6C921BD77D3100DF8017 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C901BD77D3100DF8017 /* VideoListCell.m */; };
+		F0CF6C931BD77D3100DF8017 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0CF6C911BD77D3100DF8017 /* VideoListCell.xib */; };
+		F0CF6C991BD783B600DF8017 /* BaseViewController+GGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C981BD783B600DF8017 /* BaseViewController+GGRequest.m */; };
+		F0D56B491BD3B616009CA293 /* AuthourData.geojson in Resources */ = {isa = PBXBuildFile; fileRef = F0D56B481BD3B616009CA293 /* AuthourData.geojson */; };
+		F0D56B4C1BD3E5FB009CA293 /* VideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D56B4B1BD3E5FB009CA293 /* VideoListController.m */; };
+		F0EAF15A1BCE205500B18B81 /* DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF14C1BCE205500B18B81 /* DeviceInfo.m */; };
 		F0EAF15C1BCE205500B18B81 /* SvUDIDTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1501BCE205500B18B81 /* SvUDIDTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F0EAF15D1BCE205600B18B81 /* ZXUnitil.mm in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1521BCE205500B18B81 /* ZXUnitil.mm */; settings = {ASSET_TAGS = (); }; };
-		F0EAF15F1BCE205600B18B81 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1571BCE205500B18B81 /* MainTabBarController.m */; settings = {ASSET_TAGS = (); }; };
-		F0EAF1631BCE213C00B18B81 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1621BCE213C00B18B81 /* HomeController.m */; settings = {ASSET_TAGS = (); }; };
-		F0EAF1661BCE215B00B18B81 /* UserCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1651BCE215B00B18B81 /* UserCenterController.m */; settings = {ASSET_TAGS = (); }; };
-		F0EAF16B1BCE2B3200B18B81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0EAF16A1BCE2B3200B18B81 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
+		F0EAF15D1BCE205600B18B81 /* ZXUnitil.mm in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1521BCE205500B18B81 /* ZXUnitil.mm */; };
+		F0EAF15F1BCE205600B18B81 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1571BCE205500B18B81 /* MainTabBarController.m */; };
+		F0EAF1631BCE213C00B18B81 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1621BCE213C00B18B81 /* HomeController.m */; };
+		F0EAF1661BCE215B00B18B81 /* UserCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1651BCE215B00B18B81 /* UserCenterController.m */; };
+		F0EAF16B1BCE2B3200B18B81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0EAF16A1BCE2B3200B18B81 /* Assets.xcassets */; };
 		F0EF55F41BCDEA680062ECE1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EF55F31BCDEA680062ECE1 /* main.m */; };
 		F0EF55F71BCDEA680062ECE1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EF55F61BCDEA680062ECE1 /* AppDelegate.m */; };
 		F0EF56001BCDEA680062ECE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0EF55FE1BCDEA680062ECE1 /* Main.storyboard */; };
 		F0EF56051BCDEA680062ECE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0EF56031BCDEA680062ECE1 /* LaunchScreen.storyboard */; };
 		F0EF56101BCDEA680062ECE1 /* MyDotaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EF560F1BCDEA680062ECE1 /* MyDotaTests.m */; };
 		F0EF561B1BCDEA680062ECE1 /* MyDotaUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EF561A1BCDEA680062ECE1 /* MyDotaUITests.m */; };
-		F0F58FCB1BDE29E300745E4C /* FMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F58FCA1BDE29E300745E4C /* FMDBManager.m */; settings = {ASSET_TAGS = (); }; };
+		F0F58FCB1BDE29E300745E4C /* FMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F58FCA1BDE29E300745E4C /* FMDBManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +142,13 @@
 		F0A2676A1BD0906C004BB71D /* GGRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGRequest.m; sourceTree = "<group>"; };
 		F0A2676C1BD09F20004BB71D /* BaseViewController+NaviView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BaseViewController+NaviView.h"; sourceTree = "<group>"; };
 		F0A2676D1BD09F20004BB71D /* BaseViewController+NaviView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BaseViewController+NaviView.m"; sourceTree = "<group>"; };
+		F0B1E3FC1BF5D0C600CED836 /* IntroControll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroControll.h; sourceTree = "<group>"; };
+		F0B1E3FD1BF5D0C600CED836 /* IntroControll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroControll.m; sourceTree = "<group>"; };
+		F0B1E3FE1BF5D0C600CED836 /* IntroModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroModel.h; sourceTree = "<group>"; };
+		F0B1E3FF1BF5D0C600CED836 /* IntroModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroModel.m; sourceTree = "<group>"; };
+		F0B1E4001BF5D0C600CED836 /* IntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroView.h; sourceTree = "<group>"; };
+		F0B1E4011BF5D0C600CED836 /* IntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroView.m; sourceTree = "<group>"; };
+		F0B1E4021BF5D0C600CED836 /* shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shadow@2x.png"; sourceTree = "<group>"; };
 		F0B3EF4E1BD0D69E00313C24 /* GGRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGRequestManager.h; sourceTree = "<group>"; };
 		F0B3EF4F1BD0D69E00313C24 /* GGRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGRequestManager.m; sourceTree = "<group>"; };
 		F0B3EF511BD0D6AD00313C24 /* GGRequestObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGRequestObserver.h; sourceTree = "<group>"; };
@@ -308,6 +319,7 @@
 		F07619781BD1D1F70097686B /* Libary */ = {
 			isa = PBXGroup;
 			children = (
+				F0B1E3FB1BF5D0C600CED836 /* IntroControll */,
 				F0634E971BE0B5A3003F45ED /* weChat */,
 				F07619791BD1D1F70097686B /* M3U8Kit */,
 			);
@@ -359,6 +371,20 @@
 				F0B3EF521BD0D6AD00313C24 /* GGRequestObserver.m */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		F0B1E3FB1BF5D0C600CED836 /* IntroControll */ = {
+			isa = PBXGroup;
+			children = (
+				F0B1E3FC1BF5D0C600CED836 /* IntroControll.h */,
+				F0B1E3FD1BF5D0C600CED836 /* IntroControll.m */,
+				F0B1E3FE1BF5D0C600CED836 /* IntroModel.h */,
+				F0B1E3FF1BF5D0C600CED836 /* IntroModel.m */,
+				F0B1E4001BF5D0C600CED836 /* IntroView.h */,
+				F0B1E4011BF5D0C600CED836 /* IntroView.m */,
+				F0B1E4021BF5D0C600CED836 /* shadow@2x.png */,
+			);
+			path = IntroControll;
 			sourceTree = "<group>";
 		};
 		F0EAF14A1BCE205500B18B81 /* Unitil */ = {
@@ -599,6 +625,7 @@
 				F0EF56051BCDEA680062ECE1 /* LaunchScreen.storyboard in Resources */,
 				F0CF6C931BD77D3100DF8017 /* VideoListCell.xib in Resources */,
 				F0EAF16B1BCE2B3200B18B81 /* Assets.xcassets in Resources */,
+				F0B1E4061BF5D0C600CED836 /* shadow@2x.png in Resources */,
 				F0EF56001BCDEA680062ECE1 /* Main.storyboard in Resources */,
 				F0634E9D1BE0B5A3003F45ED /* read_me.txt in Resources */,
 				F0D56B491BD3B616009CA293 /* AuthourData.geojson in Resources */,
@@ -685,8 +712,10 @@
 				F0F58FCB1BDE29E300745E4C /* FMDBManager.m in Sources */,
 				F00930AC1BD37FD5005E3E3E /* UserModel.m in Sources */,
 				F0634EAD1BE0B94A003F45ED /* WXApiResponseHandler.m in Sources */,
+				F0B1E4031BF5D0C600CED836 /* IntroControll.m in Sources */,
 				F0B3EF531BD0D6AD00313C24 /* GGRequestObserver.m in Sources */,
 				F015988E1BE1FB82001083BC /* FavoVideoListController.m in Sources */,
+				F0B1E4041BF5D0C600CED836 /* IntroModel.m in Sources */,
 				F0634EB91BE0BAE5003F45ED /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m in Sources */,
 				F07619891BD1D1F70097686B /* NSString+m3u8.m in Sources */,
 				F0634EBA1BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */,
@@ -713,6 +742,7 @@
 				F0CF6C991BD783B600DF8017 /* BaseViewController+GGRequest.m in Sources */,
 				F0EAF1631BCE213C00B18B81 /* HomeController.m in Sources */,
 				F0EF55F41BCDEA680062ECE1 /* main.m in Sources */,
+				F0B1E4051BF5D0C600CED836 /* IntroView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

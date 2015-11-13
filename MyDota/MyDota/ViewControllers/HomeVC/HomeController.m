@@ -8,7 +8,7 @@
 
 #import "HomeController.h"
 #import "GGRequest.h"
-#import "ImagePlayerView.h"
+//#import "ImagePlayerView.h"
 #import "UIImageView+AFNetworking.h"
 #import "MyDefines.h"
 #import "M3U8Tool.h"
@@ -20,12 +20,15 @@
 #import "VideoListController.h"
 #import "SearchViewController.h"
 #import "VideoListModel.h"
+#import "WXApiManager.h"
+
+#import "IntroControll.h"
 
 #define rowAd (180*timesOf320)
 #define  tail  10
 #define btnWid ((SCREEN_WIDTH-5*tail)/4)
 
-@interface HomeController ()<ImagePlayerViewDelegate>
+@interface HomeController ()<WXApiManagerDelegate,IntroControllDelegate>
 
 @end
 
@@ -33,20 +36,25 @@
     GGRequestObserver *_reqeustObserver;
     VideoListModel *_dotaListModel;
     
-    ImagePlayerView *_imgView;
+    IntroControll *_introControl;
+    
+    NSMutableArray *_introModelArr;
+    
     UIWebView *_webView;
     
     NSArray *_authourList;
+    int minIntroNum;
 }
 
 - (void)viewDidLoad {
+    [WXApiManager sharedManager].delegate = self;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.edgesForExtendedLayout=UIRectEdgeNone;
     _naviBar = [self setUpNaviViewWithType:GGNavigationBarTypeCustom];
     _naviBar.alpha = 0;
     _naviBar.title = @"刀一把";
-   // self.tableView.footer = nil;
+    _introModelArr = [NSMutableArray array];
     [self loadDotaVideos];
     
     
@@ -83,11 +91,22 @@
 -(void)loadDotaVideos{
     [VideoListModel getVideoListBy:@"https://api.youku.com/quality/video/by/category.json?client_id=e2306ead120d2e34&cate=10&count=10" complish:^(id object) {
         _dotaListModel = object;
+        [self makeTheIntroModelList];
         [self.tableView reloadData];
         [self.tableView.header endRefreshing];
     }];
     
 }
+
+-(void)makeTheIntroModelList{
+    minIntroNum = (int)MIN(_dotaListModel.videos.count, 5);
+    for (int i=0; i<minIntroNum; i++) {
+        VideoModel *vm = _dotaListModel.videos[i];
+        IntroModel *model = [[IntroModel alloc]initWithTitle:vm.title description:nil image:vm.thumbnail];
+        [_introModelArr addObject:model];
+    }
+}
+
 
 
 - (void)didReceiveMemoryWarning {
@@ -142,15 +161,12 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"ADCell"];
         if (!cell) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ADCell"];
-            _imgView = [[ImagePlayerView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, rowAd)];
-            _imgView.imagePlayerViewDelegate = self;
-            _imgView.scrollInterval = 5;
-//            _imgView.pageControl.currentPageIndicatorTintColor = JDDarkOrange;
-//            _imgView.pageControl.pageIndicatorTintColor = TextLightColor;
-            [_imgView setPageControlPosition:ICPageControlPosition_BottomCenter];
-            [cell.contentView addSubview:_imgView];
         }
-        [_imgView reloadData];
+        if (_introControl == nil&&_introModelArr.count) {
+            _introControl = [[IntroControll alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, rowAd) pages:_introModelArr];
+            _introControl.delegate = self;
+        }
+        [cell.contentView addSubview:_introControl];
     }else if (indexPath.section == 1){
         cell = [tableView dequeueReusableCellWithIdentifier:@"AuthourCell"];
         if (!cell) {
@@ -256,6 +272,9 @@
 #pragma mark - UIScrollViewDelegate
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     float y = scrollView.contentOffset.y;
+    if (y<0) {
+        scrollView.contentOffset = CGPointMake(0, 0);
+    }
     _naviBar.alpha = MIN(0.8, y/100);
 }
 
@@ -281,23 +300,9 @@
 }
 
 
-#pragma mark - ImagePlayerViewDelegate
+#pragma mark - introControlDelegate
 
-- (NSInteger)numberOfItems{
-    
-    return MIN(_dotaListModel.videos.count, 6);
-}
-
-- (void)imagePlayerView:(ImagePlayerView *)imagePlayerView loadImageForImageView:(UIImageView *)imageView index:(NSInteger)index{
-    
-    VideoModel *model = _dotaListModel.videos[index];
-    if (model.thumbnail) {
-        imageView.contentMode = UIViewContentModeScaleToFill;
-        [imageView setImageWithURL:[NSURL URLWithString:model.thumbnail]];
-    }
-    
-}
-- (void)imagePlayerView:(ImagePlayerView *)imagePlayerView didTapAtIndex:(NSInteger)index{
+-(void)introControlSelectedIndex:(int)index{
     VideoModel *model = _dotaListModel.videos[index];
     if (model.link) {
         VideoViewController *vc = [[VideoViewController alloc]initWithVideoModel:model];
@@ -306,6 +311,25 @@
         
     }
 }
+
+//- (void)imagePlayerView:(ImagePlayerView *)imagePlayerView loadImageForImageView:(UIImageView *)imageView index:(NSInteger)index{
+//    
+//    VideoModel *model = _dotaListModel.videos[index];
+//    if (model.thumbnail) {
+//        imageView.contentMode = UIViewContentModeScaleToFill;
+//        [imageView setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+//    }
+//    
+//}
+//- (void)imagePlayerView:(ImagePlayerView *)imagePlayerView didTapAtIndex:(NSInteger)index{
+//    VideoModel *model = _dotaListModel.videos[index];
+//    if (model.link) {
+//        VideoViewController *vc = [[VideoViewController alloc]initWithVideoModel:model];
+//        [self pushWithoutTabbar:vc];
+//    }else{
+//        
+//    }
+//}
 
 
 
@@ -318,6 +342,33 @@
     self.hidesBottomBarWhenPushed = NO;
 }
 
+#pragma mark --- WXApiManagerDelegate
 
+- (void)managerDidRecvLaunchFromWXReq:(LaunchFromWXReq *)request{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"111"
+                                                    message:@"----"
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+- (void)managerDidRecvShowMessageReq:(ShowMessageFromWXReq *)request{
+    WXMediaMessage *message = request.message;
+    if (message.messageExt.length) {
+        if ([message.mediaObject isKindOfClass:[WXAppExtendObject class]]) {
+            WXAppExtendObject *objc = message.mediaObject;
+            NSDictionary *dic = [objc.extInfo jsonObject];
+            Class objClass = NSClassFromString(message.messageExt);
+            id model = [MTLJSONAdapter modelOfClass:objClass fromJSONDictionary:dic error:nil];
+            if ([model isKindOfClass:[VideoModel class]]) {
+                VideoViewController *vc = [[VideoViewController alloc]initWithVideoModel:model];
+                [self pushWithoutTabbar:vc];
+            }
+            
+        }
+    }
+}
 
 @end

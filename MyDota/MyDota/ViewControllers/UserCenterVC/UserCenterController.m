@@ -41,7 +41,7 @@
 
         view;
     });
-    _titleArr = @[@"我的收藏",@"意见反馈",@"给个好评",@"分享APP"];
+    _titleArr = @[@"我的收藏",@"意见反馈",@"给个好评",@"分享APP",@"别点 (╯`□′)╯(┻━┻"];
 //    
 //    UzysAppearanceConfig *appearanceConfig = [[UzysAppearanceConfig alloc] init];
 //    appearanceConfig.finishSelectionButtonColor = [UIColor blueColor];
@@ -79,7 +79,7 @@
         scrollView.contentOffset = CGPointMake(0, 0);
     }
     y = MIN(0, y);
-    _imagView.transform = CGAffineTransformMakeScale(1.0-y/150, 1.0-y/150);
+    _imagView.transform = CGAffineTransformMakeScale(1.0-y/300, 1.0-y/300);
 }
 
 
@@ -130,7 +130,6 @@
     }
     
     if (indexPath.row == 3) {
-        UIImage *thumbImage = [UIImage imageNamed:@"res2.jpg"];
         [WXApiRequestHandler sendAppContentData:nil
                                         ExtInfo:@""
                                          ExtURL:nil
@@ -138,8 +137,11 @@
                                     Description:@"最新最热Dota视频App"
                                      MessageExt:nil
                                   MessageAction:nil
-                                     ThumbImage:thumbImage
+                                     ThumbImage:nil
                                         InScene:WXSceneSession];
+    }
+    if (indexPath.row == 4) {
+        
     }
     
     
