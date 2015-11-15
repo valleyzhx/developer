@@ -36,6 +36,10 @@
 -(id)jsonObject;
 @end
 
+@interface NSData (json)
+-(id)jsonObject;
+@end
+
 @interface NSObject (json)
 -(NSString*)jsonString;
 @end

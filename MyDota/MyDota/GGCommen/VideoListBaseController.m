@@ -12,11 +12,13 @@
 #import "VideoViewController.h"
 #import "MyDefines.h"
 
+
 @interface VideoListBaseController ()
 
 @end
 
-@implementation VideoListBaseController
+@implementation VideoListBaseController{
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,8 +28,13 @@
         view.backgroundColor = viewBGColor;
         view;
     });
-    // Do any additional setup after loading the view.
+    self.showGDTADView = YES;
 }
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -76,10 +83,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     VideoModel *model = _listArr[indexPath.row];
-    self.hidesBottomBarWhenPushed = YES;
     VideoViewController *controller = [[VideoViewController alloc]initWithVideoModel:model];
     [self.navigationController pushViewController:controller animated:YES];
     
 }
+
+
+
+
 
 @end

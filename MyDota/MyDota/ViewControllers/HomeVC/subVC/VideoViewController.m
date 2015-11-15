@@ -55,10 +55,12 @@
     [self setVideoView];
     [self startLoadRequest:_videoObject.link];
     //[self loadTheVidList];
-    CGRect r = self.tableView.frame;
-    r.origin.y = self.player.view.frame.size.height;
-    r.size.height -= r.origin.y;
-    self.tableView.frame = r;
+    self.tableView.tableHeaderView = ({
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, _player.view.frame.size.height-10)];
+        view.backgroundColor = viewBGColor;
+        view;
+    });
+    
     [self.view bringSubviewToFront:_naviBar];
     
     NSInteger userId = _videoObject.userid.integerValue;
@@ -335,9 +337,7 @@
             [weakSelf.tableView reloadData];
         }];
         vc.isFromVideo = YES;
-        self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
     }
     if (indexPath.row == 3) {//分享
         

@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, assign) NSInteger count;
 @property (nonatomic, strong) NSTimer *autoScrollTimer;
+@property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) NSMutableArray *pageControlConstraints;
 @property (nonatomic, strong) NSMutableArray *scrollViewConstraints;
 @end
@@ -99,6 +100,11 @@
     self.edgeInsets = UIEdgeInsetsZero;
     
     [self reloadData];
+}
+
+- (void)dealloc
+{
+    [self removeObserver:self forKeyPath:@"bounds"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -274,6 +280,10 @@
                 break;
             }
         }
+    }
+    
+    if (self.imagePlayerViewDelegate && [self.imagePlayerViewDelegate respondsToSelector:@selector(imagePlayerView:didScorllIndex:)]) {
+        [self.imagePlayerViewDelegate imagePlayerView:self didScorllIndex:currentIndex];
     }
     
     self.pageControl.currentPage = currentIndex;

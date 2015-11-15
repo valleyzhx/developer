@@ -11,7 +11,7 @@
 
 @implementation MTLHALResource(GGRequest)
 +(void)startRequestWithUrl:(NSString *)url complish:(void (^)(id))finished{
-    [GGRequest requestWithUrl:url withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [GGRequest requestWithUrl:url accepType:@"json" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (finished) {
             if ([NSJSONSerialization isValidJSONObject:responseObject]) {
                 id objc = [self managerThereReponseObject:responseObject];

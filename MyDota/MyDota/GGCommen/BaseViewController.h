@@ -20,6 +20,7 @@
 @property (nonatomic,assign) BOOL noTable;
 @property (nonatomic,strong) UITableView *tableView;
 
+@property (nonatomic,assign) BOOL showGDTADView;
 
 
 @end

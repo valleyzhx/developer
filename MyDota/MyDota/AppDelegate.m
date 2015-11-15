@@ -12,6 +12,10 @@
 #import "MobClick.h"
 #import "WXApiManager.h"
 #import "MyDefines.h"
+#import "UMFeedback.h"
+
+
+
 
 @interface AppDelegate ()
 
@@ -22,12 +26,31 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-   // [GGRequest downLoadBanerJS];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [WXApi registerApp:@"wx1bc2f1985a2547b5"];
-    [MobClick startWithAppkey:@"539093f556240b01ab039989"];
+    
+    [WXApi registerApp:WXApi_ID];
+    [MobClick startWithAppkey:MobClick_ID];
+    [UMFeedback setAppkey:MobClick_ID];
+
+    [self initGDTSplashAd];
+    [NSThread sleepForTimeInterval:1.0];//设置启动页面时间
+    
     return YES;
 }
+
+-(void)initGDTSplashAd{
+    //开屏广告初始化并展示代码
+
+    GDTSplashAd *splash = [[GDTSplashAd alloc] initWithAppkey:@"1104096526" placementId:@"1030000658357420"];
+    splash.delegate = self; //设置代理
+    //根据iPhone设备不同设置不同背景图
+    if ([[UIScreen mainScreen] bounds].size.height >= 568.0f) {
+        splash.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"LaunchImage-568h"]]; } else {
+            splash.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"LaunchImage"]]; }
+    splash.fetchDelay = 3; //开发者可以设置开屏拉取时间,超时则放弃展示 //开屏广告拉取并展示在当前window中
+    [splash loadAdAndShowInWindow:self.window];
+    self.splash = splash;
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -63,6 +86,27 @@
     dispatchDelay(0.2, [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];);
     return YES;
 }
+
+
+
+#pragma mark --- GDT
+//开屏广告成功展示
+-(void)splashAdSuccessPresentScreen:(GDTSplashAd *)splashAd{
+    
+}
+-(void)splashAdFailToPresent:(GDTSplashAd *)splashAd withError:(NSError *)error{
+    
+}
+- (void)splashAdApplicationWillEnterBackground:(GDTSplashAd *)splashAd{
+    
+}
+- (void)splashAdClicked:(GDTSplashAd *)splashAd{
+    
+}
+- (void)splashAdClosed:(GDTSplashAd *)splashAd{
+    
+}
+
 
 
 

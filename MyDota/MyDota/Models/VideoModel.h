@@ -24,7 +24,7 @@
 @property (nonatomic,assign)int comment_count;
 @property (nonatomic,assign)int up_count;
 @property (nonatomic,assign)int down_count;
-@property (nonatomic,assign)BOOL isinteract;
+//@property (nonatomic,assign)BOOL isinteract;
 
 //@property (nonatomic,strong)NSArray *streamtypes;
 //@property (nonatomic,strong)NSArray *operation_limit;

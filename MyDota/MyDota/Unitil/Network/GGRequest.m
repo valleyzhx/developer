@@ -11,14 +11,13 @@
 
 @implementation GGRequest
 
-
-+(void)requestWithUrl:(NSString *)url withSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure{
++(void)requestWithUrl:(NSString *)url accepType:(NSString *)type withSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    if ([url hasSuffix:@".html"]) {
+    if ([type isEqualToString:@"text"]||[type isEqualToString:@"html"]) {
         manager.requestSerializer = [AFHTTPRequestSerializer serializer];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     }
-        [manager GET:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         if (success) {
             success(operation,responseObject);
         }
@@ -28,6 +27,9 @@
         }
     }];
 }
+
+
+
 +(void)requestM3U8WithUrl:(NSString *)url withSuccess:(void (^)(NSString *))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {

@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "VideoModel.h"
+#import "MBProgressHUD.h"
 
 @interface VideoListBaseController : BaseViewController
 @property (nonatomic,strong) NSMutableArray <VideoModel *>*listArr;

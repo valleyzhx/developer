@@ -47,11 +47,7 @@
     _listArr = [NSMutableArray array];
     _naviBar.backgroundView.alpha = 1;
     [self loadVideoList:1];
-    self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 48)];
-        view.backgroundColor = viewBGColor;
-        view;
-    });
+   
     self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 
 }
@@ -62,7 +58,9 @@
 -(void)loadVideoList:(int)page{
     
     NSString *url = [NSString stringWithFormat:@"https://openapi.youku.com/v2/videos/by_user.json?client_id=e2306ead120d2e34&user_id=%@&page=%d",_user.modelID,page];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [VideoListModel getVideoListBy:url complish:^(id object) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (object == nil) {
             return ;
         }
@@ -135,7 +133,6 @@
             finished(model);
         }
     }else{
-        self.hidesBottomBarWhenPushed = YES;
         VideoViewController *controller = [[VideoViewController alloc]initWithVideoModel:model];
         controller.isFromAuthorList = YES;
         [self.navigationController pushViewController:controller animated:YES];

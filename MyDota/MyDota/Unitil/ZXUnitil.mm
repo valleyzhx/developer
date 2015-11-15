@@ -74,7 +74,7 @@ static ZXUnitil *_unitil;
 }
 
 + (float)heightOfStringWithString:(NSString *)str font:(UIFont *)font width:(float)width{
-    CGRect rect = [str boundingRectWithSize:CGSizeMake(width, 100) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil];
+    CGRect rect = [str boundingRectWithSize:CGSizeMake(width, 300) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil];
     
     return rect.size.height+1;
 }
@@ -289,6 +289,16 @@ static ZXUnitil *_unitil;
 }
 
 @end
+
+@implementation NSData (json)
+
+-(id)jsonObject{
+    id object = [NSJSONSerialization JSONObjectWithData:self options:NSJSONReadingMutableContainers error:nil];
+    return object;
+}
+
+@end
+
 
 @implementation NSObject (json)
 -(NSString*)jsonString{

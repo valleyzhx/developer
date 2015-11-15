@@ -11,6 +11,8 @@
 #import "UzysAssetsPickerController.h"
 #import "WXApiRequestHandler.h"
 #import "FavoVideoListController.h"
+#import "ADViewController.h"
+#import "UMFeedback.h"
 
 #define imageHeight 230
 
@@ -41,13 +43,7 @@
 
         view;
     });
-    _titleArr = @[@"我的收藏",@"意见反馈",@"给个好评",@"分享APP",@"别点 (╯`□′)╯(┻━┻"];
-//    
-//    UzysAppearanceConfig *appearanceConfig = [[UzysAppearanceConfig alloc] init];
-//    appearanceConfig.finishSelectionButtonColor = [UIColor blueColor];
-//    appearanceConfig.assetsGroupSelectedImageName = @"checker";
-//    [UzysAssetsPickerController setUpAppearanceConfig:appearanceConfig];
-//    
+    _titleArr = @[@[@"我的收藏"],@[@"意见反馈",@"给个好评",@"分享APP"],@[@"每日一句"]];
     
 }
 
@@ -87,14 +83,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 1;
+    return _titleArr.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _titleArr.count;
+    NSArray *arr = _titleArr[section];
+    return arr.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0;
+    return section?10:0;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -115,7 +112,7 @@
     if (indexPath.row == 0) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    cell.textLabel.text = _titleArr[indexPath.row];
+    cell.textLabel.text = _titleArr[indexPath.section][indexPath.row];
     return cell;
     
     return nil;
@@ -124,12 +121,19 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         FavoVideoListController *controller = [[FavoVideoListController alloc]init];
         [self pushWithoutTabbar:controller];
     }
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        [self presentViewController:[UMFeedback feedbackModalViewController] animated:YES completion:nil];
+    }
+    if (indexPath.section == 1 && indexPath.row == 1) {
+        NSString *url = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=958792762";
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:url]];
+    }
     
-    if (indexPath.row == 3) {
+    if (indexPath.row ==1 && indexPath.row == 2) {
         [WXApiRequestHandler sendAppContentData:nil
                                         ExtInfo:@""
                                          ExtURL:nil
@@ -140,8 +144,9 @@
                                      ThumbImage:nil
                                         InScene:WXSceneSession];
     }
-    if (indexPath.row == 4) {
-        
+    if (indexPath.section == 2) {
+        ADViewController *controller = [[ADViewController alloc]init];
+        [self pushWithoutTabbar:controller];
     }
     
     
@@ -209,7 +214,6 @@
 #pragma mark -- pushAction
 
 -(void)pushWithoutTabbar:(UIViewController*)vc{
-    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     self.hidesBottomBarWhenPushed = NO;
 }

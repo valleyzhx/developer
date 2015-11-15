@@ -8,7 +8,6 @@
 
 #import "HomeController.h"
 #import "GGRequest.h"
-//#import "ImagePlayerView.h"
 #import "UIImageView+AFNetworking.h"
 #import "MyDefines.h"
 #import "M3U8Tool.h"
@@ -16,6 +15,7 @@
 #import "BaseViewController+NaviView.h"
 #import "VideoViewController.h"
 #import "UserModel.h"
+#import "AuthorListController.h"
 #import "AuthorVideoListController.h"
 #import "VideoListController.h"
 #import "SearchViewController.h"
@@ -55,36 +55,37 @@
     _naviBar.alpha = 0;
     _naviBar.title = @"刀一把";
     _introModelArr = [NSMutableArray array];
+    
     [self loadDotaVideos];
     
     
     _authourList = [UserModel loadLocalGEOJsonData];
-//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
-//    view.backgroundColor = viewBGColor;
-//    self.tableView.tableHeaderView = view;
+    
     UIView *footView = [[UIView  alloc]initWithFrame:CGRectMake(0, 0, 320, 5)];
     footView.backgroundColor = viewBGColor;
     self.tableView.tableFooterView = footView;
     [self setSearchButton];
-//    _authoList = @[@"2009",       @"情书",    @"小满",    @"牛蛙",   @"章鱼丸718", @"西瓦幽鬼",    @"舞ル灬",@"更多"];
-//    _authorIdArr = @[@"79241663",@"106382808",@"64331608",@"90146406",@"75496314",@"109937062",@"80985046"];
-//    
-//    _authorUrlArr = @[];
+
     
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadTheDataAction)];
+    header.backgroundColor = Nav_Color;
+    header.lastUpdatedTimeLabel.textColor = header.stateLabel.textColor = [UIColor whiteColor];
+    header.lastUpdatedTimeLabel.font = header.stateLabel.font = [UIFont systemFontOfSize:12];
+    self.tableView.mj_header = header;
     
-//    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//        [self loadDotaVideos];
-//    }];
-//    self.tableView.header.backgroundColor = JDLightOrange;
+    UIView *outView = [[UIView alloc]initWithFrame:CGRectMake(0, -500, SCREEN_WIDTH, 500-header.frame.size.height)];
+    outView.backgroundColor = Nav_Color;
+    [self.tableView addSubview:outView];
 
 
 }
 
 -(void)setSearchButton{
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [btn setTitle:@"--" forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"searchBarBtn"] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(searchAction:) forControlEvents:UIControlEventTouchUpInside];
     _naviBar.rightView = btn;
+    btn.center = CGPointMake(btn.center.x-10, btn.center.y);
 }
 
 
@@ -93,12 +94,13 @@
         _dotaListModel = object;
         [self makeTheIntroModelList];
         [self.tableView reloadData];
-        [self.tableView.header endRefreshing];
+        dispatchDelay(0.2, [self.tableView.header endRefreshing];);
     }];
     
 }
 
 -(void)makeTheIntroModelList{
+    [_introModelArr removeAllObjects];
     minIntroNum = (int)MIN(_dotaListModel.videos.count, 5);
     for (int i=0; i<minIntroNum; i++) {
         VideoModel *vm = _dotaListModel.videos[i];
@@ -107,7 +109,11 @@
     }
 }
 
+-(void)reloadTheDataAction{
+    _dotaListModel = nil;
+    [self loadDotaVideos];
 
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -137,7 +143,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section==0||section==3) {
+    if (section==0||section==2||section==3) {
         return 0;
     }
     return 10;
@@ -190,15 +196,12 @@
                 [btn addSubview:nameLab];
                 [cell.contentView addSubview:btn];
                 if (i==7) {
+                    imgV.image = [UIImage imageNamed:@"btn_more.jpg"];
                     nameLab.text = @"更多";
                     break;
                 }
                 UserModel *info = _authourList[i];
                 nameLab.text = info.name;
-                if ([info.modelID isEqualToString:@"64331608"]) {
-                    nameLab.text = @"小满";
-                }
-
                 [imgV setImageWithURL:[NSURL URLWithString:info.avatar_large]];
                 
             }
@@ -272,17 +275,16 @@
 #pragma mark - UIScrollViewDelegate
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     float y = scrollView.contentOffset.y;
-    if (y<0) {
-        scrollView.contentOffset = CGPointMake(0, 0);
-    }
-    _naviBar.alpha = MIN(0.8, y/100);
+    _naviBar.alpha = MIN(0.9, y/100);
 }
 
 
 
 -(void)clickedTheBtn:(UIButton*)btn{
     if (btn.tag == 7) {
-        
+        //更多
+        AuthorListController *listVC = [[AuthorListController alloc]init];
+        [self pushWithoutTabbar:listVC];
     }else{
         UserModel *user = _authourList[btn.tag];
         AuthorVideoListController *vc = [[AuthorVideoListController alloc]initWithUser:user];
@@ -337,7 +339,6 @@
 #pragma mark -- pushAction
 
 -(void)pushWithoutTabbar:(UIViewController*)vc{
-    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     self.hidesBottomBarWhenPushed = NO;
 }
@@ -370,5 +371,10 @@
         }
     }
 }
+
+
+
+
+
 
 @end

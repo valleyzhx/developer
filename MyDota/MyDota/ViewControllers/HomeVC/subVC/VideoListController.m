@@ -30,8 +30,10 @@
 
 -(void)loadVideoList:(int)page{
     NSString *url = [NSString stringWithFormat:@"https://api.youku.com/quality/video/by/category.json?client_id=e2306ead120d2e34&cate=10&count=10&page=%d",page];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [VideoListModel getVideoListBy:url complish:^(id objc) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (objc == nil) {
             return ;
         }
