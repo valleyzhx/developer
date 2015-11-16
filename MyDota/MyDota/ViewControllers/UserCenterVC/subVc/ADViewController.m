@@ -72,6 +72,7 @@
     req.testDevices = @[@"5610fbd8aa463fcd021f9f235d9f6ba1"];
 #endif
     [_adView loadRequest:req];
+    [MobClick event:@"ADViewController"];
 }
 
 
@@ -88,6 +89,7 @@
     request.testDevices = @[ @"5610fbd8aa463fcd021f9f235d9f6ba1" ];
 #endif
     [_interstitial loadRequest:request];
+    [MobClick event:@"GoogleLargeAd"];
 }
 
 

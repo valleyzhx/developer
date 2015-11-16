@@ -32,7 +32,7 @@
         view.backgroundColor = [UIColor clearColor];
         view;
     });
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     [self loadAuthorList:1];
 
 }
@@ -41,10 +41,10 @@
 }
 
 -(void)loadAuthorList:(int)page{
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self showHudView];
     NSString *url = [NSString stringWithFormat:@"https://openapi.youku.com/v2/users/friendship/followings.json?client_id=e2306ead120d2e34&user_id=811232081&page=%d",page];
     [UserListModel getUserListBy:url complish:^(id objc) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self hideHudView];
         if (objc == nil) {
             return ;
         }
@@ -57,9 +57,9 @@
             [self.tableView reloadData];
         }
         if (total==self.listArr.count) {
-            [self.tableView.footer endRefreshingWithNoMoreData];
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }else{
-            [self.tableView.footer endRefreshing];
+            [self.tableView.mj_footer endRefreshing];
         }
     }];
 }

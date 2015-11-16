@@ -9,6 +9,8 @@
 #import "BaseViewController.h"
 #import "MyDefines.h"
 #import "BaseViewController+NaviView.h"
+#import "MBProgressHUD.h"
+
 
 #import "GDTMobBannerView.h"
 #define IS_OS_7_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
@@ -74,7 +76,14 @@
     _naviBar.title = title;
 }
 
+-(void)showHudView{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.view bringSubviewToFront:_naviBar];
+}
 
+-(void)hideHudView{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

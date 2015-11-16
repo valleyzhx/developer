@@ -94,7 +94,7 @@
         _dotaListModel = object;
         [self makeTheIntroModelList];
         [self.tableView reloadData];
-        dispatchDelay(0.2, [self.tableView.header endRefreshing];);
+        dispatchDelay(0.2, [self.tableView.mj_header endRefreshing];);
     }];
     
 }

@@ -31,6 +31,7 @@
         lab.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
         [self.view addSubview:lab];
     }
+    self.showGDTADView = NO;
 }
 
 

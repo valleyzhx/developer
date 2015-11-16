@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "GGNavigationBar.h"
 #import "MJRefresh.h"
+#import "MobClick.h"
+
 #define orgX 16
 
 @interface BaseViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
@@ -22,5 +24,8 @@
 
 @property (nonatomic,assign) BOOL showGDTADView;
 
+
+-(void)showHudView;
+-(void)hideHudView;
 
 @end

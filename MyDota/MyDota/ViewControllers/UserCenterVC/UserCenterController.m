@@ -108,7 +108,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    if (indexPath.row == 0) {
+    if (indexPath.section!=1 && indexPath.row == 0) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     cell.textLabel.text = _titleArr[indexPath.section][indexPath.row];

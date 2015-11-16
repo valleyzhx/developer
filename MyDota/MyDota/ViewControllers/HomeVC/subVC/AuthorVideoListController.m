@@ -48,7 +48,7 @@
     _naviBar.backgroundView.alpha = 1;
     [self loadVideoList:1];
    
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 
 }
 -(void)loadMoreData{
@@ -58,9 +58,9 @@
 -(void)loadVideoList:(int)page{
     
     NSString *url = [NSString stringWithFormat:@"https://openapi.youku.com/v2/videos/by_user.json?client_id=e2306ead120d2e34&user_id=%@&page=%d",_user.modelID,page];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self showHudView];
     [VideoListModel getVideoListBy:url complish:^(id object) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self hideHudView];
         if (object == nil) {
             return ;
         }
@@ -70,9 +70,9 @@
         currentPage = model.page;
         [self.tableView reloadData];
         if (total==_listArr.count) {
-            [self.tableView.footer endRefreshingWithNoMoreData];
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }else{
-            [self.tableView.footer endRefreshing];
+            [self.tableView.mj_footer endRefreshing];
         }
     }];
 }

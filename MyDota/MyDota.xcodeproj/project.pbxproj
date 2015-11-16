@@ -977,6 +977,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -995,9 +996,11 @@
 					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdsMoGoSDK",
 					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdNetworkLibs/DoMob_SDK_471_Video_220/SDK",
 					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdLibs/GDTlibs",
+					"$(PROJECT_DIR)/MyDota/Unitil/Libary/UMessage_Sdk_1.2.0",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplan.MyDota;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e2d0b475-9051-4e26-b6db-fdd0b9e2032e";
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)";
 			};
 			name = Debug;
@@ -1008,7 +1011,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhang Xiang (BZ2BR27C6A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhang Xiang (BZ2BR27C6A)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1027,9 +1031,11 @@
 					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdsMoGoSDK",
 					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdNetworkLibs/DoMob_SDK_471_Video_220/SDK",
 					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdLibs/GDTlibs",
+					"$(PROJECT_DIR)/MyDota/Unitil/Libary/UMessage_Sdk_1.2.0",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplan.MyDota;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e2d0b475-9051-4e26-b6db-fdd0b9e2032e";
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)";
 			};
 			name = Release;

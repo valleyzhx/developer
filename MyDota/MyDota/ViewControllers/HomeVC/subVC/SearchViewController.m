@@ -60,6 +60,9 @@
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }else{
             [self.tableView.mj_footer endRefreshing];
+            if (currentPage == 1) {
+                [self.tableView setContentOffset:CGPointMake(0, -20) animated:YES];
+            }
             currentPage++;
         }
         [self clickedTheBackGround:nil];

@@ -34,13 +34,13 @@
 {
     return UIStatusBarStyleLightContent;
 }
-- (UIViewController *)childViewControllerForStatusBarHidden
-{
-    return nil;
-}
-- (BOOL)prefersStatusBarHidden
-{
-    return NO;
-}
+//- (UIViewController *)childViewControllerForStatusBarHidden
+//{
+//    return nil;
+//}
+//- (BOOL)prefersStatusBarHidden
+//{
+//    return NO;
+//}
 
 @end

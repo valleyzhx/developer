@@ -10,7 +10,6 @@
 #import "BaseViewController+NaviView.h"
 #import "MyDefines.h"
 #import "VKVideoPlayer.h"
-#import "MBProgressHUD.h"
 #import "M3U8Tool.h"
 #import "UserModel.h"
 #import "UIKit+AFNetworking.h"
@@ -56,28 +55,26 @@
     [self startLoadRequest:_videoObject.link];
     //[self loadTheVidList];
     self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, _player.view.frame.size.height-10)];
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetMaxY(_player.view.frame))];
         view.backgroundColor = viewBGColor;
         view;
     });
-    
-    [self.view bringSubviewToFront:_naviBar];
-    
     NSInteger userId = _videoObject.userid.integerValue;
     if (userId==0) {
         userId = _videoObject.userDicId.integerValue;
     }
     [UserModel getUserInfoBy:@(userId) complish:^(id objc) {
         _user = objc;
+        [MobClick event:@"videoViewController" label:_user.name];
         [self.tableView reloadData];
     }];
     _isFav = [[FMDBManager shareManager]hasTheModel:_videoObject];
 }
 
 -(void)startLoadRequest:(NSString*)htmlUrl{
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self showHudView];
     [M3U8Tool m3u8UrlWithUrl:htmlUrl complised:^(NSString *m3u8Url) {
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self hideHudView];
         if (m3u8Url) {
             _m3u8Url = m3u8Url;
 //            if (_typeDic[@"高清"]) {
@@ -192,15 +189,13 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    //[[UIApplication sharedApplication] setStatusBarHidden:NO];
     if ([self.player isPlayingVideo]) {
         [self.player pauseContent];
     }
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    //[[UIApplication sharedApplication] setStatusBarHidden:YES];
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
 }
 
 
@@ -335,6 +330,7 @@
             _videoObject = model;
             [weakSelf startLoadRequest:_videoObject.link];
             [weakSelf.tableView reloadData];
+            [MobClick event:@"videoViewController" label:_user.name];
         }];
         vc.isFromVideo = YES;
         [self.navigationController pushViewController:vc animated:YES];
