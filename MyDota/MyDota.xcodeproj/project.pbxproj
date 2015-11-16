@@ -16,6 +16,7 @@
 		F00EF2231BCF806A009FEEB4 /* GGNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F00EF2221BCF806A009FEEB4 /* GGNavigationBar.m */; };
 		F015988E1BE1FB82001083BC /* FavoVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F015988D1BE1FB82001083BC /* FavoVideoListController.m */; };
 		F021BDBD1BD34407001429CC /* AuthorVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021BDBC1BD34407001429CC /* AuthorVideoListController.m */; };
+		F03BE87C1BF9C55900841606 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F03BE87E1BF9C55900841606 /* InfoPlist.strings */; };
 		F0634E9C1BE0B5A3003F45ED /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0634E981BE0B5A3003F45ED /* libWeChatSDK.a */; };
 		F0634E9D1BE0B5A3003F45ED /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0634E991BE0B5A3003F45ED /* read_me.txt */; };
 		F0634EA71BE0B73E003F45ED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0634EA61BE0B73E003F45ED /* CoreTelephony.framework */; };
@@ -34,18 +35,18 @@
 		F0966F141BD202B2000A512F /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0966F131BD202B2000A512F /* VideoViewController.m */; };
 		F0A2676B1BD0906C004BB71D /* GGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A2676A1BD0906C004BB71D /* GGRequest.m */; };
 		F0A2676E1BD09F20004BB71D /* BaseViewController+NaviView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A2676D1BD09F20004BB71D /* BaseViewController+NaviView.m */; };
-		F0AD249A1BF7595C000B1626 /* libGDTMobSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24991BF7595C000B1626 /* libGDTMobSDK.a */; settings = {ASSET_TAGS = (); }; };
+		F0AD249A1BF7595C000B1626 /* libGDTMobSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24991BF7595C000B1626 /* libGDTMobSDK.a */; };
 		F0AD249C1BF75B3F000B1626 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD249B1BF75B3F000B1626 /* AdSupport.framework */; };
 		F0AD249E1BF75B5A000B1626 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD249D1BF75B5A000B1626 /* StoreKit.framework */; };
-		F0AD24A11BF7608A000B1626 /* GGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD24A01BF7608A000B1626 /* GGNavigationController.m */; settings = {ASSET_TAGS = (); }; };
-		F0AD24A41BF77FB5000B1626 /* ADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD24A31BF77FB5000B1626 /* ADViewController.m */; settings = {ASSET_TAGS = (); }; };
-		F0AD24B01BF7802B000B1626 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0AD24AC1BF7802B000B1626 /* README.txt */; settings = {ASSET_TAGS = (); }; };
+		F0AD24A11BF7608A000B1626 /* GGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD24A01BF7608A000B1626 /* GGNavigationController.m */; };
+		F0AD24A41BF77FB5000B1626 /* ADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD24A31BF77FB5000B1626 /* ADViewController.m */; };
+		F0AD24B01BF7802B000B1626 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0AD24AC1BF7802B000B1626 /* README.txt */; };
 		F0AD24B31BF7811E000B1626 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24B11BF7811E000B1626 /* EventKit.framework */; };
 		F0AD24B41BF7811E000B1626 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24B21BF7811E000B1626 /* EventKitUI.framework */; };
 		F0AD24B61BF78163000B1626 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24B51BF78163000B1626 /* MessageUI.framework */; };
-		F0AD24B81BF78261000B1626 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24B71BF78261000B1626 /* GoogleMobileAds.framework */; settings = {ASSET_TAGS = (); }; };
-		F0AD24BB1BF85CA5000B1626 /* AuthorListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD24BA1BF85CA5000B1626 /* AuthorListController.m */; settings = {ASSET_TAGS = (); }; };
-		F0AD24BE1BF85D9B000B1626 /* UserListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD24BD1BF85D9B000B1626 /* UserListModel.m */; settings = {ASSET_TAGS = (); }; };
+		F0AD24B81BF78261000B1626 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24B71BF78261000B1626 /* GoogleMobileAds.framework */; };
+		F0AD24BB1BF85CA5000B1626 /* AuthorListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD24BA1BF85CA5000B1626 /* AuthorListController.m */; };
+		F0AD24BE1BF85D9B000B1626 /* UserListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD24BD1BF85D9B000B1626 /* UserListModel.m */; };
 		F0B1E4031BF5D0C600CED836 /* IntroControll.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B1E3FD1BF5D0C600CED836 /* IntroControll.m */; };
 		F0B1E4041BF5D0C600CED836 /* IntroModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B1E3FF1BF5D0C600CED836 /* IntroModel.m */; };
 		F0B1E4051BF5D0C600CED836 /* IntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B1E4011BF5D0C600CED836 /* IntroView.m */; };
@@ -111,6 +112,9 @@
 		F015988D1BE1FB82001083BC /* FavoVideoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoVideoListController.m; sourceTree = "<group>"; };
 		F021BDBB1BD34407001429CC /* AuthorVideoListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorVideoListController.h; sourceTree = "<group>"; };
 		F021BDBC1BD34407001429CC /* AuthorVideoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorVideoListController.m; sourceTree = "<group>"; };
+		F03BE8801BF9C5CC00841606 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		F03BE8811BF9C5CC00841606 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		F03BE8821BF9C5DD00841606 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F0634E981BE0B5A3003F45ED /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		F0634E991BE0B5A3003F45ED /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
 		F0634E9A1BE0B5A3003F45ED /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -564,6 +568,7 @@
 			children = (
 				F0EF55F31BCDEA680062ECE1 /* main.m */,
 				F0EAF1691BCE237000B18B81 /* MyDota-Prefix.pch */,
+				F03BE87E1BF9C55900841606 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -684,6 +689,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = F0EF55E61BCDEA680062ECE1;
 			productRefGroup = F0EF55F01BCDEA680062ECE1 /* Products */;
@@ -709,6 +715,7 @@
 				F0634E9D1BE0B5A3003F45ED /* read_me.txt in Resources */,
 				F0AD24B01BF7802B000B1626 /* README.txt in Resources */,
 				F0D56B491BD3B616009CA293 /* AuthourData.geojson in Resources */,
+				F03BE87C1BF9C55900841606 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,10 +869,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F03BE87E1BF9C55900841606 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F03BE8811BF9C5CC00841606 /* zh-Hans */,
+				F03BE8821BF9C5DD00841606 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		F0EF55FE1BCDEA680062ECE1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F0EF55FF1BCDEA680062ECE1 /* Base */,
+				F03BE8801BF9C5CC00841606 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -960,6 +977,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdNetworkLibs/AdMob_SDK_700",
@@ -991,6 +1009,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdNetworkLibs/AdMob_SDK_700",

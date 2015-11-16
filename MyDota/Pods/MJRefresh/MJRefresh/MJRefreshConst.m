@@ -14,9 +14,9 @@ NSString *const MJRefreshKeyPathPanState = @"state";
 
 NSString *const MJRefreshHeaderLastUpdatedTimeKey = @"MJRefreshHeaderLastUpdatedTimeKey";
 
-NSString *const MJRefreshHeaderIdleText = @"花二百块钱买头小猪,啧啧喝水，嘎嘎吃豆";
-NSString *const MJRefreshHeaderPullingText = @"接着墙头扔过去，吱的一声您猜怎么着";
-NSString *const MJRefreshHeaderRefreshingText = @"死了...";
+NSString *const MJRefreshHeaderIdleText = @"花二百块钱买头小猪,啧儿啧儿喝水，嘎嘎吃豆";
+NSString *const MJRefreshHeaderPullingText = @"接着墙头扔过去，吱儿的一声您猜怎么着?";
+NSString *const MJRefreshHeaderRefreshingText = @"死了.....";
 
 NSString *const MJRefreshAutoFooterIdleText = @"点击或上拉加载更多";
 NSString *const MJRefreshAutoFooterRefreshingText = @"正在加载更多的数据...";

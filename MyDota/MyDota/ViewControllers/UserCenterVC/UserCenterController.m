@@ -63,7 +63,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void)addTheExtraView{
+//    _tableView.
+}
 
 
 
@@ -71,9 +73,6 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     float y = scrollView.contentOffset.y;
-    if (y>0) {
-        scrollView.contentOffset = CGPointMake(0, 0);
-    }
     y = MIN(0, y);
     _imagView.transform = CGAffineTransformMakeScale(1.0-y/300, 1.0-y/300);
 }
@@ -133,7 +132,7 @@
         [[UIApplication sharedApplication]openURL:[NSURL URLWithString:url]];
     }
     
-    if (indexPath.row ==1 && indexPath.row == 2) {
+    if (indexPath.section ==1 && indexPath.row == 2) {
         [WXApiRequestHandler sendAppContentData:nil
                                         ExtInfo:@""
                                          ExtURL:nil

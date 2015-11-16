@@ -22,7 +22,7 @@
 #define RGBA_COLOR(R, G, B, A) [UIColor colorWithRed:((R) / 255.0f) green:((G) / 255.0f) blue:((B) / 255.0f) alpha:A]
 
 //导航条颜色
-#define Nav_Color RGBA_COLOR(17,73,156,1)
+#define Nav_Color RGBA_COLOR(71.0,141.0,244.0,1)
 //通用 view背景色
 #define viewBGColor RGBA_COLOR(238,241,245,1)
 

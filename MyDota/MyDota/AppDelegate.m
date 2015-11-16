@@ -32,7 +32,7 @@
     [UMFeedback setAppkey:MobClick_ID];
 
     [self initGDTSplashAd];
-    [NSThread sleepForTimeInterval:1.0];//设置启动页面时间
+    [NSThread sleepForTimeInterval:2.0];//设置启动页面时间
     
     return YES;
 }

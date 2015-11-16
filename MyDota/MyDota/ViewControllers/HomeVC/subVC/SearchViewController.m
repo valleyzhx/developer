@@ -37,11 +37,12 @@
     [self.view insertSubview:_backGroundBtn belowSubview:_naviBar];
     [_searchBar becomeFirstResponder];
 
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [self loadVideoList:currentPage+1];
-    }];
-
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 }
+-(void)loadMoreData{
+    [self loadVideoList:currentPage+1];
+}
+
 
 
 -(void)loadVideoList:(int)page{
@@ -56,9 +57,9 @@
             [self.tableView reloadData];
         }
         if (total==self.listArr.count) {
-            [self.tableView.footer endRefreshingWithNoMoreData];
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }else{
-            [self.tableView.footer endRefreshing];
+            [self.tableView.mj_footer endRefreshing];
             currentPage++;
         }
         [self clickedTheBackGround:nil];
@@ -95,8 +96,9 @@
         return;
     }
     [self.listArr removeAllObjects];
+    currentPage = 1;
     [self loadVideoList:1];
-    
+    //[self.tableView setContentOffset:CGPointMake(0, 0) animated:NO];
 }
 
 #pragma BackgroundBtn Animate

@@ -36,7 +36,7 @@
 }
 
 -(void)setAppearanceUI{
-    [[UITabBar appearance] setTintColor:Nav_Color];
+    [[UITabBar appearance] setTintColor:RGBA_COLOR(17,73,156,1)];
     [self setNeedsStatusBarAppearanceUpdate];
 }
 

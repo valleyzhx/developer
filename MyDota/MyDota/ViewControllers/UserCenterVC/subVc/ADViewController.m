@@ -32,7 +32,7 @@
     [self.view addSubview:imgView];
     [self.view bringSubviewToFront:_naviBar];
     
-    UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(10, 250, SCREEN_WIDTH-20, 180)];
+    UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(imgView.frame)+10, SCREEN_WIDTH-20, 200)];
     lab.numberOfLines = 0;
     //lab.text = @"这里是广告,谢谢点进来^_^";
 //    lab.textAlignment = NSTextAlignmentCenter;
@@ -43,7 +43,6 @@
     lab.userInteractionEnabled = YES;
     
     [GGRequest requestWithUrl:@"http://open.iciba.com/dsapi/" accepType:@"html" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",operation.responseString);
         NSDictionary *dic = [operation.responseData jsonObject];
         if (dic) {
             NSString *content = dic[@"content"];
@@ -68,9 +67,11 @@
     
     _adView.rootViewController = self;
     [self.view addSubview:_adView];
-    
-    [_adView loadRequest:[GADRequest request]];
-    
+   GADRequest *req = [GADRequest request];
+#if DEBUG
+    req.testDevices = @[@"5610fbd8aa463fcd021f9f235d9f6ba1"];
+#endif
+    [_adView loadRequest:req];
 }
 
 
@@ -83,6 +84,9 @@
     _interstitial.delegate = self;
     _interstitial.adUnitID = @"ca-app-pub-7534063156170955/1210676429";
     GADRequest *request = [GADRequest request];
+#if DEBUG
+    request.testDevices = @[ @"5610fbd8aa463fcd021f9f235d9f6ba1" ];
+#endif
     [_interstitial loadRequest:request];
 }
 
