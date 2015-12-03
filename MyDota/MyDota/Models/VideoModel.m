@@ -17,6 +17,10 @@
     
     [keyPaths addEntriesFromDictionary:@{
                                          @"modelID": @"id",
+                                         
+                                         @"userid": @"user.user_id",
+                                         @"userName":@"user.user_name",
+                                        
                                          @"userDicId": @"user.id",
                                          @"userDicName":@"user.name"
                                          }];
