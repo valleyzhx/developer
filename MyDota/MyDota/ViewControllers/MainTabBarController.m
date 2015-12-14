@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setAppearanceUI];
-    
+    self.tabBar.backgroundColor = [UIColor whiteColor];
     UITabBarItem *tabBarItem0 = [self.tabBar.items objectAtIndex:0];
     UITabBarItem *tabBarItem1 = [self.tabBar.items objectAtIndex:1];
     

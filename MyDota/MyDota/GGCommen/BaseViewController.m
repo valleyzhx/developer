@@ -9,10 +9,8 @@
 #import "BaseViewController.h"
 #import "MyDefines.h"
 #import "BaseViewController+NaviView.h"
-#import "MBProgressHUD.h"
 
 
-#import "GDTMobBannerView.h"
 #define IS_OS_7_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 
 @interface BaseViewController ()<GDTMobBannerViewDelegate>
@@ -21,7 +19,6 @@
 
 @implementation BaseViewController{
     BOOL isLoading;
-    GDTMobBannerView *_bannerView;
 }
 
 - (void)viewDidLoad {

@@ -13,7 +13,7 @@
 #import "WXApiManager.h"
 #import "MyDefines.h"
 #import "UMFeedback.h"
-
+#import "MMUSDK.h"
 
 
 
@@ -33,6 +33,8 @@
 
     [self initGDTSplashAd];
     [NSThread sleepForTimeInterval:2.0];//设置启动页面时间
+    [MMUSDK sharedInstance].delegate = (id<MMUSDKDelegate>)self; //设置delegate
+
     return YES;
 }
 
@@ -107,7 +109,42 @@
 }
 
 
+#pragma mark -
+#pragma mark - MMUSDKDelegate methods
 
+/**
+ 
+ @return 是否响应来自SDK的分享请求，响应时：返回YES；不响应时：返回NO
+ 
+ */
+
+- (BOOL)shouldHandleShareRequestFromSDK
+{
+    return NO;
+}
+
+/**
+ 
+ 用于处理来自SDK的分享请求
+ 
+ @param  titleToShare 本次分享的标题
+ @param  contentToShare 本次分享的文本内容
+ @param  urlToShare 本次分享对应的url
+ @param  imageToShare 需要分享的图片信息
+ @param  controller 需哟使用分享功能的页面
+ 
+ */
+
+- (void)handleShareRequestWithTitle:(NSString *)titleToShare
+                            content:(NSString *)contentToShare
+                                url:(NSURL *)urlToShare
+                              image:(UIImage *)imageToShare
+                 withViewController:(UIViewController *)controller
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+    //在此处完成分享，并通过 [[MMUSDK sharedInstance] handleShareResult:shareType result:1]; 将对应的结果同步给SDK
+}
 
 
 @end

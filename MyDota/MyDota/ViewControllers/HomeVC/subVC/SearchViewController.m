@@ -10,6 +10,8 @@
 #import "MyDefines.h"
 #import "VideoListModel.h"
 
+
+
 @interface SearchViewController ()<UISearchBarDelegate>
 
 @end
@@ -35,10 +37,16 @@
     _backGroundBtn.alpha = 0;
     [_backGroundBtn addTarget:self action:@selector(clickedTheBackGround:) forControlEvents:UIControlEventTouchUpInside];
     [self.view insertSubview:_backGroundBtn belowSubview:_naviBar];
+    
+    
+    
+   
     [_searchBar becomeFirstResponder];
-
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 }
+
+
+
 -(void)loadMoreData{
     [self loadVideoList:currentPage+1];
 }

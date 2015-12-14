@@ -2,7 +2,7 @@
 #import "UIImageView+AFNetworking.h"
 
 @implementation IntroControll{
-    int direction;
+
 }
 
 
@@ -12,7 +12,7 @@
     if(self != nil) {
         
         //Initial Background images
-        direction = 1;
+        
         self.backgroundColor = [UIColor blackColor];
         
         backgroundImage1 = [[UIImageView alloc] initWithFrame:frame];
@@ -62,6 +62,9 @@
         }
             
         //start timer
+        if (timer) {
+            [timer invalidate];
+        }
         timer =  [NSTimer scheduledTimerWithTimeInterval:4.0
                         target:self
                         selector:@selector(tick)
@@ -78,13 +81,12 @@
 }
 
 - (void) tick {
-    if (currentPhotoNum + 1 == pages.count) {
-        direction = -1;
+    currentPhotoNum++ ;
+    if (currentPhotoNum == pages.count) {
+        currentPhotoNum = 0;
     }
-    if (currentPhotoNum == 0) {
-        direction = 1;
-    }
-    [scrollView setContentOffset:CGPointMake((currentPhotoNum + direction)*self.frame.size.width, 0) animated:YES];
+    
+    [scrollView setContentOffset:CGPointMake((currentPhotoNum)*self.frame.size.width, 0) animated:YES];
 }
 
 - (void) initShow {

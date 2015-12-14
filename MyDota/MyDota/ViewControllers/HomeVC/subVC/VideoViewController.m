@@ -16,6 +16,8 @@
 #import "AuthorVideoListController.h"
 #import "FMDBManager.h"
 #import "WXApiRequestHandler.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
+
 
 @interface ChooseView : UIView
 
@@ -38,6 +40,9 @@
     ChooseView *_choosV;
     UserModel *_user;
     BOOL _isFav;
+    
+    GADBannerView *_adView;
+
 }
 
 -(id)initWithVideoModel:(VideoModel *)model{
@@ -45,6 +50,24 @@
         _videoObject = model;
     }
     return self;
+}
+
+
+
+-(void)loadAddView{
+    _adView = [[GADBannerView alloc]
+               initWithFrame:CGRectMake((SCREEN_WIDTH-320)/2,50,320,50)];
+    _adView.adUnitID = @"ca-app-pub-7534063156170955/2929947627";//调用id
+    
+    _adView.rootViewController = self;
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+    [view addSubview:_adView];
+    self.tableView.tableFooterView = view;
+    GADRequest *req = [GADRequest request];
+#if DEBUG
+    req.testDevices = @[@"5610fbd8aa463fcd021f9f235d9f6ba1"];
+#endif
+    [_adView loadRequest:req];
 }
 
 - (void)viewDidLoad {
@@ -59,6 +82,8 @@
         view.backgroundColor = viewBGColor;
         view;
     });
+    [self loadAddView];
+    
     NSInteger userId = _videoObject.userid.integerValue;
     if (userId==0) {
         userId = _videoObject.userDicId.integerValue;
@@ -380,6 +405,8 @@
     _videoObject = nil;
     _choosV = nil;
     _user = nil;
+    _adView.rootViewController = nil;
+    _adView.delegate = nil;
 }
 
 @end

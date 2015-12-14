@@ -6,20 +6,20 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        UILabel *titleLabel = [[UILabel alloc] init];
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 20)];
         [titleLabel setText:model.titleText];
         [titleLabel setTextColor:[UIColor whiteColor]];
-        [titleLabel setFont:[UIFont boldSystemFontOfSize:18]];
+        [titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
         [titleLabel setShadowColor:[UIColor blackColor]];
         [titleLabel setShadowOffset:CGSizeMake(1, 1)];
         [titleLabel setBackgroundColor:[UIColor clearColor]];
-        [titleLabel sizeToFit];
+        [titleLabel setTextAlignment:NSTextAlignmentCenter];
         [titleLabel setCenter:CGPointMake(frame.size.width/2, frame.size.height-25)];
         [self addSubview:titleLabel];
         
         UILabel *descriptionLabel = [[UILabel alloc] init];
         [descriptionLabel setText:model.descriptionText];
-        [descriptionLabel setFont:[UIFont systemFontOfSize:16]];
+        [descriptionLabel setFont:[UIFont systemFontOfSize:14]];
         [descriptionLabel setTextColor:[UIColor whiteColor]];
         [descriptionLabel setShadowColor:[UIColor blackColor]];
         [descriptionLabel setShadowOffset:CGSizeMake(1, 1)];

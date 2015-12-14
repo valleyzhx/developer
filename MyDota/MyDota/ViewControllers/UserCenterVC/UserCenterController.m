@@ -13,6 +13,7 @@
 #import "FavoVideoListController.h"
 #import "ADViewController.h"
 #import "UMFeedback.h"
+#import "ShoppingController.h"
 
 #define imageHeight 230
 
@@ -43,7 +44,7 @@
 
         view;
     });
-    _titleArr = @[@[@"我的收藏"],@[@"意见反馈",@"给个好评",@"分享APP"],@[@"每日一句"]];
+    _titleArr = @[@[@"我的收藏",@"买套装备"],@[@"意见反馈",@"给个好评",@"分享APP"],@[@"每日一句"]];
     
 }
 
@@ -108,7 +109,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    if (indexPath.section!=1 && indexPath.row == 0) {
+    if (indexPath.section!=1 ) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     cell.textLabel.text = _titleArr[indexPath.section][indexPath.row];
@@ -121,8 +122,15 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 0) {
-        FavoVideoListController *controller = [[FavoVideoListController alloc]init];
-        [self pushWithoutTabbar:controller];
+        if (indexPath.row == 0) {
+            FavoVideoListController *controller = [[FavoVideoListController alloc]init];
+            [self pushWithoutTabbar:controller];
+        }
+        if (indexPath.row == 1) {
+            ShoppingController *controller = [[ShoppingController alloc]init];
+            [self pushWithoutTabbar:controller];
+        }
+        
     }
     if (indexPath.section == 1 && indexPath.row == 0) {
         [self presentViewController:[UMFeedback feedbackModalViewController] animated:YES completion:nil];
@@ -169,7 +177,7 @@
 - (void)choosePictures {
     UzysAssetsPickerController *picker = [[UzysAssetsPickerController alloc] init];
     picker.delegate = self;
-    picker.maximumNumberOfSelectionMedia = 1;
+    picker.maximumNumberOfSelectionPhoto = 1;
     picker.maximumNumberOfSelectionVideo = 0;
     
     [self presentViewController:picker animated:YES completion:^{
@@ -188,8 +196,7 @@
         [assets enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             ALAsset *representation = obj;
             
-            UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullResolutionImage
-                                               scale:representation.defaultRepresentation.scale
+            UIImage *img = [UIImage imageWithCGImage:representation.defaultRepresentation.fullResolutionImage            scale:representation.defaultRepresentation.scale
                                          orientation:(UIImageOrientation)representation.defaultRepresentation.orientation];
             _imagView.image = img;
             *stop = YES;
