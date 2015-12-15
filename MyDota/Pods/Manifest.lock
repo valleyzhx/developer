@@ -1,0 +1,100 @@
+PODS:
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - CocoaLumberjack (1.7.0):
+    - CocoaLumberjack/Core (= 1.7.0)
+    - CocoaLumberjack/Extensions (= 1.7.0)
+  - CocoaLumberjack/Core (1.7.0)
+  - CocoaLumberjack/Extensions (1.7.0):
+    - CocoaLumberjack/Core
+  - DTCoreText (1.6.16):
+    - DTFoundation/Core (~> 1.7.5)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
+    - DTFoundation/DTHTMLParser (~> 1.7.5)
+    - DTFoundation/UIKit (~> 1.7.5)
+  - DTFoundation/Core (1.7.8)
+  - DTFoundation/DTAnimatedGIF (1.7.8)
+  - DTFoundation/DTHTMLParser (1.7.8):
+    - DTFoundation/Core
+  - DTFoundation/UIKit (1.7.8):
+    - DTFoundation/Core
+  - FMDB (2.5):
+    - FMDB/standard (= 2.5)
+  - FMDB/common (2.5)
+  - FMDB/standard (2.5):
+    - FMDB/common
+  - FXImageView (1.3.5)
+  - ImagePlayerView (1.0.5)
+  - Mantle (1.5.6):
+    - Mantle/extobjc (= 1.5.6)
+  - Mantle-HAL (1.1.0):
+    - Mantle (~> 1.5)
+  - Mantle/extobjc (1.5.6)
+  - MBProgressHUD (0.9.1)
+  - MJRefresh (3.0.2)
+  - Reachability (3.1.1)
+  - UMengAnalytics (3.6.4)
+  - UMengFeedback (2.3.4)
+  - UzysAssetsPickerController (0.9.9)
+  - VKFoundation (0.1.1):
+    - CocoaLumberjack (~> 1.7.0)
+    - DTCoreText (~> 1.6.11)
+    - FXImageView (~> 1.3.3)
+    - Reachability (~> 3.1.1)
+  - VKVideoPlayer (0.1.4):
+    - CocoaLumberjack (~> 1.7.0)
+    - DTCoreText (~> 1.6.11)
+    - VKFoundation (= 0.1.1)
+
+DEPENDENCIES:
+  - AFNetworking
+  - FMDB
+  - ImagePlayerView
+  - Mantle
+  - Mantle-HAL
+  - MBProgressHUD (~> 0.9.1)
+  - MJRefresh
+  - UMengAnalytics
+  - UMengFeedback
+  - UzysAssetsPickerController
+  - VKVideoPlayer (~> 0.1.1)
+
+SPEC CHECKSUMS:
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  CocoaLumberjack: a2213b8410917a1a5ecfc5c63a4206edc24d3a5b
+  DTCoreText: 934a16fe9ffdd169c96261721b39dc312b75713d
+  DTFoundation: 46e2b2fafe78d67febfd8d1f85fe9845a093f00e
+  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  FXImageView: 7d84722b37f0afea9a64f12fdd4a6c7f9ecc4b16
+  ImagePlayerView: b641cf435d8c259ee2c6b966852cdb1692984edc
+  Mantle: a197db93e0f1e36194b1fdbc078219a8492eaef2
+  Mantle-HAL: 8246302c6a2e0916dfc304f90110a14a0df368cd
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  MJRefresh: 85377dc8c70395cf329e102a5c55505ef387c2e1
+  Reachability: dd9aa4fb6667b9f787690a74f53cb7634ce99893
+  UMengAnalytics: d24fb5200e13d2874f36b6337bc129b96511c54e
+  UMengFeedback: 5283cc0e324dffca4dd54c4abb3cbded56487817
+  UzysAssetsPickerController: 47c27bd96955467925f3d4d80b1e2e8aaeff766d
+  VKFoundation: a3d26de016870f705a256c5c6dbab57865c4e99a
+  VKVideoPlayer: 75d0c44d8cd208dd01ae397d2e75c52cfc51dd19
+
+COCOAPODS: 0.39.0
