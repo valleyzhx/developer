@@ -7,8 +7,18 @@
 # Pods/
 
 
+<<<<<<< HEAD
+*.xcscmblueprint
+
+*.xcuserstate
+
+*.xcscheme
+
+*.plist
+=======
 *.xcuserstate
 
 *.xcuserstate
 
 MyDota/MyDota.xcworkspace/xcuserdata/xiang.xcuserdatad/UserInterfaceState.xcuserstate
+>>>>>>> origin/simplan
