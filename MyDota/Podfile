@@ -1,6 +1,6 @@
 platform :ios, "7.0"
 
-pod 'AFNetworking'
+pod 'AFNetworking','~> 2.6.3'
 pod 'Mantle'
 pod 'FMDB'
 pod 'MJRefresh'
@@ -11,7 +11,6 @@ pod 'Mantle-HAL'
 pod 'UMengAnalytics'
 pod 'UzysAssetsPickerController'
 pod 'UMengFeedback'
-
 
 target :MyDotaTests, :exclusive => true do
   # pod 'Kiwi'

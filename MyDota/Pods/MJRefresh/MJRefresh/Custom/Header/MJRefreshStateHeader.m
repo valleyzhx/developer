@@ -55,7 +55,7 @@
 
 #pragma mark - 日历获取在9.x之后的系统使用currentCalendar会出异常。在8.0之后使用系统新API。
 - (NSCalendar *)currentCalendar {
-    if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0) {
+    if ([NSCalendar respondsToSelector:@selector(calendarWithIdentifier:)]) {
         return [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     }
     return [NSCalendar currentCalendar];
@@ -65,6 +65,9 @@
 - (void)setLastUpdatedTimeKey:(NSString *)lastUpdatedTimeKey
 {
     [super setLastUpdatedTimeKey:lastUpdatedTimeKey];
+    
+    // 如果label隐藏了，就不用再处理
+    if (self.lastUpdatedTimeLabel.hidden) return;
     
     NSDate *lastUpdatedTime = [[NSUserDefaults standardUserDefaults] objectForKey:lastUpdatedTimeKey];
     
@@ -126,7 +129,7 @@
         // 状态
         if (noConstrainsOnStatusLabel) {
             self.stateLabel.mj_x = 0;
-            self.stateLabel.mj_y = 15;
+            self.stateLabel.mj_y = 0;
             self.stateLabel.mj_w = self.mj_w;
             self.stateLabel.mj_h = stateLabelH;
         }

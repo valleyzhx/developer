@@ -143,7 +143,7 @@
     if (indexPath.section ==1 && indexPath.row == 2) {
         [WXApiRequestHandler sendAppContentData:nil
                                         ExtInfo:@""
-                                         ExtURL:nil
+                                         ExtURL:appStoreUrl
                                           Title:@"刀一把"
                                     Description:@"最新最热Dota视频App"
                                      MessageExt:nil

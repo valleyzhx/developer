@@ -58,6 +58,8 @@
 
 //检查更新
 #define updateURL @"http://itunes.apple.com/lookup?id=993559495"
+//App Store Url
+#define appStoreUrl @"https://itunes.apple.com/cn/app/id958792762?mt=8"
 //当前操作是否在主线程，如果不是，则转到主线程
 #define GetMainQueue(condition)  \
 if (![[NSThread currentThread] isMainThread]) {    \

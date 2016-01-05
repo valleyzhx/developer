@@ -362,7 +362,7 @@
     }
     if (indexPath.row == 3) {//分享
         
-       NSDictionary *dic = _videoObject.dictionaryValue;
+       NSDictionary *dic = [MTLJSONAdapter JSONDictionaryFromModel:_videoObject];
         NSString *content = [NSString stringWithFormat:@"%@\n%@",_videoObject.title,_videoObject.published];
         [WXApiRequestHandler sendAppContentData:nil
                                         ExtInfo:[dic jsonString]

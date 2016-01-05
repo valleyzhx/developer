@@ -9,7 +9,7 @@
 #import "MainTabBarController.h"
 #import "MyDefines.h"
 
-@interface MainTabBarController ()
+@interface MainTabBarController () 
 
 @end
 

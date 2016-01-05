@@ -31,7 +31,7 @@
 #define  tail  10
 #define btnWid ((SCREEN_WIDTH-5*tail)/4)
 
-@interface HomeController ()<WXApiManagerDelegate,IntroControllDelegate>
+@interface HomeController ()<WXApiManagerDelegate,IntroControllDelegate,UINavigationControllerDelegate>
 
 @end
 
@@ -134,12 +134,19 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.navigationController setDelegate:self];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     
 }
-
+- (void)dealloc {
+    [self.navigationController setDelegate:nil];
+}
 #pragma mark Search Action
 -(void)searchAction:(UIButton*)btn{
     SearchViewController *serchVC = [[SearchViewController alloc]init];
@@ -382,7 +389,7 @@
             NSDictionary *dic = [objc.extInfo jsonObject];
             Class objClass = NSClassFromString(message.messageExt);
             id model = [MTLJSONAdapter modelOfClass:objClass fromJSONDictionary:dic error:nil];
-            if ([model isKindOfClass:[VideoModel class]]) {
+            if ([model isKindOfClass:[VideoModel class]]) {                
                 VideoViewController *vc = [[VideoViewController alloc]initWithVideoModel:model];
                 [self pushWithoutTabbar:vc];
             }
@@ -447,5 +454,10 @@
     
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
+
+
+
+
+
 
 @end
