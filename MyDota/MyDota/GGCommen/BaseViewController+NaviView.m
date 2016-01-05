@@ -12,9 +12,9 @@
 @implementation BaseViewController (NaviView)
 
 -(GGNavigationBar *)setUpNaviViewWithType:(GGNavigationBarType)type{
-    if (naviBar) {
-        [naviBar removeFromSuperview];
-        naviBar = nil;
+    if (_naviBar) {
+        [_naviBar removeFromSuperview];
+        _naviBar = nil;
     }
     
     GGNavigationBar *view = [[GGNavigationBar alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];

@@ -11,7 +11,7 @@
 
 @implementation BaseViewController (GGRequest)
 -(void)loadDataWithUrl:(NSString*)url requestTag:(int)tag{
-    [GGRequest requestWithUrl:url withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [GGRequest requestWithUrl:url accepType:@"json" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self finishLoadWithTag:tag data:responseObject error:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [self finishLoadWithTag:tag data:nil error:error];

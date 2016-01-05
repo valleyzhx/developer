@@ -32,8 +32,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="g2M-UL-02g">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="g2M-UL-02g">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="290"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
                             </imageView>
@@ -89,7 +89,7 @@
         <!--用户-->
         <scene sceneID="gN2-On-2ST">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TEC-a3-cUm" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TEC-a3-cUm" customClass="GGNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="用户" image="user_Header.jpg" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" id="TJw-Rd-gEK">
@@ -109,8 +109,8 @@
         <!--首页-->
         <scene sceneID="CC3-m3-dNg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ga3-K0-A1Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="首页" image="first" id="acW-dT-cKf"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ga3-K0-A1Y" customClass="GGNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="首页" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" id="bSb-2z-LH6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -128,7 +128,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
         <image name="user_Header.jpg" width="30" height="30"/>
     </resources>
 </document>

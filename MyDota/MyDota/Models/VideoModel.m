@@ -8,16 +8,36 @@
 
 #import "VideoModel.h"
 
-@implementation VideoModel
+@implementation VideoModel{
+    NSString *_modelID;
+}
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     NSMutableDictionary *keyPaths = [super JSONKeyPathsByPropertyKey].mutableCopy;
     
     [keyPaths addEntriesFromDictionary:@{
-                                         @"videoId": @"id"
+                                         @"modelID": @"id",
+                                         
+                                         @"userid": @"user.user_id",
+                                         @"userName":@"user.user_name",
+                                        
+                                         @"userDicId": @"user.id",
+                                         @"userDicName":@"user.name"
                                          }];
     
     return keyPaths;
 }
+
+
+
+
+
+-(void)setModelID:(NSString *)modelID{
+    _modelID = modelID;
+}
+-(NSString *)modelID{
+    return _modelID;
+}
+
 
 @end

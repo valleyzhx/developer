@@ -7,10 +7,10 @@
 //
 
 #import "MTLHALResource.h"
+#import "MTModelFMDBDelegate.h"
 
-@interface UserModel : MTLHALResource
+@interface UserModel : MTLHALResource<MTModelFMDBDelegate>
 
-@property (nonatomic,strong)NSString *userId;
 @property (nonatomic,strong)NSString *name;
 @property (nonatomic,strong)NSString *gender;
 @property (nonatomic,strong)NSString *userDescription;
@@ -20,19 +20,18 @@
 
 @property (nonatomic,strong)NSString *avatar_large;
 
-@property (nonatomic,strong)NSNumber *videos_count;
+@property (nonatomic,assign)int videos_count;
 
-@property (nonatomic,strong)NSNumber *playlists_count;
+@property (nonatomic,assign)int playlists_count;
 
-@property (nonatomic,strong)NSNumber *favorites_count;
+@property (nonatomic,assign)int favorites_count;
 
-@property (nonatomic,strong)NSNumber *followers_count;
-@property (nonatomic,strong)NSNumber *following_count;
-@property (nonatomic,strong)NSNumber *statuses_count;
-@property (nonatomic,strong)NSNumber *subscribe_count;
-@property (nonatomic,strong)NSNumber *vv_count;
-@property (nonatomic,strong)NSNumber *ytid;
-
+@property (nonatomic,assign)int followers_count;
+@property (nonatomic,assign)int following_count;
+@property (nonatomic,assign)int statuses_count;
+@property (nonatomic,assign)int subscribe_count;
+@property (nonatomic,assign)int vv_count;
+@property (nonatomic,assign)int ytid;
 
 /**
  *  Description

@@ -16,9 +16,9 @@
 +(NSString*)dotaJSPathWithType:(GGRequestType)type;
 
 +(void)downLoadBanerJS;
-+(void)requestWithUrl:(NSString*)url withSuccess:(void (^)(AFHTTPRequestOperation *operation,id
-                                                           responseObject))success
-                                     failure:(void (^)(AFHTTPRequestOperation *operation,NSError *error))failure;
+
++(void)requestWithUrl:(NSString*)url accepType:(NSString*)type withSuccess:(void (^)(AFHTTPRequestOperation *operation,id responseObject))success
+              failure:(void (^)(AFHTTPRequestOperation *operation,NSError *error))failure;
 
 +(void)requestM3U8WithUrl:(NSString*)url
               withSuccess:(void (^)(NSString *m3u8url))success

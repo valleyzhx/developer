@@ -7,11 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import "VideoModel.h"
 
 @interface VideoViewController : BaseViewController
-@property (nonatomic,assign)NSInteger userId;
 @property (nonatomic,assign)BOOL isFromAuthorList;
--(id)initWithVideoDiction:(NSDictionary*)dic;
+-(id)initWithVideoModel:(VideoModel*)model;
 
 
 

@@ -9,17 +9,27 @@
 #import <UIKit/UIKit.h>
 #import "GGNavigationBar.h"
 #import "MJRefresh.h"
+#import "MobClick.h"
+#import "MBProgressHUD+string.h"
+#import "GDTMobBannerView.h"
+
 #define orgX 16
 
 @interface BaseViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
     int currentPage;
     int total;
-    GGNavigationBar *naviBar;
+    GGNavigationBar *_naviBar;
+    
+    GDTMobBannerView *_bannerView;
 }
 
 @property (nonatomic,assign) BOOL noTable;
 @property (nonatomic,strong) UITableView *tableView;
 
+@property (nonatomic,assign) BOOL showGDTADView;
 
+
+-(void)showHudView;
+-(void)hideHudView;
 
 @end

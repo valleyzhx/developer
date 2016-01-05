@@ -101,6 +101,11 @@
     [self reloadData];
 }
 
+- (void)dealloc
+{
+    [self removeObserver:self forKeyPath:@"bounds"];
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if ([keyPath isEqualToString:@"bounds"]) {
@@ -124,10 +129,15 @@
         return;
     }
     
+    int itemCount = (int)self.count;
+    if (self.endlessScroll) {
+        itemCount += 1;
+    }
+    
     CGFloat width = self.bounds.size.width - self.edgeInsets.left - self.edgeInsets.right;
     CGFloat height = self.bounds.size.height - self.edgeInsets.top - self.edgeInsets.bottom;
     
-    for (int i = 0; i < self.count; i++) {
+    for (int i = 0; i < itemCount; i++) {
         UIImageView *imageView = [[UIImageView alloc] init];
         imageView.contentMode = UIViewContentModeScaleToFill;
         imageView.tag = kStartTag + i;
@@ -139,13 +149,17 @@
         [imageView addConstraint:[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:width]];
         [imageView addConstraint:[NSLayoutConstraint constraintWithItem:imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:height]];
         
-        [self.imagePlayerViewDelegate imagePlayerView:self loadImageForImageView:imageView index:i];
+        int index = i;
+        if (index == self.count) {
+            index = 0;
+        }
+        [self.imagePlayerViewDelegate imagePlayerView:self loadImageForImageView:imageView index:index];
     }
     
     // constraint
     NSMutableDictionary *viewsDictionary = [NSMutableDictionary dictionary];
     NSMutableArray *imageViewNames = [NSMutableArray array];
-    for (int i = kStartTag; i < kStartTag + self.count; i++) {
+    for (int i = kStartTag; i < kStartTag + itemCount; i++) {
         NSString *imageViewName = [NSString stringWithFormat:@"imageView%d", i - kStartTag];
         [imageViewNames addObject:imageViewName];
         
@@ -170,7 +184,7 @@
                                                                             metrics:nil
                                                                               views:viewsDictionary]];
     
-    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * self.count, self.scrollView.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * itemCount, self.scrollView.frame.size.height);
     self.scrollView.contentInset = UIEdgeInsetsZero;
 }
 
@@ -179,6 +193,9 @@
 {
     UIImageView *imageView = (UIImageView *)tapGesture.view;
     NSInteger index = imageView.tag - kStartTag;
+    if (index == self.count) {
+        index = 0;
+    }
     
     if (self.imagePlayerViewDelegate && [self.imagePlayerViewDelegate respondsToSelector:@selector(imagePlayerView:didTapAtIndex:)]) {
         [self.imagePlayerViewDelegate imagePlayerView:self didTapAtIndex:index];
@@ -233,19 +250,18 @@
     
     NSInteger currentPage = self.pageControl.currentPage;
     NSInteger nextPage = currentPage + 1;
-    if (nextPage == self.count) {
+    if (!self.endlessScroll
+        && nextPage == self.count) {
         nextPage = 0;
     }
     
-    BOOL animated = YES;
-    if (nextPage == 0) {
-        animated = NO;
-    }
+//    BOOL animated = YES;
+//    if (nextPage == 0) {
+//        animated = NO;
+//    }
     
     UIImageView *imageView = (UIImageView *)[self.scrollView viewWithTag:(nextPage + kStartTag)];
-    [self.scrollView scrollRectToVisible:imageView.frame animated:animated];
-    
-    self.pageControl.currentPage = nextPage;
+    [self.scrollView scrollRectToVisible:imageView.frame animated:YES];
 }
 
 #pragma mark - scroll delegate
@@ -256,7 +272,17 @@
     }
 }
 
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    [self didEndScroll:scrollView];
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self didEndScroll:scrollView];
+}
+
+- (void)didEndScroll:(UIScrollView *)scrollView
 {
     // when user scrolls manually, stop timer and start timer again to avoid next scroll immediatelly
     if (self.autoScrollTimer && self.autoScrollTimer.isValid) {
@@ -274,6 +300,15 @@
                 break;
             }
         }
+    }
+    
+    if (currentIndex == self.count) {
+        [scrollView setContentOffset:CGPointMake(0, 0)];
+        currentIndex = 0;
+    }
+    
+    if (self.imagePlayerViewDelegate && [self.imagePlayerViewDelegate respondsToSelector:@selector(imagePlayerView:didScorllIndex:)]) {
+        [self.imagePlayerViewDelegate imagePlayerView:self didScorllIndex:currentIndex];
     }
     
     self.pageControl.currentPage = currentIndex;

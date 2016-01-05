@@ -10,11 +10,14 @@
 #import "BaseViewController+NaviView.h"
 #import "MyDefines.h"
 #import "VKVideoPlayer.h"
-#import "MBProgressHUD.h"
 #import "M3U8Tool.h"
 #import "UserModel.h"
 #import "UIKit+AFNetworking.h"
 #import "AuthorVideoListController.h"
+#import "FMDBManager.h"
+#import "WXApiRequestHandler.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
+
 
 @interface ChooseView : UIView
 
@@ -30,46 +33,73 @@
 @end
 
 @implementation VideoViewController{
-    NSDictionary *_inputDic;
+    VideoModel *_videoObject;
     NSString *_m3u8Url;
     //NSMutableDictionary *_typeDic;
     NSString *_selectKey;
     ChooseView *_choosV;
     UserModel *_user;
+    BOOL _isFav;
+    
+    GADBannerView *_adView;
+
 }
 
--(id)initWithVideoDiction:(NSDictionary *)dic{
+-(id)initWithVideoModel:(VideoModel *)model{
     if (self = [super init]) {
-        _inputDic = dic;
+        _videoObject = model;
     }
     return self;
+}
+
+
+
+-(void)loadAddView{
+    _adView = [[GADBannerView alloc]
+               initWithFrame:CGRectMake((SCREEN_WIDTH-320)/2,50,320,50)];
+    _adView.adUnitID = @"ca-app-pub-7534063156170955/2929947627";//调用id
+    
+    _adView.rootViewController = self;
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+    [view addSubview:_adView];
+    self.tableView.tableFooterView = view;
+    GADRequest *req = [GADRequest request];
+#if DEBUG
+    req.testDevices = @[@"5610fbd8aa463fcd021f9f235d9f6ba1"];
+#endif
+    [_adView loadRequest:req];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    naviBar.backgroundView.alpha = 0;
+    _naviBar.backgroundView.alpha = 0;
     [self setVideoView];
-    [self startLoadRequest:_inputDic[@"link"]];
+    [self startLoadRequest:_videoObject.link];
     //[self loadTheVidList];
-    CGRect r = self.tableView.frame;
-    r.origin.y = self.player.view.frame.size.height;
-    r.size.height -= r.origin.y;
-    self.tableView.frame = r;
-    [self.view bringSubviewToFront:naviBar];
-    if (!_userId) {
-        _userId = [_inputDic[@"userid"]integerValue];
+    self.tableView.tableHeaderView = ({
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetMaxY(_player.view.frame))];
+        view.backgroundColor = viewBGColor;
+        view;
+    });
+    [self loadAddView];
+    
+    NSInteger userId = _videoObject.userid.integerValue;
+    if (userId==0) {
+        userId = _videoObject.userDicId.integerValue;
     }
-    [UserModel getUserInfoBy:@(_userId) complish:^(id objc) {
+    [UserModel getUserInfoBy:@(userId) complish:^(id objc) {
         _user = objc;
+        [MobClick event:@"videoViewController" label:_user.name];
         [self.tableView reloadData];
     }];
+    _isFav = [[FMDBManager shareManager]hasTheModel:_videoObject];
 }
 
 -(void)startLoadRequest:(NSString*)htmlUrl{
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self showHudView];
     [M3U8Tool m3u8UrlWithUrl:htmlUrl complised:^(NSString *m3u8Url) {
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self hideHudView];
         if (m3u8Url) {
             _m3u8Url = m3u8Url;
 //            if (_typeDic[@"高清"]) {
@@ -151,7 +181,7 @@
 
 - (void)videoPlayer:(VKVideoPlayer*)videoPlayer didControlByEvent:(VKVideoPlayerControlEvent)event{
     if (event == VKVideoPlayerControlEventTapFullScreen) {
-        naviBar.hidden = videoPlayer.isFullScreen;
+        _naviBar.hidden = videoPlayer.isFullScreen;
     }
 //    if (event == VKVideoPlayerControlEventTapVideoQuality) {
 //        if (_choosV) {
@@ -189,7 +219,9 @@
     }
 }
 
-
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
 
 
 - (BOOL)prefersStatusBarHidden{
@@ -206,7 +238,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 3+1;//增加分享
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
@@ -247,15 +279,17 @@
             [cell.contentView addSubview:titleLab];
             [cell.contentView addSubview:detialLab];
             
-            UIButton *favarBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
-            favarBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+            UIButton *favarBtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-44, 0, 44, 55)];
+            favarBtn.titleLabel.font = [UIFont systemFontOfSize:19];
+            [favarBtn setTitle:@"☆" forState:UIControlStateNormal];
+            [favarBtn setTitle:@"★" forState:UIControlStateSelected];
             [favarBtn setTitleColor:JDDarkOrange forState:UIControlStateNormal];
-            [favarBtn setTitle:@"收藏" forState:UIControlStateNormal];
             [favarBtn addTarget:self action:@selector(favarateAction:) forControlEvents:UIControlEventTouchUpInside];
-            cell.accessoryView = favarBtn;
+            favarBtn.selected = _isFav;
+            [cell.contentView addSubview:favarBtn];
         }
-        titleLab.text = _inputDic[@"title"];
-        detialLab.text = [NSString stringWithFormat:@"发布时间: %@",_inputDic[@"published"]];
+        titleLab.text = _videoObject.title;
+        detialLab.text = [NSString stringWithFormat:@"发布时间: %@",_videoObject.published];
     }else if (indexPath.row == 1){
         
         cell = [tableView dequeueReusableCellWithIdentifier:@"secondCell"];
@@ -296,8 +330,16 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
         cell.textLabel.text = @"全部视频";
+    }else if (indexPath.row == 3){
+        cell =[tableView dequeueReusableCellWithIdentifier:@"forthCell"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"forthCell"];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        cell.textLabel.text = @"分享视频";
     }
-    cell.selectionStyle = indexPath.row==2?UITableViewCellSelectionStyleDefault:UITableViewCellSelectionStyleNone;
+    
+    cell.selectionStyle = (indexPath.row==2||indexPath.row==3)?UITableViewCellSelectionStyleDefault:UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -308,30 +350,42 @@
             [self.navigationController popViewControllerAnimated:YES];
             return;
         }
-        
-        
-        AuthorVideoListController *vc = [[AuthorVideoListController alloc]initWithUser:_user selectCallback:^(NSDictionary *dic) {
-            _inputDic = nil;
-            _inputDic = dic;
-            [self startLoadRequest:dic[@"link"]];
-            [self.tableView reloadData];
+        __weak typeof(self) weakSelf = self;
+        AuthorVideoListController *vc = [[AuthorVideoListController alloc]initWithUser:_user selectCallback:^(VideoModel *model) {
+            _videoObject = model;
+            [weakSelf startLoadRequest:_videoObject.link];
+            [weakSelf.tableView reloadData];
+            [MobClick event:@"videoViewController" label:_user.name];
         }];
         vc.isFromVideo = YES;
-        self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
+    }
+    if (indexPath.row == 3) {//分享
+        
+       NSDictionary *dic = [MTLJSONAdapter JSONDictionaryFromModel:_videoObject];
+        NSString *content = [NSString stringWithFormat:@"%@\n%@",_videoObject.title,_videoObject.published];
+        [WXApiRequestHandler sendAppContentData:nil
+                                        ExtInfo:[dic jsonString]
+                                         ExtURL:nil
+                                          Title:[NSString stringWithFormat:@"我分享了 「%@」 的精彩视频",_user.name]
+                                    Description:content
+                                     MessageExt:NSStringFromClass([VideoModel class])
+                                  MessageAction:nil
+                                     ThumbImage:nil
+                                        InScene:WXSceneSession];
     }
 }
 
 
 
-
-
--(void)dealloc{
-    
-}
 -(void)favarateAction:(UIButton*)btn{
-    
+    if (_isFav) {
+        [[FMDBManager shareManager]deleteDataWithModel:_videoObject];
+    }else{
+        [[FMDBManager shareManager]saveDataWithModel:_videoObject];
+    }
+    _isFav = !_isFav;
+    btn.selected = !btn.selected;
 }
 #pragma mark - navi
 
@@ -347,7 +401,13 @@
 
 
 
-
+-(void)dealloc{
+    _videoObject = nil;
+    _choosV = nil;
+    _user = nil;
+    _adView.rootViewController = nil;
+    _adView.delegate = nil;
+}
 
 @end
 

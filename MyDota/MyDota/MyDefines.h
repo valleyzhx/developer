@@ -11,6 +11,10 @@
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define SCREEN_BOUNDS [[UIScreen mainScreen] bounds]
 
+#define WXApi_ID @"wx1bc2f1985a2547b5"
+#define MobClick_ID @"539093f556240b01ab039989"
+
+
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -18,7 +22,7 @@
 #define RGBA_COLOR(R, G, B, A) [UIColor colorWithRed:((R) / 255.0f) green:((G) / 255.0f) blue:((B) / 255.0f) alpha:A]
 
 //导航条颜色
-#define Nav_Color RGBA_COLOR(17,73,156,1)
+#define Nav_Color RGBA_COLOR(71.0,141.0,244.0,1)
 //通用 view背景色
 #define viewBGColor RGBA_COLOR(238,241,245,1)
 
@@ -54,6 +58,8 @@
 
 //检查更新
 #define updateURL @"http://itunes.apple.com/lookup?id=993559495"
+//App Store Url
+#define appStoreUrl @"https://itunes.apple.com/cn/app/id958792762?mt=8"
 //当前操作是否在主线程，如果不是，则转到主线程
 #define GetMainQueue(condition)  \
 if (![[NSThread currentThread] isMainThread]) {    \

@@ -69,6 +69,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>UMengFeedback.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>UzysAssetsPickerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>VKFoundation.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -82,7 +92,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>290B74ACA1FE20B1AECE46991EB42E78</key>
+		<key>1950562BD3EB23B0ACF74A6AA9CD6A3C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,27 +102,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>458A4096125DB3F7ED1CA8051596F811</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>5274848432142B064787A7B27709C558</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>53402BDE5D15A874C415114C0CCDEF51</key>
+		<key>54D5716994BCD8C820B735B971C61D83</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>618582A7BE2A420FC12D98DC5B496574</key>
+		<key>6EDC61762F38FAAC5D522FE626BFBFA0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>78239A33F829C2F1E81A0ACEDD00709E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>815D2B2BAD815EC78618DFB7DB061212</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,12 +137,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A56E77C59180D325DBC575998F77B46C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>AB64F051F76F624D2CC6C1ABDC5D54E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D4CED237C212AD33569C6C4BF26759A6</key>
+		<key>C04906116A4B579BD526FFC2B2D9BDBC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,12 +157,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DD684CEF78B7725D997FF4EABD47BD10</key>
+		<key>DF3DC482123AE2E34B03A2D71B71B533</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DF3DC482123AE2E34B03A2D71B71B533</key>
+		<key>E15A2B6547724966DAAD49495FEA6705</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FDC0876FE26BA23C73C8D5B262028E22</key>
 		<dict>
 			<key>primary</key>
 			<true/>

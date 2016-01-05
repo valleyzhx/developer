@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3B117A404A141C678E3B6AA9'
+               BlueprintIdentifier = '5B315B7D79B5F3D58ABC4AC9'
                BlueprintName = 'ImagePlayerView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libImagePlayerView.a'>

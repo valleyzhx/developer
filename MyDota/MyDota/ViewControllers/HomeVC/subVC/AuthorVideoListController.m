@@ -22,7 +22,7 @@
     int total;
     int currentPage;
     NSMutableArray *_listArr;
-    void (^finished)(NSDictionary*);
+    void (^finished)(VideoModel*);
 }
 
 -(id)initWithUser:(UserModel *)user{
@@ -33,7 +33,7 @@
 }
 
 
--(id)initWithUser:(UserModel *)user selectCallback:(void (^)(NSDictionary *))block{
+-(id)initWithUser:(UserModel*)user selectCallback:(void(^)(VideoModel*))block{
     if (self = [self initWithUser:user]) {
         finished = block;
     }
@@ -45,33 +45,41 @@
     // Do any additional setup after loading the view.
     self.title = _user.name;
     _listArr = [NSMutableArray array];
-    naviBar.backgroundView.alpha = 1;
+    _naviBar.backgroundView.alpha = 1;
     [self loadVideoList:1];
-    self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 48)];
-        view.backgroundColor = viewBGColor;
-        view;
-    });
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [self loadVideoList:currentPage+1];
-    }];
+   
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+
+}
+-(void)loadMoreData{
+    [self loadVideoList:currentPage+1];
 }
 
 -(void)loadVideoList:(int)page{
     
-    NSString *url = [NSString stringWithFormat:@"https://openapi.youku.com/v2/videos/by_user.json?client_id=e2306ead120d2e34&user_id=%@&page=%d",_user.userId,page];
+    NSString *url = [NSString stringWithFormat:@"https://openapi.youku.com/v2/videos/by_user.json?client_id=e2306ead120d2e34&user_id=%@&page=%d",_user.modelID,page];
+    [self showHudView];
     [VideoListModel getVideoListBy:url complish:^(id object) {
+        [self hideHudView];
+        if (object == nil) {
+            return ;
+        }
         VideoListModel *model = object;
         [_listArr addObject:model];
-        total = model.total.intValue;
-        currentPage = model.page.intValue;
+        total = model.total;
+        currentPage = model.page;
         [self.tableView reloadData];
         if (total==_listArr.count) {
-            [self.tableView.footer endRefreshingWithNoMoreData];
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }else{
-            [self.tableView.footer endRefreshing];
+            [self.tableView.mj_footer endRefreshing];
         }
     }];
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
 }
 
 
@@ -105,11 +113,11 @@
     }
     
     VideoListModel *listInfo = _listArr[indexPath.section];
-    NSDictionary *dataDic = listInfo.videos[indexPath.row];
+    VideoModel *model = listInfo.videos[indexPath.row];
     
-    [cell.imgView setImageWithURL:[NSURL URLWithString:dataDic[@"thumbnail"]]];
-    cell.titleLab.text = dataDic[@"title"];
-    cell.publishLab.text = dataDic[@"published"];
+    [cell.imgView setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+    cell.titleLab.text = model.title;
+    cell.publishLab.text = model.published;
     [ZXUnitil fitTheLabel:cell.titleLab];
     return cell;
 }
@@ -117,16 +125,15 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     VideoListModel *listInfo = _listArr[indexPath.section];
-    NSDictionary *dataDic = listInfo.videos[indexPath.row];
+    VideoModel *model = listInfo.videos[indexPath.row];
+    model.userid = _user.modelID;
     if (_isFromVideo) {//back
         if (finished) {
             [self.navigationController popViewControllerAnimated:YES];
-            finished(dataDic);
+            finished(model);
         }
     }else{
-        self.hidesBottomBarWhenPushed = YES;
-        VideoViewController *controller = [[VideoViewController alloc]initWithVideoDiction:dataDic];
-        controller.userId = _user.userId.integerValue;
+        VideoViewController *controller = [[VideoViewController alloc]initWithVideoModel:model];
         controller.isFromAuthorList = YES;
         [self.navigationController pushViewController:controller animated:YES];
     }

@@ -8,7 +8,6 @@
 
 #import "HomeController.h"
 #import "GGRequest.h"
-#import "ImagePlayerView.h"
 #import "UIImageView+AFNetworking.h"
 #import "MyDefines.h"
 #import "M3U8Tool.h"
@@ -16,86 +15,142 @@
 #import "BaseViewController+NaviView.h"
 #import "VideoViewController.h"
 #import "UserModel.h"
+#import "AuthorListController.h"
 #import "AuthorVideoListController.h"
 #import "VideoListController.h"
 #import "SearchViewController.h"
+#import "VideoListModel.h"
+#import "WXApiManager.h"
+
+#import "IntroControll.h"
+#import "UMUFPHandleView.h"
+#import "UMUFPBadgeView.h"
 
 
 #define rowAd (180*timesOf320)
 #define  tail  10
 #define btnWid ((SCREEN_WIDTH-5*tail)/4)
 
-@interface HomeController ()<ImagePlayerViewDelegate>
+@interface HomeController ()<WXApiManagerDelegate,IntroControllDelegate,UINavigationControllerDelegate>
 
 @end
 
 @implementation HomeController{
     GGRequestObserver *_reqeustObserver;
-    NSMutableArray *_dotaArr;
+    VideoListModel *_dotaListModel;
     
-    ImagePlayerView *_imgView;
-    UIWebView *_webView;
+    IntroControll *_introControl;
+    
+    NSMutableArray *_introModelArr;
+    
     
     NSArray *_authourList;
+    int minIntroNum;
+    
+    UMUFPHandleView *_handleView;
+
 }
 
 - (void)viewDidLoad {
+    [WXApiManager sharedManager].delegate = self;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    naviBar = [self setUpNaviViewWithType:GGNavigationBarTypeCustom];
-    naviBar.title = @"刀一把";
-    self.tableView.footer = nil;
+    self.edgesForExtendedLayout=UIRectEdgeNone;
+    _naviBar = [self setUpNaviViewWithType:GGNavigationBarTypeCustom];
+    _naviBar.alpha = 0;
+    _naviBar.title = @"刀一把";
+    _introModelArr = [NSMutableArray array];
+    
     [self loadDotaVideos];
     
     
     _authourList = [UserModel loadLocalGEOJsonData];
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 64)];
-    view.backgroundColor = viewBGColor;
-    self.tableView.tableHeaderView = view;
-    UIView *footView = [[UIView  alloc]initWithFrame:CGRectMake(0, 0, 320, 48+5)];
+    
+    UIView *footView = [[UIView  alloc]initWithFrame:CGRectMake(0, 0, 320, 5)];
     footView.backgroundColor = viewBGColor;
     self.tableView.tableFooterView = footView;
     [self setSearchButton];
-//    _authoList = @[@"2009",       @"情书",    @"小满",    @"牛蛙",   @"章鱼丸718", @"西瓦幽鬼",    @"舞ル灬",@"更多"];
-//    _authorIdArr = @[@"79241663",@"106382808",@"64331608",@"90146406",@"75496314",@"109937062",@"80985046"];
-//    
-//    _authorUrlArr = @[];
+    [self setAdViewUI];
     
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadTheDataAction)];
+    header.backgroundColor = Nav_Color;
+    header.lastUpdatedTimeLabel.textColor = header.stateLabel.textColor = [UIColor whiteColor];
+    header.lastUpdatedTimeLabel.font = header.stateLabel.font = [UIFont systemFontOfSize:12];
+    self.tableView.mj_header = header;
+    
+    UIView *outView = [[UIView alloc]initWithFrame:CGRectMake(0, -500, SCREEN_WIDTH, 500-header.frame.size.height)];
+    outView.backgroundColor = Nav_Color;
+    [self.tableView addSubview:outView];
+
+
 }
 
 -(void)setSearchButton{
     UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [btn setTitle:@"--" forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"searchBarBtn"] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(searchAction:) forControlEvents:UIControlEventTouchUpInside];
-    naviBar.rightView = btn;
+    _naviBar.rightView = btn;
+    btn.center = CGPointMake(btn.center.x-10, btn.center.y);
 }
+
+-(void)setAdViewUI{
+    _handleView = [[UMUFPHandleView alloc] initWithFrame:CGRectMake(0, 0, 44, 44) appKey:nil slotId:@"66921" currentViewController:self];
+    _handleView.delegate = (id<UMUFPHandleViewDelegate>)self;
+    
+    _handleView.mBadgeView.frame = CGRectMake(_handleView.bounds.size.width-16, -8, 22, 22);
+    
+    _naviBar.leftView = _handleView;
+    [_handleView requestPromoterDataInBackground];
+    
+    
+}
+
+
 
 
 -(void)loadDotaVideos{
-    
-    [GGRequest requestWithUrl:@"https://api.youku.com/quality/video/by/category.json?client_id=e2306ead120d2e34&cate=10&count=10" withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (responseObject) {
-            _dotaArr = responseObject[@"videos"];
-            [self.tableView reloadData];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+    [VideoListModel getVideoListBy:@"https://api.youku.com/quality/video/by/category.json?client_id=e2306ead120d2e34&cate=10&count=10" complish:^(id object) {
+        _dotaListModel = object;
+        [self makeTheIntroModelList];
+        [self.tableView reloadData];
+        dispatchDelay(0.2, [self.tableView.mj_header endRefreshing];);
     }];
+    
 }
 
+-(void)makeTheIntroModelList{
+    [_introModelArr removeAllObjects];
+    minIntroNum = (int)MIN(_dotaListModel.videos.count, 5);
+    for (int i=0; i<minIntroNum; i++) {
+        VideoModel *vm = _dotaListModel.videos[i];
+        IntroModel *model = [[IntroModel alloc]initWithTitle:vm.title description:nil image:vm.thumbnail];
+        [_introModelArr addObject:model];
+    }
+}
+
+-(void)reloadTheDataAction{
+    _dotaListModel = nil;
+    [self loadDotaVideos];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.navigationController setDelegate:self];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     
 }
-
+- (void)dealloc {
+    [self.navigationController setDelegate:nil];
+}
 #pragma mark Search Action
 -(void)searchAction:(UIButton*)btn{
     SearchViewController *serchVC = [[SearchViewController alloc]init];
-    self.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:serchVC animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
+    [self pushWithoutTabbar:serchVC];
 }
 
 
@@ -106,7 +161,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 2) {
-        if (_dotaArr.count<4) {
+        if (_dotaListModel.videos.count < 4) {
             return 0;
         }
     }
@@ -114,7 +169,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section==0||section==3) {
+    if (section==0||section==2||section==3) {
         return 0;
     }
     return 10;
@@ -138,15 +193,12 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"ADCell"];
         if (!cell) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ADCell"];
-            _imgView = [[ImagePlayerView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, rowAd)];
-            _imgView.imagePlayerViewDelegate = self;
-            _imgView.scrollInterval = 4;
-//            _imgView.pageControl.currentPageIndicatorTintColor = JDDarkOrange;
-//            _imgView.pageControl.pageIndicatorTintColor = TextLightColor;
-            [_imgView setPageControlPosition:ICPageControlPosition_BottomCenter];
-            [cell.contentView addSubview:_imgView];
         }
-        [_imgView reloadData];
+        if (_introControl == nil&&_introModelArr.count) {
+            _introControl = [[IntroControll alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, rowAd) pages:_introModelArr];
+            _introControl.delegate = self;
+        }
+        [cell.contentView addSubview:_introControl];
     }else if (indexPath.section == 1){
         cell = [tableView dequeueReusableCellWithIdentifier:@"AuthourCell"];
         if (!cell) {
@@ -170,15 +222,12 @@
                 [btn addSubview:nameLab];
                 [cell.contentView addSubview:btn];
                 if (i==7) {
+                    imgV.image = [UIImage imageNamed:@"btn_more.jpg"];
                     nameLab.text = @"更多";
                     break;
                 }
                 UserModel *info = _authourList[i];
                 nameLab.text = info.name;
-                if ([info.userId isEqualToString:@"64331608"]) {
-                    nameLab.text = @"小满";
-                }
-
                 [imgV setImageWithURL:[NSURL URLWithString:info.avatar_large]];
                 
             }
@@ -208,19 +257,19 @@
                 
                 cell.contentView.backgroundColor = viewBGColor;
                 
-                NSInteger index = _dotaArr.count-(4-i);
+                NSInteger index = _dotaListModel.videos.count-(4-i);
                 btn.tag = index;
-                NSDictionary *dic = _dotaArr[index];
+                VideoModel *model = _dotaListModel.videos[index];
                 
-                [imgV setImageWithURL:[NSURL URLWithString:dic[@"thumbnail"]]];
-                nameLab.text = dic[@"title"];
+                [imgV setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+                nameLab.text = model.title;
                 [ZXUnitil fitTheLabel:nameLab];
                 
                 UILabel *detialLab = [[UILabel alloc]initWithFrame:CGRectMake(5, CGRectGetMaxY(imgV.frame)+5, wid-10, 20)];
                 detialLab.font = [UIFont systemFontOfSize:12];
                 detialLab.textColor = TextLightColor;
                 detialLab.textAlignment = NSTextAlignmentCenter;
-                detialLab.text = dic[@"published"];
+                detialLab.text = model.published;
                 [btn addSubview:detialLab];
                 
                 [cell.contentView addSubview:btn];
@@ -244,66 +293,169 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 3) {
-        self.hidesBottomBarWhenPushed = YES;
         VideoListController *vc = [[VideoListController alloc]init];
-        [self.navigationController pushViewController:vc animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
+        [self pushWithoutTabbar:vc];
     }
 }
 
-
+#pragma mark - UIScrollViewDelegate
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    float y = scrollView.contentOffset.y;
+    _naviBar.alpha = MIN(0.9, y/100);
+}
 
 
 
 -(void)clickedTheBtn:(UIButton*)btn{
     if (btn.tag == 7) {
-        
+        //更多
+        AuthorListController *listVC = [[AuthorListController alloc]init];
+        [self pushWithoutTabbar:listVC];
     }else{
         UserModel *user = _authourList[btn.tag];
-        self.hidesBottomBarWhenPushed = YES;
         AuthorVideoListController *vc = [[AuthorVideoListController alloc]initWithUser:user];
-        [self.navigationController pushViewController:vc animated:YES];
-        self.hidesBottomBarWhenPushed = NO;
+        [self pushWithoutTabbar:vc];
     }
 }
 
 -(void)clickedLargeBtn:(UIButton*)btn{
-    NSDictionary *dic = _dotaArr[btn.tag];
-    if (dic[@"link"]) {
-        self.hidesBottomBarWhenPushed = YES;
-        VideoViewController *vc = [[VideoViewController alloc]initWithVideoDiction:dic];
-        [self.navigationController pushViewController:vc animated:YES];
+    VideoModel *model = _dotaListModel.videos[btn.tag];
+    if (model.link) {
+        VideoViewController *vc = [[VideoViewController alloc]initWithVideoModel:model];
+        [self pushWithoutTabbar:vc];
     }
     
 }
 
 
-#pragma mark - ImagePlayerViewDelegate
+#pragma mark - introControlDelegate
 
-- (NSInteger)numberOfItems{
-    
-    return MIN(_dotaArr.count, 6);
-}
-
-- (void)imagePlayerView:(ImagePlayerView *)imagePlayerView loadImageForImageView:(UIImageView *)imageView index:(NSInteger)index{
-    
-    NSDictionary *dic = _dotaArr[index];
-    if (dic[@"thumbnail"]) {
-        imageView.contentMode = UIViewContentModeScaleToFill;
-        [imageView setImageWithURL:[NSURL URLWithString:dic[@"thumbnail"]]];
-    }
-    
-}
-- (void)imagePlayerView:(ImagePlayerView *)imagePlayerView didTapAtIndex:(NSInteger)index{
-    NSDictionary *dic = _dotaArr[index];
-    if (dic[@"link"]) {
-        self.hidesBottomBarWhenPushed = YES;
-        VideoViewController *vc = [[VideoViewController alloc]initWithVideoDiction:dic];
-        [self.navigationController pushViewController:vc animated:YES];
+-(void)introControlSelectedIndex:(int)index{
+    VideoModel *model = _dotaListModel.videos[index];
+    if (model.link) {
+        VideoViewController *vc = [[VideoViewController alloc]initWithVideoModel:model];
+        [self pushWithoutTabbar:vc];
     }else{
         
     }
 }
+
+//- (void)imagePlayerView:(ImagePlayerView *)imagePlayerView loadImageForImageView:(UIImageView *)imageView index:(NSInteger)index{
+//    
+//    VideoModel *model = _dotaListModel.videos[index];
+//    if (model.thumbnail) {
+//        imageView.contentMode = UIViewContentModeScaleToFill;
+//        [imageView setImageWithURL:[NSURL URLWithString:model.thumbnail]];
+//    }
+//    
+//}
+//- (void)imagePlayerView:(ImagePlayerView *)imagePlayerView didTapAtIndex:(NSInteger)index{
+//    VideoModel *model = _dotaListModel.videos[index];
+//    if (model.link) {
+//        VideoViewController *vc = [[VideoViewController alloc]initWithVideoModel:model];
+//        [self pushWithoutTabbar:vc];
+//    }else{
+//        
+//    }
+//}
+
+
+
+
+#pragma mark -- pushAction
+
+-(void)pushWithoutTabbar:(UIViewController*)vc{
+    [self.navigationController pushViewController:vc animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+}
+
+#pragma mark --- WXApiManagerDelegate
+
+- (void)managerDidRecvLaunchFromWXReq:(LaunchFromWXReq *)request{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"111"
+                                                    message:@"----"
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil, nil];
+    [alert show];
+}
+
+- (void)managerDidRecvShowMessageReq:(ShowMessageFromWXReq *)request{
+    WXMediaMessage *message = request.message;
+    if (message.messageExt.length) {
+        if ([message.mediaObject isKindOfClass:[WXAppExtendObject class]]) {
+            WXAppExtendObject *objc = message.mediaObject;
+            NSDictionary *dic = [objc.extInfo jsonObject];
+            Class objClass = NSClassFromString(message.messageExt);
+            id model = [MTLJSONAdapter modelOfClass:objClass fromJSONDictionary:dic error:nil];
+            if ([model isKindOfClass:[VideoModel class]]) {                
+                VideoViewController *vc = [[VideoViewController alloc]initWithVideoModel:model];
+                [self pushWithoutTabbar:vc];
+            }
+            
+        }
+    }
+}
+
+
+
+
+#pragma mark - UMUFPHandleView delegate methods
+
+// 取广告列表数据完成
+
+- (void)didLoadDataFinished:(UMUFPHandleView *)_handleView
+{
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+// 取广告数据失败，小把手将不会出现
+
+- (void)didLoadDataFailWithError:(UMUFPHandleView *)handleView error:(NSError *)error
+{
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+// 实现该回调可以自定义小把手出现的动画
+
+//- (void)handleViewWillAppear:(UMUFPHandleView *)handleView {
+//
+//    CATransition *animation = [CATransition animation];
+//    animation.duration = 0.3f;
+//    animation.timingFunction = UIViewAnimationCurveEaseInOut;
+//    animation.fillMode = kCAFillModeBoth;
+//    animation.type = kCATransitionMoveIn;
+//    animation.subtype = kCATransitionFromTop;
+//    [handleView.layer addAnimation:animation forKey:@"animation"];
+//}
+
+// 小把手被点击，广告将被展示
+
+- (void)didClickHandleView:(UMUFPHandleView *)handleView {
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+// 关闭按钮被点击，广告将被收起
+
+- (void)handleViewDidPackUp:(UMUFPHandleView *)_handleView
+{
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+// 相关的广告被点击
+
+- (void)didClickedPromoterAtIndex:(UMUFPHandleView *)handleView index:(NSInteger)promoterIndex promoterData:(NSDictionary *)promoterData
+{
+    
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+
 
 
 

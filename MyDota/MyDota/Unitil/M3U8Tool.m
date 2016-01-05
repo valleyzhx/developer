@@ -56,7 +56,6 @@ static M3U8Tool *_tool = nil;
 
 #pragma mark --- UIWebViewDelegate
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-    
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
