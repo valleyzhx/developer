@@ -237,6 +237,10 @@
         if (!cell) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"videoCell"];
             float wid = (SCREEN_WIDTH-3*tail)/2;
+            float nameY = 8;
+            if (SCREEN_WIDTH>320) {
+                nameY = 13;
+            }
             for (int i=0; i<4; i++) {
                 UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(tail+(i%2)*(wid+tail), tail+(wid+tail)*(i/2), wid, wid)];
                 
@@ -245,7 +249,7 @@
                 UIImageView *imgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 120*timesOf320, 70*timesOf320)];
                 imgV.center = CGPointMake(wid/2, wid/2+5);
                 
-                UILabel *nameLab = [[UILabel alloc]initWithFrame:CGRectMake(5, 8, wid-10, 30)];
+                UILabel *nameLab = [[UILabel alloc]initWithFrame:CGRectMake(5, nameY, wid-10, 30)];
                 nameLab.numberOfLines = 2;
                 nameLab.font = [UIFont systemFontOfSize:12];
                 nameLab.textColor = TextDarkColor;
@@ -263,7 +267,7 @@
                 
                 [imgV setImageWithURL:[NSURL URLWithString:model.thumbnail]];
                 nameLab.text = model.title;
-                [ZXUnitil fitTheLabel:nameLab];
+//                [ZXUnitil fitTheLabel:nameLab];
                 
                 UILabel *detialLab = [[UILabel alloc]initWithFrame:CGRectMake(5, CGRectGetMaxY(imgV.frame)+5, wid-10, 20)];
                 detialLab.font = [UIFont systemFontOfSize:12];
