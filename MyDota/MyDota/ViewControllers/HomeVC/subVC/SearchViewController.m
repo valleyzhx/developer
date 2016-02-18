@@ -32,6 +32,7 @@
     
     [_naviBar addSubview:_searchBar];
     _searchBar.delegate = self;// 设置代理
+    _searchBar.text = @"dota";
     _backGroundBtn = [[UIButton alloc]initWithFrame:self.view.bounds];
     _backGroundBtn.backgroundColor = [UIColor blackColor];
     _backGroundBtn.alpha = 0;
@@ -42,7 +43,7 @@
     
    
     [_searchBar becomeFirstResponder];
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 }
 
 

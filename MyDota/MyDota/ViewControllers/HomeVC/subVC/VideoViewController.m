@@ -17,7 +17,8 @@
 #import "FMDBManager.h"
 #import "WXApiRequestHandler.h"
 #import <GoogleMobileAds/GoogleMobileAds.h>
-
+#import "CommentListModel.h"
+#import "CommentViewController.h"
 
 @interface ChooseView : UIView
 
@@ -42,7 +43,6 @@
     BOOL _isFav;
     
     GADBannerView *_adView;
-
 }
 
 -(id)initWithVideoModel:(VideoModel *)model{
@@ -78,8 +78,17 @@
     [self startLoadRequest:_videoObject.link];
     //[self loadTheVidList];
     self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetMaxY(_player.view.frame))];
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetMaxY(_player.view.frame)+ 5)];
         view.backgroundColor = viewBGColor;
+        
+       UILabel *coutLab = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_player.view.frame)- 30, SCREEN_WIDTH, 20)];
+        coutLab.textColor = Nav_Color;
+        coutLab.font = [UIFont systemFontOfSize:14];
+        coutLab.textAlignment = NSTextAlignmentCenter;
+        if (_videoObject.view_count) {
+            coutLab.text = [NSString stringWithFormat:@"观看次数:%d",_videoObject.view_count];
+        }
+        [view addSubview:coutLab];
         view;
     });
     [self loadAddView];
@@ -94,6 +103,8 @@
         [self.tableView reloadData];
     }];
     _isFav = [[FMDBManager shareManager]hasTheModel:_videoObject];
+    
+    
 }
 
 -(void)startLoadRequest:(NSString*)htmlUrl{
@@ -234,15 +245,22 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section ==1) {
+        return 1;
+    }
     return 3+1;//增加分享
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section ==1) {
+        return 44;
+    }
     if (indexPath.row == 0) {
-        return 55;
+        float titleHeight = [ZXUnitil heightOfStringWithString:_videoObject.title font:[UIFont systemFontOfSize:14] width:SCREEN_WIDTH-44];
+        return 35 + titleHeight;
     }
     if (indexPath.row == 1) {
       float desHeight = [ZXUnitil heightOfStringWithString:_user.userDescription font:[UIFont systemFontOfSize:12] width:SCREEN_WIDTH-2*orgX];
@@ -260,16 +278,29 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell;
+    
+    if (indexPath.section == 1) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"firstCell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"sectionOneCell"];
+            cell.textLabel.text = @"查看评论";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        return cell;
+    }
+    
+    
     if (indexPath.row==0) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"firstCell"];
         UILabel *titleLab = (UILabel*)[cell.contentView viewWithTag:10];
         UILabel *detialLab = (UILabel*)[cell.contentView viewWithTag:11];
         if (cell == nil) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"firstCell"];
-            titleLab = [[UILabel alloc]initWithFrame:CGRectMake(orgX, 5, SCREEN_WIDTH-2*orgX, 20)];
+            titleLab = [[UILabel alloc]initWithFrame:CGRectMake(orgX, 5, SCREEN_WIDTH-44, 20)];
             titleLab.tag = 10;
+            titleLab.numberOfLines = 0;
             titleLab.textColor = TextDarkColor;
-            titleLab.font = [UIFont systemFontOfSize:15];
+            titleLab.font = [UIFont systemFontOfSize:14];
             
             detialLab = [[UILabel alloc]initWithFrame:CGRectMake(orgX, 30, titleLab.frame.size.width, 20)];
             detialLab.tag = 11;
@@ -289,7 +320,9 @@
             [cell.contentView addSubview:favarBtn];
         }
         titleLab.text = _videoObject.title;
+        [ZXUnitil fitTheLabel:titleLab];
         detialLab.text = [NSString stringWithFormat:@"发布时间: %@",_videoObject.published];
+        detialLab.center = CGPointMake(detialLab.center.x, CGRectGetMaxY(titleLab.frame)+5 + detialLab.frame.size.height/2);
     }else if (indexPath.row == 1){
         
         cell = [tableView dequeueReusableCellWithIdentifier:@"secondCell"];
@@ -345,6 +378,17 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section ==1) {
+        if (indexPath.row == 0) {//评论
+            CommentViewController *vc = [[CommentViewController alloc]initWithVideoId:_videoObject.modelID];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+        return;
+    }
+    
+    
     if (indexPath.row == 2) {
         if (_isFromAuthorList) {
             [self.navigationController popViewControllerAnimated:YES];

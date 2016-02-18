@@ -48,7 +48,7 @@
     _naviBar.backgroundView.alpha = 1;
     [self loadVideoList:1];
    
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 
 }
 -(void)loadMoreData{
