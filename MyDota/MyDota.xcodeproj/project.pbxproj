@@ -18,6 +18,7 @@
 		F021BDBD1BD34407001429CC /* AuthorVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021BDBC1BD34407001429CC /* AuthorVideoListController.m */; };
 		F0284CC91C1E600700C9434A /* ShoppingController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0284CC81C1E600700C9434A /* ShoppingController.m */; };
 		F0284CCC1C1E684800C9434A /* GGWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0284CCB1C1E684800C9434A /* GGWebController.m */; };
+		F02BED911C4C89370049FF76 /* CommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F02BED901C4C89370049FF76 /* CommentListModel.m */; };
 		F03BE87C1BF9C55900841606 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F03BE87E1BF9C55900841606 /* InfoPlist.strings */; };
 		F0634E9C1BE0B5A3003F45ED /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0634E981BE0B5A3003F45ED /* libWeChatSDK.a */; };
 		F0634E9D1BE0B5A3003F45ED /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0634E991BE0B5A3003F45ED /* read_me.txt */; };
@@ -125,6 +126,8 @@
 		F0284CC81C1E600700C9434A /* ShoppingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingController.m; sourceTree = "<group>"; };
 		F0284CCA1C1E684800C9434A /* GGWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGWebController.h; sourceTree = "<group>"; };
 		F0284CCB1C1E684800C9434A /* GGWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGWebController.m; sourceTree = "<group>"; };
+		F02BED8F1C4C89370049FF76 /* CommentListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentListModel.h; sourceTree = "<group>"; };
+		F02BED901C4C89370049FF76 /* CommentListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentListModel.m; sourceTree = "<group>"; };
 		F03BE8801BF9C5CC00841606 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		F03BE8811BF9C5CC00841606 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F03BE8821BF9C5DD00841606 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -333,6 +336,8 @@
 				F00930A61BD37FD5005E3E3E /* VideoListModel.m */,
 				F00930A71BD37FD5005E3E3E /* VideoModel.h */,
 				F00930A81BD37FD5005E3E3E /* VideoModel.m */,
+				F02BED8F1C4C89370049FF76 /* CommentListModel.h */,
+				F02BED901C4C89370049FF76 /* CommentListModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -890,6 +895,7 @@
 				F00930AE1BD37FD5005E3E3E /* VideoModel.m in Sources */,
 				F0634EAC1BE0B94A003F45ED /* WXApiRequestHandler.m in Sources */,
 				F076198A1BD1D1F70097686B /* NSURL+m3u8.m in Sources */,
+				F02BED911C4C89370049FF76 /* CommentListModel.m in Sources */,
 				F00930AD1BD37FD5005E3E3E /* VideoListModel.m in Sources */,
 				F0AD24BB1BF85CA5000B1626 /* AuthorListController.m in Sources */,
 				F0EAF15C1BCE205500B18B81 /* SvUDIDTools.m in Sources */,

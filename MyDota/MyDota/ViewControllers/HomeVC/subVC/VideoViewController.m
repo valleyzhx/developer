@@ -17,7 +17,7 @@
 #import "FMDBManager.h"
 #import "WXApiRequestHandler.h"
 #import <GoogleMobileAds/GoogleMobileAds.h>
-
+#import "CommentListModel.h"
 
 @interface ChooseView : UIView
 
@@ -42,6 +42,8 @@
     BOOL _isFav;
     
     GADBannerView *_adView;
+    
+    CommentListModel *_hotComments;
     
 }
 
@@ -103,6 +105,13 @@
         [self.tableView reloadData];
     }];
     _isFav = [[FMDBManager shareManager]hasTheModel:_videoObject];
+    
+    //comments
+    [CommentListModel getHotCommentsWithVideoId:_videoObject.modelID page:1 complish:^(id objc) {
+        _hotComments = objc;
+        [self.tableView reloadData];
+    }];
+    
 }
 
 -(void)startLoadRequest:(NSString*)htmlUrl{
