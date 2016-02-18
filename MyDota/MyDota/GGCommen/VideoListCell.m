@@ -7,11 +7,14 @@
 //
 
 #import "VideoListCell.h"
+#import "MyDefines.h"
 
 @implementation VideoListCell
 
 - (void)awakeFromNib {
     // Initialization code
+    _publishLab.textColor = TextLightColor;
+    _titleLab.textColor = TextDarkColor;
 }
 
 

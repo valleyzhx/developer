@@ -18,6 +18,7 @@
 #import "WXApiRequestHandler.h"
 #import <GoogleMobileAds/GoogleMobileAds.h>
 #import "CommentListModel.h"
+#import "CommentViewController.h"
 
 @interface ChooseView : UIView
 
@@ -42,9 +43,6 @@
     BOOL _isFav;
     
     GADBannerView *_adView;
-    
-    CommentListModel *_hotComments;
-    
 }
 
 -(id)initWithVideoModel:(VideoModel *)model{
@@ -106,11 +104,6 @@
     }];
     _isFav = [[FMDBManager shareManager]hasTheModel:_videoObject];
     
-    //comments
-    [CommentListModel getHotCommentsWithVideoId:_videoObject.modelID page:1 complish:^(id objc) {
-        _hotComments = objc;
-        [self.tableView reloadData];
-    }];
     
 }
 
@@ -252,13 +245,19 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section ==1) {
+        return 1;
+    }
     return 3+1;//增加分享
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section ==1) {
+        return 44;
+    }
     if (indexPath.row == 0) {
         float titleHeight = [ZXUnitil heightOfStringWithString:_videoObject.title font:[UIFont systemFontOfSize:14] width:SCREEN_WIDTH-44];
         return 35 + titleHeight;
@@ -279,6 +278,18 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell;
+    
+    if (indexPath.section == 1) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"firstCell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"sectionOneCell"];
+            cell.textLabel.text = @"查看评论";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        return cell;
+    }
+    
+    
     if (indexPath.row==0) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"firstCell"];
         UILabel *titleLab = (UILabel*)[cell.contentView viewWithTag:10];
@@ -367,6 +378,17 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section ==1) {
+        if (indexPath.row == 0) {//评论
+            CommentViewController *vc = [[CommentViewController alloc]initWithVideoId:_videoObject.modelID];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+        return;
+    }
+    
+    
     if (indexPath.row == 2) {
         if (_isFromAuthorList) {
             [self.navigationController popViewControllerAnimated:YES];

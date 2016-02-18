@@ -23,8 +23,6 @@
 #import "WXApiManager.h"
 
 #import "IntroControll.h"
-#import "UMUFPHandleView.h"
-#import "UMUFPBadgeView.h"
 
 
 #define rowAd (180*timesOf320)
@@ -47,8 +45,6 @@
     NSArray *_authourList;
     int minIntroNum;
     
-    UMUFPHandleView *_handleView;
-
 }
 
 - (void)viewDidLoad {
@@ -70,7 +66,6 @@
     footView.backgroundColor = viewBGColor;
     self.tableView.tableFooterView = footView;
     [self setSearchButton];
-    [self setAdViewUI];
     
     MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadTheDataAction)];
     header.backgroundColor = Nav_Color;
@@ -92,19 +87,6 @@
     _naviBar.rightView = btn;
     btn.center = CGPointMake(btn.center.x-10, btn.center.y);
 }
-
--(void)setAdViewUI{
-    _handleView = [[UMUFPHandleView alloc] initWithFrame:CGRectMake(0, 0, 44, 44) appKey:nil slotId:@"66921" currentViewController:self];
-    _handleView.delegate = (id<UMUFPHandleViewDelegate>)self;
-    
-    _handleView.mBadgeView.frame = CGRectMake(_handleView.bounds.size.width-16, -8, 22, 22);
-    
-    _naviBar.leftView = _handleView;
-    [_handleView requestPromoterDataInBackground];
-    
-    
-}
-
 
 
 
@@ -402,62 +384,6 @@
     }
 }
 
-
-
-
-#pragma mark - UMUFPHandleView delegate methods
-
-// 取广告列表数据完成
-
-- (void)didLoadDataFinished:(UMUFPHandleView *)_handleView
-{
-    
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
-
-// 取广告数据失败，小把手将不会出现
-
-- (void)didLoadDataFailWithError:(UMUFPHandleView *)handleView error:(NSError *)error
-{
-    
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
-
-// 实现该回调可以自定义小把手出现的动画
-
-//- (void)handleViewWillAppear:(UMUFPHandleView *)handleView {
-//
-//    CATransition *animation = [CATransition animation];
-//    animation.duration = 0.3f;
-//    animation.timingFunction = UIViewAnimationCurveEaseInOut;
-//    animation.fillMode = kCAFillModeBoth;
-//    animation.type = kCATransitionMoveIn;
-//    animation.subtype = kCATransitionFromTop;
-//    [handleView.layer addAnimation:animation forKey:@"animation"];
-//}
-
-// 小把手被点击，广告将被展示
-
-- (void)didClickHandleView:(UMUFPHandleView *)handleView {
-    
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
-
-// 关闭按钮被点击，广告将被收起
-
-- (void)handleViewDidPackUp:(UMUFPHandleView *)_handleView
-{
-    
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
-
-// 相关的广告被点击
-
-- (void)didClickedPromoterAtIndex:(UMUFPHandleView *)handleView index:(NSInteger)promoterIndex promoterData:(NSDictionary *)promoterData
-{
-    
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
 
 
 

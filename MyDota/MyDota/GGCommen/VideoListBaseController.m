@@ -24,7 +24,7 @@
     [super viewDidLoad];
     _listArr = [NSMutableArray array];
     self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 48)];
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 48)];
         view.backgroundColor = viewBGColor;
         view;
     });

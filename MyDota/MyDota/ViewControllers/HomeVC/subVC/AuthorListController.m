@@ -32,7 +32,7 @@
         view.backgroundColor = [UIColor clearColor];
         view;
     });
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     [self loadAuthorList:1];
 
 }
