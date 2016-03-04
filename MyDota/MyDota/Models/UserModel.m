@@ -19,7 +19,7 @@
 }
 
 +(void)getUserInfoBy:(id)userIdOrUserName complish:(void(^)(id))finished{
-    NSString *url = @"https://openapi.youku.com/v2/users/show.json?client_id=%20e2306ead120d2e34&";
+    NSString *url = @"https://openapi.youku.com/v2/users/show.json?client_id=e2306ead120d2e34&";
     if ([userIdOrUserName isKindOfClass:[NSNumber class]]) {
         url = [url stringByAppendingFormat:@"user_id=%@",userIdOrUserName];
     }else{
@@ -27,6 +27,13 @@
     }
     [self startRequestWithUrl:url complish:finished];
 }
+
++(void)getUserInfoByAccessToken:(NSString *)token complish:(void (^)(id))finished{
+    NSString *url = [NSString stringWithFormat:@"https://openapi.youku.com/v2/users/myinfo.json?client_id=e2306ead120d2e34&access_token=%@",token];
+    [self startRequestWithUrl:url complish:finished];
+
+}
+
 
 +(NSArray *)loadLocalGEOJsonData{
     NSString *path = [[NSBundle mainBundle]pathForResource:@"AuthourData" ofType:@"geojson"];

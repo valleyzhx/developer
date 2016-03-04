@@ -41,6 +41,8 @@
  */
 +(void)getUserInfoBy:(id)userIdOrUserName complish:(void(^)(id))finished;
 
++(void)getUserInfoByAccessToken:(NSString*)token complish:(void(^)(id))finished;
+
 +(NSArray*)loadLocalGEOJsonData;
 
 @end

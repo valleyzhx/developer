@@ -191,6 +191,24 @@ static ZXUnitil *_unitil;
 }
 
 
++(NSDictionary *)urlQueryDicWithQueryString:(NSString *)query{
+    __block NSMutableDictionary *dic = nil;
+    if (query) {
+        dic = [NSMutableDictionary dictionary];
+        NSArray *itemArr = [query componentsSeparatedByString:@"&"];
+        [itemArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *itemStr = obj;
+            NSArray *kvArr = [itemStr componentsSeparatedByString:@"="];
+            if (kvArr.count>1) {
+                [dic setValue:kvArr[1] forKey:kvArr[0]];
+            }
+        }];
+        
+    }
+    return dic;
+}
+
+
 +(void)startAnimation:(UIView *)view delay:(float)delay finised:(void (^)())finishedBlock{
     myFinished = finishedBlock;
     if (_unitil == nil) {
@@ -220,6 +238,7 @@ static ZXUnitil *_unitil;
         myFinished = nil;
     }
 }
+
 -(void)dealloc{
     myFinished = nil;
 }

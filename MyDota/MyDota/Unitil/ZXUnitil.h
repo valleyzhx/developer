@@ -20,6 +20,9 @@
 + (NSString*)abNameWithProvince:(NSString*)province;
 + (NSString*)halfWithStringFromFullString:(NSString*)string;
 +(void)startAnimation:(UIView*)view delay:(float)delay finised:(void (^)(void))finishedBlock;
+
++(NSDictionary*)urlQueryDicWithQueryString:(NSString*)query;
+
 @end
 
 @interface UIView (virtualLine)
@@ -43,8 +46,6 @@
 @interface NSObject (json)
 -(NSString*)jsonString;
 @end
-
-
 
 
 

@@ -14,6 +14,10 @@
 #import "ADViewController.h"
 #import "UMFeedback.h"
 #import "ShoppingController.h"
+#import "LoginViewController.h"
+#import "UserModel.h"
+#import "FMDBManager.h"
+#import "AFNetworking/UIKit+AFNetworking/UIImageView+AFNetworking.h"
 
 #define imageHeight 230
 
@@ -25,6 +29,10 @@
 
 @implementation UserCenterController{
     NSArray *_titleArr;
+    UserModel *_user;
+    
+    UIImageView *_avatarView;
+    UILabel *_userNameLab;
 }
 
 - (void)viewDidLoad {
@@ -41,11 +49,66 @@
         view.backgroundColor = [UIColor clearColor];
         UILongPressGestureRecognizer *longPressGr = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(panTheImageAction:)];
         [view addGestureRecognizer:longPressGr];
+        
+        
+        _avatarView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 80, 80)];
+        _userNameLab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 160, 30)];
+        
+        _avatarView.center = CGPointMake(SCREEN_WIDTH/2, imageHeight/2);
+        _userNameLab.center = CGPointMake(_avatarView.center.x, _avatarView.center.y + 70);
+        
+        _avatarView.layer.cornerRadius = _avatarView.frame.size.height/2;
+        _avatarView.layer.masksToBounds = YES;
+        _avatarView.userInteractionEnabled = YES;
+        _userNameLab.textAlignment = NSTextAlignmentCenter;
+        _userNameLab.textColor = [UIColor whiteColor];
+        _userNameLab.font = [UIFont systemFontOfSize:14];
+        
+        UIButton *btn = [[UIButton alloc]initWithFrame:_avatarView.bounds];
+        [btn addTarget:self action:@selector(clickedAvatarButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_avatarView addSubview:btn];
+        
+        [view addSubview:_avatarView];
+        [view addSubview:_userNameLab];
 
         view;
     });
-    _titleArr = @[@[@"我的收藏",@"买套装备"],@[@"意见反馈",@"给个好评",@"分享APP"],@[@"每日一句"]];
-    
+
+    [self checkTokenExpireMethod];
+    NSArray *arr = [[FMDBManager shareManager]queryTable:[UserModel class] QueryString:@"select * from UserModel;"];
+    if (arr.count == 1) {
+        _user = arr.firstObject;
+    }
+    [self refreshTheUserUI];
+}
+
+-(void)checkTokenExpireMethod{
+    NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
+    double expireTime = [[NSUserDefaults standardUserDefaults]doubleForKey:kTokenExpireValue];
+    if (time + 3600*24 >= expireTime) {//过期
+        [self logoutDataMethod];
+    }
+}
+
+
+-(void)makeTiteArr{
+    NSString *title = @"登录";
+    if ([[NSUserDefaults standardUserDefaults]objectForKey:kToken]) {
+        title = @"退出";
+    }
+    _titleArr = nil;
+    _titleArr = @[@[@"我的收藏",@"买套装备"],@[@"意见反馈",@"给个好评",@"分享APP"],@[@"每日一句"],@[title]];
+}
+
+-(void)refreshTheUserUI{
+    _avatarView.image = nil;
+    _userNameLab.text = @"";
+    if (_user) {
+        [_avatarView setImageWithURL:[NSURL URLWithString:_user.avatar_large]];
+        _userNameLab.text = _user.name;
+    }
+    [self makeTiteArr];
+    [self.tableView reloadData];
 }
 
 -(void)setHeaderImage{
@@ -59,10 +122,31 @@
 }
 
 
+-(void)loadTheUerDataMethod:(NSString*)token{
+    [UserModel getUserInfoByAccessToken:token complish:^(id objc) {
+        if (objc) {
+            _user = objc;
+            [[FMDBManager shareManager]saveDataWithModel:_user];
+            [self refreshTheUserUI];
+        }
+    }];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (void)logoutDataMethod {
+    [[FMDBManager shareManager]deleteDataWithModel:_user];
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:kToken];
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:kTokenExpireValue];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    _user = nil;
+}
+
 
 -(void)addTheExtraView{
 //    _tableView.
@@ -112,6 +196,11 @@
     if (indexPath.section!=1 ) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
+    if (indexPath.section == 3) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.textLabel.textColor = JDRedColor;
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    }
     cell.textLabel.text = _titleArr[indexPath.section][indexPath.row];
     return cell;
     
@@ -155,6 +244,24 @@
         ADViewController *controller = [[ADViewController alloc]init];
         [self pushWithoutTabbar:controller];
     }
+    if (indexPath.section == 3) {
+        if (_user) {
+            dispatchDelay(0.5,
+                          [self logoutDataMethod];
+                          [self refreshTheUserUI];
+                          [MBProgressHUD showString:@"退出成功" inView:self.view];
+                          );
+            
+        }else{
+            __weak typeof(self) weakSelf = self;
+            LoginViewController *controller = [[LoginViewController alloc]initWithFinishBlock:^(NSString *token) {
+                [weakSelf makeTiteArr];
+                [weakSelf loadTheUerDataMethod:token];
+                [weakSelf.tableView reloadData];
+            }];
+            [self presentViewController:controller animated:YES completion:nil];
+        }
+    }
     
     
 }
@@ -186,6 +293,9 @@
     
 }
 
+-(void)clickedAvatarButtonAction:(UIButton*)btn{
+    
+}
 
 
 #pragma mark --- UzysAssetsPickerControllerDelegate

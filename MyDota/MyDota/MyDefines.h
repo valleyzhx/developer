@@ -15,6 +15,9 @@
 #define MobClick_ID @"539093f556240b01ab039989"
 
 
+#define kToken @"access_token"
+#define kTokenExpireValue @"expire_value"
+
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -50,11 +53,6 @@
 //系数
 #define timesOf320  (MAX(1, (SCREEN_WIDTH/320)*1))
 
-#ifdef DEBUG
-    #define preUrl @"http://gwm.car.jd.com/client"
-#else
-    #define preUrl @"http://gw.car.jd.com/client"
-#endif
 
 //检查更新
 #define updateURL @"http://itunes.apple.com/lookup?id=993559495"

@@ -29,6 +29,7 @@
 		F0634EB91BE0BAE5003F45ED /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EB41BE0BAE5003F45ED /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m */; };
 		F0634EBA1BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EB61BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */; };
 		F0634EBB1BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EB81BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.m */; };
+		F072C2111C880CB300D2CC41 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F072C2101C880CB300D2CC41 /* LoginViewController.m */; };
 		F072D1AA1C756988005ED4A0 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F072D1A91C756988005ED4A0 /* CommentViewController.m */; };
 		F07619861BD1D1F70097686B /* M3U8Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = F076197D1BD1D1F70097686B /* M3U8Parser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F07619871BD1D1F70097686B /* M3U8SegmentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F076197F1BD1D1F70097686B /* M3U8SegmentInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -151,6 +152,8 @@
 		F0634EB61BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SendMessageToWXReq+requestWithTextOrMediaMessage.m"; sourceTree = "<group>"; };
 		F0634EB71BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WXMediaMessage+messageConstruct.h"; sourceTree = "<group>"; };
 		F0634EB81BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WXMediaMessage+messageConstruct.m"; sourceTree = "<group>"; };
+		F072C20F1C880CB300D2CC41 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		F072C2101C880CB300D2CC41 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F072D1A81C756988005ED4A0 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
 		F072D1A91C756988005ED4A0 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		F076197A1BD1D1F70097686B /* M3U8Kit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "M3U8Kit-Prefix.pch"; sourceTree = "<group>"; };
@@ -364,6 +367,8 @@
 				F0AD24A31BF77FB5000B1626 /* ADViewController.m */,
 				F0284CC71C1E600700C9434A /* ShoppingController.h */,
 				F0284CC81C1E600700C9434A /* ShoppingController.m */,
+				F072C20F1C880CB300D2CC41 /* LoginViewController.h */,
+				F072C2101C880CB300D2CC41 /* LoginViewController.m */,
 			);
 			path = subVc;
 			sourceTree = "<group>";
@@ -851,6 +856,7 @@
 				F0AD24BE1BF85D9B000B1626 /* UserListModel.m in Sources */,
 				F0CF6C8E1BD77C5600DF8017 /* VideoListBaseController.m in Sources */,
 				F072D1AA1C756988005ED4A0 /* CommentViewController.m in Sources */,
+				F072C2111C880CB300D2CC41 /* LoginViewController.m in Sources */,
 				F0284CC91C1E600700C9434A /* ShoppingController.m in Sources */,
 				F0AD24A11BF7608A000B1626 /* GGNavigationController.m in Sources */,
 				F0284CCC1C1E684800C9434A /* GGWebController.m in Sources */,
