@@ -13,7 +13,12 @@
 
 #define WXApi_ID @"wx1bc2f1985a2547b5"
 #define MobClick_ID @"539093f556240b01ab039989"
+#define zqlist @"zqlist"
+#define zqlive @"zqlive"
 
+
+
+#define appDelegate                     ((AppDelegate *)[[UIApplication sharedApplication] delegate])
 
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]

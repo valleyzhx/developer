@@ -13,8 +13,8 @@
 #import "WXApiManager.h"
 #import "MyDefines.h"
 #import "UMFeedback.h"
-
-
+#import "UMOnlineConfig.h"
+#import "TVListModel.h"
 
 @interface AppDelegate ()
 
@@ -29,7 +29,7 @@
     [WXApi registerApp:WXApi_ID];
     [MobClick startWithAppkey:MobClick_ID];
     [UMFeedback setAppkey:MobClick_ID];
-
+    [UMOnlineConfig updateOnlineConfigWithAppkey:MobClick_ID];
     [self.window makeKeyAndVisible];
 
     [self initGDTSplashAd];
@@ -119,7 +119,6 @@
 - (void)splashAdClosed:(GDTSplashAd *)splashAd{
     
 }
-
 
 
 @end

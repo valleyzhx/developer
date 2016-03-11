@@ -38,12 +38,23 @@
         [self.view addSubview:_tableView];
     }
     _naviBar = [self setUpNaviViewWithType:GGNavigationBarTypeNormal];
-    
-    
+    [self initEmptyLabel];
 }
+
+-(void)initEmptyLabel{
+    _emptyLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
+    _emptyLabel.textColor = TextDarkColor;
+    _emptyLabel.font = [UIFont systemFontOfSize:16];
+    _emptyLabel.text = @"暂无数据，稍后重试!";
+    _emptyLabel.textAlignment = NSTextAlignmentCenter;
+    _emptyLabel.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+    [self.view addSubview:_emptyLabel];
+    _emptyLabel.hidden = YES;
+}
+
 -(void)setGDTAdUI{
     float x = (SCREEN_WIDTH-320)/2;
-    _bannerView = [[GDTMobBannerView alloc] initWithFrame:CGRectMake(x, 0,320,50)
+    _bannerView = [[GDTMobBannerView alloc] initWithFrame:CGRectMake(x, 5,320,50)
                                                    appkey:@"1104096526"
                                               placementId:@"8050900171935450"];
     _bannerView.delegate = self; // 设置Delegate
@@ -113,7 +124,9 @@
 
 #pragma mark GDT Degetate
 - (void)bannerViewDidReceived{
-    self.tableView.tableFooterView = _bannerView;
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
+    [view addSubview:_bannerView];
+    self.tableView.tableFooterView = view;
 }
 
 - (void)bannerViewFailToReceived:(NSError *)error{

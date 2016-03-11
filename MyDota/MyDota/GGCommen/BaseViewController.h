@@ -21,6 +21,7 @@
     GGNavigationBar *_naviBar;
     
     GDTMobBannerView *_bannerView;
+    UILabel *_emptyLabel;
 }
 
 @property (nonatomic,assign) BOOL noTable;
