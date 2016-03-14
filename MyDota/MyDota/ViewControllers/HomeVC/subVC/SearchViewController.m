@@ -49,7 +49,8 @@
 
 
 -(void)loadMoreData{
-    [self loadVideoList:currentPage+1];
+    currentPage++;
+    [self loadVideoList:currentPage];
 }
 
 
@@ -72,7 +73,6 @@
             if (currentPage == 1) {
                 [self.tableView setContentOffset:CGPointMake(0, -20) animated:YES];
             }
-            currentPage++;
         }
         [self clickedTheBackGround:nil];
     }];
@@ -109,7 +109,7 @@
     }
     [self.listArr removeAllObjects];
     currentPage = 1;
-    [self loadVideoList:1];
+    [self loadVideoList:currentPage];
     //[self.tableView setContentOffset:CGPointMake(0, 0) animated:NO];
 }
 

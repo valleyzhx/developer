@@ -9,6 +9,9 @@
 #import "MTLHALResource.h"
 
 @interface MTLHALResource (GGRequest)
+
++(id)managerThereReponseObject:(id)responseObject;
+
 +(void)startRequestWithUrl:(NSString *)url complish:(void (^)(id))finished;
 
 @end

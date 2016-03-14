@@ -23,13 +23,8 @@
     NSArray *arr = [[FMDBManager shareManager]queryTable:[VideoModel class] QueryString:@"select * from VideoModel;"];
     self.listArr = [NSMutableArray arrayWithArray:arr];
     if (arr.count == 0) {
-        UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 100)];
-        lab.textColor = TextDarkColor;
-        lab.font = [UIFont systemFontOfSize:16];
-        lab.text = @"您还没有收藏过视频!";
-        lab.textAlignment = NSTextAlignmentCenter;
-        lab.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
-        [self.view addSubview:lab];
+        _emptyLabel.text = @"您还没有收藏过视频!";
+        _emptyLabel.hidden = NO;
     }
     self.showGDTADView = NO;
 }

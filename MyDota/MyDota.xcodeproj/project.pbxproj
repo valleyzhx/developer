@@ -20,6 +20,11 @@
 		F0284CCC1C1E684800C9434A /* GGWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0284CCB1C1E684800C9434A /* GGWebController.m */; };
 		F02BED911C4C89370049FF76 /* CommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F02BED901C4C89370049FF76 /* CommentListModel.m */; };
 		F03BE87C1BF9C55900841606 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F03BE87E1BF9C55900841606 /* InfoPlist.strings */; };
+		F0577B811C92679200FD9F04 /* libUMOnlineConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0577B7F1C92679200FD9F04 /* libUMOnlineConfig.a */; };
+		F0577B841C92719A00FD9F04 /* TVRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F0577B831C92719A00FD9F04 /* TVRequest.m */; };
+		F0577B871C928C6500FD9F04 /* TVListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0577B861C928C6500FD9F04 /* TVListModel.m */; };
+		F0577B8A1C928C7600FD9F04 /* TVModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0577B891C928C7600FD9F04 /* TVModel.m */; };
+		F0577B8D1C92A46400FD9F04 /* LiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0577B8C1C92A46400FD9F04 /* LiveViewController.m */; };
 		F0634E9C1BE0B5A3003F45ED /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0634E981BE0B5A3003F45ED /* libWeChatSDK.a */; };
 		F0634E9D1BE0B5A3003F45ED /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0634E991BE0B5A3003F45ED /* read_me.txt */; };
 		F0634EA71BE0B73E003F45ED /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0634EA61BE0B73E003F45ED /* CoreTelephony.framework */; };
@@ -37,6 +42,7 @@
 		F076198A1BD1D1F70097686B /* NSURL+m3u8.m in Sources */ = {isa = PBXBuildFile; fileRef = F07619851BD1D1F70097686B /* NSURL+m3u8.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F076198D1BD1DA940097686B /* M3U8Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = F076198C1BD1DA940097686B /* M3U8Tool.m */; };
 		F0966F141BD202B2000A512F /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0966F131BD202B2000A512F /* VideoViewController.m */; };
+		F09C4BCE1C91613D00C271C8 /* TVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F09C4BCD1C91613D00C271C8 /* TVViewController.m */; };
 		F0A2676B1BD0906C004BB71D /* GGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A2676A1BD0906C004BB71D /* GGRequest.m */; };
 		F0A2676E1BD09F20004BB71D /* BaseViewController+NaviView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A2676D1BD09F20004BB71D /* BaseViewController+NaviView.m */; };
 		F0AD249A1BF7595C000B1626 /* libGDTMobSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24991BF7595C000B1626 /* libGDTMobSDK.a */; };
@@ -129,6 +135,16 @@
 		F03BE8801BF9C5CC00841606 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		F03BE8811BF9C5CC00841606 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F03BE8821BF9C5DD00841606 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F0577B7F1C92679200FD9F04 /* libUMOnlineConfig.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMOnlineConfig.a; sourceTree = "<group>"; };
+		F0577B801C92679200FD9F04 /* UMOnlineConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMOnlineConfig.h; sourceTree = "<group>"; };
+		F0577B821C92719A00FD9F04 /* TVRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVRequest.h; sourceTree = "<group>"; };
+		F0577B831C92719A00FD9F04 /* TVRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVRequest.m; sourceTree = "<group>"; };
+		F0577B851C928C6500FD9F04 /* TVListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVListModel.h; sourceTree = "<group>"; };
+		F0577B861C928C6500FD9F04 /* TVListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVListModel.m; sourceTree = "<group>"; };
+		F0577B881C928C7600FD9F04 /* TVModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVModel.h; sourceTree = "<group>"; };
+		F0577B891C928C7600FD9F04 /* TVModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVModel.m; sourceTree = "<group>"; };
+		F0577B8B1C92A46400FD9F04 /* LiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveViewController.h; sourceTree = "<group>"; };
+		F0577B8C1C92A46400FD9F04 /* LiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveViewController.m; sourceTree = "<group>"; };
 		F0634E981BE0B5A3003F45ED /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		F0634E991BE0B5A3003F45ED /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
 		F0634E9A1BE0B5A3003F45ED /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
@@ -169,6 +185,8 @@
 		F076198C1BD1DA940097686B /* M3U8Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M3U8Tool.m; sourceTree = "<group>"; };
 		F0966F121BD202B2000A512F /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		F0966F131BD202B2000A512F /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		F09C4BCC1C91613D00C271C8 /* TVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVViewController.h; sourceTree = "<group>"; };
+		F09C4BCD1C91613D00C271C8 /* TVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVViewController.m; sourceTree = "<group>"; };
 		F0A267691BD0906C004BB71D /* GGRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGRequest.h; sourceTree = "<group>"; };
 		F0A2676A1BD0906C004BB71D /* GGRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGRequest.m; sourceTree = "<group>"; };
 		F0A2676C1BD09F20004BB71D /* BaseViewController+NaviView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BaseViewController+NaviView.h"; sourceTree = "<group>"; };
@@ -259,6 +277,7 @@
 			files = (
 				F0E649D81C1841C9004A6F44 /* CoreMotion.framework in Frameworks */,
 				F0E649D61C1841AF004A6F44 /* MapKit.framework in Frameworks */,
+				F0577B811C92679200FD9F04 /* libUMOnlineConfig.a in Frameworks */,
 				F0E649D41C18419F004A6F44 /* SystemConfiguration.framework in Frameworks */,
 				F0AD24B61BF78163000B1626 /* MessageUI.framework in Frameworks */,
 				F0AD24B31BF7811E000B1626 /* EventKit.framework in Frameworks */,
@@ -327,6 +346,10 @@
 				F00930A81BD37FD5005E3E3E /* VideoModel.m */,
 				F02BED8F1C4C89370049FF76 /* CommentListModel.h */,
 				F02BED901C4C89370049FF76 /* CommentListModel.m */,
+				F0577B851C928C6500FD9F04 /* TVListModel.h */,
+				F0577B861C928C6500FD9F04 /* TVListModel.m */,
+				F0577B881C928C7600FD9F04 /* TVModel.h */,
+				F0577B891C928C7600FD9F04 /* TVModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -368,6 +391,15 @@
 			path = subVc;
 			sourceTree = "<group>";
 		};
+		F0577B7E1C92679200FD9F04 /* UMOnlineConfig */ = {
+			isa = PBXGroup;
+			children = (
+				F0577B7F1C92679200FD9F04 /* libUMOnlineConfig.a */,
+				F0577B801C92679200FD9F04 /* UMOnlineConfig.h */,
+			);
+			path = UMOnlineConfig;
+			sourceTree = "<group>";
+		};
 		F0634E971BE0B5A3003F45ED /* weChat */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +435,7 @@
 		F07619781BD1D1F70097686B /* Libary */ = {
 			isa = PBXGroup;
 			children = (
+				F0577B7E1C92679200FD9F04 /* UMOnlineConfig */,
 				F0AD24931BF7595C000B1626 /* AdLibs */,
 				F0B1E3FB1BF5D0C600CED836 /* IntroControll */,
 				F0634E971BE0B5A3003F45ED /* weChat */,
@@ -449,6 +482,17 @@
 			path = subVC;
 			sourceTree = "<group>";
 		};
+		F09C4BCB1C91612200C271C8 /* TVVC */ = {
+			isa = PBXGroup;
+			children = (
+				F09C4BCC1C91613D00C271C8 /* TVViewController.h */,
+				F09C4BCD1C91613D00C271C8 /* TVViewController.m */,
+				F0577B8B1C92A46400FD9F04 /* LiveViewController.h */,
+				F0577B8C1C92A46400FD9F04 /* LiveViewController.m */,
+			);
+			path = TVVC;
+			sourceTree = "<group>";
+		};
 		F0A267681BD0906C004BB71D /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +502,8 @@
 				F0B3EF4F1BD0D69E00313C24 /* GGRequestManager.m */,
 				F0B3EF511BD0D6AD00313C24 /* GGRequestObserver.h */,
 				F0B3EF521BD0D6AD00313C24 /* GGRequestObserver.m */,
+				F0577B821C92719A00FD9F04 /* TVRequest.h */,
+				F0577B831C92719A00FD9F04 /* TVRequest.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -531,6 +577,7 @@
 				F0AD24A01BF7608A000B1626 /* GGNavigationController.m */,
 				F0EAF1561BCE205500B18B81 /* MainTabBarController.h */,
 				F0EAF1571BCE205500B18B81 /* MainTabBarController.m */,
+				F09C4BCB1C91612200C271C8 /* TVVC */,
 				F0EAF1601BCE20F400B18B81 /* HomeVC */,
 				F0EAF1581BCE205500B18B81 /* UserCenterVC */,
 			);
@@ -829,10 +876,13 @@
 				F0634EBB1BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.m in Sources */,
 				F0B5A1791C197E6B00C6B54B /* MBProgressHUD+string.m in Sources */,
 				F0CF6C8B1BD777FB00DF8017 /* SearchViewController.m in Sources */,
+				F0577B8D1C92A46400FD9F04 /* LiveViewController.m in Sources */,
 				F0966F141BD202B2000A512F /* VideoViewController.m in Sources */,
+				F0577B841C92719A00FD9F04 /* TVRequest.m in Sources */,
 				F07619881BD1D1F70097686B /* M3U8SegmentInfoList.m in Sources */,
 				F00EF2201BCF8045009FEEB4 /* BaseViewController.m in Sources */,
 				F0F58FCB1BDE29E300745E4C /* FMDBManager.m in Sources */,
+				F09C4BCE1C91613D00C271C8 /* TVViewController.m in Sources */,
 				F0AD24A41BF77FB5000B1626 /* ADViewController.m in Sources */,
 				F00930AC1BD37FD5005E3E3E /* UserModel.m in Sources */,
 				F0634EAD1BE0B94A003F45ED /* WXApiResponseHandler.m in Sources */,
@@ -866,12 +916,14 @@
 				F0AD24BB1BF85CA5000B1626 /* AuthorListController.m in Sources */,
 				F0EAF15C1BCE205500B18B81 /* SvUDIDTools.m in Sources */,
 				F0EAF15F1BCE205600B18B81 /* MainTabBarController.m in Sources */,
+				F0577B8A1C928C7600FD9F04 /* TVModel.m in Sources */,
 				F0634EB01BE0B9AF003F45ED /* WXApiManager.m in Sources */,
 				F0A2676E1BD09F20004BB71D /* BaseViewController+NaviView.m in Sources */,
 				F0A2676B1BD0906C004BB71D /* GGRequest.m in Sources */,
 				F0CF6C921BD77D3100DF8017 /* VideoListCell.m in Sources */,
 				F0CF6C991BD783B600DF8017 /* BaseViewController+GGRequest.m in Sources */,
 				F0EAF1631BCE213C00B18B81 /* HomeController.m in Sources */,
+				F0577B871C928C6500FD9F04 /* TVListModel.m in Sources */,
 				F0EF55F41BCDEA680062ECE1 /* main.m in Sources */,
 				F0B1E4051BF5D0C600CED836 /* IntroView.m in Sources */,
 			);
@@ -1017,7 +1069,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhang Xiang (SDLW8EYW74)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1039,6 +1091,7 @@
 					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdLibs/GDTlibs",
 					"$(PROJECT_DIR)/MyDota/Unitil/Libary/UMessage_Sdk_1.2.0",
 					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdLibs/Alimama/base",
+					"$(PROJECT_DIR)/MyDota/Unitil/Libary/UMOnlineConfig",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplan.MyDota;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1076,6 +1129,7 @@
 					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdLibs/GDTlibs",
 					"$(PROJECT_DIR)/MyDota/Unitil/Libary/UMessage_Sdk_1.2.0",
 					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdLibs/Alimama/base",
+					"$(PROJECT_DIR)/MyDota/Unitil/Libary/UMOnlineConfig",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplan.MyDota;
 				PRODUCT_NAME = "$(TARGET_NAME)";
