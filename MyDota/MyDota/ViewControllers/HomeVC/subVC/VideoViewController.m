@@ -20,6 +20,7 @@
 #import "CommentListModel.h"
 #import "CommentViewController.h"
 
+
 @interface ChooseView : UIView
 
 -(id)initWithTitleArr:(NSArray*)arr action:(void(^)(NSString*))clickedBlock;
@@ -245,14 +246,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 2;
+    return 2;//评论为单独的section
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section ==1) {
         return 1;
     }
-    return 3+1;//增加分享
+    return 3;// 暂时去除分享
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section ==1) {

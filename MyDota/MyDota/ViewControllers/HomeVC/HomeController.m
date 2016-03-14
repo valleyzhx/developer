@@ -29,6 +29,15 @@
 #define  tail  10
 #define btnWid ((SCREEN_WIDTH-5*tail)/4)
 
+typedef enum : NSUInteger {
+    HomeSectionTypeAd = 0,              //轮播
+    HomeSectionTypeVideoList = 1,       //最新视频
+    HomeSectionTypeAuthour = 2,         //dota解说
+    HomeSectionTypeVideoItem = 3,       // video item
+} HomeSectionType;
+
+
+
 @interface HomeController ()<WXApiManagerDelegate,IntroControllDelegate,UINavigationControllerDelegate>
 
 @end
@@ -76,8 +85,8 @@
     UIView *outView = [[UIView alloc]initWithFrame:CGRectMake(0, -500, SCREEN_WIDTH, 500-header.frame.size.height)];
     outView.backgroundColor = Nav_Color;
     [self.tableView addSubview:outView];
-
-
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
 }
 
 -(void)setSearchButton{
@@ -142,7 +151,7 @@
     return 4;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 2) {
+    if (section == HomeSectionTypeVideoItem) {
         if (_dotaListModel.videos.count < 4) {
             return 0;
         }
@@ -151,27 +160,27 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section==0||section==2||section==3) {
-        return 0;
+    if (section==HomeSectionTypeAuthour) {
+        return 10;
     }
-    return 10;
+    return 0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
+    if (indexPath.section == HomeSectionTypeAd) {
         return rowAd;
     }
-    if (indexPath.section == 1) {
+    if (indexPath.section == HomeSectionTypeVideoList) {
+        return 44;
+    }
+    if (indexPath.section == HomeSectionTypeAuthour) {
         return btnWid*2+3*tail;
     }
-    if (indexPath.section == 2) {
-        return SCREEN_WIDTH;
-    }
-    return 44;
+    return SCREEN_WIDTH;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell;
-    if (indexPath.section == 0) {//ad
+    if (indexPath.section == HomeSectionTypeAd) {//ad
         cell = [tableView dequeueReusableCellWithIdentifier:@"ADCell"];
         if (!cell) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ADCell"];
@@ -181,7 +190,7 @@
             _introControl.delegate = self;
         }
         [cell.contentView addSubview:_introControl];
-    }else if (indexPath.section == 1){
+    }else if (indexPath.section == HomeSectionTypeAuthour){
         cell = [tableView dequeueReusableCellWithIdentifier:@"AuthourCell"];
         if (!cell) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AuthourCell"];
@@ -214,7 +223,7 @@
                 
             }
         }
-    }else if (indexPath.section == 2){
+    }else if (indexPath.section == HomeSectionTypeVideoItem){
         cell = [tableView dequeueReusableCellWithIdentifier:@"videoCell"];
         if (!cell) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"videoCell"];
@@ -262,15 +271,15 @@
             }
             
         }
-    }else if (indexPath.section == 3){
+    }else if (indexPath.section == HomeSectionTypeVideoList){
         cell = [tableView dequeueReusableCellWithIdentifier:@"moreVideoCell"];
         if (!cell) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"moreVideoCell"];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
-        cell.textLabel.text = @"查看更多视频";
+        cell.textLabel.text = @"最新视频";
     }
-    cell.selectionStyle = indexPath.section == 3? UITableViewCellSelectionStyleDefault:UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = indexPath.section == HomeSectionTypeVideoList? UITableViewCellSelectionStyleDefault:UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -278,7 +287,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 3) {
+    if (indexPath.section == HomeSectionTypeVideoList) {
         VideoListController *vc = [[VideoListController alloc]init];
         [self pushWithoutTabbar:vc];
     }

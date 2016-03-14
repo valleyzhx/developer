@@ -34,8 +34,8 @@
     tabBarItem1.selectedImage = [[UIImage imageNamed:@"live_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     tabBarItem1.image = [[UIImage imageNamed:@"live_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [tabBarItem1 setTitle:@"直播"];
-    tabBarItem1.imageInsets = UIEdgeInsetsMake(7, 0, -7, 0);
-    tabBarItem1.titlePositionAdjustment = UIOffsetMake(0, -2);
+//    tabBarItem1.imageInsets = UIEdgeInsetsMake(7, 0, -7, 0);
+//    tabBarItem1.titlePositionAdjustment = UIOffsetMake(0, -2);
     
     
     tabBarItem2.selectedImage = [[UIImage imageNamed:@"profile_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
