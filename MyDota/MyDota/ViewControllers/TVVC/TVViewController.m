@@ -7,7 +7,6 @@
 //
 
 #import "TVViewController.h"
-#import "MyDefines.h"
 #import "UMOnlineConfig.h"
 #import "TVListModel.h"
 #import <UIImageView+AFNetworking.h>
@@ -48,8 +47,7 @@
 
 -(void)loadTVListData{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    NSString *tvLiveUrl = [UMOnlineConfig getConfigParams:zqlist];
+    NSString *tvLiveUrl = [UMOnlineConfig getConfigParams:kZqlist];
         [TVListModel loadTVList:tvLiveUrl complish:^(id objc) {
             _listModel = objc;
             [self.tableView reloadData];

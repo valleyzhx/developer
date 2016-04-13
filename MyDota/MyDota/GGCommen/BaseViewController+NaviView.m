@@ -30,6 +30,12 @@
     }
     
     [self.view addSubview:view];
+    
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.width.equalTo(self.view);
+        make.height.mas_equalTo(64);
+    }];
+    
     return view;
 }
 

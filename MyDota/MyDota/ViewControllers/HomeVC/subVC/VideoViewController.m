@@ -19,6 +19,8 @@
 #import <GoogleMobileAds/GoogleMobileAds.h>
 #import "CommentListModel.h"
 #import "CommentViewController.h"
+#import "VideoWebViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 
 @interface ChooseView : UIView
@@ -36,9 +38,9 @@
 
 @implementation VideoViewController{
     VideoModel *_videoObject;
+    M3U8Tool *_m3u8Tool;
     NSString *_m3u8Url;
     //NSMutableDictionary *_typeDic;
-    NSString *_selectKey;
     ChooseView *_choosV;
     UserModel *_user;
     BOOL _isFav;
@@ -77,7 +79,6 @@
     _naviBar.backgroundView.alpha = 0;
     [self setVideoView];
     [self startLoadRequest:_videoObject.link];
-    //[self loadTheVidList];
     self.tableView.tableHeaderView = ({
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetMaxY(_player.view.frame)+ 5)];
         view.backgroundColor = viewBGColor;
@@ -105,75 +106,22 @@
     }];
     _isFav = [[FMDBManager shareManager]hasTheModel:_videoObject];
     
-    
+    [self initFullWindowObserver];
 }
 
 -(void)startLoadRequest:(NSString*)htmlUrl{
     [self showHudView];
-    [M3U8Tool m3u8UrlWithUrl:htmlUrl complised:^(NSString *m3u8Url) {
+    _m3u8Tool = nil;
+    _m3u8Tool =  [M3U8Tool m3u8UrlWithUrl:htmlUrl type:[UserManager preferedVideoType] complised:^(NSString *m3u8Url){
         [self hideHudView];
         if (m3u8Url) {
             _m3u8Url = m3u8Url;
-//            if (_typeDic[@"高清"]) {
-//                [self loadVideoWithKey:@"高清"];
-//            }
             [self.player loadVideoWithStreamURL:[NSURL URLWithString:_m3u8Url]];
+        }else{
+            [self setWebVideoView];
         }
     }];
 }
-
-//-(void)loadVideoWithKey:(NSString*)key{
-//    _selectKey = key;
-//    NSString *type = [M3U8Tool typeNameOfM3U8:_m3u8Url];
-//    _m3u8Url = [_m3u8Url stringByReplacingOccurrencesOfString:type withString:_typeDic[key]];
-//    
-//    [self.player loadVideoWithStreamURL:[NSURL URLWithString:_m3u8Url]];
-//    [self.player.view.videoQualityButton setTitle:_selectKey forState:UIControlStateNormal];
-//}
-
-//-(void)loadTheVidList{
-//    NSString *url = [NSString stringWithFormat:@"http://v.youku.com/player/getPlayList/VideoIDS/%@/Pf/4/ctype/12/ev/1",_inputDic[@"id"]];
-//    [GGRequest requestWithUrl:url withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        if (responseObject&&responseObject[@"data"]) {
-//           NSArray *segsArr = [responseObject[@"data"][0][@"segs"]allKeys];
-//            [self setTheTypeDiction:segsArr];
-//        }
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        
-//    }];
-//}
-
-//-(void)setTheTypeDiction:(NSArray*)segsArr{
-//    _typeDic = [NSMutableDictionary dictionary];
-//    [segsArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        /*“segs”,”type”,”清晰度”
-//         "hd3", "flv", "1080P"
-//         "hd2", "flv", "超清"
-//         "mp4", "mp4", "高清"
-//         "flvhd", "flv", "高清"
-//         "flv", "flv", "标清"
-//         "3gphd", "3gp", "高清"*/
-//        NSString *str = obj;
-//        if ([str isEqualToString:@"hd3"]) {
-//            [_typeDic setValue:str forKey:@"1080P"];
-//        }
-//        if ([str isEqualToString:@"hd2"]) {
-//            [_typeDic setValue:str forKey:@"超清"];
-//        }
-//        if ([str isEqualToString:@"flvhd"]) {
-//            [_typeDic setValue:str forKey:@"高清"];
-//        }
-//        if ([str isEqualToString:@"3gphd"]||[str isEqualToString:@"mp4"]) {
-//            if ([_typeDic.allKeys containsObject:@"高清"]==NO) {
-//                [_typeDic setValue:str forKey:@"高清"];
-//            }
-//        }
-//        if ([str isEqualToString:@"flv"]) {
-//            [_typeDic setValue:str forKey:@"标清"];
-//        }
-//    }];
-//}
-
 
 
 -(void)setVideoView{
@@ -186,8 +134,28 @@
     playerView.nextButton.hidden = YES;
     playerView.topPortraitCloseButton.alpha = 0;
     playerView.topControlOverlay.alpha = 0;
+    
+    NSString *key = [[UserManager preferedVideoType] isEqualToString:@"hd2"]?@"超清":@"高清";
+    [playerView.videoQualityButton setTitle:key forState:UIControlStateNormal];
+    [playerView.videoQualityButton setTitle:key forState:UIControlStateDisabled];
+    [playerView.videoQualityButton setTitleColor:Nav_Color forState:UIControlStateNormal];
+    
+    
     [self.view addSubview:playerView];
 }
+
+- (void)setWebVideoView {
+    //改成网页播放
+    [_player.view removeFromSuperview];
+    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4-5)];
+    UIImageView *imgV = [[UIImageView alloc]initWithFrame:btn.bounds];
+    [imgV setImageWithURL:[NSURL URLWithString:_videoObject.thumbnail]];
+    [btn addSubview:imgV];
+    [btn addTarget:self action:@selector(loadWebRequest:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    [self.view bringSubviewToFront:_naviBar];
+}
+
 - (void)videoPlayer:(VKVideoPlayer*)videoPlayer willStartVideo:(id<VKVideoPlayerTrackProtocol>)track{
 }
 
@@ -195,34 +163,47 @@
     if (event == VKVideoPlayerControlEventTapFullScreen) {
         _naviBar.hidden = videoPlayer.isFullScreen;
     }
-//    if (event == VKVideoPlayerControlEventTapVideoQuality) {
-//        if (_choosV) {
-//            [_choosV removeFromSuperview];
-//            _choosV = nil;
-//        }else{
-//            NSMutableArray *arr = [NSMutableArray arrayWithArray:_typeDic.allKeys];
-//            [arr removeObject:_selectKey];
-//            _choosV = [[ChooseView alloc]initWithTitleArr:arr action:^(NSString *str) {
-//                [self loadVideoWithKey:str];
-//                [_choosV removeFromSuperview];
-//                _choosV = nil;
-//            }];
-//           CGPoint point = [self.player.view.bottomControlOverlay convertPoint:self.player.view.videoQualityButton.frame.origin toView:self.player.view];
-//            CGRect r = _choosV.frame;
-//            r.origin = CGPointMake(point.x, point.y-r.size.height);
-//            _choosV.frame = r;
-//            [self.player.view addSubview:_choosV];
-//        }
-//    }
-//    if (event == VKVideoPlayerControlEventTapPlayerView) {
-//        if (_choosV) {
-//            [_choosV removeFromSuperview];
-//            _choosV = nil;
-//        }
-//    }
+    if (event == VKVideoPlayerControlEventTapVideoQuality) {
+        if (_choosV) {
+            [_choosV removeFromSuperview];
+            _choosV = nil;
+        }else{
+           
+            NSString *otherkey = [[UserManager preferedVideoType] isEqualToString:@"mp4"]?@"超清":@"高清";
+            _choosV = [[ChooseView alloc]initWithTitleArr:@[otherkey] action:^(NSString *str) {
+                [self loadVideoWithKey:str];
+                [videoPlayer.view.videoQualityButton setTitle:str forState:UIControlStateNormal];
+                [videoPlayer.view.videoQualityButton setTitle:str forState:UIControlStateDisabled];
+                [_choosV removeFromSuperview];
+                _choosV = nil;
+            }];
+           CGPoint point = [self.player.view.bottomControlOverlay convertPoint:self.player.view.videoQualityButton.frame.origin toView:self.player.view];
+            CGRect r = _choosV.frame;
+            r.origin = CGPointMake(point.x, point.y-r.size.height);
+            _choosV.frame = r;
+            [self.player.view addSubview:_choosV];
+        }
+    }
+    if (event == VKVideoPlayerControlEventTapPlayerView) {
+        if (_choosV) {
+            [_choosV removeFromSuperview];
+            _choosV = nil;
+        }
+    }
     
     
 }
+
+-(void)loadVideoWithKey:(NSString*)key{
+    
+    NSString *type = [key isEqualToString:@"高清"]?@"mp4":@"hd2";
+    if (![[UserManager preferedVideoType]isEqualToString:type]) {
+        [UserManager setPreferedVideoType:type];
+        [self startLoadRequest:_videoObject.link];
+    }
+}
+
+
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -421,7 +402,7 @@
     }
 }
 
-
+#pragma mark - action
 
 -(void)favarateAction:(UIButton*)btn{
     if (_isFav) {
@@ -432,6 +413,15 @@
     _isFav = !_isFav;
     btn.selected = !btn.selected;
 }
+
+-(void)loadWebRequest:(UIButton*)btn{
+    
+    VideoWebViewController *webVC = [[VideoWebViewController alloc]initWithVideoId:_videoObject.modelID];
+    webVC.title = @"视频播放";
+    [self presentViewController:webVC animated:YES completion:nil];
+
+}
+
 #pragma mark - navi
 
 -(void)clickedBackAction:(UIButton*)btn{
@@ -445,13 +435,53 @@
 }
 
 
+#pragma mark - 横屏播放
+
+-(void)initFullWindowObserver{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(begainFullScreen) name:UIWindowDidBecomeVisibleNotification object:nil];//进入全屏
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen) name:UIWindowDidBecomeHiddenNotification object:nil];//退出全屏
+}
+
+// 进入全屏
+-(void)begainFullScreen
+{
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        SEL selector = NSSelectorFromString(@"setOrientation:");
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        [invocation setSelector:selector];
+        [invocation setTarget:[UIDevice currentDevice]];
+        int val =UIInterfaceOrientationLandscapeRight;
+        [invocation setArgument:&val atIndex:2];
+        [invocation invoke];
+    }
+
+}
+// 退出全屏
+-(void)endFullScreen
+{
+    
+    //强制归正：
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        SEL selector = NSSelectorFromString(@"setOrientation:");
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        [invocation setSelector:selector];
+        [invocation setTarget:[UIDevice currentDevice]];
+        int val =UIInterfaceOrientationPortrait;
+        [invocation setArgument:&val atIndex:2];
+        [invocation invoke];
+    }
+}
+
+
 
 -(void)dealloc{
+    _m3u8Tool = nil;
     _videoObject = nil;
     _choosV = nil;
     _user = nil;
     _adView.rootViewController = nil;
     _adView.delegate = nil;
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 @end
@@ -465,16 +495,18 @@
 }
 
 -(id)initWithTitleArr:(NSArray *)arr action:(void (^)(NSString *))clickedBlock{
-    if (self = [super initWithFrame:CGRectMake(0, 0, 40, 25*arr.count)]) {
+    if (self = [super initWithFrame:CGRectMake(0, 0, 40, 30*arr.count)]) {
         UIView *view = [[UIView alloc]initWithFrame:self.bounds];
-        view.backgroundColor = [UIColor blackColor];
-        view.alpha = 0.7;
+        UIView *baseView = [[UIView alloc]initWithFrame:view.bounds];
+        baseView.backgroundColor = [UIColor blackColor];
+        baseView.alpha = 0.8;
+        [view addSubview:baseView];
         [self addSubview:view];
         for (int i=0; i<arr.count; i++) {
-            UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 25*i, self.frame.size.width, 20)];
+            UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 30*i, self.frame.size.width, 30)];
             [btn setTitle:arr[i] forState:UIControlStateNormal];
             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            btn.titleLabel.font = [UIFont systemFontOfSize:12];
+            btn.titleLabel.font = [UIFont systemFontOfSize:13];
             [btn addTarget:self action:@selector(clickedBtn:) forControlEvents:UIControlEventTouchUpInside];
             [view addSubview:btn];
         }
@@ -489,6 +521,7 @@
         block([btn titleForState:UIControlStateNormal]);
     }
 }
+
 -(void)dealloc{
     block = nil;
 }

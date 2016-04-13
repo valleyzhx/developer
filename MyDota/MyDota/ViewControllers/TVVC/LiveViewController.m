@@ -68,7 +68,7 @@
 }
 
 -(void)loadVideoData {
-    NSString* baseUrl = [UMOnlineConfig getConfigParams:zqlive];
+    NSString* baseUrl = [UMOnlineConfig getConfigParams:kZqlive];
     NSString *url = [baseUrl stringByAppendingFormat:@"%@.m3u8",_tvModel.videoId];
     
     [self.player loadVideoWithStreamURL:[NSURL URLWithString:url]];

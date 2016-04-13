@@ -7,27 +7,29 @@
 //
 
 #import "M3U8Tool.h"
+#import "UMOnlineConfig.h"
+
 static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 
 @interface M3U8Tool ()<UIWebViewDelegate>
 @property (nonatomic,strong) UIWebView *web;
+@property (nonatomic,strong) NSString *type;
 
 @end
 
 
 @implementation M3U8Tool{
     void (^finished)(NSString*);
+    NSString *_lHtml;
 }
-static M3U8Tool *_tool = nil;
 
-+(void)m3u8UrlWithUrl:(NSString *)htmlUrl complised:(void (^)(NSString *))block{
-    if (_tool == nil) {
-        _tool = [[M3U8Tool alloc]init];
-    }
-    //htmlUrl = [NSString stringWithFormat:@"http://v.youku.com/v_show/id_XMTM2MTM5NzYzNg==.html?streamtypes=1,5"];
-    [_tool requesetUrl:htmlUrl complised:block];
-
++(id)m3u8UrlWithUrl:(NSString *)htmlUrl type:(NSString *)type complised:(void (^)(NSString *))block{
+    
+    M3U8Tool *tool = [[M3U8Tool alloc]init];
+    tool.type = type;
+    [tool requesetUrl:htmlUrl complised:block];
+    return tool;
 }
 -(instancetype)init{
     if (self = [super init]) {
@@ -40,8 +42,17 @@ static M3U8Tool *_tool = nil;
 -(void)requesetUrl:(NSString*)url complised:(void (^)(NSString *))block{
     finished = nil;
     finished = block;
-    [_web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+    [_web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:8]];
+    [self performSelector:@selector(myDelayedMethod) withObject:nil afterDelay:7];
+}
+
+-(void)myDelayedMethod{
     
+    if (_lHtml.length == 0) {
+        if (finished) {
+            finished(nil);
+        }
+    }
 }
 
 +(NSString *)typeNameOfM3U8:(NSString *)m3u8Str{
@@ -53,37 +64,43 @@ static M3U8Tool *_tool = nil;
     return nil;
 }
 
+-(void)removeDelayMethod{
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector:@selector(myDelayedMethod) object: self];
+}
+
 
 #pragma mark --- UIWebViewDelegate
 - (void)webViewDidStartLoad:(UIWebView *)webView{
+
 }
 
+
+
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-    NSString *lJs = @"(document.getElementById('youku-html5player-video')).src";
-    NSString *lHtml = [webView stringByEvaluatingJavaScriptFromString:lJs];
-    if (lHtml.length) {
+    NSString *videoJS = [UMOnlineConfig getConfigParams:kVideojs];
+    NSString *lJs = [videoJS stringByAppendingFormat:@"getVideoM3u8('%@');",_type];
+    _lHtml = [webView stringByEvaluatingJavaScriptFromString:lJs];
+    if (_lHtml.length) {
         if (finished) {
-            finished(lHtml);
-            _tool = nil;
+            finished(_lHtml);
+            finished = nil;
         }
     }
-    
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    
+    if (error.code == -999) {
+        return;
+    }
+    if (finished) {
+        finished(nil);
+        finished = nil;
+    }
 }
 -(void)dealloc{
-    
+    [self removeDelayMethod];
 }
-
-
-
-
-
-
-
-
 
 
 

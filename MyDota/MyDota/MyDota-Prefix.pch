@@ -13,7 +13,9 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 #import "ZXUnitil.h"
-
+#import "MyDefines.h"
+#import "UserManager.h"
+#import <Masonry.h>
 
 #ifndef __OPTIMIZE__
 #define NSLog(...) NSLog(__VA_ARGS__)

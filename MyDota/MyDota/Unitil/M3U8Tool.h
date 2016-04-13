@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 
 
+
 @interface M3U8Tool : NSObject
-+(void)m3u8UrlWithUrl:(NSString*)htmlUrl complised:(void(^)(NSString* m3u8Url))block;
++(id)m3u8UrlWithUrl:(NSString*)htmlUrl type:(NSString*)type complised:(void(^)(NSString* m3u8Url))block;
 +(NSString*)typeNameOfM3U8:(NSString*)m3u8Str;
 +(NSString *)encode:(NSData *)data;
 +(NSData *)decode:(NSString *)data;
+-(void)removeDelayMethod;
+
 @end
 
 

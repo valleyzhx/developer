@@ -20,6 +20,8 @@
 		F0284CCC1C1E684800C9434A /* GGWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0284CCB1C1E684800C9434A /* GGWebController.m */; };
 		F02BED911C4C89370049FF76 /* CommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F02BED901C4C89370049FF76 /* CommentListModel.m */; };
 		F03BE87C1BF9C55900841606 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F03BE87E1BF9C55900841606 /* InfoPlist.strings */; };
+		F0508CE71CBDE873008A3705 /* video.html in Resources */ = {isa = PBXBuildFile; fileRef = F0508CE61CBDE873008A3705 /* video.html */; };
+		F0508CEA1CBE0973008A3705 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0508CE91CBE0973008A3705 /* UserManager.m */; };
 		F0577B811C92679200FD9F04 /* libUMOnlineConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0577B7F1C92679200FD9F04 /* libUMOnlineConfig.a */; };
 		F0577B841C92719A00FD9F04 /* TVRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F0577B831C92719A00FD9F04 /* TVRequest.m */; };
 		F0577B871C928C6500FD9F04 /* TVListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0577B861C928C6500FD9F04 /* TVListModel.m */; };
@@ -81,6 +83,7 @@
 		F0EAF1631BCE213C00B18B81 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1621BCE213C00B18B81 /* HomeController.m */; };
 		F0EAF1661BCE215B00B18B81 /* UserCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1651BCE215B00B18B81 /* UserCenterController.m */; };
 		F0EAF16B1BCE2B3200B18B81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0EAF16A1BCE2B3200B18B81 /* Assets.xcassets */; };
+		F0EBF8841CBDE372003D89E5 /* VideoWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EBF8831CBDE372003D89E5 /* VideoWebViewController.m */; };
 		F0EF55F41BCDEA680062ECE1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EF55F31BCDEA680062ECE1 /* main.m */; };
 		F0EF55F71BCDEA680062ECE1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EF55F61BCDEA680062ECE1 /* AppDelegate.m */; };
 		F0EF56001BCDEA680062ECE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0EF55FE1BCDEA680062ECE1 /* Main.storyboard */; };
@@ -135,6 +138,9 @@
 		F03BE8801BF9C5CC00841606 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		F03BE8811BF9C5CC00841606 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F03BE8821BF9C5DD00841606 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F0508CE61CBDE873008A3705 /* video.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = video.html; sourceTree = "<group>"; };
+		F0508CE81CBE0973008A3705 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		F0508CE91CBE0973008A3705 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		F0577B7F1C92679200FD9F04 /* libUMOnlineConfig.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMOnlineConfig.a; sourceTree = "<group>"; };
 		F0577B801C92679200FD9F04 /* UMOnlineConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMOnlineConfig.h; sourceTree = "<group>"; };
 		F0577B821C92719A00FD9F04 /* TVRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVRequest.h; sourceTree = "<group>"; };
@@ -253,6 +259,8 @@
 		F0EAF1671BCE22D400B18B81 /* MyDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDefines.h; sourceTree = "<group>"; };
 		F0EAF1691BCE237000B18B81 /* MyDota-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MyDota-Prefix.pch"; sourceTree = "<group>"; };
 		F0EAF16A1BCE2B3200B18B81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F0EBF8821CBDE372003D89E5 /* VideoWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoWebViewController.h; sourceTree = "<group>"; };
+		F0EBF8831CBDE372003D89E5 /* VideoWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoWebViewController.m; sourceTree = "<group>"; };
 		F0EF55EF1BCDEA680062ECE1 /* MyDota.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDota.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0EF55F31BCDEA680062ECE1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F0EF55F51BCDEA680062ECE1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -468,8 +476,11 @@
 			children = (
 				F0966F121BD202B2000A512F /* VideoViewController.h */,
 				F0966F131BD202B2000A512F /* VideoViewController.m */,
+				F0EBF8821CBDE372003D89E5 /* VideoWebViewController.h */,
+				F0EBF8831CBDE372003D89E5 /* VideoWebViewController.m */,
 				F021BDBB1BD34407001429CC /* AuthorVideoListController.h */,
 				F021BDBC1BD34407001429CC /* AuthorVideoListController.m */,
+				F0508CE61CBDE873008A3705 /* video.html */,
 				F0D56B4A1BD3E5FB009CA293 /* VideoListController.h */,
 				F0D56B4B1BD3E5FB009CA293 /* VideoListController.m */,
 				F0AD24B91BF85CA5000B1626 /* AuthorListController.h */,
@@ -564,6 +575,8 @@
 				F0EAF1501BCE205500B18B81 /* SvUDIDTools.m */,
 				F0EAF1511BCE205500B18B81 /* ZXUnitil.h */,
 				F0EAF1521BCE205500B18B81 /* ZXUnitil.mm */,
+				F0508CE81CBE0973008A3705 /* UserManager.h */,
+				F0508CE91CBE0973008A3705 /* UserManager.m */,
 				F076198B1BD1DA940097686B /* M3U8Tool.h */,
 				F076198C1BD1DA940097686B /* M3U8Tool.m */,
 			);
@@ -797,6 +810,7 @@
 				F0634E9D1BE0B5A3003F45ED /* read_me.txt in Resources */,
 				F0AD24B01BF7802B000B1626 /* README.txt in Resources */,
 				F0D56B491BD3B616009CA293 /* AuthourData.geojson in Resources */,
+				F0508CE71CBDE873008A3705 /* video.html in Resources */,
 				F03BE87C1BF9C55900841606 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -874,6 +888,7 @@
 				F0EAF15A1BCE205500B18B81 /* DeviceInfo.m in Sources */,
 				F0EF55F71BCDEA680062ECE1 /* AppDelegate.m in Sources */,
 				F0634EBB1BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.m in Sources */,
+				F0508CEA1CBE0973008A3705 /* UserManager.m in Sources */,
 				F0B5A1791C197E6B00C6B54B /* MBProgressHUD+string.m in Sources */,
 				F0CF6C8B1BD777FB00DF8017 /* SearchViewController.m in Sources */,
 				F0577B8D1C92A46400FD9F04 /* LiveViewController.m in Sources */,
@@ -925,6 +940,7 @@
 				F0EAF1631BCE213C00B18B81 /* HomeController.m in Sources */,
 				F0577B871C928C6500FD9F04 /* TVListModel.m in Sources */,
 				F0EF55F41BCDEA680062ECE1 /* main.m in Sources */,
+				F0EBF8841CBDE372003D89E5 /* VideoWebViewController.m in Sources */,
 				F0B1E4051BF5D0C600CED836 /* IntroView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1069,7 +1085,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhang Xiang (SDLW8EYW74)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1095,7 +1111,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplan.MyDota;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6f93c933-61de-4910-ae86-9b49752a739c";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)";
 			};
 			name = Debug;
@@ -1106,7 +1122,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhang Xiang (BZ2BR27C6A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhang Xiang (BZ2BR27C6A)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
