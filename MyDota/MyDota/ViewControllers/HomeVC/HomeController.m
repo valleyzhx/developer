@@ -60,6 +60,9 @@ typedef enum : NSUInteger {
     [WXApiManager sharedManager].delegate = self;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+
+    
     self.edgesForExtendedLayout=UIRectEdgeNone;
     _naviBar = [self setUpNaviViewWithType:GGNavigationBarTypeCustom];
     _naviBar.alpha = 0;
@@ -100,7 +103,7 @@ typedef enum : NSUInteger {
 
 
 -(void)loadDotaVideos{
-    [VideoListModel getVideoListBy:@"https://api.youku.com/quality/video/by/category.json?client_id=e2306ead120d2e34&cate=10&count=10" complish:^(id object) {
+    [VideoListModel getVideoListBy:[UrlManager getHomeCateUrl] complish:^(id object) {
         _dotaListModel = object;
         [self makeTheIntroModelList];
         [self.tableView reloadData];
