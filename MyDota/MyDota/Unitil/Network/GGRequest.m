@@ -38,19 +38,6 @@
         
     }];
     
-    
-    
-//    NSURL *requestUrl = [NSURL URLWithString:url];
-//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]initWithRequest:[NSURLRequest requestWithURL:requestUrl]];
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-//        NSLog(@"%@",operation.responseString);
-//    } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-//        
-//    }];
-//    
-//    
-//    [manager.operationQueue addOperation:operation];
-    
 }
 
 +(void)requestHtmlWithUrl:(NSString *)url withSuccess:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure{
