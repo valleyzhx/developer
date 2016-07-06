@@ -66,89 +66,7 @@
 		F0B3EF501BD0D69E00313C24 /* GGRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3EF4F1BD0D69E00313C24 /* GGRequestManager.m */; };
 		F0B3EF531BD0D6AD00313C24 /* GGRequestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3EF521BD0D6AD00313C24 /* GGRequestObserver.m */; };
 		F0B5A1791C197E6B00C6B54B /* MBProgressHUD+string.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B5A1781C197E6B00C6B54B /* MBProgressHUD+string.m */; };
-		F0B811A81CBE3B0800F642BC /* AuthorVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021BDBC1BD34407001429CC /* AuthorVideoListController.m */; };
-		F0B811A91CBE3B0800F642BC /* DeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF14C1BCE205500B18B81 /* DeviceInfo.m */; };
-		F0B811AA1CBE3B0800F642BC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EF55F61BCDEA680062ECE1 /* AppDelegate.m */; };
-		F0B811AB1CBE3B0800F642BC /* WXMediaMessage+messageConstruct.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EB81BE0BAE5003F45ED /* WXMediaMessage+messageConstruct.m */; };
-		F0B811AC1CBE3B0800F642BC /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0508CE91CBE0973008A3705 /* UserManager.m */; };
-		F0B811AD1CBE3B0800F642BC /* MBProgressHUD+string.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B5A1781C197E6B00C6B54B /* MBProgressHUD+string.m */; };
-		F0B811AE1CBE3B0800F642BC /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C8A1BD777FB00DF8017 /* SearchViewController.m */; };
-		F0B811AF1CBE3B0800F642BC /* LiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0577B8C1C92A46400FD9F04 /* LiveViewController.m */; };
-		F0B811B01CBE3B0800F642BC /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0966F131BD202B2000A512F /* VideoViewController.m */; };
-		F0B811B11CBE3B0800F642BC /* TVRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F0577B831C92719A00FD9F04 /* TVRequest.m */; };
-		F0B811B21CBE3B0800F642BC /* M3U8SegmentInfoList.m in Sources */ = {isa = PBXBuildFile; fileRef = F07619811BD1D1F70097686B /* M3U8SegmentInfoList.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F0B811B31CBE3B0800F642BC /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F00EF21F1BCF8045009FEEB4 /* BaseViewController.m */; };
-		F0B811B41CBE3B0800F642BC /* FMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F58FCA1BDE29E300745E4C /* FMDBManager.m */; };
-		F0B811B51CBE3B0800F642BC /* TVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F09C4BCD1C91613D00C271C8 /* TVViewController.m */; };
-		F0B811B61CBE3B0800F642BC /* ADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD24A31BF77FB5000B1626 /* ADViewController.m */; };
-		F0B811B71CBE3B0800F642BC /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F00930A41BD37FD5005E3E3E /* UserModel.m */; };
-		F0B811B81CBE3B0800F642BC /* WXApiResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EAB1BE0B94A003F45ED /* WXApiResponseHandler.m */; };
-		F0B811B91CBE3B0800F642BC /* IntroControll.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B1E3FD1BF5D0C600CED836 /* IntroControll.m */; };
-		F0B811BA1CBE3B0800F642BC /* GGRequestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3EF521BD0D6AD00313C24 /* GGRequestObserver.m */; };
-		F0B811BB1CBE3B0800F642BC /* FavoVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F015988D1BE1FB82001083BC /* FavoVideoListController.m */; };
-		F0B811BC1CBE3B0800F642BC /* IntroModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B1E3FF1BF5D0C600CED836 /* IntroModel.m */; };
-		F0B811BD1CBE3B0800F642BC /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EB41BE0BAE5003F45ED /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m */; };
-		F0B811BE1CBE3B0800F642BC /* NSString+m3u8.m in Sources */ = {isa = PBXBuildFile; fileRef = F07619831BD1D1F70097686B /* NSString+m3u8.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F0B811BF1CBE3B0800F642BC /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EB61BE0BAE5003F45ED /* SendMessageToWXReq+requestWithTextOrMediaMessage.m */; };
-		F0B811C01CBE3B0800F642BC /* GGNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F00EF2221BCF806A009FEEB4 /* GGNavigationBar.m */; };
-		F0B811C11CBE3B0800F642BC /* VideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D56B4B1BD3E5FB009CA293 /* VideoListController.m */; };
-		F0B811C21CBE3B0800F642BC /* M3U8Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = F076198C1BD1DA940097686B /* M3U8Tool.m */; };
-		F0B811C31CBE3B0800F642BC /* M3U8Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = F076197D1BD1D1F70097686B /* M3U8Parser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F0B811C41CBE3B0800F642BC /* ZXUnitil.mm in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1521BCE205500B18B81 /* ZXUnitil.mm */; };
-		F0B811C51CBE3B0800F642BC /* UserListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD24BD1BF85D9B000B1626 /* UserListModel.m */; };
-		F0B811C61CBE3B0800F642BC /* VideoListBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C8D1BD77C5600DF8017 /* VideoListBaseController.m */; };
-		F0B811C71CBE3B0800F642BC /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F072D1A91C756988005ED4A0 /* CommentViewController.m */; };
-		F0B811C81CBE3B0800F642BC /* ShoppingController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0284CC81C1E600700C9434A /* ShoppingController.m */; };
-		F0B811C91CBE3B0800F642BC /* GGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD24A01BF7608A000B1626 /* GGNavigationController.m */; };
-		F0B811CA1CBE3B0800F642BC /* GGWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0284CCB1C1E684800C9434A /* GGWebController.m */; };
-		F0B811CB1CBE3B0800F642BC /* UserCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1651BCE215B00B18B81 /* UserCenterController.m */; };
-		F0B811CC1CBE3B0800F642BC /* M3U8SegmentInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F076197F1BD1D1F70097686B /* M3U8SegmentInfo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F0B811CD1CBE3B0800F642BC /* MTModel+GGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F00930A21BD37FD5005E3E3E /* MTModel+GGRequest.m */; };
-		F0B811CE1CBE3B0800F642BC /* GGRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3EF4F1BD0D69E00313C24 /* GGRequestManager.m */; };
-		F0B811CF1CBE3B0800F642BC /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F00930A81BD37FD5005E3E3E /* VideoModel.m */; };
-		F0B811D01CBE3B0800F642BC /* WXApiRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EA91BE0B94A003F45ED /* WXApiRequestHandler.m */; };
-		F0B811D11CBE3B0800F642BC /* NSURL+m3u8.m in Sources */ = {isa = PBXBuildFile; fileRef = F07619851BD1D1F70097686B /* NSURL+m3u8.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F0B811D21CBE3B0800F642BC /* CommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F02BED901C4C89370049FF76 /* CommentListModel.m */; };
-		F0B811D31CBE3B0800F642BC /* VideoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F00930A61BD37FD5005E3E3E /* VideoListModel.m */; };
-		F0B811D41CBE3B0800F642BC /* AuthorListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD24BA1BF85CA5000B1626 /* AuthorListController.m */; };
-		F0B811D51CBE3B0800F642BC /* SvUDIDTools.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1501BCE205500B18B81 /* SvUDIDTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F0B811D61CBE3B0800F642BC /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1571BCE205500B18B81 /* MainTabBarController.m */; };
-		F0B811D71CBE3B0800F642BC /* TVModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0577B891C928C7600FD9F04 /* TVModel.m */; };
-		F0B811D81CBE3B0800F642BC /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0634EAF1BE0B9AF003F45ED /* WXApiManager.m */; };
-		F0B811D91CBE3B0800F642BC /* BaseViewController+NaviView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A2676D1BD09F20004BB71D /* BaseViewController+NaviView.m */; };
-		F0B811DA1CBE3B0800F642BC /* GGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A2676A1BD0906C004BB71D /* GGRequest.m */; };
-		F0B811DB1CBE3B0800F642BC /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C901BD77D3100DF8017 /* VideoListCell.m */; };
-		F0B811DC1CBE3B0800F642BC /* BaseViewController+GGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C981BD783B600DF8017 /* BaseViewController+GGRequest.m */; };
-		F0B811DD1CBE3B0800F642BC /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EAF1621BCE213C00B18B81 /* HomeController.m */; };
-		F0B811DE1CBE3B0800F642BC /* TVListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0577B861C928C6500FD9F04 /* TVListModel.m */; };
-		F0B811DF1CBE3B0800F642BC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EF55F31BCDEA680062ECE1 /* main.m */; };
-		F0B811E01CBE3B0800F642BC /* VideoWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EBF8831CBDE372003D89E5 /* VideoWebViewController.m */; };
-		F0B811E11CBE3B0800F642BC /* IntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B1E4011BF5D0C600CED836 /* IntroView.m */; };
-		F0B811E31CBE3B0800F642BC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E649D71C1841C9004A6F44 /* CoreMotion.framework */; };
-		F0B811E41CBE3B0800F642BC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0E649D51C1841AF004A6F44 /* MapKit.framework */; };
-		F0B811E51CBE3B0800F642BC /* libUMOnlineConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0577B7F1C92679200FD9F04 /* libUMOnlineConfig.a */; };
-		F0B811E61CBE3B0800F642BC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0634E9E1BE0B69E003F45ED /* SystemConfiguration.framework */; };
-		F0B811E71CBE3B0800F642BC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24B51BF78163000B1626 /* MessageUI.framework */; };
-		F0B811E81CBE3B0800F642BC /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24B11BF7811E000B1626 /* EventKit.framework */; };
-		F0B811E91CBE3B0800F642BC /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24B71BF78261000B1626 /* GoogleMobileAds.framework */; };
-		F0B811EA1CBE3B0800F642BC /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24B21BF7811E000B1626 /* EventKitUI.framework */; };
-		F0B811EB1CBE3B0800F642BC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD249D1BF75B5A000B1626 /* StoreKit.framework */; };
-		F0B811EC1CBE3B0800F642BC /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD249B1BF75B3F000B1626 /* AdSupport.framework */; };
-		F0B811ED1CBE3B0800F642BC /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0634EA61BE0B73E003F45ED /* CoreTelephony.framework */; };
-		F0B811EE1CBE3B0800F642BC /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0634E981BE0B5A3003F45ED /* libWeChatSDK.a */; };
-		F0B811EF1CBE3B0800F642BC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A8DF9817AA3EA787832365 /* libPods.a */; };
-		F0B811F01CBE3B0800F642BC /* libGDTMobSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24991BF7595C000B1626 /* libGDTMobSDK.a */; };
-		F0B811F21CBE3B0800F642BC /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0CF6C911BD77D3100DF8017 /* VideoListCell.xib */; };
-		F0B811F31CBE3B0800F642BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0EAF16A1BCE2B3200B18B81 /* Assets.xcassets */; };
-		F0B811F41CBE3B0800F642BC /* shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B1E4021BF5D0C600CED836 /* shadow@2x.png */; };
-		F0B811F51CBE3B0800F642BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0EF55FE1BCDEA680062ECE1 /* Main.storyboard */; };
-		F0B811F61CBE3B0800F642BC /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0634E991BE0B5A3003F45ED /* read_me.txt */; };
-		F0B811F71CBE3B0800F642BC /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0AD24AC1BF7802B000B1626 /* README.txt */; };
-		F0B811F81CBE3B0800F642BC /* AuthourData.geojson in Resources */ = {isa = PBXBuildFile; fileRef = F0D56B481BD3B616009CA293 /* AuthourData.geojson */; };
-		F0B811F91CBE3B0800F642BC /* video.html in Resources */ = {isa = PBXBuildFile; fileRef = F0508CE61CBDE873008A3705 /* video.html */; };
-		F0B811FA1CBE3B0800F642BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F03BE87E1BF9C55900841606 /* InfoPlist.strings */; };
 		F0B812041CBE3D7C00F642BC /* UrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B812031CBE3D7C00F642BC /* UrlManager.m */; };
-		F0B812051CBE487400F642BC /* UrlManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B812031CBE3D7C00F642BC /* UrlManager.m */; };
 		F0CF6C8B1BD777FB00DF8017 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C8A1BD777FB00DF8017 /* SearchViewController.m */; };
 		F0CF6C8E1BD77C5600DF8017 /* VideoListBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C8D1BD77C5600DF8017 /* VideoListBaseController.m */; };
 		F0CF6C921BD77D3100DF8017 /* VideoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CF6C901BD77D3100DF8017 /* VideoListCell.m */; };
@@ -313,8 +231,6 @@
 		F0B3EF521BD0D6AD00313C24 /* GGRequestObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGRequestObserver.m; sourceTree = "<group>"; };
 		F0B5A1771C197E6B00C6B54B /* MBProgressHUD+string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+string.h"; sourceTree = "<group>"; };
 		F0B5A1781C197E6B00C6B54B /* MBProgressHUD+string.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+string.m"; sourceTree = "<group>"; };
-		F0B812001CBE3B0800F642BC /* MyLol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLol.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F0B812011CBE3B0900F642BC /* MyDota copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MyDota copy-Info.plist"; path = "/Users/xiang/developer/MyDota/MyDota copy-Info.plist"; sourceTree = "<absolute>"; };
 		F0B812021CBE3D7C00F642BC /* UrlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlManager.h; sourceTree = "<group>"; };
 		F0B812031CBE3D7C00F642BC /* UrlManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlManager.m; sourceTree = "<group>"; };
 		F0CF6C891BD777FB00DF8017 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
@@ -366,27 +282,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F0B811E21CBE3B0800F642BC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F0B811E31CBE3B0800F642BC /* CoreMotion.framework in Frameworks */,
-				F0B811E41CBE3B0800F642BC /* MapKit.framework in Frameworks */,
-				F0B811E51CBE3B0800F642BC /* libUMOnlineConfig.a in Frameworks */,
-				F0B811E61CBE3B0800F642BC /* SystemConfiguration.framework in Frameworks */,
-				F0B811E71CBE3B0800F642BC /* MessageUI.framework in Frameworks */,
-				F0B811E81CBE3B0800F642BC /* EventKit.framework in Frameworks */,
-				F0B811E91CBE3B0800F642BC /* GoogleMobileAds.framework in Frameworks */,
-				F0B811EA1CBE3B0800F642BC /* EventKitUI.framework in Frameworks */,
-				F0B811EB1CBE3B0800F642BC /* StoreKit.framework in Frameworks */,
-				F0B811EC1CBE3B0800F642BC /* AdSupport.framework in Frameworks */,
-				F0B811ED1CBE3B0800F642BC /* CoreTelephony.framework in Frameworks */,
-				F0B811EE1CBE3B0800F642BC /* libWeChatSDK.a in Frameworks */,
-				F0B811EF1CBE3B0800F642BC /* libPods.a in Frameworks */,
-				F0B811F01CBE3B0800F642BC /* libGDTMobSDK.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F0EF55EC1BCDEA680062ECE1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -737,7 +632,6 @@
 				F0EF55F01BCDEA680062ECE1 /* Products */,
 				F4EC7B3939B52429E5B504E0 /* Pods */,
 				B6B8D3B2AB49C3C6DAD1352C /* Frameworks */,
-				F0B812011CBE3B0900F642BC /* MyDota copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -747,7 +641,6 @@
 				F0EF55EF1BCDEA680062ECE1 /* MyDota.app */,
 				F0EF560B1BCDEA680062ECE1 /* MyDotaTests.xctest */,
 				F0EF56161BCDEA680062ECE1 /* MyDotaUITests.xctest */,
-				F0B812001CBE3B0800F642BC /* MyLol.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -810,26 +703,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F0B811A51CBE3B0800F642BC /* MyLol */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F0B811FD1CBE3B0800F642BC /* Build configuration list for PBXNativeTarget "MyLol" */;
-			buildPhases = (
-				F0B811A61CBE3B0800F642BC /* Check Pods Manifest.lock */,
-				F0B811A71CBE3B0800F642BC /* Sources */,
-				F0B811E21CBE3B0800F642BC /* Frameworks */,
-				F0B811F11CBE3B0800F642BC /* Resources */,
-				F0B811FB1CBE3B0800F642BC /* Embed Pods Frameworks */,
-				F0B811FC1CBE3B0800F642BC /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MyLol;
-			productName = MyDota;
-			productReference = F0B812001CBE3B0800F642BC /* MyLol.app */;
-			productType = "com.apple.product-type.application";
-		};
 		F0EF55EE1BCDEA680062ECE1 /* MyDota */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0EF561F1BCDEA680062ECE1 /* Build configuration list for PBXNativeTarget "MyDota" */;
@@ -926,28 +799,11 @@
 				F0EF55EE1BCDEA680062ECE1 /* MyDota */,
 				F0EF560A1BCDEA680062ECE1 /* MyDotaTests */,
 				F0EF56151BCDEA680062ECE1 /* MyDotaUITests */,
-				F0B811A51CBE3B0800F642BC /* MyLol */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F0B811F11CBE3B0800F642BC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F0B811F21CBE3B0800F642BC /* VideoListCell.xib in Resources */,
-				F0B811F31CBE3B0800F642BC /* Assets.xcassets in Resources */,
-				F0B811F41CBE3B0800F642BC /* shadow@2x.png in Resources */,
-				F0B811F51CBE3B0800F642BC /* Main.storyboard in Resources */,
-				F0B811F61CBE3B0800F642BC /* read_me.txt in Resources */,
-				F0B811F71CBE3B0800F642BC /* README.txt in Resources */,
-				F0B811F81CBE3B0800F642BC /* AuthourData.geojson in Resources */,
-				F0B811F91CBE3B0800F642BC /* video.html in Resources */,
-				F0B811FA1CBE3B0800F642BC /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F0EF55ED1BCDEA680062ECE1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1026,120 +882,9 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		F0B811A61CBE3B0800F642BC /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F0B811FB1CBE3B0800F642BC /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F0B811FC1CBE3B0800F642BC /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F0B811A71CBE3B0800F642BC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F0B811A81CBE3B0800F642BC /* AuthorVideoListController.m in Sources */,
-				F0B811A91CBE3B0800F642BC /* DeviceInfo.m in Sources */,
-				F0B811AA1CBE3B0800F642BC /* AppDelegate.m in Sources */,
-				F0B811AB1CBE3B0800F642BC /* WXMediaMessage+messageConstruct.m in Sources */,
-				F0B811AC1CBE3B0800F642BC /* UserManager.m in Sources */,
-				F0B811AD1CBE3B0800F642BC /* MBProgressHUD+string.m in Sources */,
-				F0B811AE1CBE3B0800F642BC /* SearchViewController.m in Sources */,
-				F0B811AF1CBE3B0800F642BC /* LiveViewController.m in Sources */,
-				F0B811B01CBE3B0800F642BC /* VideoViewController.m in Sources */,
-				F0B811B11CBE3B0800F642BC /* TVRequest.m in Sources */,
-				F0B811B21CBE3B0800F642BC /* M3U8SegmentInfoList.m in Sources */,
-				F0B811B31CBE3B0800F642BC /* BaseViewController.m in Sources */,
-				F0B811B41CBE3B0800F642BC /* FMDBManager.m in Sources */,
-				F0B811B51CBE3B0800F642BC /* TVViewController.m in Sources */,
-				F0B811B61CBE3B0800F642BC /* ADViewController.m in Sources */,
-				F0B811B71CBE3B0800F642BC /* UserModel.m in Sources */,
-				F0B811B81CBE3B0800F642BC /* WXApiResponseHandler.m in Sources */,
-				F0B811B91CBE3B0800F642BC /* IntroControll.m in Sources */,
-				F0B811BA1CBE3B0800F642BC /* GGRequestObserver.m in Sources */,
-				F0B811BB1CBE3B0800F642BC /* FavoVideoListController.m in Sources */,
-				F0B811BC1CBE3B0800F642BC /* IntroModel.m in Sources */,
-				F0B811BD1CBE3B0800F642BC /* GetMessageFromWXResp+responseWithTextOrMediaMessage.m in Sources */,
-				F0B811BE1CBE3B0800F642BC /* NSString+m3u8.m in Sources */,
-				F0B811BF1CBE3B0800F642BC /* SendMessageToWXReq+requestWithTextOrMediaMessage.m in Sources */,
-				F0B811C01CBE3B0800F642BC /* GGNavigationBar.m in Sources */,
-				F0B811C11CBE3B0800F642BC /* VideoListController.m in Sources */,
-				F0B811C21CBE3B0800F642BC /* M3U8Tool.m in Sources */,
-				F0B811C31CBE3B0800F642BC /* M3U8Parser.m in Sources */,
-				F0B811C41CBE3B0800F642BC /* ZXUnitil.mm in Sources */,
-				F0B811C51CBE3B0800F642BC /* UserListModel.m in Sources */,
-				F0B811C61CBE3B0800F642BC /* VideoListBaseController.m in Sources */,
-				F0B811C71CBE3B0800F642BC /* CommentViewController.m in Sources */,
-				F0B811C81CBE3B0800F642BC /* ShoppingController.m in Sources */,
-				F0B811C91CBE3B0800F642BC /* GGNavigationController.m in Sources */,
-				F0B811CA1CBE3B0800F642BC /* GGWebController.m in Sources */,
-				F0B811CB1CBE3B0800F642BC /* UserCenterController.m in Sources */,
-				F0B811CC1CBE3B0800F642BC /* M3U8SegmentInfo.m in Sources */,
-				F0B811CD1CBE3B0800F642BC /* MTModel+GGRequest.m in Sources */,
-				F0B811CE1CBE3B0800F642BC /* GGRequestManager.m in Sources */,
-				F0B811CF1CBE3B0800F642BC /* VideoModel.m in Sources */,
-				F0B811D01CBE3B0800F642BC /* WXApiRequestHandler.m in Sources */,
-				F0B811D11CBE3B0800F642BC /* NSURL+m3u8.m in Sources */,
-				F0B811D21CBE3B0800F642BC /* CommentListModel.m in Sources */,
-				F0B811D31CBE3B0800F642BC /* VideoListModel.m in Sources */,
-				F0B811D41CBE3B0800F642BC /* AuthorListController.m in Sources */,
-				F0B811D51CBE3B0800F642BC /* SvUDIDTools.m in Sources */,
-				F0B811D61CBE3B0800F642BC /* MainTabBarController.m in Sources */,
-				F0B811D71CBE3B0800F642BC /* TVModel.m in Sources */,
-				F0B812051CBE487400F642BC /* UrlManager.m in Sources */,
-				F0B811D81CBE3B0800F642BC /* WXApiManager.m in Sources */,
-				F0B811D91CBE3B0800F642BC /* BaseViewController+NaviView.m in Sources */,
-				F0B811DA1CBE3B0800F642BC /* GGRequest.m in Sources */,
-				F0B811DB1CBE3B0800F642BC /* VideoListCell.m in Sources */,
-				F0B811DC1CBE3B0800F642BC /* BaseViewController+GGRequest.m in Sources */,
-				F0B811DD1CBE3B0800F642BC /* HomeController.m in Sources */,
-				F0B811DE1CBE3B0800F642BC /* TVListModel.m in Sources */,
-				F0B811DF1CBE3B0800F642BC /* main.m in Sources */,
-				F0B811E01CBE3B0800F642BC /* VideoWebViewController.m in Sources */,
-				F0B811E11CBE3B0800F642BC /* IntroView.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F0EF55EB1BCDEA680062ECE1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1259,82 +1004,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		F0B811FE1CBE3B0800F642BC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA268A94AE4A824AC373461B /* Pods.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdNetworkLibs/AdMob_SDK_700",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdsMoGoSDK",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdLibs/AdMob_SDK_700",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdLibs/Alimama/base",
-				);
-				GCC_PREFIX_HEADER = "$(SRCROOT)/MyDota/MyDota-Prefix.pch";
-				INFOPLIST_FILE = "MyDota copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/weChat",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdNetworkLibs/GDTMob_SDK_350/libs",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdsMoGoSDK",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdNetworkLibs/DoMob_SDK_471_Video_220/SDK",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdLibs/GDTlibs",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/UMessage_Sdk_1.2.0",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdLibs/Alimama/base",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/UMOnlineConfig",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.simplan.MyLol;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)";
-			};
-			name = Debug;
-		};
-		F0B811FF1CBE3B0800F642BC /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D19AEA35F225D28540C4704D /* Pods.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhang Xiang (BZ2BR27C6A)";
-				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdNetworkLibs/AdMob_SDK_700",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdsMoGoSDK",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdLibs/AdMob_SDK_700",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdLibs/Alimama/base",
-				);
-				GCC_PREFIX_HEADER = "$(SRCROOT)/MyDota/MyDota-Prefix.pch";
-				INFOPLIST_FILE = "MyDota copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/weChat",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdNetworkLibs/GDTMob_SDK_350/libs",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdsMoGoSDK",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdsMoGo_iOS_SDK_1.6.3/AdNetworkLibs/DoMob_SDK_471_Video_220/SDK",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdLibs/GDTlibs",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/UMessage_Sdk_1.2.0",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/AdLibs/Alimama/base",
-					"$(PROJECT_DIR)/MyDota/Unitil/Libary/UMOnlineConfig",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.simplan.MyLol;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6f93c933-61de-4910-ae86-9b49752a739c";
-				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)";
-			};
-			name = Release;
-		};
 		F0EF561D1BCDEA680062ECE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1435,7 +1104,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
-					"TARGET_DOTA=1",
 				);
 				INFOPLIST_FILE = MyDota/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1478,7 +1146,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
-					"TARGET_DOTA=1",
 				);
 				INFOPLIST_FILE = MyDota/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1552,15 +1219,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F0B811FD1CBE3B0800F642BC /* Build configuration list for PBXNativeTarget "MyLol" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F0B811FE1CBE3B0800F642BC /* Debug */,
-				F0B811FF1CBE3B0800F642BC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		F0EF55EA1BCDEA680062ECE1 /* Build configuration list for PBXProject "MyDota" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
