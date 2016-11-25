@@ -121,6 +121,14 @@ NS_ASSUME_NONNULL_BEGIN
  The `AFImageCache` protocol is adopted by an object used to cache images loaded by the AFNetworking category on `UIImageView`.
  */
 @protocol AFImageCache <NSObject>
+/**
+ Returns a cached image for the specified URL, if available.
+ 
+ *  @param url : The image request
+ *
+ *  @return  the cached image
+ */
+- (nullable UIImage *)cachedImageForURL:(NSURL *)url;
 
 /**
  Returns a cached image for the specified request, if available.

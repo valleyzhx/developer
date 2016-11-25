@@ -234,7 +234,7 @@
     if (section ==1) {
         return 1;
     }
-    return 3;// 暂时去除分享
+    return 4;// 暂时去除分享
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section ==1) {
@@ -388,17 +388,11 @@
     }
     if (indexPath.row == 3) {//分享
         
-       NSDictionary *dic = [MTLJSONAdapter JSONDictionaryFromModel:_videoObject];
         NSString *content = [NSString stringWithFormat:@"%@\n%@",_videoObject.title,_videoObject.published];
-        [WXApiRequestHandler sendAppContentData:nil
-                                        ExtInfo:[dic jsonString]
-                                         ExtURL:nil
-                                          Title:[NSString stringWithFormat:@"我分享了 「%@」 的精彩视频",_user.name]
-                                    Description:content
-                                     MessageExt:NSStringFromClass([VideoModel class])
-                                  MessageAction:nil
-                                     ThumbImage:nil
-                                        InScene:WXSceneSession];
+        NSString *url = [@"http://www.idreams.club/mydota/video.html?id=" stringByAppendingString:_videoObject.modelID];
+        UIImage *img = [[UIImageView sharedImageCache]cachedImageForURL:[NSURL URLWithString:_videoObject.thumbnail]];
+        [WXApiRequestHandler sendLinkURL:url TagName:@"刀一把" Title:content Description:content ThumbImage:img InScene:WXSceneSession];
+        
     }
 }
 
