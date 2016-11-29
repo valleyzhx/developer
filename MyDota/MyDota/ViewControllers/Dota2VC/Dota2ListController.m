@@ -8,7 +8,7 @@
 
 #import "Dota2ListController.h"
 #import "BaseViewController+NaviView.h"
-
+#import "SearchViewController.h"
 @interface Dota2ListController ()
 
 @end
@@ -21,7 +21,7 @@
     
     _naviBar = [self setUpNaviViewWithType:GGNavigationBarTypeCustom];
     _naviBar.backgroundView.alpha = 1;
-
+    [self setSearchButton];
     self.title = @"DotA2";
 
 }
@@ -30,6 +30,21 @@
     return @"dota2";
 }
 
+
+
+#pragma mark Search Action
+-(void)searchAction:(UIButton*)btn{
+    SearchViewController *serchVC = [[SearchViewController alloc]init];
+    serchVC.searchKey = @"DotA";
+    [self pushWithoutTabbar:serchVC];
+}
+
+#pragma mark -- pushAction
+
+-(void)pushWithoutTabbar:(UIViewController*)vc{
+    [self.navigationController pushViewController:vc animated:YES];
+    self.hidesBottomBarWhenPushed = NO;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

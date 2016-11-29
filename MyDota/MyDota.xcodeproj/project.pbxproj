@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A69127DDCA3943356112983 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A8DF9817AA3EA787832365 /* libPods.a */; };
+		8EA5E79A3A7B30AB38ABFB91 /* libPods-MyDota.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F97019B1B0A9B601C2E6DA1C /* libPods-MyDota.a */; };
 		F00930AB1BD37FD5005E3E3E /* MTModel+GGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F00930A21BD37FD5005E3E3E /* MTModel+GGRequest.m */; };
 		F00930AC1BD37FD5005E3E3E /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F00930A41BD37FD5005E3E3E /* UserModel.m */; };
 		F00930AD1BD37FD5005E3E3E /* VideoListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F00930A61BD37FD5005E3E3E /* VideoListModel.m */; };
@@ -112,9 +112,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B6A8DF9817AA3EA787832365 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D19AEA35F225D28540C4704D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		DA268A94AE4A824AC373461B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		8350B43B95A040932E8D9352 /* Pods-MyDota.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDota.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyDota/Pods-MyDota.release.xcconfig"; sourceTree = "<group>"; };
+		B2A66DF30030F4CEFE78E5A5 /* Pods-MyDota.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyDota.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyDota/Pods-MyDota.debug.xcconfig"; sourceTree = "<group>"; };
 		F00930A11BD37FD5005E3E3E /* MTModel+GGRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MTModel+GGRequest.h"; sourceTree = "<group>"; };
 		F00930A21BD37FD5005E3E3E /* MTModel+GGRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MTModel+GGRequest.m"; sourceTree = "<group>"; };
 		F00930A31BD37FD5005E3E3E /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
@@ -131,6 +130,7 @@
 		F015988D1BE1FB82001083BC /* FavoVideoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoVideoListController.m; sourceTree = "<group>"; };
 		F01C0F2E1DED379A0035C128 /* Dota2ListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dota2ListController.h; sourceTree = "<group>"; };
 		F01C0F2F1DED379A0035C128 /* Dota2ListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dota2ListController.m; sourceTree = "<group>"; };
+		F01C0F311DED503D0035C128 /* MyDota.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyDota.entitlements; sourceTree = "<group>"; };
 		F021BDBB1BD34407001429CC /* AuthorVideoListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorVideoListController.h; sourceTree = "<group>"; };
 		F021BDBC1BD34407001429CC /* AuthorVideoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorVideoListController.m; sourceTree = "<group>"; };
 		F0284CC71C1E600700C9434A /* ShoppingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingController.h; sourceTree = "<group>"; };
@@ -282,6 +282,7 @@
 		F0F58FC91BDE29E300745E4C /* FMDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBManager.h; sourceTree = "<group>"; };
 		F0F58FCA1BDE29E300745E4C /* FMDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBManager.m; sourceTree = "<group>"; };
 		F0F58FCC1BDF08F500745E4C /* MTModelFMDBDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTModelFMDBDelegate.h; sourceTree = "<group>"; };
+		F97019B1B0A9B601C2E6DA1C /* libPods-MyDota.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyDota.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,8 +302,8 @@
 				F0AD249C1BF75B3F000B1626 /* AdSupport.framework in Frameworks */,
 				F0634EA71BE0B73E003F45ED /* CoreTelephony.framework in Frameworks */,
 				F0634E9C1BE0B5A3003F45ED /* libWeChatSDK.a in Frameworks */,
-				2A69127DDCA3943356112983 /* libPods.a in Frameworks */,
 				F0AD249A1BF7595C000B1626 /* libGDTMobSDK.a in Frameworks */,
+				8EA5E79A3A7B30AB38ABFB91 /* libPods-MyDota.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +324,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		256D1528A2C7536B962A40C5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B2A66DF30030F4CEFE78E5A5 /* Pods-MyDota.debug.xcconfig */,
+				8350B43B95A040932E8D9352 /* Pods-MyDota.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B6B8D3B2AB49C3C6DAD1352C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,7 +349,7 @@
 				F0634EA21BE0B6B6003F45ED /* libsqlite3.0.tbd */,
 				F0634EA01BE0B6AE003F45ED /* libz.1.2.5.tbd */,
 				F0634E9E1BE0B69E003F45ED /* SystemConfiguration.framework */,
-				B6A8DF9817AA3EA787832365 /* libPods.a */,
+				F97019B1B0A9B601C2E6DA1C /* libPods-MyDota.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -643,8 +653,8 @@
 				F0EF560E1BCDEA680062ECE1 /* MyDotaTests */,
 				F0EF56191BCDEA680062ECE1 /* MyDotaUITests */,
 				F0EF55F01BCDEA680062ECE1 /* Products */,
-				F4EC7B3939B52429E5B504E0 /* Pods */,
 				B6B8D3B2AB49C3C6DAD1352C /* Frameworks */,
+				256D1528A2C7536B962A40C5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -661,6 +671,7 @@
 		F0EF55F11BCDEA680062ECE1 /* MyDota */ = {
 			isa = PBXGroup;
 			children = (
+				F01C0F311DED503D0035C128 /* MyDota.entitlements */,
 				F0EF55F51BCDEA680062ECE1 /* AppDelegate.h */,
 				F0EF55F61BCDEA680062ECE1 /* AppDelegate.m */,
 				F0EAF1671BCE22D400B18B81 /* MyDefines.h */,
@@ -704,15 +715,6 @@
 			path = MyDotaUITests;
 			sourceTree = "<group>";
 		};
-		F4EC7B3939B52429E5B504E0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DA268A94AE4A824AC373461B /* Pods.debug.xcconfig */,
-				D19AEA35F225D28540C4704D /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -720,12 +722,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0EF561F1BCDEA680062ECE1 /* Build configuration list for PBXNativeTarget "MyDota" */;
 			buildPhases = (
-				BE425557CDBBB75A16F462DB /* Check Pods Manifest.lock */,
+				00ACCD791C8D621046E14A40 /* [CP] Check Pods Manifest.lock */,
 				F0EF55EB1BCDEA680062ECE1 /* Sources */,
 				F0EF55EC1BCDEA680062ECE1 /* Frameworks */,
 				F0EF55ED1BCDEA680062ECE1 /* Resources */,
-				8822CEFEC624224F9EF087A7 /* Embed Pods Frameworks */,
-				603D487087B53200049EB3AE /* Copy Pods Resources */,
+				4109393408385312CCC3FE23 /* [CP] Embed Pods Frameworks */,
+				B765C1288911EB663BFF0AB1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -784,6 +786,12 @@
 					F0EF55EE1BCDEA680062ECE1 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = BZ2BR27C6A;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					F0EF560A1BCDEA680062ECE1 = {
 						CreatedOnToolsVersion = 7.0;
@@ -850,49 +858,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		603D487087B53200049EB3AE /* Copy Pods Resources */ = {
+		00ACCD791C8D621046E14A40 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		8822CEFEC624224F9EF087A7 /* Embed Pods Frameworks */ = {
+		4109393408385312CCC3FE23 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDota/Pods-MyDota-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BE425557CDBBB75A16F462DB /* Check Pods Manifest.lock */ = {
+		B765C1288911EB663BFF0AB1 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyDota/Pods-MyDota-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1100,12 +1108,14 @@
 		};
 		F0EF56201BCDEA680062ECE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA268A94AE4A824AC373461B /* Pods.debug.xcconfig */;
+			baseConfigurationReference = B2A66DF30030F4CEFE78E5A5 /* Pods-MyDota.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = MyDota/MyDota.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = BZ2BR27C6A;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1135,19 +1145,22 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplan.MyDota;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6e12adb7-4c6f-4a35-a5c2-f006314e388a";
+				PROVISIONING_PROFILE_SPECIFIER = Product.mydota;
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)";
 			};
 			name = Debug;
 		};
 		F0EF56211BCDEA680062ECE1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D19AEA35F225D28540C4704D /* Pods.release.xcconfig */;
+			baseConfigurationReference = 8350B43B95A040932E8D9352 /* Pods-MyDota.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = MyDota/MyDota.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhang Xiang (BZ2BR27C6A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = BZ2BR27C6A;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1177,7 +1190,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplan.MyDota;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6f93c933-61de-4910-ae86-9b49752a739c";
+				PROVISIONING_PROFILE = "6e12adb7-4c6f-4a35-a5c2-f006314e388a";
+				PROVISIONING_PROFILE_SPECIFIER = Product.mydota;
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)";
 			};
 			name = Release;

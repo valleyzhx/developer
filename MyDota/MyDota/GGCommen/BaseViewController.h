@@ -29,6 +29,8 @@
 
 @property (nonatomic,assign) BOOL showGDTADView;
 
+-(void)setSearchButton;
+-(void)searchAction:(UIButton*)btn;
 
 -(void)showHudView;
 -(void)hideHudView;

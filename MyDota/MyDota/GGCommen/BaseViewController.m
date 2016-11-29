@@ -84,6 +84,21 @@
     _naviBar.title = title;
 }
 
+-(void)setSearchButton{
+    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
+    [btn setImage:[UIImage imageNamed:@"searchBarBtn"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(searchAction:) forControlEvents:UIControlEventTouchUpInside];
+    _naviBar.rightView = btn;
+    btn.center = CGPointMake(btn.center.x-10, btn.center.y);
+}
+
+
+#pragma mark Search Action
+-(void)searchAction:(UIButton*)btn{
+    
+}
+
+
 -(void)showHudView{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.view bringSubviewToFront:_naviBar];

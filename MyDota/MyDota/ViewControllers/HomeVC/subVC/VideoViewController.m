@@ -234,7 +234,7 @@
     if (section ==1) {
         return 1;
     }
-    return 4;// 暂时去除分享
+    return 3;// 暂时去除分享
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section ==1) {
@@ -390,7 +390,7 @@
         
         NSString *content = [NSString stringWithFormat:@"%@\n%@",_videoObject.title,_videoObject.published];
         NSString *url = [@"http://www.idreams.club/mydota/video.html?id=" stringByAppendingString:_videoObject.modelID];
-        UIImage *img = [[UIImageView sharedImageCache]cachedImageForURL:[NSURL URLWithString:_videoObject.thumbnail]];
+        UIImage *img = [[UIImageView sharedImageCache]cachedImageForRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_videoObject.thumbnail]]];
         [WXApiRequestHandler sendLinkURL:url TagName:@"刀一把" Title:content Description:content ThumbImage:img InScene:WXSceneSession];
         
     }

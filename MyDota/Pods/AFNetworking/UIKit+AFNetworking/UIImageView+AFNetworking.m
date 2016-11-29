@@ -190,14 +190,6 @@ static inline NSString * AFImageCacheKeyFromURLRequest(NSURLRequest *request) {
 
 @implementation AFImageCache
 
-- (nullable UIImage *)cachedImageForURL:(NSURL *)url{
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request addValue:@"image/*" forHTTPHeaderField:@"Accept"];
-    
-    return [self cachedImageForRequest:request];
-}
-
-
 - (UIImage *)cachedImageForRequest:(NSURLRequest *)request {
     switch ([request cachePolicy]) {
         case NSURLRequestReloadIgnoringCacheData:
