@@ -8,132 +8,106 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
 		</dict>
 		<key>CocoaLumberjack.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 		<key>DTCoreText.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>DTFoundation.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>FXImageView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
+		</dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>ImagePlayerView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>10</integer>
 		</dict>
 		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>11</integer>
 		</dict>
 		<key>Mantle-HAL.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>8</integer>
 		</dict>
 		<key>Mantle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
 		</dict>
 		<key>Masonry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
 		</dict>
 		<key>Pods-MyDota.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>13</integer>
 		</dict>
 		<key>Reachability.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>14</integer>
 		</dict>
 		<key>UMengFeedback.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>15</integer>
 		</dict>
 		<key>UzysAssetsPickerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>16</integer>
 		</dict>
 		<key>VKFoundation.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>17</integer>
 		</dict>
 		<key>VKVideoPlayer.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>18</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>005F89000774FD89F3E3C79AD4B7EBFC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0276827BC10162130089A6D9104FA203</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -148,6 +122,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3E81FC2CF00D5EC244891B49571D9599</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3EED66B6F5C2B50B9E541F7864625AD2</key>
 		<dict>
 			<key>primary</key>
@@ -158,17 +137,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5C026AB90240A5BF952CB9A56458B530</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5DB82BE8988CC6602D5DFDBB162A8EB6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>715CB39BB57EC63AE5C8332755A2EF86</key>
+		<key>5771E893E568ED72FDE69E8616EC3289</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -193,6 +162,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A026E24E6C561B5B17310FCC3C4B4D7D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A9AA345806F899D3BE1909F8CECAD89A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>AFAFB55453D161D2BB5CFB30C68A54D5</key>
 		<dict>
 			<key>primary</key>
@@ -203,22 +182,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>CD60B6BF4FD8144C079CBD51A526C1E6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D07D474B199FBF6F1E9C0D84C2ACDDEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D6A9604FB3CD0E2FF5A1ADEBFEB5BA68</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D93A21D99ADA41F14DE686757F849FE9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F4F047062EC7B1506643FB141B621F66</key>
+		<key>E1BBB76ADBF2EF4EF2CE5DF6BBC77296</key>
 		<dict>
 			<key>primary</key>
 			<true/>

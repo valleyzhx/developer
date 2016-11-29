@@ -9,6 +9,7 @@
 #import "VideoListController.h"
 #import "MyDefines.h"
 #import "VideoListModel.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
 
 
 @implementation VideoListController{

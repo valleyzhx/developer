@@ -16,6 +16,7 @@
 		F00EF2231BCF806A009FEEB4 /* GGNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F00EF2221BCF806A009FEEB4 /* GGNavigationBar.m */; };
 		F015988E1BE1FB82001083BC /* FavoVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F015988D1BE1FB82001083BC /* FavoVideoListController.m */; };
 		F01C0F301DED379A0035C128 /* Dota2ListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F01C0F2F1DED379A0035C128 /* Dota2ListController.m */; };
+		F01C0F331DED6C180035C128 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F01C0F321DED6C180035C128 /* GoogleService-Info.plist */; };
 		F021BDBD1BD34407001429CC /* AuthorVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021BDBC1BD34407001429CC /* AuthorVideoListController.m */; };
 		F0284CC91C1E600700C9434A /* ShoppingController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0284CC81C1E600700C9434A /* ShoppingController.m */; };
 		F0284CCC1C1E684800C9434A /* GGWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0284CCB1C1E684800C9434A /* GGWebController.m */; };
@@ -53,7 +54,6 @@
 		F0AD249E1BF75B5A000B1626 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD249D1BF75B5A000B1626 /* StoreKit.framework */; };
 		F0AD24A11BF7608A000B1626 /* GGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD24A01BF7608A000B1626 /* GGNavigationController.m */; };
 		F0AD24A41BF77FB5000B1626 /* ADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0AD24A31BF77FB5000B1626 /* ADViewController.m */; };
-		F0AD24B01BF7802B000B1626 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = F0AD24AC1BF7802B000B1626 /* README.txt */; };
 		F0AD24B31BF7811E000B1626 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24B11BF7811E000B1626 /* EventKit.framework */; };
 		F0AD24B41BF7811E000B1626 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24B21BF7811E000B1626 /* EventKitUI.framework */; };
 		F0AD24B61BF78163000B1626 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0AD24B51BF78163000B1626 /* MessageUI.framework */; };
@@ -131,6 +131,7 @@
 		F01C0F2E1DED379A0035C128 /* Dota2ListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dota2ListController.h; sourceTree = "<group>"; };
 		F01C0F2F1DED379A0035C128 /* Dota2ListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dota2ListController.m; sourceTree = "<group>"; };
 		F01C0F311DED503D0035C128 /* MyDota.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyDota.entitlements; sourceTree = "<group>"; };
+		F01C0F321DED6C180035C128 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F021BDBB1BD34407001429CC /* AuthorVideoListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorVideoListController.h; sourceTree = "<group>"; };
 		F021BDBC1BD34407001429CC /* AuthorVideoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorVideoListController.m; sourceTree = "<group>"; };
 		F0284CC71C1E600700C9434A /* ShoppingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingController.h; sourceTree = "<group>"; };
@@ -212,7 +213,6 @@
 		F0AD24A01BF7608A000B1626 /* GGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGNavigationController.m; sourceTree = "<group>"; };
 		F0AD24A21BF77FB5000B1626 /* ADViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADViewController.h; sourceTree = "<group>"; };
 		F0AD24A31BF77FB5000B1626 /* ADViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADViewController.m; sourceTree = "<group>"; };
-		F0AD24AC1BF7802B000B1626 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		F0AD24B11BF7811E000B1626 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		F0AD24B21BF7811E000B1626 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		F0AD24B51BF78163000B1626 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -547,7 +547,6 @@
 		F0AD24931BF7595C000B1626 /* AdLibs */ = {
 			isa = PBXGroup;
 			children = (
-				F0AD24A51BF7802B000B1626 /* AdMob_SDK_700 */,
 				F0AD24941BF7595C000B1626 /* GDTlibs */,
 			);
 			path = AdLibs;
@@ -563,14 +562,6 @@
 				F0AD24991BF7595C000B1626 /* libGDTMobSDK.a */,
 			);
 			path = GDTlibs;
-			sourceTree = "<group>";
-		};
-		F0AD24A51BF7802B000B1626 /* AdMob_SDK_700 */ = {
-			isa = PBXGroup;
-			children = (
-				F0AD24AC1BF7802B000B1626 /* README.txt */,
-			);
-			path = AdMob_SDK_700;
 			sourceTree = "<group>";
 		};
 		F0B1E3FB1BF5D0C600CED836 /* IntroControll */ = {
@@ -671,6 +662,7 @@
 		F0EF55F11BCDEA680062ECE1 /* MyDota */ = {
 			isa = PBXGroup;
 			children = (
+				F01C0F321DED6C180035C128 /* GoogleService-Info.plist */,
 				F01C0F311DED503D0035C128 /* MyDota.entitlements */,
 				F0EF55F51BCDEA680062ECE1 /* AppDelegate.h */,
 				F0EF55F61BCDEA680062ECE1 /* AppDelegate.m */,
@@ -831,10 +823,10 @@
 			files = (
 				F0CF6C931BD77D3100DF8017 /* VideoListCell.xib in Resources */,
 				F0EAF16B1BCE2B3200B18B81 /* Assets.xcassets in Resources */,
+				F01C0F331DED6C180035C128 /* GoogleService-Info.plist in Resources */,
 				F0B1E4061BF5D0C600CED836 /* shadow@2x.png in Resources */,
 				F0EF56001BCDEA680062ECE1 /* Main.storyboard in Resources */,
 				F0634E9D1BE0B5A3003F45ED /* read_me.txt in Resources */,
-				F0AD24B01BF7802B000B1626 /* README.txt in Resources */,
 				F0D56B491BD3B616009CA293 /* AuthourData.geojson in Resources */,
 				F0508CE71CBDE873008A3705 /* video.html in Resources */,
 				F03BE87C1BF9C55900841606 /* InfoPlist.strings in Resources */,
