@@ -15,6 +15,7 @@
 		F00EF2201BCF8045009FEEB4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F00EF21F1BCF8045009FEEB4 /* BaseViewController.m */; };
 		F00EF2231BCF806A009FEEB4 /* GGNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F00EF2221BCF806A009FEEB4 /* GGNavigationBar.m */; };
 		F015988E1BE1FB82001083BC /* FavoVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F015988D1BE1FB82001083BC /* FavoVideoListController.m */; };
+		F01C0F301DED379A0035C128 /* Dota2ListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F01C0F2F1DED379A0035C128 /* Dota2ListController.m */; };
 		F021BDBD1BD34407001429CC /* AuthorVideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021BDBC1BD34407001429CC /* AuthorVideoListController.m */; };
 		F0284CC91C1E600700C9434A /* ShoppingController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0284CC81C1E600700C9434A /* ShoppingController.m */; };
 		F0284CCC1C1E684800C9434A /* GGWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0284CCB1C1E684800C9434A /* GGWebController.m */; };
@@ -128,6 +129,8 @@
 		F00EF2221BCF806A009FEEB4 /* GGNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGNavigationBar.m; sourceTree = "<group>"; };
 		F015988C1BE1FB82001083BC /* FavoVideoListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoVideoListController.h; sourceTree = "<group>"; };
 		F015988D1BE1FB82001083BC /* FavoVideoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoVideoListController.m; sourceTree = "<group>"; };
+		F01C0F2E1DED379A0035C128 /* Dota2ListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dota2ListController.h; sourceTree = "<group>"; };
+		F01C0F2F1DED379A0035C128 /* Dota2ListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dota2ListController.m; sourceTree = "<group>"; };
 		F021BDBB1BD34407001429CC /* AuthorVideoListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorVideoListController.h; sourceTree = "<group>"; };
 		F021BDBC1BD34407001429CC /* AuthorVideoListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorVideoListController.m; sourceTree = "<group>"; };
 		F0284CC71C1E600700C9434A /* ShoppingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingController.h; sourceTree = "<group>"; };
@@ -402,6 +405,15 @@
 			path = subVc;
 			sourceTree = "<group>";
 		};
+		F01C0F2D1DED377D0035C128 /* Dota2VC */ = {
+			isa = PBXGroup;
+			children = (
+				F01C0F2E1DED379A0035C128 /* Dota2ListController.h */,
+				F01C0F2F1DED379A0035C128 /* Dota2ListController.m */,
+			);
+			path = Dota2VC;
+			sourceTree = "<group>";
+		};
 		F0577B7E1C92679200FD9F04 /* UMOnlineConfig */ = {
 			isa = PBXGroup;
 			children = (
@@ -595,6 +607,7 @@
 				F0AD24A01BF7608A000B1626 /* GGNavigationController.m */,
 				F0EAF1561BCE205500B18B81 /* MainTabBarController.h */,
 				F0EAF1571BCE205500B18B81 /* MainTabBarController.m */,
+				F01C0F2D1DED377D0035C128 /* Dota2VC */,
 				F09C4BCB1C91612200C271C8 /* TVVC */,
 				F0EAF1601BCE20F400B18B81 /* HomeVC */,
 				F0EAF1581BCE205500B18B81 /* UserCenterVC */,
@@ -903,6 +916,7 @@
 				F00EF2201BCF8045009FEEB4 /* BaseViewController.m in Sources */,
 				F0F58FCB1BDE29E300745E4C /* FMDBManager.m in Sources */,
 				F09C4BCE1C91613D00C271C8 /* TVViewController.m in Sources */,
+				F01C0F301DED379A0035C128 /* Dota2ListController.m in Sources */,
 				F0AD24A41BF77FB5000B1626 /* ADViewController.m in Sources */,
 				F00930AC1BD37FD5005E3E3E /* UserModel.m in Sources */,
 				F0634EAD1BE0B94A003F45ED /* WXApiResponseHandler.m in Sources */,
