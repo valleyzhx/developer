@@ -31,7 +31,7 @@
 
 
 
-@interface VideoViewController ()<VKVideoPlayerDelegate>
+@interface VideoViewController ()<VKVideoPlayerDelegate,UIActionSheetDelegate>
 @property (nonatomic,strong)VKVideoPlayer *player;
 
 @end
@@ -46,6 +46,7 @@
     BOOL _isFav;
     
     GADBannerView *_adView;
+    BOOL _showingSheet;
 }
 
 -(id)initWithVideoModel:(VideoModel *)model{
@@ -107,6 +108,12 @@
     _isFav = [[FMDBManager shareManager]hasTheModel:_videoObject];
     
     [self initFullWindowObserver];
+    
+    UIButton *shareButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
+    [shareButton setImage:[UIImage imageNamed:@"shareIcon"] forState:UIControlStateNormal];
+    [shareButton addTarget:self action:@selector(clickShareAction:) forControlEvents:UIControlEventTouchUpInside];
+    _naviBar.rightView = shareButton;
+    
 }
 
 -(void)startLoadRequest:(NSString*)htmlUrl{
@@ -234,7 +241,7 @@
     if (section ==1) {
         return 1;
     }
-    return 3;// 暂时去除分享
+    return 3;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section ==1) {
@@ -386,14 +393,7 @@
         vc.isFromVideo = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if (indexPath.row == 3) {//分享
-        
-        NSString *content = [NSString stringWithFormat:@"%@\n%@",_videoObject.title,_videoObject.published];
-        NSString *url = [@"http://www.idreams.club/mydota/video.html?id=" stringByAppendingString:_videoObject.modelID];
-        UIImage *img = [[UIImageView sharedImageCache]cachedImageForRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_videoObject.thumbnail]]];
-        [WXApiRequestHandler sendLinkURL:url TagName:@"刀一把" Title:content Description:content ThumbImage:img InScene:WXSceneSession];
-        
-    }
+    
 }
 
 #pragma mark - action
@@ -414,6 +414,32 @@
     webVC.title = @"视频播放";
     [self presentViewController:webVC animated:YES completion:nil];
 
+}
+
+-(void)clickShareAction:(UIButton*)btn{
+    _showingSheet = YES;
+    UIActionSheet *sheet = [[UIActionSheet alloc]initWithTitle:@"分享" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"分享给好友",@"分享到朋友圈", nil];
+    [sheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0){//好友
+        [self shareVideoInScene:WXSceneSession];
+    }else if (buttonIndex == 1) {//朋友圈
+        [self shareVideoInScene:WXSceneTimeline];
+    }else if (buttonIndex == 2){//取消
+        
+    }
+    _showingSheet = NO;
+}
+
+-(void)shareVideoInScene:(enum WXScene)scene{
+    NSString *content = [NSString stringWithFormat:@"%@\n%@",_videoObject.title,_videoObject.published];
+    NSString *url = [@"http://xianng.com/videoplay/video.html?videoid=" stringByAppendingString:_videoObject.modelID];
+    UIImage *img = [[UIImageView sharedImageCache]cachedImageForRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_videoObject.thumbnail]]];
+    
+    
+    [WXApiRequestHandler sendLinkURL:url TagName:@"刀一把" Title:content Description:content ThumbImage:img InScene:(enum WXScene)scene];
 }
 
 #pragma mark - navi
@@ -439,6 +465,9 @@
 // 进入全屏
 -(void)begainFullScreen
 {
+    if (_showingSheet) {
+        return;
+    }
     if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
         SEL selector = NSSelectorFromString(@"setOrientation:");
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
@@ -453,7 +482,9 @@
 // 退出全屏
 -(void)endFullScreen
 {
-    
+    if (_showingSheet) {
+        return;
+    }
     //强制归正：
     if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
         SEL selector = NSSelectorFromString(@"setOrientation:");

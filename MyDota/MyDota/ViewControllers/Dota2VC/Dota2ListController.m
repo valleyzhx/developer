@@ -27,7 +27,7 @@
 }
 
 -(NSString *)getKeyWord{
-    return @"dota2";
+    return @"DotA2";
 }
 
 
@@ -35,7 +35,7 @@
 #pragma mark Search Action
 -(void)searchAction:(UIButton*)btn{
     SearchViewController *serchVC = [[SearchViewController alloc]init];
-    serchVC.searchKey = @"DotA";
+    serchVC.searchKey = @"DotA2";
     [self pushWithoutTabbar:serchVC];
 }
 
