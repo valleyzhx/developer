@@ -24,11 +24,19 @@
     currentPage = 1;
     [self loadVideoList:currentPage];
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-    
+    self.tableView.mj_header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadTheDataAction)];
+
 }
 
 -(NSString *)getKeyWord{
     return @"dota";
+}
+
+
+-(void)reloadTheDataAction{
+    currentPage = 1;
+    [self.listArr removeAllObjects];
+    [self loadVideoList:currentPage];
 }
 
 -(void)loadMoreData{

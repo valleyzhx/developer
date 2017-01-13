@@ -23,12 +23,12 @@
     _naviBar.backgroundView.alpha = 1;
     [self setSearchButton];
     self.title = @"DotA2";
-
 }
 
 -(NSString *)getKeyWord{
     return @"DotA2";
 }
+
 
 
 
