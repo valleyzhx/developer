@@ -64,6 +64,7 @@
 		F0B1E4041BF5D0C600CED836 /* IntroModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B1E3FF1BF5D0C600CED836 /* IntroModel.m */; };
 		F0B1E4051BF5D0C600CED836 /* IntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B1E4011BF5D0C600CED836 /* IntroView.m */; };
 		F0B1E4061BF5D0C600CED836 /* shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B1E4021BF5D0C600CED836 /* shadow@2x.png */; };
+		F0B34E0A1E28906500EF6B63 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = F0B34E091E28906500EF6B63 /* main.js */; };
 		F0B3EF501BD0D69E00313C24 /* GGRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3EF4F1BD0D69E00313C24 /* GGRequestManager.m */; };
 		F0B3EF531BD0D6AD00313C24 /* GGRequestObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B3EF521BD0D6AD00313C24 /* GGRequestObserver.m */; };
 		F0B5A1791C197E6B00C6B54B /* MBProgressHUD+string.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B5A1781C197E6B00C6B54B /* MBProgressHUD+string.m */; };
@@ -228,6 +229,7 @@
 		F0B1E4001BF5D0C600CED836 /* IntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroView.h; sourceTree = "<group>"; };
 		F0B1E4011BF5D0C600CED836 /* IntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroView.m; sourceTree = "<group>"; };
 		F0B1E4021BF5D0C600CED836 /* shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shadow@2x.png"; sourceTree = "<group>"; };
+		F0B34E091E28906500EF6B63 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		F0B3EF4E1BD0D69E00313C24 /* GGRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGRequestManager.h; sourceTree = "<group>"; };
 		F0B3EF4F1BD0D69E00313C24 /* GGRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGRequestManager.m; sourceTree = "<group>"; };
 		F0B3EF511BD0D6AD00313C24 /* GGRequestObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGRequestObserver.h; sourceTree = "<group>"; };
@@ -667,6 +669,7 @@
 				F0EF55F51BCDEA680062ECE1 /* AppDelegate.h */,
 				F0EF55F61BCDEA680062ECE1 /* AppDelegate.m */,
 				F0EAF1671BCE22D400B18B81 /* MyDefines.h */,
+				F0B34E091E28906500EF6B63 /* main.js */,
 				F009309A1BD37FD5005E3E3E /* Models */,
 				F00EF21D1BCF8045009FEEB4 /* GGCommen */,
 				F0EAF14A1BCE205500B18B81 /* Unitil */,
@@ -833,6 +836,7 @@
 				F0D56B491BD3B616009CA293 /* AuthourData.geojson in Resources */,
 				F0508CE71CBDE873008A3705 /* video.html in Resources */,
 				F03BE87C1BF9C55900841606 /* InfoPlist.strings in Resources */,
+				F0B34E0A1E28906500EF6B63 /* main.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

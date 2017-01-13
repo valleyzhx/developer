@@ -121,7 +121,7 @@
     _m3u8Tool = nil;
     _m3u8Tool =  [M3U8Tool m3u8UrlWithUrl:htmlUrl type:[UserManager preferedVideoType] complised:^(NSString *m3u8Url){
         [self hideHudView];
-        if (m3u8Url) {
+        if (m3u8Url.length) {
             _m3u8Url = m3u8Url;
             [self.player loadVideoWithStreamURL:[NSURL URLWithString:_m3u8Url]];
         }else{
