@@ -41,6 +41,9 @@
     }
     [self loadAdView];
     [self.view bringSubviewToFront:_naviBar];
+    
+    [self loadFullADView];
+
 }
 
 -(void)loadAdView{

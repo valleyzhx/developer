@@ -20,9 +20,6 @@
     NSString *_videoId;
     NSMutableArray *_hotListModelArr;
     NSMutableArray *_listModelArr;
-    
-    GADBannerView *_adView;
-
 }
 
 
@@ -60,7 +57,6 @@
     currentPage = 1;
     [self getCommentDataWithPage:currentPage];
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-    [self loadAddView];
 }
 
 -(void)getCommentDataWithPage:(int)page{
@@ -199,26 +195,6 @@
 }
 
 
-
-
-
-#pragma mark ---- Adversity
-
--(void)loadAddView{
-    _adView = [[GADBannerView alloc]
-               initWithFrame:CGRectMake((SCREEN_WIDTH-320)/2,10,320,50)];
-    _adView.adUnitID = @"ca-app-pub-7534063156170955/3475809624";//调用id
-    
-    _adView.rootViewController = self;
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
-    [view addSubview:_adView];
-    self.tableView.tableFooterView = view;
-    GADRequest *req = [GADRequest request];
-#if DEBUG
-    req.testDevices = @[@"5610fbd8aa463fcd021f9f235d9f6ba1"];
-#endif
-    [_adView loadRequest:req];
-}
 
 
 

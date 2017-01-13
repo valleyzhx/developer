@@ -16,7 +16,6 @@
 #import "AuthorVideoListController.h"
 #import "FMDBManager.h"
 #import "WXApiRequestHandler.h"
-#import <GoogleMobileAds/GoogleMobileAds.h>
 #import "CommentListModel.h"
 #import "CommentViewController.h"
 #import "VideoWebViewController.h"
@@ -45,7 +44,8 @@
     UserModel *_user;
     BOOL _isFav;
     
-    GADBannerView *_adView;
+    BOOL _showFullAd;
+
     BOOL _showingSheet;
 }
 
@@ -58,21 +58,7 @@
 
 
 
--(void)loadAddView{
-    _adView = [[GADBannerView alloc]
-               initWithFrame:CGRectMake((SCREEN_WIDTH-320)/2,50,320,50)];
-    _adView.adUnitID = @"ca-app-pub-7534063156170955/2929947627";//调用id
-    
-    _adView.rootViewController = self;
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
-    [view addSubview:_adView];
-    self.tableView.tableFooterView = view;
-    GADRequest *req = [GADRequest request];
-#if DEBUG
-    req.testDevices = @[@"5610fbd8aa463fcd021f9f235d9f6ba1"];
-#endif
-    [_adView loadRequest:req];
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -94,7 +80,6 @@
         [view addSubview:coutLab];
         view;
     });
-    [self loadAddView];
     
     NSInteger userId = _videoObject.userid.integerValue;
     if (userId==0) {
@@ -114,18 +99,35 @@
     [shareButton addTarget:self action:@selector(clickShareAction:) forControlEvents:UIControlEventTouchUpInside];
     _naviBar.rightView = shareButton;
     
+    [self loadBottomADView];
+    
+    NSInteger count = ((AppDelegate*)[UIApplication sharedApplication].delegate).videoAppearCount;
+    _showFullAd = count%3 == 0;
+    if (_showFullAd) {
+        [self loadFullADView];
+    }
+    ((AppDelegate*)[UIApplication sharedApplication].delegate).videoAppearCount = count+1;
+    
 }
+
+
+
+
 
 -(void)startLoadRequest:(NSString*)htmlUrl{
     [self showHudView];
     _m3u8Tool = nil;
+    __weak typeof(self) weakSelf = self;
     _m3u8Tool =  [M3U8Tool m3u8UrlWithUrl:htmlUrl type:[UserManager preferedVideoType] complised:^(NSString *m3u8Url){
-        [self hideHudView];
+        [weakSelf hideHudView];
         if (m3u8Url.length) {
             _m3u8Url = m3u8Url;
-            [self.player loadVideoWithStreamURL:[NSURL URLWithString:_m3u8Url]];
+            [weakSelf.player loadVideoWithStreamURL:[NSURL URLWithString:_m3u8Url]];
         }else{
-            [self setWebVideoView];
+            [weakSelf setWebVideoView];
+        }
+        if (_showFullAd == NO) {
+            [weakSelf checkWIFI];
         }
     }];
 }
@@ -499,13 +501,14 @@
 
 
 
+
+
 -(void)dealloc{
     _m3u8Tool = nil;
     _videoObject = nil;
     _choosV = nil;
     _user = nil;
-    _adView.rootViewController = nil;
-    _adView.delegate = nil;
+    _player = nil;
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 

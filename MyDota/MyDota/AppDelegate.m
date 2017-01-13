@@ -43,9 +43,9 @@
     [self.window makeKeyAndVisible];
 
     [self initGDTSplashAd];
-
     return YES;
 }
+
 
 -(void)initGDTSplashAd{
     //开屏广告初始化并展示代码

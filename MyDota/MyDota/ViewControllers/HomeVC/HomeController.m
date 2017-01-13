@@ -95,7 +95,6 @@ typedef enum : NSUInteger {
 
 
 
-
 -(void)loadDotaVideos{
     [VideoListModel getVideoListBy:[UrlManager getHomeCateUrl] complish:^(id object) {
         _dotaListModel = object;

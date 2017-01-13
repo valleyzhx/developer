@@ -28,7 +28,6 @@
         view.backgroundColor = viewBGColor;
         view;
     });
-    self.showGDTADView = YES;
 }
 
 

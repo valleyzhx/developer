@@ -9,16 +9,19 @@
 #import "BaseViewController.h"
 #import "MyDefines.h"
 #import "BaseViewController+NaviView.h"
+#import "Reachability.h"
 
 
 #define IS_OS_7_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 
-@interface BaseViewController ()<GDTMobBannerViewDelegate>
+@interface BaseViewController ()<GADInterstitialDelegate>
 
 @end
 
 @implementation BaseViewController{
     BOOL isLoading;
+    GADBannerView *_adView;
+    GADInterstitial *_interstitial;
 }
 
 - (void)viewDidLoad {
@@ -52,31 +55,48 @@
     _emptyLabel.hidden = YES;
 }
 
--(void)setGDTAdUI{
-    float x = (SCREEN_WIDTH-320)/2;
-    _bannerView = [[GDTMobBannerView alloc] initWithFrame:CGRectMake(x, 5,320,50)
-                                                   appkey:@"1104096526"
-                                              placementId:@"8050900171935450"];
-    _bannerView.delegate = self; // 设置Delegate
-    _bannerView.currentViewController = self; //设置当前的ViewController
-    _bannerView.interval = 20; //【可选】设置刷新频率;默认30秒
-    _bannerView.isGpsOn = NO; //【可选】开启GPS定位;默认关闭
-    _bannerView.showCloseBtn = YES; //【可选】展示关闭按钮;默认显示
-    _bannerView.isAnimationOn = YES; //【可选】开启banner轮播和展现时的动画效果;默认开启
-    //    [self.view addSubview:_bannerView]; //添加到当前的view中
-    [_bannerView loadAdAndShow]; //加载广告并展示
-}
 
--(void)setShowGDTADView:(BOOL)showGDTADView{
-    _showGDTADView = showGDTADView;
-    if (_showGDTADView) {
-        [self setGDTAdUI];
-    }else{
-        [_bannerView removeFromSuperview];
-        _bannerView.delegate = nil;
-        _bannerView = nil;
+#pragma mark- CheckWifi
+-(void)checkWIFI{
+    Reachability *ability = [Reachability reachabilityForLocalWiFi];
+    if ([ability isReachableViaWiFi] == NO) { // 流量
+        [self showMessage:@"土豪，您在使用流量哦"];
     }
 }
+
+
+#pragma mark- AD
+
+-(void)loadBottomADView{
+    _adView = [[GADBannerView alloc]
+               initWithFrame:CGRectMake((SCREEN_WIDTH-320)/2,50,320,50)];
+    _adView.adUnitID = @"ca-app-pub-7534063156170955/2929947627";//调用id
+    
+    _adView.rootViewController = self;
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+    [view addSubview:_adView];
+    self.tableView.tableFooterView = view;
+    GADRequest *req = [GADRequest request];
+#if DEBUG
+    req.testDevices = @[@"5610fbd8aa463fcd021f9f235d9f6ba1"];
+#endif
+    [_adView loadRequest:req];
+}
+
+-(void)loadFullADView{
+    if (_interstitial) {
+        _interstitial.delegate = nil;
+        _interstitial = nil;
+    }
+    _interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-7534063156170955/1210676429"];
+    _interstitial.delegate = self;
+    GADRequest *request = [GADRequest request];
+#if DEBUG
+    request.testDevices = @[ @"5610fbd8aa463fcd021f9f235d9f6ba1" ];
+#endif
+    [_interstitial loadRequest:request];
+}
+
 
 
 -(void)setTitle:(NSString *)title{
@@ -106,6 +126,9 @@
 
 -(void)hideHudView{
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+-(void)showMessage:(NSString*)message{
+    [MBProgressHUD showString:message inView:KeyWindow];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -137,23 +160,24 @@
 }
 
 
-#pragma mark GDT Degetate
-- (void)bannerViewDidReceived{
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
-    [view addSubview:_bannerView];
-    self.tableView.tableFooterView = view;
+#pragma mark -
+#pragma mark AdMoGoDelegate delegate
+
+- (void)interstitialDidReceiveAd:(GADInterstitial *)interstitial {
+    [interstitial presentFromRootViewController:self];
 }
 
-- (void)bannerViewFailToReceived:(NSError *)error{
-    NSLog(@"--%@",error);
-    [_bannerView loadAdAndShow];
+- (void)interstitialDidDismissScreen:(GADInterstitial *)ad{
+    [self checkWIFI];
 }
+
 
 
 -(void)dealloc{
     _tableView = nil;
-    _bannerView.delegate = nil;
-    _bannerView = nil;
+    _interstitial.delegate = nil;
+    _adView.rootViewController = nil;
+    _adView.delegate = nil;
 }
 
 @end

@@ -13,7 +13,6 @@
 #import "FavoVideoListController.h"
 #import "ADViewController.h"
 #import "UMFeedback.h"
-#import "ShoppingController.h"
 
 #define imageHeight 230
 
@@ -126,10 +125,7 @@
             FavoVideoListController *controller = [[FavoVideoListController alloc]init];
             [self pushWithoutTabbar:controller];
         }
-        if (indexPath.row == 1) {
-            ShoppingController *controller = [[ShoppingController alloc]init];
-            [self pushWithoutTabbar:controller];
-        }
+        
         
     }
     if (indexPath.section == 1 && indexPath.row == 0) {
