@@ -267,7 +267,7 @@ static BOOL _DTCoreTextLayoutFramesShouldDrawDebugFrames = NO;
 	return lineOrigin;
 }
 
-// determins the "half leading"
+// determines the "half leading"
 - (CGFloat)_algorithmWebKit_halfLeadingOfLine:(DTCoreTextLayoutLine *)line
 {
 	CGFloat maxFontSize = [line lineHeight];
@@ -570,7 +570,7 @@ static BOOL _DTCoreTextLayoutFramesShouldDrawDebugFrames = NO;
 			// create the truncated line
 			line = CTLineCreateTruncatedLine(baseLine, availableSpace, truncationType, elipsisLineRef);
             
-            // check if truncation occured
+            // check if truncation occurred
             BOOL truncationOccured = !areLinesEqual(baseLine, line);
             // if yes check was it before the end of the current paragraph or after
             NSUInteger endOfParagraphIndex = NSMaxRange(currentParagraphRange);
@@ -580,7 +580,7 @@ static BOOL _DTCoreTextLayoutFramesShouldDrawDebugFrames = NO;
                 if (truncationOccured)
                 {
                     CFIndex truncationIndex = getTruncationIndex(line, elipsisLineRef);
-                    // if truncation occured after the end of the paragraph
+                    // if truncation occurred after the end of the paragraph
                     // move truncation token to the end of the paragraph
                     if (truncationIndex > endOfParagraphIndex)
                     {
@@ -620,7 +620,11 @@ static BOOL _DTCoreTextLayoutFramesShouldDrawDebugFrames = NO;
 		
 		if (!CTParagraphStyleGetValueForSpecifier(paragraphStyle, kCTParagraphStyleSpecifierAlignment, sizeof(textAlignment), &textAlignment))
 		{
+#if DTCORETEXT_SUPPORT_NS_ATTRIBUTES
+			textAlignment = kCTTextAlignmentNatural;
+#else
 			textAlignment = kCTNaturalTextAlignment;
+#endif
 		}
 		
 		// determine writing direction
@@ -638,14 +642,23 @@ static BOOL _DTCoreTextLayoutFramesShouldDrawDebugFrames = NO;
 		
 		switch (textAlignment)
 		{
+				
+#if DTCORETEXT_SUPPORT_NS_ATTRIBUTES
+			case kCTTextAlignmentLeft:
+#else
 			case kCTLeftTextAlignment:
+#endif
 			{
 				lineOriginX = _frame.origin.x + offset;
 				// nothing to do
 				break;
 			}
 				
+#if DTCORETEXT_SUPPORT_NS_ATTRIBUTES
+			case kCTTextAlignmentNatural:
+#else
 			case kCTNaturalTextAlignment:
+#endif
 			{
 				lineOriginX = _frame.origin.x + offset;
 				
@@ -657,21 +670,33 @@ static BOOL _DTCoreTextLayoutFramesShouldDrawDebugFrames = NO;
 				// right alignment falls through
 			}
 				
+#if DTCORETEXT_SUPPORT_NS_ATTRIBUTES
+			case kCTTextAlignmentRight:
+#else
 			case kCTRightTextAlignment:
+#endif
 			{
 				lineOriginX = _frame.origin.x + offset + (CGFloat)CTLineGetPenOffsetForFlush(line, 1.0, availableSpace);
 				
 				break;
 			}
 				
+#if DTCORETEXT_SUPPORT_NS_ATTRIBUTES
+			case kCTTextAlignmentCenter:
+#else
 			case kCTCenterTextAlignment:
+#endif
 			{
 				lineOriginX = _frame.origin.x + offset + (CGFloat)CTLineGetPenOffsetForFlush(line, 0.5, availableSpace);
 				
 				break;
 			}
 				
+#if DTCORETEXT_SUPPORT_NS_ATTRIBUTES
+			case kCTTextAlignmentJustified:
+#else
 			case kCTJustifiedTextAlignment:
+#endif
 			{
 				BOOL isAtEndOfParagraph  = (currentParagraphRange.location+currentParagraphRange.length <= lineRange.location+lineRange.length ||
 											[[_attributedStringFragment string] characterAtIndex:lineRange.location+lineRange.length-1]==0x2028);
@@ -1358,7 +1383,7 @@ static BOOL _DTCoreTextLayoutFramesShouldDrawDebugFrames = NO;
 				continue;
 			}
 			
-			// don't draw background, strikout or underline for trailing white space
+			// don't draw background, strikeout or underline for trailing white space
 			if ([oneRun isTrailingWhitespace])
 			{
 				continue;
@@ -1456,7 +1481,7 @@ static BOOL _DTCoreTextLayoutFramesShouldDrawDebugFrames = NO;
 						CGContextAddRect(context, clipRect);
 						CGContextClipToRect(context, clipRect);
 						
-						// Move the text outside of the clip rect so that only the shadow is visisble
+						// Move the text outside of the clip rect so that only the shadow is visible
 						CGContextSetTextPosition(context, textPosition.x + clipRect.size.width, textPosition.y);
 						
 						// draw each shadow
