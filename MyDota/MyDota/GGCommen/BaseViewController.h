@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GGNavigationBar.h"
 #import "MJRefresh.h"
-#import "MobClick.h"
+#import <UMMobClick/MobClick.h>
 #import "MBProgressHUD+string.h"
 #import <GoogleMobileAds/GoogleMobileAds.h>
 

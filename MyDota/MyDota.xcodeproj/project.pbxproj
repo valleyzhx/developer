@@ -776,7 +776,7 @@
 					F0EF55EE1BCDEA680062ECE1 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = BZ2BR27C6A;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -1108,7 +1108,7 @@
 				CODE_SIGN_ENTITLEMENTS = MyDota/MyDota.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BZ2BR27C6A;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1138,8 +1138,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplan.MyDota;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "556d52ab-25c8-43f5-a084-c376d612820f";
+				PROVISIONING_PROFILE_SPECIFIER = dveloperAll;
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)";
 			};
 			name = Debug;
@@ -1152,8 +1152,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = MyDota/MyDota.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = BZ2BR27C6A;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1183,8 +1183,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplan.MyDota;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "6e12adb7-4c6f-4a35-a5c2-f006314e388a";
+				PROVISIONING_PROFILE_SPECIFIER = Product.mydota;
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)";
 			};
 			name = Release;

@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "GGRequest.h"
 #import "WXApi.h"
-#import "MobClick.h"
+#import <UMMobClick/MobClick.h>
 #import "WXApiManager.h"
 #import "MyDefines.h"
 #import "UMFeedback.h"
@@ -36,7 +36,10 @@
 #endif
     
     [WXApi registerApp:WXApi_ID];
-    [MobClick startWithAppkey:MobClick_ID];
+    
+    UMAnalyticsConfig* umConfig = [UMAnalyticsConfig sharedInstance];
+    umConfig.appKey = MobClick_ID;
+    [MobClick startWithConfigure:umConfig];
     [UMFeedback setAppkey:MobClick_ID];
     [UMOnlineConfig updateOnlineConfigWithAppkey:MobClick_ID];
     
