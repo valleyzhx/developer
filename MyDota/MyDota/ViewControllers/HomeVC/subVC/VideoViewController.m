@@ -9,8 +9,6 @@
 #import "VideoViewController.h"
 #import "BaseViewController+NaviView.h"
 #import "MyDefines.h"
-#import "VKVideoPlayer.h"
-#import "M3U8Tool.h"
 #import "UserModel.h"
 #import "UIKit+AFNetworking.h"
 #import "AuthorVideoListController.h"
@@ -18,7 +16,6 @@
 #import "WXApiRequestHandler.h"
 #import "CommentListModel.h"
 #import "CommentViewController.h"
-#import "VideoWebViewController.h"
 #import "UIImageView+AFNetworking.h"
 
 
@@ -30,17 +27,15 @@
 
 
 
-@interface VideoViewController ()<VKVideoPlayerDelegate,UIActionSheetDelegate>
-@property (nonatomic,strong)VKVideoPlayer *player;
+@interface VideoViewController ()<UIActionSheetDelegate,UIWebViewDelegate>
 
 @end
 
 @implementation VideoViewController{
     VideoModel *_videoObject;
-    M3U8Tool *_m3u8Tool;
-    NSString *_m3u8Url;
+    UIWebView *_webView;
+    
     //NSMutableDictionary *_typeDic;
-    ChooseView *_choosV;
     UserModel *_user;
     BOOL _isFav;
     
@@ -62,15 +57,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    _naviBar.backgroundView.alpha = 0;
-    [self setVideoView];
-    [self startLoadRequest:_videoObject.link];
+    [self loadWebVideoView];
+    self.title = @"视频播放";
     self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetMaxY(_player.view.frame)+ 5)];
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, CGRectGetMaxY(_webView.frame)+ 5)];
         view.backgroundColor = viewBGColor;
         
-       UILabel *coutLab = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_player.view.frame)- 30, SCREEN_WIDTH, 20)];
+       UILabel *coutLab = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(view.frame)- 30, SCREEN_WIDTH, 20)];
         coutLab.textColor = Nav_Color;
         coutLab.font = [UIFont systemFontOfSize:14];
         coutLab.textAlignment = NSTextAlignmentCenter;
@@ -102,123 +95,38 @@
     [self loadBottomADView];
     
     NSInteger count = ((AppDelegate*)[UIApplication sharedApplication].delegate).videoAppearCount;
-    _showFullAd = count%3 == 0;
+    _showFullAd = count%5 == 4;
     if (_showFullAd) {
         [self loadFullADView];
     }
     ((AppDelegate*)[UIApplication sharedApplication].delegate).videoAppearCount = count+1;
-    
+    [self checkWIFI];
+
 }
 
 
-
-
-
--(void)startLoadRequest:(NSString*)htmlUrl{
-    [self showHudView];
-    _m3u8Tool = nil;
-    __weak typeof(self) weakSelf = self;
-    _m3u8Tool =  [M3U8Tool m3u8UrlWithUrl:htmlUrl type:[UserManager preferedVideoType] complised:^(NSString *m3u8Url){
-        [weakSelf hideHudView];
-        if (m3u8Url.length) {
-            _m3u8Url = m3u8Url;
-            [weakSelf.player loadVideoWithStreamURL:[NSURL URLWithString:_m3u8Url]];
-        }else{
-            [weakSelf setWebVideoView];
-        }
-        if (_showFullAd == NO) {
-            [weakSelf checkWIFI];
-        }
-    }];
-}
-
-
--(void)setVideoView{
-   VKVideoPlayerView *playerView = [[VKVideoPlayerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4)];
-    _player = [[VKVideoPlayer alloc] initWithVideoPlayerView:playerView];
-    _player.portraitFrame = playerView.bounds;
-    _player.forceRotate = YES;
-    _player.delegate = self;
-    playerView.previousButton.hidden = YES;
-    playerView.nextButton.hidden = YES;
-    playerView.topPortraitCloseButton.alpha = 0;
-    playerView.topControlOverlay.alpha = 0;
-    
-    NSString *key = [[UserManager preferedVideoType] isEqualToString:@"hd2"]?@"超清":@"高清";
-    [playerView.videoQualityButton setTitle:key forState:UIControlStateNormal];
-    [playerView.videoQualityButton setTitle:key forState:UIControlStateDisabled];
-    [playerView.videoQualityButton setTitleColor:Nav_Color forState:UIControlStateNormal];
-    
-    
-    [self.view addSubview:playerView];
-}
-
-- (void)setWebVideoView {
+- (void)loadWebVideoView{
     //改成网页播放
-    [_player.view removeFromSuperview];
-    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*3/4-5)];
-    UIImageView *imgV = [[UIImageView alloc]initWithFrame:btn.bounds];
-    [imgV setImageWithURL:[NSURL URLWithString:_videoObject.thumbnail]];
-    [btn addSubview:imgV];
-    [btn addTarget:self action:@selector(loadWebRequest:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
+    if (!_webView) {
+        _webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 60, SCREEN_WIDTH, SCREEN_WIDTH*0.6)];
+        _webView.delegate = self;
+        [self.view addSubview:_webView];
+    }
+    if (!_videoObject.modelID) {
+        [self showMessage:@"暂时无法访问"];
+        return;
+    }
+    
+    NSString *bundle = [[NSBundle mainBundle]pathForResource:@"video" ofType:@"html"];
+    bundle = [bundle stringByAppendingFormat:@"?videoid=%@",_videoObject.modelID];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:bundle]];
+    [_webView loadRequest:request];
     [self.view bringSubviewToFront:_naviBar];
 }
-
-- (void)videoPlayer:(VKVideoPlayer*)videoPlayer willStartVideo:(id<VKVideoPlayerTrackProtocol>)track{
-}
-
-- (void)videoPlayer:(VKVideoPlayer*)videoPlayer didControlByEvent:(VKVideoPlayerControlEvent)event{
-    if (event == VKVideoPlayerControlEventTapFullScreen) {
-        _naviBar.hidden = videoPlayer.isFullScreen;
-    }
-    if (event == VKVideoPlayerControlEventTapVideoQuality) {
-        if (_choosV) {
-            [_choosV removeFromSuperview];
-            _choosV = nil;
-        }else{
-           
-            NSString *otherkey = [[UserManager preferedVideoType] isEqualToString:@"mp4"]?@"超清":@"高清";
-            _choosV = [[ChooseView alloc]initWithTitleArr:@[otherkey] action:^(NSString *str) {
-                [self loadVideoWithKey:str];
-                [videoPlayer.view.videoQualityButton setTitle:str forState:UIControlStateNormal];
-                [videoPlayer.view.videoQualityButton setTitle:str forState:UIControlStateDisabled];
-                [_choosV removeFromSuperview];
-                _choosV = nil;
-            }];
-           CGPoint point = [self.player.view.bottomControlOverlay convertPoint:self.player.view.videoQualityButton.frame.origin toView:self.player.view];
-            CGRect r = _choosV.frame;
-            r.origin = CGPointMake(point.x, point.y-r.size.height);
-            _choosV.frame = r;
-            [self.player.view addSubview:_choosV];
-        }
-    }
-    if (event == VKVideoPlayerControlEventTapPlayerView) {
-        if (_choosV) {
-            [_choosV removeFromSuperview];
-            _choosV = nil;
-        }
-    }
-    
-    
-}
-
--(void)loadVideoWithKey:(NSString*)key{
-    
-    NSString *type = [key isEqualToString:@"高清"]?@"mp4":@"hd2";
-    if (![[UserManager preferedVideoType]isEqualToString:type]) {
-        [UserManager setPreferedVideoType:type];
-        [self startLoadRequest:_videoObject.link];
-    }
-}
-
 
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    if ([self.player isPlayingVideo]) {
-        [self.player pauseContent];
-    }
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -388,7 +296,7 @@
         __weak typeof(self) weakSelf = self;
         AuthorVideoListController *vc = [[AuthorVideoListController alloc]initWithUser:_user selectCallback:^(VideoModel *model) {
             _videoObject = model;
-            [weakSelf startLoadRequest:_videoObject.link];
+            [weakSelf loadWebVideoView];
             [weakSelf.tableView reloadData];
             [MobClick event:@"videoViewController" label:_user.name];
         }];
@@ -410,13 +318,6 @@
     btn.selected = !btn.selected;
 }
 
--(void)loadWebRequest:(UIButton*)btn{
-    
-    VideoWebViewController *webVC = [[VideoWebViewController alloc]initWithVideoId:_videoObject.modelID];
-    webVC.title = @"视频播放";
-    [self presentViewController:webVC animated:YES completion:nil];
-
-}
 
 -(void)clickShareAction:(UIButton*)btn{
     _showingSheet = YES;
@@ -446,16 +347,11 @@
 
 #pragma mark - navi
 
--(void)clickedBackAction:(UIButton*)btn{
-    if (self.player.isFullScreen) {
-        [self.player performOrientationChange:UIInterfaceOrientationPortrait];
-        self.player.isFullScreen = NO;
-    }else{
-        [self.navigationController popViewControllerAnimated:YES];
-
-    }
+#pragma mark- UIWebviewDelegate
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    
+    return YES;
 }
-
 
 #pragma mark - 横屏播放
 
@@ -504,11 +400,6 @@
 
 
 -(void)dealloc{
-    _m3u8Tool = nil;
-    _videoObject = nil;
-    _choosV = nil;
-    _user = nil;
-    _player = nil;
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
