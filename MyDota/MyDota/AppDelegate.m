@@ -29,7 +29,9 @@
     
     
 #if DEBUG
-    //[JSPatch testScriptInBundle];
+    
+//    [JSPatch testScriptInBundle];
+//    [JSPatch showDebugView];
 #else
     [JSPatch startWithAppKey:@"f1066ae1171e608e"];
     [JSPatch sync];
