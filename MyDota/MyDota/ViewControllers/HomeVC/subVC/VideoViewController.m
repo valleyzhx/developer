@@ -117,9 +117,9 @@
         return;
     }
     
-    NSString *bundle = [[NSBundle mainBundle]pathForResource:@"video" ofType:@"html"];
-    bundle = [bundle stringByAppendingFormat:@"?videoid=%@",_videoObject.modelID];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:bundle]];
+    
+    NSString *url = [@"https://xianng.com/videoplay/video.html?videoid=" stringByAppendingString:_videoObject.modelID];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [_webView loadRequest:request];
     [self.view bringSubviewToFront:_naviBar];
 }
