@@ -81,12 +81,10 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
     NSString *videoJS = [UMOnlineConfig getConfigParams:kVideojs];
     NSString *lJs = [videoJS stringByAppendingFormat:@"getVideoM3u8('%@');",_type];
     _lHtml = [webView stringByEvaluatingJavaScriptFromString:lJs];
-    if (_lHtml.length) {
-        if (finished) {
+        if ([_lHtml hasPrefix:@"http"]&&finished) {
             finished(_lHtml);
             finished = nil;
         }
-    }
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{

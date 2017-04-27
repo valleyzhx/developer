@@ -9,4 +9,7 @@
 #import "VideoListBaseController.h"
 
 @interface VideoListController : VideoListBaseController
+
+-(NSString*)getKeyWord;
+
 @end

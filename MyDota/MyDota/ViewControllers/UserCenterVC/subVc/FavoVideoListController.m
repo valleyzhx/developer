@@ -26,7 +26,6 @@
         _emptyLabel.text = @"您还没有收藏过视频!";
         _emptyLabel.hidden = NO;
     }
-    self.showGDTADView = NO;
 }
 
 

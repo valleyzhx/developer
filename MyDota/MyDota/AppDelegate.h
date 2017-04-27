@@ -15,5 +15,8 @@
 @property (strong, nonatomic) GDTSplashAd *splash;
 
 @property (nonatomic, strong) NSDictionary *tvDataDic;
+
+@property (nonatomic, assign) NSInteger videoAppearCount;
+
 @end
 

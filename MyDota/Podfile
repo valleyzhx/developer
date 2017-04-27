@@ -1,4 +1,8 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
 platform :ios, "7.0"
+
+target :MyDota do
 
 pod 'AFNetworking','~> 2.6.3'
 pod 'Mantle'
@@ -12,8 +16,8 @@ pod 'UMengAnalytics'
 pod 'UzysAssetsPickerController'
 pod 'UMengFeedback'
 pod 'Masonry', '0.6.1' #autolayout解析
+pod 'JSPatchPlatform'
+pod 'Firebase/Core'
+pod 'Firebase/AdMob'
 
-
-target :MyDotaTests, :exclusive => true do
-  # pod 'Kiwi'
 end

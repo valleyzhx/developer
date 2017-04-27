@@ -26,7 +26,6 @@
     _listArr = [NSMutableArray array];
     self.title = @"Dota热门作者";
     _naviBar.backgroundView.alpha = 1;
-    self.showGDTADView = YES;
     self.tableView.tableHeaderView = ({
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.height, 48)];
         view.backgroundColor = [UIColor clearColor];

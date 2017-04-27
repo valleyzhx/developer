@@ -9,6 +9,7 @@
 #import "VideoListController.h"
 #import "MyDefines.h"
 #import "VideoListModel.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
 
 
 @implementation VideoListController{
@@ -23,8 +24,21 @@
     currentPage = 1;
     [self loadVideoList:currentPage];
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-    
+    self.tableView.mj_header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadTheDataAction)];
+
 }
+
+-(NSString *)getKeyWord{
+    return @"dota";
+}
+
+
+-(void)reloadTheDataAction{
+    currentPage = 1;
+    [self.listArr removeAllObjects];
+    [self loadVideoList:currentPage];
+}
+
 -(void)loadMoreData{
     currentPage++;
     [self loadVideoList:currentPage];
@@ -32,7 +46,7 @@
 
 -(void)loadVideoList:(int)page{
     
-    NSString *url = [NSString stringWithFormat:@"https://openapi.youku.com/v2/searches/video/by_keyword.json?client_id=e2306ead120d2e34&keyword=%@&category=游戏&orderby=published&page=%d",@"dota",page];
+    NSString *url = [NSString stringWithFormat:@"https://openapi.youku.com/v2/searches/video/by_keyword.json?client_id=e2306ead120d2e34&keyword=%@&orderby=published&page=%d",[self getKeyWord],page];//category=游戏
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
     //NSString *url = [NSString stringWithFormat:@"https://api.youku.com/quality/video/by/category.json?client_id=e2306ead120d2e34&cate=10&count=10&page=%d",page];

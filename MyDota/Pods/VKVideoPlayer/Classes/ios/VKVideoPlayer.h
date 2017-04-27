@@ -126,8 +126,6 @@ VKVideoPlayerViewDelegate
 @property (nonatomic, assign) CGRect landscapeFrame;
 @property (nonatomic, assign) BOOL forceRotate;
 
-@property (nonatomic, assign) BOOL autoPlay;
-
 
 - (id)initWithVideoPlayerView:(VKVideoPlayerView*)videoPlayerView;
 
@@ -153,9 +151,6 @@ VKVideoPlayerViewDelegate
 - (void)pauseContentWithCompletionHandler:(void (^)())completionHandler;
 - (void)pauseContent:(BOOL)isUserAction completionHandler:(void (^)())completionHandler;
 - (void)updateTrackControls;
-
-#pragma mark - invalid
-- (void)invalid;
 
 #pragma mark - Captions
 - (void)clearCaptions;

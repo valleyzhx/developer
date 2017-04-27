@@ -177,7 +177,7 @@ NSDictionary *_classesForNames = nil;
 		[tmpDict setObject:_anchorName forKey:DTAnchorAttribute];
 	}
 	
-	// add strikout if applicable
+	// add strikeout if applicable
 	if (_strikeOut)
 	{
 #if DTCORETEXT_SUPPORT_NS_ATTRIBUTES
@@ -1063,19 +1063,35 @@ NSDictionary *_classesForNames = nil;
 	{
 		if ([alignment isEqualToString:@"left"])
 		{
+#if DTCORETEXT_SUPPORT_NS_ATTRIBUTES
+			self.paragraphStyle.alignment = kCTTextAlignmentLeft;
+#else
 			self.paragraphStyle.alignment = kCTLeftTextAlignment;
+#endif
 		}
 		else if ([alignment isEqualToString:@"right"])
 		{
+#if DTCORETEXT_SUPPORT_NS_ATTRIBUTES
+			self.paragraphStyle.alignment = kCTTextAlignmentRight;
+#else
 			self.paragraphStyle.alignment = kCTRightTextAlignment;
+#endif
 		}
 		else if ([alignment isEqualToString:@"center"])
 		{
+#if DTCORETEXT_SUPPORT_NS_ATTRIBUTES
+			self.paragraphStyle.alignment = kCTTextAlignmentCenter;
+#else
 			self.paragraphStyle.alignment = kCTCenterTextAlignment;
+#endif
 		}
 		else if ([alignment isEqualToString:@"justify"])
 		{
+#if DTCORETEXT_SUPPORT_NS_ATTRIBUTES
+			self.paragraphStyle.alignment = kCTTextAlignmentJustified;
+#else
 			self.paragraphStyle.alignment = kCTJustifiedTextAlignment;
+#endif
 		}
 		else if ([alignment isEqualToString:@"inherit"])
 		{
@@ -1137,7 +1153,7 @@ NSDictionary *_classesForNames = nil;
 		}
 	}
 	
-	// if there is a text attachment we transfer the aligment we got
+	// if there is a text attachment we transfer the alignment we got
 	_textAttachment.verticalAlignment = _textAttachmentAlignment;
 	
 	id shadow = [styles objectForKey:@"text-shadow"];
@@ -1364,7 +1380,7 @@ NSDictionary *_classesForNames = nil;
 		if (hasMargins)
 		{
 			self.paragraphStyle.paragraphSpacing = _margins.bottom;
-			
+			self.paragraphStyle.paragraphSpacingBefore = _margins.top;
 			// we increase the inherited values for the time being
 			self.paragraphStyle.headIndent += _margins.left;
 			self.paragraphStyle.firstLineHeadIndent = self.paragraphStyle.headIndent;

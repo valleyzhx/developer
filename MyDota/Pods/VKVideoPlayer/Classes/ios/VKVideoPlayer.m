@@ -72,7 +72,7 @@ typedef enum {
 
 - (void)dealloc {
   [self removeObservers];
-    self.view = nil;
+
   [self.externalMonitor deactivate];
   
   self.timeObserver = nil;
@@ -464,17 +464,7 @@ typedef enum {
     switch (self.state) {
       case VKVideoPlayerStateContentPaused:
         break;
-      case VKVideoPlayerStateContentLoading:{
-          if (_autoPlay) {
-              
-          }else{
-              [self pauseContent:YES completionHandler:^{
-                  _autoPlay = YES;
-              }];
-              break;
-          }
-          
-      }
+      case VKVideoPlayerStateContentLoading:{}
       case VKVideoPlayerStateError:{
         [self pauseContent:NO completionHandler:^{
           if ([self.delegate respondsToSelector:@selector(videoPlayer:willStartVideo:)]) {
@@ -567,13 +557,6 @@ typedef enum {
 
 - (float)currentBitRateInKbps {
   return [self.playerItem.accessLog.events.lastObject observedBitrate]/1000;
-}
-
-#pragma mark - ivalid
--(void)invalid{
-    [self clearPlayer];
-    [self clearCaptions];
-    [self.view removeFromSuperview];
 }
 
 

@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "GGNavigationBar.h"
 #import "MJRefresh.h"
-#import "MobClick.h"
+#import <UMMobClick/MobClick.h>
 #import "MBProgressHUD+string.h"
-#import "GDTMobBannerView.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
 
 #define orgX 16
 
@@ -20,17 +20,25 @@
     int total;
     GGNavigationBar *_naviBar;
     
-    GDTMobBannerView *_bannerView;
     UILabel *_emptyLabel;
 }
 
 @property (nonatomic,assign) BOOL noTable;
 @property (nonatomic,strong) UITableView *tableView;
 
-@property (nonatomic,assign) BOOL showGDTADView;
 
+-(void)checkWIFI;
+
+-(void)loadBottomADView;
+-(void)loadFullADView;
+
+
+-(void)setSearchButton;
+-(void)searchAction:(UIButton*)btn;
 
 -(void)showHudView;
 -(void)hideHudView;
+-(void)showMessage:(NSString*)message;
+
 
 @end

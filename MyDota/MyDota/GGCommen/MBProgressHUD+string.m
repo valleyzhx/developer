@@ -17,7 +17,7 @@
     hud.labelFont = font;
     [view addSubview:hud];
     [hud show:YES];
-    [hud hide:YES afterDelay:1];
+    [hud hide:YES afterDelay:2.0];
 }
 
 +(void)showString:(NSString *)title inView:(UIView *)view{

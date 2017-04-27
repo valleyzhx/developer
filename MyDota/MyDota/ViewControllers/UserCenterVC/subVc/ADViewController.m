@@ -8,17 +8,15 @@
 
 #import "ADViewController.h"
 #import "MyDefines.h"
-#import <GoogleMobileAds/GoogleMobileAds.h>
 #import "GGRequest.h"
 #import "UIImageView+AFNetworking.h"
 
 
-@interface ADViewController ()<GADInterstitialDelegate,UIActionSheetDelegate>
+@interface ADViewController ()<UIActionSheetDelegate>
 
 @end
 
 @implementation ADViewController{
-    GADInterstitial *_interstitial;
     UIImageView *_imgView;
 }
 
@@ -71,19 +69,7 @@
 
 
 -(void)tapTheAction:(UITapGestureRecognizer*)tap{
-    if (_interstitial) {
-        _interstitial.delegate = nil;
-        _interstitial = nil;
-    }
-    _interstitial = [[GADInterstitial alloc] init];
-    _interstitial.delegate = self;
-    _interstitial.adUnitID = @"ca-app-pub-7534063156170955/1210676429";
-    GADRequest *request = [GADRequest request];
-#if DEBUG
-    request.testDevices = @[ @"5610fbd8aa463fcd021f9f235d9f6ba1" ];
-#endif
-    [_interstitial loadRequest:request];
-    [MobClick event:@"GoogleLargeAd"];
+    [self loadFullADView];
 }
 
 
@@ -101,7 +87,7 @@
 
 
 -(void)dealloc{
-    _interstitial.delegate = nil;
+
 }
 
 #pragma mark ---- Action
@@ -142,11 +128,5 @@
 
 }
 
-#pragma mark -
-#pragma mark AdMoGoDelegate delegate
-
-- (void)interstitialDidReceiveAd:(GADInterstitial *)interstitial {
-    [interstitial presentFromRootViewController:self];
-}
 
 @end

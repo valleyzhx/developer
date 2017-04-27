@@ -1110,7 +1110,7 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleDefault;
 }
 - (UIViewController *)childViewControllerForStatusBarHidden
 {

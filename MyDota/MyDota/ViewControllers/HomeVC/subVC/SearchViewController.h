@@ -10,4 +10,6 @@
 
 @interface SearchViewController : VideoListBaseController
 
+@property (nonatomic,strong) NSString *searchKey;
+
 @end

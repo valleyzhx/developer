@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html style="height: 100%;">
     
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -8,11 +8,11 @@
     </head>
     
     
-    <body>
-        
-        <div id="youkuplayer" style="width:320px;height:280px;margin:auto"></div>
-        
-        <script type="text/javascript" src="http://player.youku.com/jsapi">
+    <body style="height: 100%;background-color:white;">
+        <div id="youkuplayer" style="height: 90%;" ></div>
+        <script type="text/javascript" src="https://player.youku.com/jsapi"></script>
+        <script type="text/javascript">
+
             function getQueryString(key)
             {
                 
@@ -85,7 +85,8 @@
         player = new YKU.Player('youkuplayer',{
                                 styleid: '0',
                                 client_id: 'c9bb14f8593c7a8b',//'e2306ead120d2e34',
-                                vid: value
+                                vid: value,
+                                newPlayer: true
                                 });
             </script>
         
