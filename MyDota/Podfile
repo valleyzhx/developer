@@ -16,7 +16,6 @@ pod 'UMengAnalytics'
 pod 'UzysAssetsPickerController'
 pod 'UMengFeedback'
 pod 'Masonry', '0.6.1' #autolayout解析
-pod 'JSPatchPlatform'
 pod 'Firebase/Core'
 pod 'Firebase/AdMob'
 

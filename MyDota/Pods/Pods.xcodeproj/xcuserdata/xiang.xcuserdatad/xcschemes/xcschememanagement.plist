@@ -44,11 +44,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>JSPatch.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -107,6 +102,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0276827BC10162130089A6D9104FA203</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
 		<dict>
 			<key>primary</key>
@@ -117,12 +117,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1B744A4654A1B3B1238EFF9B2417FF42</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>310B0196DBCD56493A2045A67682D7DB</key>
+		<key>3E81FC2CF00D5EC244891B49571D9599</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,12 +127,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4899AFB7BF5E9ED25A9541409FF8F430</key>
+		<key>5109A33BA19DCB68EF18D521015E3E09</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5109A33BA19DCB68EF18D521015E3E09</key>
+		<key>5771E893E568ED72FDE69E8616EC3289</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,12 +147,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>936406FBD0EE496F75EDD51824C7BF5B</key>
+		<key>9E0A6C05422EB16708C04EDD7076F1BF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9E0A6C05422EB16708C04EDD7076F1BF</key>
+		<key>A026E24E6C561B5B17310FCC3C4B4D7D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A9AA345806F899D3BE1909F8CECAD89A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,17 +172,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BCD415AD43399F1938C8BF12F7DC1A51</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C678F84898EBFA2DC634F772AE343494</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>C73EFACF976AF38A6267156E6E5719FE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CD60B6BF4FD8144C079CBD51A526C1E6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -198,11 +193,6 @@
 			<true/>
 		</dict>
 		<key>E1BBB76ADBF2EF4EF2CE5DF6BBC77296</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FB1B608CA194B526EEF0EC7ADC16F3B0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

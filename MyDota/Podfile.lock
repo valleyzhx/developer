@@ -71,13 +71,6 @@ PODS:
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - ImagePlayerView (2.0.2)
-  - JSPatch (1.1.2):
-    - JSPatch/Core (= 1.1.2)
-  - JSPatch/Core (1.1.2)
-  - JSPatchPlatform (1.6.6):
-    - JSPatchPlatform/Core (= 1.6.6)
-  - JSPatchPlatform/Core (1.6.6):
-    - JSPatch
   - Mantle (1.5.8):
     - Mantle/extobjc (= 1.5.8)
   - Mantle-HAL (1.1.0):
@@ -106,7 +99,6 @@ DEPENDENCIES:
   - Firebase/Core
   - FMDB
   - ImagePlayerView
-  - JSPatchPlatform
   - Mantle
   - Mantle-HAL
   - Masonry (= 0.6.1)
@@ -133,8 +125,6 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   ImagePlayerView: e162d73d3a1d427a43dc6a52d2c0baf4c7e226f8
-  JSPatch: 741205ebb2e2238c223a436e4c8cf75cf40a345f
-  JSPatchPlatform: 8cc9aaebe21109d5fdfb4500384ddf38ed0990e9
   Mantle: f03b2b606c3f0cabd80214ad8a2fed6b464a7359
   Mantle-HAL: 8246302c6a2e0916dfc304f90110a14a0df368cd
   Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
@@ -147,6 +137,6 @@ SPEC CHECKSUMS:
   VKFoundation: a3d26de016870f705a256c5c6dbab57865c4e99a
   VKVideoPlayer: 75d0c44d8cd208dd01ae397d2e75c52cfc51dd19
 
-PODFILE CHECKSUM: cdfd560f6b811d64c4d5cfbc34a1cf1af9d192b7
+PODFILE CHECKSUM: 5fd2d684a97a0c99e7029f3134c67a8bb83f3eeb
 
 COCOAPODS: 1.1.1

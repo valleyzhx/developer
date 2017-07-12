@@ -15,7 +15,6 @@
 #import "UMFeedback.h"
 #import "UMOnlineConfig.h"
 #import "TVListModel.h"
-#import <JSPatchPlatform/JSPatch.h>
 
 @interface AppDelegate ()
 
@@ -26,14 +25,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    
-#if DEBUG
-    //[JSPatch testScriptInBundle];
-#else
-    [JSPatch startWithAppKey:@"f1066ae1171e608e"];
-    [JSPatch sync];
-#endif
     
     [WXApi registerApp:WXApi_ID];
     
