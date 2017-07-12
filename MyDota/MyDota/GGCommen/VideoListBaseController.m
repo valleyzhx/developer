@@ -73,8 +73,8 @@ static NSString *const GADAdUnitID = @"ca-app-pub-7534063156170955/2261335225";
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSInteger adNum = MIN(_listArr.count/10, 10);
-    return _listArr.count + adNum;
+    //NSInteger adNum = MIN(_listArr.count/10, 10);
+    return _listArr.count;// + adNum;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -87,20 +87,20 @@ static NSString *const GADAdUnitID = @"ca-app-pub-7534063156170955/2261335225";
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSInteger adNum = MIN(_listArr.count/10, 10);
-    NSInteger adIndex = MIN(indexPath.row/10, 10);
-    
-    if ( indexPath.row!=0 && indexPath.row%10 == 9 && adIndex<adNum) {// AD Cell
-        UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AdCell"];
-        if (_nativeADViews.count>adIndex) {
-            GADNativeExpressAdView *adView = _nativeADViews[adIndex];
-            adView.tag = 888;
-            [cell.contentView addSubview:adView];
-            adView.center = CGPointMake(SCREEN_WIDTH/2, 132.0/2);
-        }
-        
-        return cell;
-    }
+//    NSInteger adNum = MIN(_listArr.count/10, 10);
+//    NSInteger adIndex = MIN(indexPath.row/10, 10);
+//    
+//    if ( indexPath.row!=0 && indexPath.row%10 == 9 && adIndex<adNum) {// AD Cell
+//        UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"AdCell"];
+//        if (_nativeADViews.count>adIndex) {
+//            GADNativeExpressAdView *adView = _nativeADViews[adIndex];
+//            adView.tag = 888;
+//            [cell.contentView addSubview:adView];
+//            adView.center = CGPointMake(SCREEN_WIDTH/2, 132.0/2);
+//        }
+//        
+//        return cell;
+//    }
     
     // =============    Normal Cell
 
@@ -112,7 +112,7 @@ static NSString *const GADAdUnitID = @"ca-app-pub-7534063156170955/2261335225";
         userLab.tag = 77;
         [cell.contentView addSubview:userLab];
     }
-    NSInteger modelIndex = indexPath.row-adIndex;
+    NSInteger modelIndex = indexPath.row;
     VideoModel *model = _listArr[modelIndex];
     
     [cell.imgView setImageWithURL:[NSURL URLWithString:model.thumbnail]];

@@ -35,7 +35,7 @@
     [_imgView addGestureRecognizer:longPressGr];
     
     
-    UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_imgView.frame)+10, SCREEN_WIDTH-20, 200)];
+    UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_imgView.frame)+10, SCREEN_WIDTH-20, 250)];
     lab.numberOfLines = 0;
     //lab.text = @"这里是广告,谢谢点进来^_^";
 //    lab.textAlignment = NSTextAlignmentCenter;

@@ -74,7 +74,6 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "JSPatch/JSPatch/JSPatch.js"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "UMengFeedback/UMFeedback_iOS_2.3.4/UMengFeedback_SDK/zh-Hans.lproj/UMFeedbackLocalizable.strings"
   install_resource "UMengFeedback/UMFeedback_iOS_2.3.4/UMengFeedback_SDK/Resources/bubble_min@2x.png"
@@ -130,7 +129,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "VKVideoPlayer/Classes/ios/VKVideoPlayerViewController~iphone.xib"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "JSPatch/JSPatch/JSPatch.js"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "UMengFeedback/UMFeedback_iOS_2.3.4/UMengFeedback_SDK/zh-Hans.lproj/UMFeedbackLocalizable.strings"
   install_resource "UMengFeedback/UMFeedback_iOS_2.3.4/UMengFeedback_SDK/Resources/bubble_min@2x.png"
